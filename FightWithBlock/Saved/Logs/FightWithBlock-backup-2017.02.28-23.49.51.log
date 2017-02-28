@@ -1,0 +1,742 @@
+﻿Log file open, 02/28/17 22:50:43
+LogInit:Display: Running engine for game: FightWithBlock
+LogPlatformFile: Not using cached read wrapper
+LogInit:Display: RandInit(1672190096) SRandInit(1672190096).
+LogTaskGraph: Started task graph with 5 named threads and 6 total threads with 1 sets of task threads.
+LogStats: Stats thread started at 0.063090
+LogInit:Warning: Incompatible or missing module: UE4Editor-FightWithBlock.dll
+Running D:/Program Files (x86)/Epic Games/UE_4.15/Engine/Binaries/DotNET/UnrealBuildTool.exe FightWithBlock Development Win64 -project="F:/FightWithBlock/FightWithBlock/FightWithBlock.uproject" -editorrecompile -progress -NoHotReloadFromIDE
+Creating makefile for FightWithBlock (game project files are newer)
+@progress push 5%
+Parsing headers for FightWithBlockEditor
+  Running UnrealHeaderTool "F:\FightWithBlock\FightWithBlock\FightWithBlock.uproject" "F:\FightWithBlock\FightWithBlock\Intermediate\Build\Win64\FightWithBlockEditor\Development\FightWithBlockEditor.uhtmanifest" -LogCmds="loginit warning, logexit warning, logdatabase error" -Unattended -WarningsAsErrors -installed
+Reflection code generated for FightWithBlockEditor in 3.9037268 seconds
+@progress pop
+Performing 8 actions (2 in parallel)
+[2/8] Resource ModuleVersionResource.rc.inl
+PCH.FightWithBlock.cpp
+[3/8] Resource PCLaunch.rc
+FightWithBlockGameModeBase.cpp
+FightWithBlock.cpp
+FightWithBlock.generated.cpp
+[7/8] Link UE4Editor-FightWithBlock.dll
+[8/8] Link UE4Editor-FightWithBlock.lib
+  ???ڴ????? F:\FightWithBlock\FightWithBlock\Intermediate\Build\Win64\UE4Editor\Development\UE4Editor-FightWithBlock.lib ?Ͷ??? F:\FightWithBlock\FightWithBlock\Intermediate\Build\Win64\UE4Editor\Development\UE4Editor-FightWithBlock.exp
+  ???ڴ????? F:\FightWithBlock\FightWithBlock\Intermediate\Build\Win64\UE4Editor\Development\UE4Editor-FightWithBlock.suppressed.lib ?Ͷ??? F:\FightWithBlock\FightWithBlock\Intermediate\Build\Win64\UE4Editor\Development\UE4Editor-FightWithBlock.suppressed.exp
+Failed to write dependency cache: ?豸δ??????
+
+Failed to write FlatCPPIncludeDependencyCache: ?豸δ??????
+
+Total build time: 60.57 seconds (Local executor: 51.87 seconds)
+LogInit: Using libcurl 7.47.1
+LogInit:  - built for x86_64-pc-win32
+LogInit:  - supports SSL with OpenSSL/1.0.2g
+LogInit:  - supports HTTP deflate (compression) using libz 1.2.8
+LogInit:  - other features:
+LogInit:      CURL_VERSION_SSL
+LogInit:      CURL_VERSION_LIBZ
+LogInit:      CURL_VERSION_IPV6
+LogInit:      CURL_VERSION_ASYNCHDNS
+LogInit:      CURL_VERSION_LARGEFILE
+LogInit:      CURL_VERSION_IDN
+LogInit:  CurlRequestOptions (configurable via config and command line):
+LogInit:  - bVerifyPeer = false  - Libcurl will NOT verify peer certificate
+LogInit:  - bUseHttpProxy = false  - Libcurl will NOT use HTTP proxy
+LogInit:  - bDontReuseConnections = false  - Libcurl will reuse connections
+LogInit:  - CertBundlePath = nullptr  - Libcurl will use whatever was configured at build time.
+LogInit: Build: ++UE4+Release-4.15-CL-3299760
+LogInit: Engine Version: 4.15.0-3299760+++UE4+Release-4.15
+LogInit: Compatible Engine Version: 4.15.0-3299760+++UE4+Release-4.15
+LogInit: Net CL: 3299760
+LogDevObjectVersion: Number of dev versions registered: 14
+LogDevObjectVersion:   Dev-Blueprints (B0D832E4-1F89-4F0D-ACCF-7EB736FD4AA2): 8
+LogDevObjectVersion:   Dev-Build (E1C64328-A22C-4D53-A36C-8E866417BD8C): 0
+LogDevObjectVersion:   Dev-Core (375EC13C-06E4-48FB-B500-84F0262A717E): 2
+LogDevObjectVersion:   Dev-Editor (E4B068ED-F494-42E9-A231-DA0B2E46BB41): 14
+LogDevObjectVersion:   Dev-Framework (CFFC743F-43B0-4480-9391-14DF171D2073): 22
+LogDevObjectVersion:   Dev-Mobile (B02B49B5-BB20-44E9-A304-32B752E40360): 0
+LogDevObjectVersion:   Dev-Networking (A4E4105C-59A1-49B5-A7C5-40C4547EDFEE): 0
+LogDevObjectVersion:   Dev-Online (39C831C9-5AE6-47DC-9A44-9C173E1C8E7C): 0
+LogDevObjectVersion:   Dev-Physics (78F01B33-EBEA-4F98-B9B4-84EACCB95AA2): 0
+LogDevObjectVersion:   Dev-Platform (6631380F-2D4D-43E0-8009-CF276956A95A): 0
+LogDevObjectVersion:   Dev-Rendering (12F88B9F-8875-4AFC-A67C-D90C383ABD29): 12
+LogDevObjectVersion:   Dev-Sequencer (7B5AE74C-D270-4C10-A958-57980B212A5A): 3
+LogDevObjectVersion:   Dev-VR (D7296918-1DD6-4BDD-9DE2-64A83CC13884): 0
+LogDevObjectVersion:   Dev-LoadTimes (C2A15278-BFE7-4AFE-6C17-90FF531DF755): 1
+LogInit: Compiled (64-bit): Feb 14 2017 02:04:14
+LogInit: Compiled with Visual C++: 19.00.23026.00
+LogInit: Build Configuration: Development
+LogInit: Branch Name: ++UE4+Release-4.15
+LogInit: Command line:  
+LogInit: Base directory: D:/Program Files (x86)/Epic Games/UE_4.15/Engine/Binaries/Win64/
+LogInit: Installed Engine Build: 1
+LogInit: Presizing for max 8388607 objects, including 0 objects not considered by GC, pre-allocating 0 bytes for permanent pool.
+LogInit: Object subsystem initialized
+[2017.02.28-14.51.47:481][  0]LogInit: Selected Device Profile: [Windows]
+[2017.02.28-14.51.47:481][  0]LogInit: Applying CVar settings loaded from the selected device profile: [Windows]
+[2017.02.28-14.51.47:541][  0]LogInit: Computer: WIN-01609080925
+[2017.02.28-14.51.47:541][  0]LogInit: User: Administrator
+[2017.02.28-14.51.47:541][  0]LogInit: CPU Page size=65536, Cores=2
+[2017.02.28-14.51.47:541][  0]LogInit: High frequency timer resolution =2.728070 MHz
+[2017.02.28-14.51.47:541][  0]LogMemory: Memory total: Physical=11.9GB (12GB approx)
+[2017.02.28-14.51.47:541][  0]LogMemory: Platform Memory Stats for Windows
+[2017.02.28-14.51.47:541][  0]LogMemory: Process Physical Memory: 264.33 MB used, 264.33 MB peak
+[2017.02.28-14.51.47:541][  0]LogMemory: Process Virtual Memory: 262.64 MB used, 262.64 MB peak
+[2017.02.28-14.51.47:541][  0]LogMemory: Physical Memory: 2955.18 MB used,  9221.88 MB free, 12177.06 MB total
+[2017.02.28-14.51.47:541][  0]LogMemory: Virtual Memory: 662.02 MB used,  9221.88 MB free, 134217728.00 MB total
+[2017.02.28-14.51.47:633][  0]LogInit: Overriding culture en with editor configuration.
+[2017.02.28-14.51.48:597][  0]LogD3D11RHI: D3D11 adapters:
+[2017.02.28-14.51.48:636][  0]LogD3D11RHI:    0. 'NVIDIA GeForce GTX 950M' (Feature Level 11_0)
+[2017.02.28-14.51.48:636][  0]LogD3D11RHI:       2018/0/6088 MB DedicatedVideo/DedicatedSystem/SharedSystem, Outputs:1, VendorId:0x10de
+[2017.02.28-14.51.48:647][  0]LogD3D11RHI:    1. 'Intel(R) HD Graphics 4600' (Feature Level 11_0)
+[2017.02.28-14.51.48:647][  0]LogD3D11RHI:       112/0/2048 MB DedicatedVideo/DedicatedSystem/SharedSystem, Outputs:0, VendorId:0x8086
+[2017.02.28-14.51.48:648][  0]LogD3D11RHI:    2. 'Microsoft Basic Render Driver' (Feature Level 11_0)
+[2017.02.28-14.51.48:649][  0]LogD3D11RHI:       0/0/6088 MB DedicatedVideo/DedicatedSystem/SharedSystem, Outputs:0, VendorId:0x1414
+[2017.02.28-14.51.48:649][  0]LogD3D11RHI: Chosen D3D11 Adapter: 0
+[2017.02.28-14.51.48:652][  0]LogD3D11RHI: Creating new Direct3DDevice
+[2017.02.28-14.51.48:652][  0]LogD3D11RHI:     GPU DeviceId: 0x139a (for the marketing name, search the web for "GPU Device Id")
+[2017.02.28-14.51.48:652][  0]LogWindows: EnumDisplayDevices:
+[2017.02.28-14.51.48:652][  0]LogWindows:    0. 'Intel(R) HD Graphics 4600' (P:1 D:1)
+[2017.02.28-14.51.48:653][  0]LogWindows:    1. 'Intel(R) HD Graphics 4600' (P:0 D:0)
+[2017.02.28-14.51.48:653][  0]LogWindows:    2. 'Intel(R) HD Graphics 4600' (P:0 D:0)
+[2017.02.28-14.51.48:653][  0]LogWindows: DebugString: PrimaryIsNotTheChoosenAdapter PrimaryIsNotTheChoosenAdapter PrimaryIsNotTheChoosenAdapter FoundDriverCount:0 
+[2017.02.28-14.51.48:653][  0]LogD3D11RHI:     Adapter Name: NVIDIA GeForce GTX 950M
+[2017.02.28-14.51.48:653][  0]LogD3D11RHI:   Driver Version: Unknown (internal:Unknown, unified:Unknown)
+[2017.02.28-14.51.48:653][  0]LogD3D11RHI:      Driver Date: Unknown
+[2017.02.28-14.51.48:653][  0]LogRHI: Texture pool is 1361 MB (70% of 1945 MB)
+[2017.02.28-14.51.48:675][  0]LogD3D11RHI: Async texture creation enabled
+[2017.02.28-14.51.48:687][  0]LogD3D11RHI: GPU Timing Frequency: 1000.000000 (Debug: 2 1)
+[2017.02.28-14.51.48:688][  0]LogShaderCompilers: Guid format shader working directory is 22 characters bigger than the processId version (F:/FightWithBlock/FightWithBlock/Intermediate/Shaders/WorkingDirectory/1296/).
+[2017.02.28-14.51.48:688][  0]LogShaderCompilers: Cleaned the shader compiler working directory 'C:/Users/Administrator/AppData/Local/Temp/UnrealShaderWorkingDir/B3431F1348BE2672A491229A739D5127/'.
+[2017.02.28-14.51.48:688][  0]LogShaderCompilers:Display: Using Local Shader Compiler.
+[2017.02.28-14.51.50:579][  0]LogTemp:Display: Loaded TP AllDesktopTargetPlatform
+[2017.02.28-14.51.50:648][  0]LogTemp:Display: Loaded TP MacClientTargetPlatform
+[2017.02.28-14.51.50:707][  0]LogTemp:Display: Loaded TP MacNoEditorTargetPlatform
+[2017.02.28-14.51.50:766][  0]LogTemp:Display: Loaded TP MacServerTargetPlatform
+[2017.02.28-14.51.50:876][  0]LogTemp:Display: Loaded TP MacTargetPlatform
+[2017.02.28-14.51.50:934][  0]LogTemp:Display: Loaded TP WindowsClientTargetPlatform
+[2017.02.28-14.51.50:997][  0]LogTemp:Display: Loaded TP WindowsNoEditorTargetPlatform
+[2017.02.28-14.51.51:067][  0]LogTemp:Display: Loaded TP WindowsServerTargetPlatform
+[2017.02.28-14.51.51:117][  0]LogTemp:Display: Loaded TP WindowsTargetPlatform
+[2017.02.28-14.51.51:194][  0]LogTemp:Display: Loaded TP AndroidTargetPlatform
+[2017.02.28-14.51.51:254][  0]LogTemp:Display: Loaded TP Android_ASTCTargetPlatform
+[2017.02.28-14.51.51:317][  0]LogTemp:Display: Loaded TP Android_ATCTargetPlatform
+[2017.02.28-14.51.51:379][  0]LogTemp:Display: Loaded TP Android_DXTTargetPlatform
+[2017.02.28-14.51.51:438][  0]LogTemp:Display: Loaded TP Android_ETC1TargetPlatform
+[2017.02.28-14.51.51:502][  0]LogTemp:Display: Loaded TP Android_ETC2TargetPlatform
+[2017.02.28-14.51.51:632][  0]LogTemp:Display: Loaded TP Android_MultiTargetPlatform
+[2017.02.28-14.51.51:632][  0]LogTemp:Display: Loaded TP Android_PVRTCTargetPlatform
+[2017.02.28-14.51.51:675][  0]LogTemp:Display: Loaded TP HTML5TargetPlatform
+[2017.02.28-14.51.51:821][  0]LogTemp:Display: Loaded TP IOSTargetPlatform
+[2017.02.28-14.51.51:862][  0]LogTemp:Display: Loaded TP TVOSTargetPlatform
+[2017.02.28-14.51.51:926][  0]LogTemp:Display: Loaded TP LinuxClientTargetPlatform
+[2017.02.28-14.51.51:985][  0]LogTemp:Display: Loaded TP LinuxNoEditorTargetPlatform
+[2017.02.28-14.51.52:049][  0]LogTemp:Display: Loaded TP LinuxServerTargetPlatform
+[2017.02.28-14.51.52:114][  0]LogTemp:Display: Loaded TP LinuxTargetPlatform
+[2017.02.28-14.51.52:114][  0]LogTargetPlatformManager:Display: Building Assets For Windows
+[2017.02.28-14.51.52:628][  0]LogDerivedDataCache:Display: Max Cache Size: 512 MB
+[2017.02.28-14.51.54:341][  0]LogDerivedDataCache: Loaded boot cache 1.71s 51MB C:/Users/Administrator/AppData/Local/UnrealEngine/4.15/DerivedDataCache/Boot.ddc.
+[2017.02.28-14.51.54:342][  0]LogDerivedDataCache:Display: Loaded Boot cache: C:/Users/Administrator/AppData/Local/UnrealEngine/4.15/DerivedDataCache/Boot.ddc
+[2017.02.28-14.51.54:342][  0]LogDerivedDataCache: FDerivedDataBackendGraph:  Pak pak cache file F:/FightWithBlock/FightWithBlock/DerivedDataCache/DDC.ddp not found, will not use a pak cache.
+[2017.02.28-14.51.54:342][  0]LogDerivedDataCache: Unable to find inner node Pak for hierarchical cache Hierarchy.
+[2017.02.28-14.51.54:342][  0]LogDerivedDataCache: FDerivedDataBackendGraph:  CompressedPak pak cache file F:/FightWithBlock/FightWithBlock/DerivedDataCache/Compressed.ddp not found, will not use a pak cache.
+[2017.02.28-14.51.54:342][  0]LogDerivedDataCache: Unable to find inner node CompressedPak for hierarchical cache Hierarchy.
+[2017.02.28-14.51.54:381][  0]LogDerivedDataCache:Display: Pak cache opened for reading ../../../Engine/DerivedDataCache/Compressed.ddp.
+[2017.02.28-14.51.54:394][  0]LogDerivedDataCache: Using Local data cache path C:/Users/Administrator/AppData/Local/UnrealEngine/Common/DerivedDataCache: Writable
+[2017.02.28-14.51.54:409][  0]LogSlate: Using Freetype 2.6.0
+[2017.02.28-14.51.54:450][  0]LogSlate: SlateFontCache - WITH_FREETYPE: 1, WITH_HARFBUZZ: 1
+[2017.02.28-14.51.54:450][  0]LogSlate: SlateFontCache - WITH_FREETYPE: 1, WITH_HARFBUZZ: 1
+[2017.02.28-14.51.55:135][  0]LogInit: Selected Device Profile: [Windows]
+[2017.02.28-14.51.55:138][  0]LogContentStreaming: Texture pool size is 0.00 MB
+[2017.02.28-14.51.55:385][  0]LogMeshUtilities: Using QuadricMeshReduction for automatic static mesh reduction
+[2017.02.28-14.51.55:436][  0]LogSimplygon: Simplygon DLL not present - disabling.
+[2017.02.28-14.51.55:492][  0]LogMeshUtilities: Using SimplygonSwarm for distributed automatic mesh merging
+[2017.02.28-14.51.55:492][  0]LogMeshUtilities: No automatic skeletal mesh reduction module available
+[2017.02.28-14.51.55:492][  0]LogMeshUtilities: No automatic mesh merging module available
+[2017.02.28-14.51.56:333][  0]LogNetVersion: GetLocalNetworkVersion: CL: 3299760, ProjectName: fightwithblock, ProjectVersion: , EngineNetworkVersion: 2, GameNetworkVersion: 0, NetworkChecksum: 311692676
+[2017.02.28-14.51.56:386][  0]LogAssetRegistry: FAssetRegistry took 0.0217 seconds to start up
+[2017.02.28-14.51.56:509][  0]LogPackageLocalizationCache: Processed 3 localized package path(s) for 1 prioritized culture(s) in 0.096157 seconds
+[2017.02.28-14.51.56:517][  0]LogUObjectArray: 32475 objects as part of root set at end of initial load.
+[2017.02.28-14.51.56:517][  0]LogUObjectAllocator: 7073368 out of 0 bytes used by permanent object pool.
+[2017.02.28-14.51.56:517][  0]LogUObjectArray: CloseDisregardForGC: 0/0 objects in disregard for GC pool
+[2017.02.28-14.51.56:596][  0]LogInit: WinSock: version 1.1 (2.2), MaxSocks=32767, MaxUdp=65467
+[2017.02.28-14.52.08:567][  0]LogTcpMessaging: Initializing TcpMessaging bridge
+[2017.02.28-14.52.08:605][  0]LogUdpMessaging: Initializing bridge on interface 0.0.0.0:0 to multicast group 230.0.0.1:6666.
+[2017.02.28-14.52.09:467][  0]LogMaterial: Uniform references updated for custom material expression Custom.
+[2017.02.28-14.52.09:928][  0]SourceControl: Info Source control is disabled
+[2017.02.28-14.52.09:929][  0]SourceControl: Info Source control is disabled
+[2017.02.28-14.52.09:982][  0]SourceControl: Info Source control is disabled
+[2017.02.28-14.52.10:032][  0]SourceControl: Info Source control is disabled
+[2017.02.28-14.52.11:546][  0]LogEngine: Initializing Engine...
+[2017.02.28-14.52.11:546][  0]LogHMD: Failed to initialize OpenVR with code 110
+[2017.02.28-14.52.11:819][  0]LogAIModule: Creating AISystem for world Untitled
+[2017.02.28-14.52.11:830][  0]LogInit: XAudio2 using '扬声器 (Conexant SmartAudio HD)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2017.02.28-14.52.11:860][  0]LogInit: FAudioDevice initialized.
+[2017.02.28-14.52.11:901][  0]LogDerivedDataCache: Saved boot cache 0.04s 51MB C:/Users/Administrator/AppData/Local/UnrealEngine/4.15/DerivedDataCache/Boot.ddc.
+[2017.02.28-14.52.11:906][  0]LogInit: Texture streaming: Enabled
+[2017.02.28-14.52.12:004][  0]LogEngineSessionManager: EngineSessionManager initialized
+[2017.02.28-14.52.12:700][  0]LogInit: Transaction tracking system initialized
+[2017.02.28-14.52.13:134][  0]BlueprintLog: New page: Editor Load
+[2017.02.28-14.52.14:337][  0]LocalizationService: Info Localization service is disabled
+[2017.02.28-14.52.15:503][  0]LogConsoleResponse:Display: 
+[2017.02.28-14.52.15:714][  0]LogCook:Display: Max memory allowance for cook 16384mb min free memory 0mb
+[2017.02.28-14.52.15:714][  0]LogCook:Display: Mobile HDR setting 1
+[2017.02.28-14.52.16:382][  0]LogFileCache: Scanning file cache for directory 'F:/FightWithBlock/FightWithBlock/Content/' took 0.01s
+[2017.02.28-14.52.17:153][  0]SourceControl: Info Source control is disabled
+[2017.02.28-14.52.17:153][  0]Cmd: MAP LOAD FILE="../../../Engine/Content/Maps/Templates/Template_Default.umap" TEMPLATE=1 SHOWPROGRESS=1 FEATURELEVEL=3
+[2017.02.28-14.52.17:153][  0]LightingResults: New page: Lighting Build
+[2017.02.28-14.52.17:197][  0]MapCheck: New page: Map Check
+[2017.02.28-14.52.17:197][  0]LightingResults: New page: Lighting Build
+[2017.02.28-14.52.17:470][  0]LogAIModule: Creating AISystem for world Untitled_1
+[2017.02.28-14.52.17:472][  0]LogActorComponent: RegisterComponentWithWorld: (/Temp/Untitled_1.Untitled_1:PersistentLevel.WorldSettings_1.StaticMeshComponent0) Trying to register component with IsPendingKill() == true. Aborting.
+[2017.02.28-14.52.17:477][  0]LogEditorServer: Finished looking for orphan Actors (0.000 secs)
+[2017.02.28-14.52.17:481][  0]Cmd: MAP CHECKDEP NOCLEARLOG
+[2017.02.28-14.52.17:516][  0]MapCheck: Info Map check complete: 0 Error(s), 0 Warning(s), took 34.024ms to complete.
+[2017.02.28-14.52.17:516][  0]LogFileHelpers: Loading map 'Template_Default' took 0.363
+[2017.02.28-14.52.17:844][  0]LogCollectionManager: Loaded 0 collections in 0.001281 seconds
+[2017.02.28-14.52.17:946][  0]LogFileCache: Scanning file cache for directory 'F:/FightWithBlock/FightWithBlock/Saved/Collections/' took 0.01s
+[2017.02.28-14.52.17:946][  0]LogFileCache: Scanning file cache for directory 'F:/FightWithBlock/FightWithBlock/Content/Developers/Administrator/Collections/' took 0.01s
+[2017.02.28-14.52.17:946][  0]LogFileCache: Scanning file cache for directory 'F:/FightWithBlock/FightWithBlock/Content/Collections/' took 0.01s
+[2017.02.28-14.52.17:946][  0]LogCollectionManager: Rebuilt the GUID cache for 0 collections in 0.000003 seconds
+[2017.02.28-14.52.17:957][  0]LogContentBrowser: Native class hierarchy populated in 0.0106 seconds. Added 2245 classes and 452 folders.
+[2017.02.28-14.52.17:963][  0]LogStats: UGameplayTagsManager::ConstructGameplayTagTree: Construct from data asset -  0.000 s
+[2017.02.28-14.52.17:963][  0]LogStats: UGameplayTagsManager::ConstructGameplayTagTree: GameplayTagTreeChangedEvent.Broadcast -  0.000 s
+[2017.02.28-14.52.18:043][  0]LogContentBrowser: Native class hierarchy updated for 'WidgetCarousel' in 0.0048 seconds. Added 0 classes and 0 folders.
+[2017.02.28-14.52.18:500][  0]LogContentBrowser: Native class hierarchy updated for 'AddContentDialog' in 0.0024 seconds. Added 0 classes and 0 folders.
+[2017.02.28-14.52.18:591][  0]LogContentBrowser: Native class hierarchy updated for 'SceneOutliner' in 0.0034 seconds. Added 1 classes and 2 folders.
+[2017.02.28-14.52.18:621][  0]LogCrashTracker: Crashtracker disabled due to settings.
+[2017.02.28-14.52.18:632][  0]LogUObjectGlobals:Warning: Failed to find object 'Class None.'
+[2017.02.28-14.52.18:720][  0]LogContentBrowser: Native class hierarchy updated for 'HierarchicalLODOutliner' in 0.0011 seconds. Added 1 classes and 2 folders.
+[2017.02.28-14.52.18:720][  0]LogLoad: (Engine Initialization) Total time: 98.15 seconds
+[2017.02.28-14.52.18:720][  0]LogLoad: (Engine Initialization) Total Blueprint compile time: 0.18 seconds
+[2017.02.28-14.52.18:720][  0]LogExternalProfiler: Found external profiler: VSPerf
+[2017.02.28-14.52.18:720][  0]LogExternalProfiler: Using external profiler: VSPerf
+[2017.02.28-14.52.18:738][  0]LogOcInput: OculusInput pre-init called
+[2017.02.28-14.52.18:759][  0]LogContentStreaming: Texture pool size now 1000 MB
+[2017.02.28-14.52.18:785][  0]LogSlate: Took 0.022804 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Regular.ttf' (155K)
+[2017.02.28-14.52.18:808][  0]LogSlate: Took 0.009392 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Bold.ttf' (160K)
+[2017.02.28-14.52.18:843][  0]LogSlate: Took 0.024952 seconds to synchronously load lazily loaded font '../../../Engine/Content/Editor/Slate/Fonts/FontAwesome.ttf' (139K)
+[2017.02.28-14.52.19:001][  0]LogRenderer: Reallocating scene render targets to support 792x924 NumSamples 1 (Frame:2).
+[2017.02.28-14.52.19:105][  1]LogAssetRegistry: Asset discovery search completed in 22.7404 seconds
+[2017.02.28-14.52.19:105][  1]LogCollectionManager: Rebuilt the object cache for 0 collections in 0.000010 seconds (found 0 objects)
+[2017.02.28-14.52.19:105][  1]LogCollectionManager: Fixed up redirectors for 0 collections in 0.000028 seconds (updated 0 objects)
+[2017.02.28-15.05.00:670][822]LogSlate: Took 0.023665 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Light.ttf' (159K)
+[2017.02.28-15.05.02:815][950]LogRenderer: Reallocating scene render targets to support 796x924 NumSamples 1 (Frame:43742).
+[2017.02.28-15.05.03:312][966]LogRenderer: Reallocating scene render targets to support 804x924 NumSamples 1 (Frame:43760).
+[2017.02.28-15.05.03:361][967]LogRenderer: Reallocating scene render targets to support 808x924 NumSamples 1 (Frame:43762).
+[2017.02.28-15.05.03:492][971]LogRenderer: Reallocating scene render targets to support 812x924 NumSamples 1 (Frame:43766).
+[2017.02.28-15.05.03:710][981]LogRenderer: Reallocating scene render targets to support 816x924 NumSamples 1 (Frame:43770).
+[2017.02.28-15.05.13:176][526]LogSlate: Took 0.000524 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Light.ttf' (159K)
+[2017.02.28-15.05.13:386][526]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/myBlueprint/DataTables/Boxes" FILE="F:/FightWithBlock/FightWithBlock/Content/myBlueprint/DataTables/Boxes.uasset" SILENT=true
+[2017.02.28-15.05.13:409][526]LogSavePackage: Save=3.62ms
+[2017.02.28-15.05.13:409][526]LogSavePackage: Moving 'F:/FightWithBlock/FightWithBlock/Saved/Boxes4A2ACF284B79F2BCBF50029F01117907.tmp' to 'F:/FightWithBlock/FightWithBlock/Content/myBlueprint/DataTables/Boxes.uasset'
+[2017.02.28-15.05.13:469][526]LogSavePackage:Display: Finished SavePackage F:/FightWithBlock/FightWithBlock/Content/myBlueprint/DataTables/Boxes.uasset
+[2017.02.28-15.05.30:855][194]LogSlate: Took 0.000510 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Regular.ttf' (155K)
+[2017.02.28-15.05.31:279][194]LogContentBrowser: Native class hierarchy updated for 'BlueprintGraph' in 0.0018 seconds. Added 112 classes and 0 folders.
+[2017.02.28-15.05.33:798][194]LogRenderer: Reallocating scene render targets to support 1144x924 NumSamples 1 (Frame:44722).
+[2017.02.28-15.05.35:408][267]LogSlate: Took 0.031171 seconds to synchronously load lazily loaded font '../../../Engine/Content/Editor/Slate/Fonts/Roboto-BoldCondensed.ttf' (158K)
+[2017.02.28-15.06.28:737][208]BlueprintLog: New page: Compile MyGameMode
+[2017.02.28-15.07.10:584][963]LogSlate: Took 0.000282 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Light.ttf' (159K)
+[2017.02.28-15.07.20:122][990]LogFileHelpers: Editor autosave (incl. sublevels) for '/Temp/Untitled_1' took 0.051
+[2017.02.28-15.07.20:125][990]OBJ SavePackage: Generating thumbnails for [0] asset(s) in package [/Game/myBlueprint/MyGameMode] ([1] browsable assets)...
+[2017.02.28-15.07.20:125][990]OBJ SavePackage: Finished generating thumbnails for package [/Game/myBlueprint/MyGameMode]
+[2017.02.28-15.07.20:125][990]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/myBlueprint/MyGameMode" FILE="F:/FightWithBlock/FightWithBlock/Saved/Autosaves/Game/myBlueprint/MyGameMode_Auto1.uasset" SILENT=false AUTOSAVING=true
+[2017.02.28-15.07.20:192][990]LogSavePackage: Save=38.73ms
+[2017.02.28-15.07.20:192][990]LogSavePackage: Moving 'F:/FightWithBlock/FightWithBlock/Saved/MyGameMode_Auto16D182A6940FEB1AF8C26C0B9D6642D75.tmp' to 'F:/FightWithBlock/FightWithBlock/Saved/Autosaves/Game/myBlueprint/MyGameMode_Auto1.uasset'
+[2017.02.28-15.07.20:194][990]LogSavePackage:Display: Finished SavePackage F:/FightWithBlock/FightWithBlock/Saved/Autosaves/Game/myBlueprint/MyGameMode_Auto1.uasset
+[2017.02.28-15.07.20:194][990]LogFileHelpers: Auto-saving content packages took 0.071
+[2017.02.28-15.08.39:297][228]LogWindowsTextInputMethodSystem:Display: IME system now deactivated.
+[2017.02.28-15.08.39:330][228]LogWindowsTextInputMethodSystem:Display: IME system now activated using TSF (中文 - QQ拼音输入法).
+[2017.02.28-15.09.25:513][968]LogWindowsTextInputMethodSystem:Display: IME system now deactivated.
+[2017.02.28-15.09.25:513][968]LogWindowsTextInputMethodSystem:Display: IME system now deactivated.
+[2017.02.28-15.09.46:908][236]LogSlate: Took 0.038668 seconds to synchronously load lazily loaded font '../../../Engine/Content/Editor/Slate/Fonts/Roboto-BoldCondensedItalic.ttf' (160K)
+[2017.02.28-15.10.05:813][356]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/myBlueprint/Structures/S_MapCube" FILE="F:/FightWithBlock/FightWithBlock/Content/myBlueprint/Structures/S_MapCube.uasset" SILENT=true
+[2017.02.28-15.10.05:830][356]LogSavePackage: Save=4.30ms
+[2017.02.28-15.10.05:830][356]LogSavePackage: Moving 'F:/FightWithBlock/FightWithBlock/Saved/S_MapCube83D62F36428BE187E30ADDB265048481.tmp' to 'F:/FightWithBlock/FightWithBlock/Content/myBlueprint/Structures/S_MapCube.uasset'
+[2017.02.28-15.10.05:889][356]LogSavePackage:Display: Finished SavePackage F:/FightWithBlock/FightWithBlock/Content/myBlueprint/Structures/S_MapCube.uasset
+[2017.02.28-15.10.08:035][485]BlueprintLog: New page: Compile MyGameMode
+[2017.02.28-15.10.11:804][691]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/myBlueprint/Structures/S_MapCube" FILE="F:/FightWithBlock/FightWithBlock/Content/myBlueprint/Structures/S_MapCube.uasset" SILENT=true
+[2017.02.28-15.10.11:839][691]LogSavePackage: Save=3.50ms
+[2017.02.28-15.10.11:839][691]LogSavePackage: Moving 'F:/FightWithBlock/FightWithBlock/Saved/S_MapCube50511EB944D3FCCE242BEB97E8C02EC7.tmp' to 'F:/FightWithBlock/FightWithBlock/Content/myBlueprint/Structures/S_MapCube.uasset'
+[2017.02.28-15.10.11:843][691]LogSavePackage:Display: Finished SavePackage F:/FightWithBlock/FightWithBlock/Content/myBlueprint/Structures/S_MapCube.uasset
+[2017.02.28-15.10.26:128][487]BlueprintLog: New page: Compile MyGameMode
+[2017.02.28-15.10.43:638][516]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/myBlueprint/Structures/S_Box" FILE="F:/FightWithBlock/FightWithBlock/Content/myBlueprint/Structures/S_Box.uasset" SILENT=true
+[2017.02.28-15.10.43:662][516]LogSavePackage: Save=6.85ms
+[2017.02.28-15.10.43:662][516]LogSavePackage: Moving 'F:/FightWithBlock/FightWithBlock/Saved/S_Box628806B7486146CD7C9CB498F89C54BA.tmp' to 'F:/FightWithBlock/FightWithBlock/Content/myBlueprint/Structures/S_Box.uasset'
+[2017.02.28-15.10.43:664][516]LogSavePackage:Display: Finished SavePackage F:/FightWithBlock/FightWithBlock/Content/myBlueprint/Structures/S_Box.uasset
+[2017.02.28-15.10.52:030][ 18]BlueprintLog: New page: Compile MyGameMode
+[2017.02.28-15.11.14:387][342]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/myBlueprint/Structures/S_MapCube" FILE="F:/FightWithBlock/FightWithBlock/Content/myBlueprint/Structures/S_MapCube.uasset" SILENT=true
+[2017.02.28-15.11.14:499][342]LogSavePackage: Save=7.41ms
+[2017.02.28-15.11.14:499][342]LogSavePackage: Moving 'F:/FightWithBlock/FightWithBlock/Saved/S_MapCubeA106FE994B600E429D80B0A3BA489A85.tmp' to 'F:/FightWithBlock/FightWithBlock/Content/myBlueprint/Structures/S_MapCube.uasset'
+[2017.02.28-15.11.14:555][342]LogSavePackage:Display: Finished SavePackage F:/FightWithBlock/FightWithBlock/Content/myBlueprint/Structures/S_MapCube.uasset
+[2017.02.28-15.11.16:864][478]BlueprintLog: New page: Compile MyGameMode
+[2017.02.28-15.11.24:203][894]LogClass:Warning: Type mismatch in NewVar_0 of SKEL_MyGameMode_C - Previous (StructProperty) Current(ArrayProperty) for package:  FObjectReader
+[2017.02.28-15.11.42:784][  0]BlueprintLog: New page: Compile MyGameMode
+[2017.02.28-15.11.42:793][  0]LogClass:Warning: Type mismatch in MapCubeInfo of MyGameMode_C - Previous (StructProperty) Current(ArrayProperty) for package:  FObjectReader
+[2017.02.28-15.12.40:111][280]BlueprintLog: New page: Compile MyGameMode
+[2017.02.28-15.12.51:885][972]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/myBlueprint/DataTables/D_Boxes" FILE="F:/FightWithBlock/FightWithBlock/Content/myBlueprint/DataTables/D_Boxes.uasset" SILENT=true
+[2017.02.28-15.12.51:913][972]LogSavePackage: Save=2.24ms
+[2017.02.28-15.12.51:913][972]LogSavePackage: Moving 'F:/FightWithBlock/FightWithBlock/Saved/D_Boxes6EBBFD6341CEEC02725A3BA45CD9069A.tmp' to 'F:/FightWithBlock/FightWithBlock/Content/myBlueprint/DataTables/D_Boxes.uasset'
+[2017.02.28-15.12.51:965][972]LogSavePackage:Display: Finished SavePackage F:/FightWithBlock/FightWithBlock/Content/myBlueprint/DataTables/D_Boxes.uasset
+[2017.02.28-15.15.09:211][827]BlueprintLog: New page: Compile MyGameMode
+[2017.02.28-15.15.39:126][567]BlueprintLog: New page: Compile MyGameMode
+[2017.02.28-15.15.47:104][ 26]BlueprintLog: New page: Compile MyGameMode
+[2017.02.28-15.16.37:030][808]BlueprintLog: New page: Compile BoxBase
+[2017.02.28-15.16.43:511][165]BlueprintLog: New page: Compile BoxBase
+[2017.02.28-15.16.43:514][165]LogBlueprint:Warning: [Compiler BoxBase] Warning Variable BeginInfo is marked as 'Expose on Spawn' but not marked as 'Editable'; please make it 'Editable'
+[2017.02.28-15.16.43:632][165]BlueprintEditorCompileResults:Warning: Warning Variable BeginInfo is marked as 'Expose on Spawn' but not marked as 'Editable'; please make it 'Editable'
+[2017.02.28-15.16.43:633][165]LogBlueprint:Warning: [Compiler BoxBase] Warning [1563.07] Compile of BoxBase successful, but with 1 Warning(s) [in 122 ms] (/Game/myBlueprint/BoxBase.BoxBase)
+[2017.02.28-15.17.09:570][686]LogSlate: Took 0.038871 seconds to synchronously load lazily loaded font '../../../Engine/Content/Editor/Slate/Fonts/Roboto-Italic.ttf' (157K)
+[2017.02.28-15.17.44:776][664]LogClass: UUserDefinedStruct.Serialize 'STRUCT_REINST_S_MapCube_23' validation: Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_MapCube_23' is empty
+[2017.02.28-15.17.50:949][ 21]LogClass: UUserDefinedStruct.Serialize 'STRUCT_REINST_S_MapCube_27' validation: Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_MapCube_27' is empty
+[2017.02.28-15.17.55:644][294]LogClass: UUserDefinedStruct.Serialize 'STRUCT_REINST_S_MapCube_31' validation: Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_MapCube_31' is empty
+[2017.02.28-15.17.57:653][410]LogClass: UUserDefinedStruct.Serialize 'STRUCT_REINST_S_MapCube_35' validation: Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_MapCube_35' is empty
+[2017.02.28-15.18.04:927][836]LogClass: UUserDefinedStruct.Serialize 'STRUCT_REINST_S_MapCube_39' validation: Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_MapCube_39' is empty
+[2017.02.28-15.18.11:632][222]LogClass: UUserDefinedStruct.Serialize 'STRUCT_REINST_S_MapCube_43' validation: Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_MapCube_43' is empty
+[2017.02.28-15.18.12:978][297]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/myBlueprint/Structures/S_Box" FILE="F:/FightWithBlock/FightWithBlock/Content/myBlueprint/Structures/S_Box.uasset" SILENT=true
+[2017.02.28-15.18.13:002][297]LogSavePackage: Save=4.35ms
+[2017.02.28-15.18.13:002][297]LogSavePackage: Moving 'F:/FightWithBlock/FightWithBlock/Saved/S_Box444457D6416EE302AE2509AF68070293.tmp' to 'F:/FightWithBlock/FightWithBlock/Content/myBlueprint/Structures/S_Box.uasset'
+[2017.02.28-15.18.13:072][297]LogSavePackage:Display: Finished SavePackage F:/FightWithBlock/FightWithBlock/Content/myBlueprint/Structures/S_Box.uasset
+[2017.02.28-15.18.58:028][942]BlueprintLog: New page: Compile BoxBase
+[2017.02.28-15.18.58:034][942]LogBlueprint:Warning: [Compiler BoxBase] Warning Variable BeginInfo is marked as 'Expose on Spawn' but not marked as 'Editable'; please make it 'Editable'
+[2017.02.28-15.18.58:232][942]BlueprintEditorCompileResults:Warning: Warning Variable BeginInfo is marked as 'Expose on Spawn' but not marked as 'Editable'; please make it 'Editable'
+[2017.02.28-15.18.58:232][942]LogBlueprint:Warning: [Compiler BoxBase] Warning [1697.67] Compile of BoxBase successful, but with 1 Warning(s) [in 203 ms] (/Game/myBlueprint/BoxBase.BoxBase)
+[2017.02.28-15.19.07:246][475]BlueprintLog: New page: Compile BoxBase
+[2017.02.28-15.19.07:253][475]LogBlueprint:Warning: [Compiler BoxBase] Warning Variable BeginInfo is marked as 'Expose on Spawn' but not marked as 'Editable'; please make it 'Editable'
+[2017.02.28-15.19.07:376][475]BlueprintEditorCompileResults:Warning: Warning Variable BeginInfo is marked as 'Expose on Spawn' but not marked as 'Editable'; please make it 'Editable'
+[2017.02.28-15.19.07:377][475]LogBlueprint:Warning: [Compiler BoxBase] Warning [1706.81] Compile of BoxBase successful, but with 1 Warning(s) [in 131 ms] (/Game/myBlueprint/BoxBase.BoxBase)
+[2017.02.28-15.19.22:434][347]BlueprintLog: New page: Compile BoxBase
+[2017.02.28-15.19.27:793][650]BlueprintLog: New page: Compile MyGameMode
+[2017.02.28-15.19.43:274][535]LogSlate:Warning: Prevented a slow task dialog from being summoned while a context menu was open
+[2017.02.28-15.21.28:864][695]LogEditorTransaction: Undo Move Node
+[2017.02.28-15.21.32:933][913]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/myBlueprint/MyGameMode" FILE="F:/FightWithBlock/FightWithBlock/Content/myBlueprint/MyGameMode.uasset" SILENT=true
+[2017.02.28-15.21.33:397][913]LogSavePackage: Save=57.46ms
+[2017.02.28-15.21.33:397][913]LogSavePackage: Moving 'F:/FightWithBlock/FightWithBlock/Saved/MyGameMode869B0F07471ACF4C7BE647901C290453.tmp' to 'F:/FightWithBlock/FightWithBlock/Content/myBlueprint/MyGameMode.uasset'
+[2017.02.28-15.21.33:468][913]LogSavePackage:Display: Finished SavePackage F:/FightWithBlock/FightWithBlock/Content/myBlueprint/MyGameMode.uasset
+[2017.02.28-15.24.45:145][247]BlueprintLog: New page: Compile MyGameMode
+[2017.02.28-15.25.11:988][777]BlueprintLog: New page: Compile MyGameMode
+[2017.02.28-15.25.25:784][404]LogTemp:Display: Executing iPhonePackager certificates Engine -bundlename com.YourCompany.FightWithBlock
+
+[2017.02.28-15.25.25:784][404]LogTemp:Display: CWD: D:\Program Files (x86)\Epic Games\UE_4.15\Engine\Binaries\DotNET\IOS
+
+[2017.02.28-15.25.25:784][404]LogTemp:Display: Initial Dir: D:\Program Files (x86)\Epic Games\UE_4.15
+
+[2017.02.28-15.25.25:784][404]LogTemp:Display: Env CWD: D:\Program Files (x86)\Epic Games\UE_4.15\Engine\Binaries\DotNET\IOS
+
+[2017.02.28-15.25.25:784][404]LogTemp:Display: BranchPath = WIN-01609080925/D/Program Files (x86)/Epic Games/UE_4.15/Engine/Binaries --- GameBranchPath = WIN-01609080925/D/Program Files (x86)/Epic Games/UE_4.15/Engine/Binaries
+
+[2017.02.28-15.25.25:784][404]LogSlate: Only BGRA pngs, bmps or icos are supported in by External Image Picker
+[2017.02.28-15.25.25:900][404]LogTemp:Display: IPP ERROR: Application exception: System.IO.DirectoryNotFoundException: δ???ҵ?·????C:\Users\Administrator\AppData\Local\Apple Computer\MobileDevice\Provisioning Profiles????һ???֡?
+
+[2017.02.28-15.25.25:900][404]LogTemp:Display:    ?? System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+
+[2017.02.28-15.25.25:900][404]LogTemp:Display:    ?? System.IO.FileSystemEnumerableIterator`1.CommonInit()
+
+[2017.02.28-15.25.25:900][404]LogTemp:Display:    ?? System.IO.Directory.EnumerateFiles(String path, String searchPattern)
+
+[2017.02.28-15.25.25:900][404]LogTemp:Display:    ?? iPhonePackager.CodeSignatureBuilder.FindProvisions(String CFBundleIdentifier)
+
+[2017.02.28-15.25.25:900][404]LogTemp:Display:    ?? iPhonePackager.Program.Main(String[] args)
+
+[2017.02.28-15.25.30:978][684]LogSlate:Warning: Prevented a slow task dialog from being summoned while a context menu was open
+[2017.02.28-15.25.34:475][879]LogTemp: Repeting last play command: Selected Viewport
+[2017.02.28-15.25.34:491][879]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2017.02.28-15.25.34:491][879]PIE: New page: PIE session: Untitled_1 (Mar 1, 2017, 7:25:34 AM)
+[2017.02.28-15.25.34:491][879]LogPlayLevel: Creating play world package: /Temp/UEDPIE_0_Untitled_1
+[2017.02.28-15.25.34:494][879]LogPlayLevel: PIE: StaticDuplicateObject took: (0.002205s)
+[2017.02.28-15.25.34:495][879]LogAIModule: Creating AISystem for world Untitled_1
+[2017.02.28-15.25.34:495][879]LogPlayLevel: PIE: World Init took: (0.001042s)
+[2017.02.28-15.25.34:495][879]LogPlayLevel: PIE: Created PIE world by copying editor world from /Temp/Untitled_1.Untitled_1 to /Temp/UEDPIE_0_Untitled_1.Untitled_1 (0.003468s)
+[2017.02.28-15.25.34:544][879]LogInit: XAudio2 using '扬声器 (Conexant SmartAudio HD)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2017.02.28-15.25.34:563][879]LogInit: FAudioDevice initialized.
+[2017.02.28-15.25.34:609][879]LogLoad: Game class is 'MyGameMode_C'
+[2017.02.28-15.25.34:610][879]LogWorld: Bringing World /Temp/UEDPIE_0_Untitled_1.Untitled_1 up for play (max tick rate 60) at 2017.02.28-23.25.34
+[2017.02.28-15.25.34:611][879]LogWorld: Bringing up level for play took: 0.001044
+[2017.02.28-15.25.34:744][879]LogContentBrowser: Native class hierarchy updated for 'MovieSceneCapture' in 0.0012 seconds. Added 11 classes and 0 folders.
+[2017.02.28-15.25.34:801][879]LogBlueprintUserMessages: [MyGameMode_C_0] this is MyGameMode!
+[2017.02.28-15.25.34:820][879]LogBlueprintUserMessages: [MyGameMode_C_0] 2
+[2017.02.28-15.25.34:820][879]PIE: Info Play in editor start time for /Temp/UEDPIE_0_Untitled_1 0.385
+[2017.02.28-15.25.42:094][278]BlueprintLog: New page: Compile MyGameMode
+[2017.02.28-15.26.46:619][ 51]BlueprintLog: New page: Compile MyGameMode
+[2017.02.28-15.27.05:596][139]BlueprintLog: New page: Compile MyGameMode
+[2017.02.28-15.27.08:082][277]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2017.02.28-15.27.08:082][277]PIE: New page: PIE session: Untitled_1 (Mar 1, 2017, 7:27:08 AM)
+[2017.02.28-15.27.08:082][277]LogPlayLevel: Creating play world package: /Temp/UEDPIE_0_Untitled_1
+[2017.02.28-15.27.08:085][277]LogPlayLevel: PIE: StaticDuplicateObject took: (0.002262s)
+[2017.02.28-15.27.08:086][277]LogAIModule: Creating AISystem for world Untitled_1
+[2017.02.28-15.27.08:086][277]LogPlayLevel: PIE: World Init took: (0.001324s)
+[2017.02.28-15.27.08:086][277]LogPlayLevel: PIE: Created PIE world by copying editor world from /Temp/Untitled_1.Untitled_1 to /Temp/UEDPIE_0_Untitled_1.Untitled_1 (0.003813s)
+[2017.02.28-15.27.08:128][277]LogInit: XAudio2 using '扬声器 (Conexant SmartAudio HD)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2017.02.28-15.27.08:147][277]LogInit: FAudioDevice initialized.
+[2017.02.28-15.27.08:229][277]LogLoad: Game class is 'MyGameMode_C'
+[2017.02.28-15.27.08:231][277]LogWorld: Bringing World /Temp/UEDPIE_0_Untitled_1.Untitled_1 up for play (max tick rate 60) at 2017.02.28-23.27.08
+[2017.02.28-15.27.08:231][277]LogWorld: Bringing up level for play took: 0.001275
+[2017.02.28-15.27.08:233][277]LogBlueprintUserMessages: [MyGameMode_C_0] this is MyGameMode!
+[2017.02.28-15.27.08:233][277]LogBlueprintUserMessages: [MyGameMode_C_0] 2
+[2017.02.28-15.27.08:242][277]PIE: Info Play in editor start time for /Temp/UEDPIE_0_Untitled_1 -0.193
+[2017.02.28-15.27.08:320][277]LogRenderer: Reallocating scene render targets to support 1292x924 NumSamples 1 (Frame:86579).
+[2017.02.28-15.27.12:708][522]BlueprintLog: New page: Compile MyGameMode
+[2017.02.28-15.28.45:761][997]LogFileHelpers: Editor autosave (incl. sublevels) for '/Temp/Untitled_1' took 0.085
+[2017.02.28-15.28.45:763][997]OBJ SavePackage: Generating thumbnails for [0] asset(s) in package [/Game/myBlueprint/MyGameMode] ([1] browsable assets)...
+[2017.02.28-15.28.45:763][997]OBJ SavePackage: Finished generating thumbnails for package [/Game/myBlueprint/MyGameMode]
+[2017.02.28-15.28.45:763][997]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/myBlueprint/MyGameMode" FILE="F:/FightWithBlock/FightWithBlock/Saved/Autosaves/Game/myBlueprint/MyGameMode_Auto2.uasset" SILENT=false AUTOSAVING=true
+[2017.02.28-15.28.45:817][997]LogSavePackage: Save=34.93ms
+[2017.02.28-15.28.45:817][997]LogSavePackage: Moving 'F:/FightWithBlock/FightWithBlock/Saved/MyGameMode_Auto2181B0FF841D62128D5BEB4BC50500186.tmp' to 'F:/FightWithBlock/FightWithBlock/Saved/Autosaves/Game/myBlueprint/MyGameMode_Auto2.uasset'
+[2017.02.28-15.28.45:819][997]LogSavePackage:Display: Finished SavePackage F:/FightWithBlock/FightWithBlock/Saved/Autosaves/Game/myBlueprint/MyGameMode_Auto2.uasset
+[2017.02.28-15.28.45:820][997]OBJ SavePackage: Generating thumbnails for [0] asset(s) in package [/Game/myBlueprint/BoxBase] ([1] browsable assets)...
+[2017.02.28-15.28.45:820][997]OBJ SavePackage: Finished generating thumbnails for package [/Game/myBlueprint/BoxBase]
+[2017.02.28-15.28.45:820][997]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/myBlueprint/BoxBase" FILE="F:/FightWithBlock/FightWithBlock/Saved/Autosaves/Game/myBlueprint/BoxBase_Auto2.uasset" SILENT=false AUTOSAVING=true
+[2017.02.28-15.28.45:902][997]LogSavePackage: Save=33.52ms
+[2017.02.28-15.28.45:902][997]LogSavePackage: Moving 'F:/FightWithBlock/FightWithBlock/Saved/BoxBase_Auto2DBA07AA64726CF0D9191E9B48A2AB4CB.tmp' to 'F:/FightWithBlock/FightWithBlock/Saved/Autosaves/Game/myBlueprint/BoxBase_Auto2.uasset'
+[2017.02.28-15.28.45:904][997]LogSavePackage:Display: Finished SavePackage F:/FightWithBlock/FightWithBlock/Saved/Autosaves/Game/myBlueprint/BoxBase_Auto2.uasset
+[2017.02.28-15.28.45:906][997]OBJ SavePackage: Generating thumbnails for [0] asset(s) in package [/Game/myBlueprint/Structures/S_MapCube] ([1] browsable assets)...
+[2017.02.28-15.28.45:906][997]OBJ SavePackage: Finished generating thumbnails for package [/Game/myBlueprint/Structures/S_MapCube]
+[2017.02.28-15.28.45:971][997]LogSavePackage: Save=10.37ms
+[2017.02.28-15.28.45:971][997]LogSavePackage: Moving 'F:/FightWithBlock/FightWithBlock/Saved/S_MapCube_Auto2ED3077A643EC5E51AB8AE1AE200496EF.tmp' to 'F:/FightWithBlock/FightWithBlock/Saved/Autosaves/Game/myBlueprint/Structures/S_MapCube_Auto2.uasset'
+[2017.02.28-15.28.45:976][997]LogSavePackage:Display: Finished SavePackage F:/FightWithBlock/FightWithBlock/Saved/Autosaves/Game/myBlueprint/Structures/S_MapCube_Auto2.uasset
+[2017.02.28-15.28.45:979][997]OBJ SavePackage: Generating thumbnails for [0] asset(s) in package [/Game/myBlueprint/DataTables/D_Boxes] ([1] browsable assets)...
+[2017.02.28-15.28.45:979][997]OBJ SavePackage: Finished generating thumbnails for package [/Game/myBlueprint/DataTables/D_Boxes]
+[2017.02.28-15.28.45:979][997]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/myBlueprint/DataTables/D_Boxes" FILE="F:/FightWithBlock/FightWithBlock/Saved/Autosaves/Game/myBlueprint/DataTables/D_Boxes_Auto2.uasset" SILENT=false AUTOSAVING=true
+[2017.02.28-15.28.46:029][997]LogSavePackage: Save=2.33ms
+[2017.02.28-15.28.46:029][997]LogSavePackage: Moving 'F:/FightWithBlock/FightWithBlock/Saved/D_Boxes_Auto2FF5D10E546E936BFFCB2FF9F45FCA959.tmp' to 'F:/FightWithBlock/FightWithBlock/Saved/Autosaves/Game/myBlueprint/DataTables/D_Boxes_Auto2.uasset'
+[2017.02.28-15.28.46:031][997]LogSavePackage:Display: Finished SavePackage F:/FightWithBlock/FightWithBlock/Saved/Autosaves/Game/myBlueprint/DataTables/D_Boxes_Auto2.uasset
+[2017.02.28-15.28.46:031][997]LogFileHelpers: Auto-saving content packages took 0.269
+[2017.02.28-15.28.46:813][ 28]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/myBlueprint/Structures/S_Box" FILE="F:/FightWithBlock/FightWithBlock/Content/myBlueprint/Structures/S_Box.uasset" SILENT=true
+[2017.02.28-15.28.46:855][ 28]LogSavePackage: Save=4.48ms
+[2017.02.28-15.28.46:855][ 28]LogSavePackage: Moving 'F:/FightWithBlock/FightWithBlock/Saved/S_Box5EB7E9774C29100629224FAC62C05D03.tmp' to 'F:/FightWithBlock/FightWithBlock/Content/myBlueprint/Structures/S_Box.uasset'
+[2017.02.28-15.28.46:858][ 28]LogSavePackage:Display: Finished SavePackage F:/FightWithBlock/FightWithBlock/Content/myBlueprint/Structures/S_Box.uasset
+[2017.02.28-15.33.06:352][383]BlueprintLog: New page: Compile MyGameMode
+[2017.02.28-15.33.33:164][969]BlueprintLog: New page: Compile MyGameMode
+[2017.02.28-15.33.36:638][156]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/myBlueprint/Structures/S_Box" FILE="F:/FightWithBlock/FightWithBlock/Content/myBlueprint/Structures/S_Box.uasset" SILENT=true
+[2017.02.28-15.33.36:673][156]LogSavePackage: Save=5.25ms
+[2017.02.28-15.33.36:673][156]LogSavePackage: Moving 'F:/FightWithBlock/FightWithBlock/Saved/S_Box6526436447B91AB685EB9D89F58D7FB5.tmp' to 'F:/FightWithBlock/FightWithBlock/Content/myBlueprint/Structures/S_Box.uasset'
+[2017.02.28-15.33.36:676][156]LogSavePackage:Display: Finished SavePackage F:/FightWithBlock/FightWithBlock/Content/myBlueprint/Structures/S_Box.uasset
+[2017.02.28-15.33.55:708][280]LogActorFactory: Actor Factory created Cube
+[2017.02.28-15.33.56:464][322]LogActorFactory: Actor Factory created Cube
+[2017.02.28-15.33.57:500][382]LogEditorViewport: Clicking on Actor (LMB): BP_Sky_Sphere_C (Sky Sphere)
+[2017.02.28-15.33.58:104][417]LogEditorViewport: Clicking on Actor (LMB): StaticMeshActor (Cube)
+[2017.02.28-15.34.02:808][655]LogEditorViewport: Clicking on Actor (LMB): StaticMeshActor (Cube)
+[2017.02.28-15.34.03:789][713]Cmd: DELETE
+[2017.02.28-15.34.03:789][713]Cmd: ACTOR DELETE
+[2017.02.28-15.34.03:982][713]LogEditorActor: Deleted Actor: StaticMeshActor
+[2017.02.28-15.34.04:047][713]LogEditorActor: Deleted 1 Actors (0.066 secs)
+[2017.02.28-15.34.22:449][742]LogActorFactory: Actor Factory created SM_Cube_02
+[2017.02.28-15.34.22:882][767]LogActorFactory: Actor Factory created SM_Cube_02
+[2017.02.28-15.34.30:665][152]LogClass: UUserDefinedStruct.Serialize 'STRUCT_REINST_S_MapCube_47' validation: Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_MapCube_47' is empty
+[2017.02.28-15.34.33:442][307]LogEditorViewport: Clicking on Actor (LMB): StaticMeshActor (SM_Cube_02)
+[2017.02.28-15.34.34:120][347]Cmd: DELETE
+[2017.02.28-15.34.34:120][347]Cmd: ACTOR DELETE
+[2017.02.28-15.34.34:123][347]LogEditorActor: Deleted Actor: StaticMeshActor
+[2017.02.28-15.34.34:163][347]LogEditorActor: Deleted 1 Actors (0.042 secs)
+[2017.02.28-15.34.36:252][473]LogTemp: Repeting last play command: New Editor Window (PIE)
+[2017.02.28-15.34.36:269][473]BlueprintLog: New page: Pre-Play auto-recompile
+[2017.02.28-15.34.36:269][473]LogPlayLevel: [PlayLevel] Compiling MyGameMode before play...
+[2017.02.28-15.34.36:290][473]LogBlueprint:Error: [Compiler MyGameMode] Error Invalid property 'MapCubeInfo' structure 'S_MapCube' error: Struct 'UserDefinedStruct /Game/myBlueprint/Structures/S_MapCube.S_MapCube' Property 'Box_10_36B8520E48E9DFEA702D7A8002801D03' Error ( Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_Box_46' is not compiled )
+[2017.02.28-15.34.36:290][473]LogBlueprint:Error: [Compiler MyGameMode] Error The variable MapCubeInfo declared in  MyGameMode  has an invalid type Array of S Map Cube Structures
+[2017.02.28-15.34.36:546][473]LogBlueprint:Warning: [Compiler MyGameMode] Warning [2635.98] Compile of MyGameMode failed. 2 Fatal Issue(s) 0 Warning(s) [in 261 ms] (/Game/myBlueprint/MyGameMode.MyGameMode)
+[2017.02.28-15.34.36:546][473]LogBlueprint:Warning: [Compiler MyGameMode] Warning [2635.98] Compile of MyGameMode failed. 2 Fatal Issue(s) 1 Warning(s) [in 0 ms] (/Game/myBlueprint/MyGameMode.MyGameMode)
+[2017.02.28-15.34.36:546][473]LogBlueprint:Warning: [Compiler MyGameMode] Warning [2635.98] Compile of MyGameMode failed. 2 Fatal Issue(s) 2 Warning(s) [in 0 ms] (/Game/myBlueprint/MyGameMode.MyGameMode)
+[2017.02.28-15.34.36:546][473]LogBlueprint:Warning: [Compiler MyGameMode] Warning [2635.98] Compile of MyGameMode failed. 2 Fatal Issue(s) 3 Warning(s) [in 0 ms] (/Game/myBlueprint/MyGameMode.MyGameMode)
+[2017.02.28-15.34.36:551][473]LogBlueprint:Warning: [Compiler MyGameMode] Warning [2635.98] Compile of MyGameMode failed. 2 Fatal Issue(s) 4 Warning(s) [in 4 ms] (/Game/myBlueprint/MyGameMode.MyGameMode)
+[2017.02.28-15.34.36:551][473]LogBlueprint:Warning: [Compiler MyGameMode] Warning [2635.98] Compile of MyGameMode failed. 2 Fatal Issue(s) 5 Warning(s) [in 0 ms] (/Game/myBlueprint/MyGameMode.MyGameMode)
+[2017.02.28-15.34.36:571][473]LogPlayLevel: [PlayLevel] Compiling BoxBase before play...
+[2017.02.28-15.34.36:770][473]LogPlayLevel: PlayLevel: Blueprint regeneration took 500 ms (2 blueprints)
+[2017.02.28-15.34.36:770][473]BlueprintLog: Info Blueprint MyGameMode failed to compile
+[2017.02.28-15.34.49:103][  5]BlueprintLog: New page: Compile MyGameMode
+[2017.02.28-15.34.49:119][  5]LogBlueprint:Error: [Compiler MyGameMode] Error Invalid property 'MapCubeInfo' structure 'S_MapCube' error: Struct 'UserDefinedStruct /Game/myBlueprint/Structures/S_MapCube.S_MapCube' Property 'Box_10_36B8520E48E9DFEA702D7A8002801D03' Error ( Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_Box_46' is not compiled )
+[2017.02.28-15.34.49:119][  5]LogBlueprint:Error: [Compiler MyGameMode] Error The variable MapCubeInfo declared in  MyGameMode  has an invalid type Array of S Map Cube Structures
+[2017.02.28-15.34.49:310][  5]BlueprintEditorCompileResults:Error: Error Invalid property 'MapCubeInfo' structure 'S_MapCube' error: Struct 'UserDefinedStruct /Game/myBlueprint/Structures/S_MapCube.S_MapCube' Property 'Box_10_36B8520E48E9DFEA702D7A8002801D03' Error ( Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_Box_46' is not compiled )
+[2017.02.28-15.34.49:310][  5]BlueprintEditorCompileResults:Error: Error The variable MapCubeInfo declared in  MyGameMode  has an invalid type Array of S Map Cube Structures
+[2017.02.28-15.34.49:311][  5]LogBlueprint:Warning: [Compiler MyGameMode] Warning [2648.74] Compile of MyGameMode failed. 2 Fatal Issue(s) 0 Warning(s) [in 208 ms] (/Game/myBlueprint/MyGameMode.MyGameMode)
+[2017.02.28-15.34.50:583][ 71]LogBlueprint:Warning: Unknown type of hyperlinked object
+[2017.02.28-15.34.51:333][116]LogBlueprint:Warning: Unknown type of hyperlinked object
+[2017.02.28-15.34.51:532][128]LogBlueprint:Warning: Unknown type of hyperlinked object
+[2017.02.28-15.36.00:010][124]BlueprintLog: New page: Compile MyGameMode
+[2017.02.28-15.36.00:033][124]LogBlueprint:Error: [Compiler MyGameMode] Error Invalid property 'MapCubeInfo' structure 'S_MapCube' error: Struct 'UserDefinedStruct /Game/myBlueprint/Structures/S_MapCube.S_MapCube' Property 'Box_10_36B8520E48E9DFEA702D7A8002801D03' Error ( Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_Box_46' is not compiled )
+[2017.02.28-15.36.00:033][124]LogBlueprint:Error: [Compiler MyGameMode] Error The variable MapCubeInfo declared in  MyGameMode  has an invalid type Array of S Map Cube Structures
+[2017.02.28-15.36.00:260][124]BlueprintEditorCompileResults:Error: Error Invalid property 'MapCubeInfo' structure 'S_MapCube' error: Struct 'UserDefinedStruct /Game/myBlueprint/Structures/S_MapCube.S_MapCube' Property 'Box_10_36B8520E48E9DFEA702D7A8002801D03' Error ( Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_Box_46' is not compiled )
+[2017.02.28-15.36.00:260][124]BlueprintEditorCompileResults:Error: Error The variable MapCubeInfo declared in  MyGameMode  has an invalid type Array of S Map Cube Structures
+[2017.02.28-15.36.00:260][124]LogBlueprint:Warning: [Compiler MyGameMode] Warning [2719.69] Compile of MyGameMode failed. 2 Fatal Issue(s) 0 Warning(s) [in 249 ms] (/Game/myBlueprint/MyGameMode.MyGameMode)
+[2017.02.28-15.36.09:740][681]BlueprintLog: New page: Compile MyGameMode
+[2017.02.28-15.36.09:763][681]LogBlueprint:Error: [Compiler MyGameMode] Error Invalid property 'MapCubeInfo' structure 'S_MapCube' error: Struct 'UserDefinedStruct /Game/myBlueprint/Structures/S_MapCube.S_MapCube' Property 'Box_10_36B8520E48E9DFEA702D7A8002801D03' Error ( Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_Box_46' is not compiled )
+[2017.02.28-15.36.09:764][681]LogBlueprint:Error: [Compiler MyGameMode] Error The variable MapCubeInfo declared in  MyGameMode  has an invalid type Array of S Map Cube Structures
+[2017.02.28-15.36.09:974][681]BlueprintEditorCompileResults:Error: Error Invalid property 'MapCubeInfo' structure 'S_MapCube' error: Struct 'UserDefinedStruct /Game/myBlueprint/Structures/S_MapCube.S_MapCube' Property 'Box_10_36B8520E48E9DFEA702D7A8002801D03' Error ( Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_Box_46' is not compiled )
+[2017.02.28-15.36.09:975][681]BlueprintEditorCompileResults:Error: Error The variable MapCubeInfo declared in  MyGameMode  has an invalid type Array of S Map Cube Structures
+[2017.02.28-15.36.09:975][681]LogBlueprint:Warning: [Compiler MyGameMode] Warning [2729.41] Compile of MyGameMode failed. 2 Fatal Issue(s) 0 Warning(s) [in 234 ms] (/Game/myBlueprint/MyGameMode.MyGameMode)
+[2017.02.28-15.36.12:016][797]LogBlueprint:Warning: Unknown type of hyperlinked object
+[2017.02.28-15.36.12:533][828]LogBlueprint:Warning: Unknown type of hyperlinked object
+[2017.02.28-15.36.12:700][838]LogBlueprint:Warning: Unknown type of hyperlinked object
+[2017.02.28-15.36.12:866][848]LogBlueprint:Warning: Unknown type of hyperlinked object
+[2017.02.28-15.36.36:224][161]LogBlueprint:Warning: Unknown type of hyperlinked object
+[2017.02.28-15.37.20:732][624]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/myBlueprint/Structures/S_MapCube" FILE="F:/FightWithBlock/FightWithBlock/Content/myBlueprint/Structures/S_MapCube.uasset" SILENT=true
+[2017.02.28-15.37.21:186][624]LogSavePackage: Save=9.94ms
+[2017.02.28-15.37.21:186][624]LogSavePackage: Moving 'F:/FightWithBlock/FightWithBlock/Saved/S_MapCube20DEFBA2497D6EE670B080ABF5E4B28A.tmp' to 'F:/FightWithBlock/FightWithBlock/Content/myBlueprint/Structures/S_MapCube.uasset'
+[2017.02.28-15.37.21:200][624]LogSavePackage:Display: Finished SavePackage F:/FightWithBlock/FightWithBlock/Content/myBlueprint/Structures/S_MapCube.uasset
+[2017.02.28-15.37.34:219][377]BlueprintLog: New page: Compile MyGameMode
+[2017.02.28-15.37.34:244][377]LogBlueprint:Error: [Compiler MyGameMode] Error Invalid property 'CubeInfo' structure 'S_MapCube' error: Struct 'UserDefinedStruct /Game/myBlueprint/Structures/S_MapCube.S_MapCube' Property 'Box_10_36B8520E48E9DFEA702D7A8002801D03' Error ( Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_Box_46' is not compiled )
+[2017.02.28-15.37.34:244][377]LogBlueprint:Error: [Compiler MyGameMode] Error The variable CubeInfo declared in  MyGameMode  has an invalid type S Map Cube Structure
+[2017.02.28-15.37.34:244][377]LogBlueprint:Error: [Compiler MyGameMode] Error Invalid property 'MapCubeInfo' structure 'S_MapCube' error: Struct 'UserDefinedStruct /Game/myBlueprint/Structures/S_MapCube.S_MapCube' Property 'Box_10_36B8520E48E9DFEA702D7A8002801D03' Error ( Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_Box_46' is not compiled )
+[2017.02.28-15.37.34:244][377]LogBlueprint:Error: [Compiler MyGameMode] Error The variable MapCubeInfo declared in  MyGameMode  has an invalid type Array of S Map Cube Structures
+[2017.02.28-15.37.34:472][377]BlueprintEditorCompileResults:Error: Error Invalid property 'CubeInfo' structure 'S_MapCube' error: Struct 'UserDefinedStruct /Game/myBlueprint/Structures/S_MapCube.S_MapCube' Property 'Box_10_36B8520E48E9DFEA702D7A8002801D03' Error ( Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_Box_46' is not compiled )
+[2017.02.28-15.37.34:472][377]BlueprintEditorCompileResults:Error: Error The variable CubeInfo declared in  MyGameMode  has an invalid type S Map Cube Structure
+[2017.02.28-15.37.34:472][377]BlueprintEditorCompileResults:Error: Error Invalid property 'MapCubeInfo' structure 'S_MapCube' error: Struct 'UserDefinedStruct /Game/myBlueprint/Structures/S_MapCube.S_MapCube' Property 'Box_10_36B8520E48E9DFEA702D7A8002801D03' Error ( Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_Box_46' is not compiled )
+[2017.02.28-15.37.34:472][377]BlueprintEditorCompileResults:Error: Error The variable MapCubeInfo declared in  MyGameMode  has an invalid type Array of S Map Cube Structures
+[2017.02.28-15.37.34:473][377]LogBlueprint:Warning: [Compiler MyGameMode] Warning [2813.91] Compile of MyGameMode failed. 4 Fatal Issue(s) 0 Warning(s) [in 253 ms] (/Game/myBlueprint/MyGameMode.MyGameMode)
+[2017.02.28-15.37.36:850][513]LogBlueprint:Warning: Unknown type of hyperlinked object
+[2017.02.28-15.37.40:399][719]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/myBlueprint/MyGameMode" FILE="F:/FightWithBlock/FightWithBlock/Content/myBlueprint/MyGameMode.uasset" SILENT=true
+[2017.02.28-15.37.40:502][719]LogSavePackage: Save=72.48ms
+[2017.02.28-15.37.40:502][719]LogSavePackage: Moving 'F:/FightWithBlock/FightWithBlock/Saved/MyGameModeF4F0772744B14C5B18E36FA801655016.tmp' to 'F:/FightWithBlock/FightWithBlock/Content/myBlueprint/MyGameMode.uasset'
+[2017.02.28-15.37.40:509][719]LogSavePackage:Display: Finished SavePackage F:/FightWithBlock/FightWithBlock/Content/myBlueprint/MyGameMode.uasset
+[2017.02.28-15.37.41:255][754]LogActorComponent: UnregisterComponent: (/Engine/Transient.EditorFloorComp) Not registered. Aborting.
+[2017.02.28-15.37.47:398][ 68]BlueprintLog: New page: Compile MyGameMode
+[2017.02.28-15.37.47:415][ 68]LogBlueprint:Error: [Compiler MyGameMode] Error Invalid property 'CubeInfo' structure 'S_MapCube' error: Struct 'UserDefinedStruct /Game/myBlueprint/Structures/S_MapCube.S_MapCube' Property 'Box_10_36B8520E48E9DFEA702D7A8002801D03' Error ( Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_Box_46' is not compiled )
+[2017.02.28-15.37.47:415][ 68]LogBlueprint:Error: [Compiler MyGameMode] Error The variable CubeInfo declared in  MyGameMode  has an invalid type S Map Cube Structure
+[2017.02.28-15.37.47:415][ 68]LogBlueprint:Error: [Compiler MyGameMode] Error Invalid property 'MapCubeInfo' structure 'S_MapCube' error: Struct 'UserDefinedStruct /Game/myBlueprint/Structures/S_MapCube.S_MapCube' Property 'Box_10_36B8520E48E9DFEA702D7A8002801D03' Error ( Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_Box_46' is not compiled )
+[2017.02.28-15.37.47:415][ 68]LogBlueprint:Error: [Compiler MyGameMode] Error The variable MapCubeInfo declared in  MyGameMode  has an invalid type Array of S Map Cube Structures
+[2017.02.28-15.37.47:630][ 68]BlueprintEditorCompileResults:Error: Error Invalid property 'CubeInfo' structure 'S_MapCube' error: Struct 'UserDefinedStruct /Game/myBlueprint/Structures/S_MapCube.S_MapCube' Property 'Box_10_36B8520E48E9DFEA702D7A8002801D03' Error ( Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_Box_46' is not compiled )
+[2017.02.28-15.37.47:631][ 68]BlueprintEditorCompileResults:Error: Error The variable CubeInfo declared in  MyGameMode  has an invalid type S Map Cube Structure
+[2017.02.28-15.37.47:631][ 68]BlueprintEditorCompileResults:Error: Error Invalid property 'MapCubeInfo' structure 'S_MapCube' error: Struct 'UserDefinedStruct /Game/myBlueprint/Structures/S_MapCube.S_MapCube' Property 'Box_10_36B8520E48E9DFEA702D7A8002801D03' Error ( Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_Box_46' is not compiled )
+[2017.02.28-15.37.47:631][ 68]BlueprintEditorCompileResults:Error: Error The variable MapCubeInfo declared in  MyGameMode  has an invalid type Array of S Map Cube Structures
+[2017.02.28-15.37.47:631][ 68]LogBlueprint:Warning: [Compiler MyGameMode] Warning [2827.06] Compile of MyGameMode failed. 4 Fatal Issue(s) 0 Warning(s) [in 233 ms] (/Game/myBlueprint/MyGameMode.MyGameMode)
+[2017.02.28-15.39.15:334][190]BlueprintLog: New page: Compile MyGameMode
+[2017.02.28-15.39.15:353][190]LogBlueprint:Error: [Compiler MyGameMode] Error Invalid property 'NewVar_2' structure 'S_MapCube' error: Struct 'UserDefinedStruct /Game/myBlueprint/Structures/S_MapCube.S_MapCube' Property 'Box_10_36B8520E48E9DFEA702D7A8002801D03' Error ( Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_Box_46' is not compiled )
+[2017.02.28-15.39.15:353][190]LogBlueprint:Error: [Compiler MyGameMode] Error The variable NewVar_2 declared in  MyGameMode  has an invalid type S Map Cube Structure
+[2017.02.28-15.39.15:353][190]LogBlueprint:Error: [Compiler MyGameMode] Error Invalid property 'NewVar_1' structure 'S_MapCube' error: Struct 'UserDefinedStruct /Game/myBlueprint/Structures/S_MapCube.S_MapCube' Property 'Box_10_36B8520E48E9DFEA702D7A8002801D03' Error ( Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_Box_46' is not compiled )
+[2017.02.28-15.39.15:353][190]LogBlueprint:Error: [Compiler MyGameMode] Error The variable NewVar_1 declared in  MyGameMode  has an invalid type S Map Cube Structure
+[2017.02.28-15.39.15:353][190]LogBlueprint:Error: [Compiler MyGameMode] Error Invalid property 'NewVar_0' structure 'S_MapCube' error: Struct 'UserDefinedStruct /Game/myBlueprint/Structures/S_MapCube.S_MapCube' Property 'Box_10_36B8520E48E9DFEA702D7A8002801D03' Error ( Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_Box_46' is not compiled )
+[2017.02.28-15.39.15:353][190]LogBlueprint:Error: [Compiler MyGameMode] Error The variable NewVar_0 declared in  MyGameMode  has an invalid type S Map Cube Structure
+[2017.02.28-15.39.15:353][190]LogBlueprint:Error: [Compiler MyGameMode] Error Invalid property 'CubeInfo' structure 'S_MapCube' error: Struct 'UserDefinedStruct /Game/myBlueprint/Structures/S_MapCube.S_MapCube' Property 'Box_10_36B8520E48E9DFEA702D7A8002801D03' Error ( Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_Box_46' is not compiled )
+[2017.02.28-15.39.15:353][190]LogBlueprint:Error: [Compiler MyGameMode] Error The variable CubeInfo declared in  MyGameMode  has an invalid type S Map Cube Structure
+[2017.02.28-15.39.15:353][190]LogBlueprint:Error: [Compiler MyGameMode] Error Invalid property 'MapCubeInfo' structure 'S_MapCube' error: Struct 'UserDefinedStruct /Game/myBlueprint/Structures/S_MapCube.S_MapCube' Property 'Box_10_36B8520E48E9DFEA702D7A8002801D03' Error ( Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_Box_46' is not compiled )
+[2017.02.28-15.39.15:353][190]LogBlueprint:Error: [Compiler MyGameMode] Error The variable MapCubeInfo declared in  MyGameMode  has an invalid type Array of S Map Cube Structures
+[2017.02.28-15.39.15:584][190]BlueprintEditorCompileResults:Error: Error Invalid property 'NewVar_2' structure 'S_MapCube' error: Struct 'UserDefinedStruct /Game/myBlueprint/Structures/S_MapCube.S_MapCube' Property 'Box_10_36B8520E48E9DFEA702D7A8002801D03' Error ( Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_Box_46' is not compiled )
+[2017.02.28-15.39.15:584][190]BlueprintEditorCompileResults:Error: Error The variable NewVar_2 declared in  MyGameMode  has an invalid type S Map Cube Structure
+[2017.02.28-15.39.15:584][190]BlueprintEditorCompileResults:Error: Error Invalid property 'NewVar_1' structure 'S_MapCube' error: Struct 'UserDefinedStruct /Game/myBlueprint/Structures/S_MapCube.S_MapCube' Property 'Box_10_36B8520E48E9DFEA702D7A8002801D03' Error ( Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_Box_46' is not compiled )
+[2017.02.28-15.39.15:584][190]BlueprintEditorCompileResults:Error: Error The variable NewVar_1 declared in  MyGameMode  has an invalid type S Map Cube Structure
+[2017.02.28-15.39.15:584][190]BlueprintEditorCompileResults:Error: Error Invalid property 'NewVar_0' structure 'S_MapCube' error: Struct 'UserDefinedStruct /Game/myBlueprint/Structures/S_MapCube.S_MapCube' Property 'Box_10_36B8520E48E9DFEA702D7A8002801D03' Error ( Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_Box_46' is not compiled )
+[2017.02.28-15.39.15:584][190]BlueprintEditorCompileResults:Error: Error The variable NewVar_0 declared in  MyGameMode  has an invalid type S Map Cube Structure
+[2017.02.28-15.39.15:584][190]BlueprintEditorCompileResults:Error: Error Invalid property 'CubeInfo' structure 'S_MapCube' error: Struct 'UserDefinedStruct /Game/myBlueprint/Structures/S_MapCube.S_MapCube' Property 'Box_10_36B8520E48E9DFEA702D7A8002801D03' Error ( Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_Box_46' is not compiled )
+[2017.02.28-15.39.15:584][190]BlueprintEditorCompileResults:Error: Error The variable CubeInfo declared in  MyGameMode  has an invalid type S Map Cube Structure
+[2017.02.28-15.39.15:584][190]BlueprintEditorCompileResults:Error: Error Invalid property 'MapCubeInfo' structure 'S_MapCube' error: Struct 'UserDefinedStruct /Game/myBlueprint/Structures/S_MapCube.S_MapCube' Property 'Box_10_36B8520E48E9DFEA702D7A8002801D03' Error ( Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_Box_46' is not compiled )
+[2017.02.28-15.39.15:584][190]BlueprintEditorCompileResults:Error: Error The variable MapCubeInfo declared in  MyGameMode  has an invalid type Array of S Map Cube Structures
+[2017.02.28-15.39.15:585][190]LogBlueprint:Warning: [Compiler MyGameMode] Warning [2915.02] Compile of MyGameMode failed. 10 Fatal Issue(s) 0 Warning(s) [in 250 ms] (/Game/myBlueprint/MyGameMode.MyGameMode)
+[2017.02.28-15.39.22:832][596]BlueprintLog: New page: Compile MyGameMode
+[2017.02.28-15.39.22:857][596]LogBlueprint:Error: [Compiler MyGameMode] Error Invalid property 'NewVar_4' structure 'S_MapCube' error: Struct 'UserDefinedStruct /Game/myBlueprint/Structures/S_MapCube.S_MapCube' Property 'Box_10_36B8520E48E9DFEA702D7A8002801D03' Error ( Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_Box_46' is not compiled )
+[2017.02.28-15.39.22:858][596]LogBlueprint:Error: [Compiler MyGameMode] Error The variable NewVar_4 declared in  MyGameMode  has an invalid type S Map Cube Structure
+[2017.02.28-15.39.22:858][596]LogBlueprint:Error: [Compiler MyGameMode] Error Invalid property 'NewVar_3' structure 'S_MapCube' error: Struct 'UserDefinedStruct /Game/myBlueprint/Structures/S_MapCube.S_MapCube' Property 'Box_10_36B8520E48E9DFEA702D7A8002801D03' Error ( Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_Box_46' is not compiled )
+[2017.02.28-15.39.22:858][596]LogBlueprint:Error: [Compiler MyGameMode] Error The variable NewVar_3 declared in  MyGameMode  has an invalid type S Map Cube Structure
+[2017.02.28-15.39.22:858][596]LogBlueprint:Error: [Compiler MyGameMode] Error Invalid property 'NewVar_2' structure 'S_MapCube' error: Struct 'UserDefinedStruct /Game/myBlueprint/Structures/S_MapCube.S_MapCube' Property 'Box_10_36B8520E48E9DFEA702D7A8002801D03' Error ( Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_Box_46' is not compiled )
+[2017.02.28-15.39.22:858][596]LogBlueprint:Error: [Compiler MyGameMode] Error The variable NewVar_2 declared in  MyGameMode  has an invalid type S Map Cube Structure
+[2017.02.28-15.39.22:858][596]LogBlueprint:Error: [Compiler MyGameMode] Error Invalid property 'NewVar_1' structure 'S_MapCube' error: Struct 'UserDefinedStruct /Game/myBlueprint/Structures/S_MapCube.S_MapCube' Property 'Box_10_36B8520E48E9DFEA702D7A8002801D03' Error ( Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_Box_46' is not compiled )
+[2017.02.28-15.39.22:858][596]LogBlueprint:Error: [Compiler MyGameMode] Error The variable NewVar_1 declared in  MyGameMode  has an invalid type S Map Cube Structure
+[2017.02.28-15.39.22:858][596]LogBlueprint:Error: [Compiler MyGameMode] Error Invalid property 'NewVar_0' structure 'S_MapCube' error: Struct 'UserDefinedStruct /Game/myBlueprint/Structures/S_MapCube.S_MapCube' Property 'Box_10_36B8520E48E9DFEA702D7A8002801D03' Error ( Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_Box_46' is not compiled )
+[2017.02.28-15.39.22:858][596]LogBlueprint:Error: [Compiler MyGameMode] Error The variable NewVar_0 declared in  MyGameMode  has an invalid type S Map Cube Structure
+[2017.02.28-15.39.22:858][596]LogBlueprint:Error: [Compiler MyGameMode] Error Invalid property 'CubeInfo' structure 'S_MapCube' error: Struct 'UserDefinedStruct /Game/myBlueprint/Structures/S_MapCube.S_MapCube' Property 'Box_10_36B8520E48E9DFEA702D7A8002801D03' Error ( Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_Box_46' is not compiled )
+[2017.02.28-15.39.22:858][596]LogBlueprint:Error: [Compiler MyGameMode] Error The variable CubeInfo declared in  MyGameMode  has an invalid type S Map Cube Structure
+[2017.02.28-15.39.22:859][596]LogBlueprint:Error: [Compiler MyGameMode] Error Invalid property 'MapCubeInfo' structure 'S_MapCube' error: Struct 'UserDefinedStruct /Game/myBlueprint/Structures/S_MapCube.S_MapCube' Property 'Box_10_36B8520E48E9DFEA702D7A8002801D03' Error ( Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_Box_46' is not compiled )
+[2017.02.28-15.39.22:859][596]LogBlueprint:Error: [Compiler MyGameMode] Error The variable MapCubeInfo declared in  MyGameMode  has an invalid type Array of S Map Cube Structures
+[2017.02.28-15.39.23:079][596]BlueprintEditorCompileResults:Error: Error Invalid property 'NewVar_4' structure 'S_MapCube' error: Struct 'UserDefinedStruct /Game/myBlueprint/Structures/S_MapCube.S_MapCube' Property 'Box_10_36B8520E48E9DFEA702D7A8002801D03' Error ( Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_Box_46' is not compiled )
+[2017.02.28-15.39.23:079][596]BlueprintEditorCompileResults:Error: Error The variable NewVar_4 declared in  MyGameMode  has an invalid type S Map Cube Structure
+[2017.02.28-15.39.23:079][596]BlueprintEditorCompileResults:Error: Error Invalid property 'NewVar_3' structure 'S_MapCube' error: Struct 'UserDefinedStruct /Game/myBlueprint/Structures/S_MapCube.S_MapCube' Property 'Box_10_36B8520E48E9DFEA702D7A8002801D03' Error ( Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_Box_46' is not compiled )
+[2017.02.28-15.39.23:079][596]BlueprintEditorCompileResults:Error: Error The variable NewVar_3 declared in  MyGameMode  has an invalid type S Map Cube Structure
+[2017.02.28-15.39.23:079][596]BlueprintEditorCompileResults:Error: Error Invalid property 'NewVar_2' structure 'S_MapCube' error: Struct 'UserDefinedStruct /Game/myBlueprint/Structures/S_MapCube.S_MapCube' Property 'Box_10_36B8520E48E9DFEA702D7A8002801D03' Error ( Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_Box_46' is not compiled )
+[2017.02.28-15.39.23:079][596]BlueprintEditorCompileResults:Error: Error The variable NewVar_2 declared in  MyGameMode  has an invalid type S Map Cube Structure
+[2017.02.28-15.39.23:079][596]BlueprintEditorCompileResults:Error: Error Invalid property 'NewVar_1' structure 'S_MapCube' error: Struct 'UserDefinedStruct /Game/myBlueprint/Structures/S_MapCube.S_MapCube' Property 'Box_10_36B8520E48E9DFEA702D7A8002801D03' Error ( Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_Box_46' is not compiled )
+[2017.02.28-15.39.23:079][596]BlueprintEditorCompileResults:Error: Error The variable NewVar_1 declared in  MyGameMode  has an invalid type S Map Cube Structure
+[2017.02.28-15.39.23:079][596]BlueprintEditorCompileResults:Error: Error Invalid property 'NewVar_0' structure 'S_MapCube' error: Struct 'UserDefinedStruct /Game/myBlueprint/Structures/S_MapCube.S_MapCube' Property 'Box_10_36B8520E48E9DFEA702D7A8002801D03' Error ( Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_Box_46' is not compiled )
+[2017.02.28-15.39.23:079][596]BlueprintEditorCompileResults:Error: Error The variable NewVar_0 declared in  MyGameMode  has an invalid type S Map Cube Structure
+[2017.02.28-15.39.23:079][596]BlueprintEditorCompileResults:Error: Error Invalid property 'CubeInfo' structure 'S_MapCube' error: Struct 'UserDefinedStruct /Game/myBlueprint/Structures/S_MapCube.S_MapCube' Property 'Box_10_36B8520E48E9DFEA702D7A8002801D03' Error ( Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_Box_46' is not compiled )
+[2017.02.28-15.39.23:079][596]BlueprintEditorCompileResults:Error: Error The variable CubeInfo declared in  MyGameMode  has an invalid type S Map Cube Structure
+[2017.02.28-15.39.23:079][596]BlueprintEditorCompileResults:Error: Error Invalid property 'MapCubeInfo' structure 'S_MapCube' error: Struct 'UserDefinedStruct /Game/myBlueprint/Structures/S_MapCube.S_MapCube' Property 'Box_10_36B8520E48E9DFEA702D7A8002801D03' Error ( Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_Box_46' is not compiled )
+[2017.02.28-15.39.23:079][596]BlueprintEditorCompileResults:Error: Error The variable MapCubeInfo declared in  MyGameMode  has an invalid type Array of S Map Cube Structures
+[2017.02.28-15.39.23:080][596]LogBlueprint:Warning: [Compiler MyGameMode] Warning [2922.51] Compile of MyGameMode failed. 14 Fatal Issue(s) 0 Warning(s) [in 247 ms] (/Game/myBlueprint/MyGameMode.MyGameMode)
+[2017.02.28-15.40.14:681][416]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/myBlueprint/Structures/S_MapCube" FILE="F:/FightWithBlock/FightWithBlock/Content/myBlueprint/Structures/S_MapCube.uasset" SILENT=true
+[2017.02.28-15.40.14:726][416]LogSavePackage: Save=5.62ms
+[2017.02.28-15.40.14:726][416]LogSavePackage: Moving 'F:/FightWithBlock/FightWithBlock/Saved/S_MapCube053FC62941C92686A4E520BFA549F6CE.tmp' to 'F:/FightWithBlock/FightWithBlock/Content/myBlueprint/Structures/S_MapCube.uasset'
+[2017.02.28-15.40.14:729][416]LogSavePackage:Display: Finished SavePackage F:/FightWithBlock/FightWithBlock/Content/myBlueprint/Structures/S_MapCube.uasset
+[2017.02.28-15.40.18:819][655]BlueprintLog: New page: Compile MyGameMode
+[2017.02.28-15.40.18:842][655]LogBlueprint:Error: [Compiler MyGameMode] Error Invalid property 'NewVar_4' structure 'S_MapCube' error: Struct 'UserDefinedStruct /Game/myBlueprint/Structures/S_MapCube.S_MapCube' Property 'Box_10_36B8520E48E9DFEA702D7A8002801D03' Error ( Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_Box_46' is not compiled )
+[2017.02.28-15.40.18:842][655]LogBlueprint:Error: [Compiler MyGameMode] Error The variable NewVar_4 declared in  MyGameMode  has an invalid type S Map Cube Structure
+[2017.02.28-15.40.18:842][655]LogBlueprint:Error: [Compiler MyGameMode] Error Invalid property 'NewVar_3' structure 'S_MapCube' error: Struct 'UserDefinedStruct /Game/myBlueprint/Structures/S_MapCube.S_MapCube' Property 'Box_10_36B8520E48E9DFEA702D7A8002801D03' Error ( Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_Box_46' is not compiled )
+[2017.02.28-15.40.18:842][655]LogBlueprint:Error: [Compiler MyGameMode] Error The variable NewVar_3 declared in  MyGameMode  has an invalid type S Map Cube Structure
+[2017.02.28-15.40.18:842][655]LogBlueprint:Error: [Compiler MyGameMode] Error Invalid property 'NewVar_2' structure 'S_MapCube' error: Struct 'UserDefinedStruct /Game/myBlueprint/Structures/S_MapCube.S_MapCube' Property 'Box_10_36B8520E48E9DFEA702D7A8002801D03' Error ( Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_Box_46' is not compiled )
+[2017.02.28-15.40.18:842][655]LogBlueprint:Error: [Compiler MyGameMode] Error The variable NewVar_2 declared in  MyGameMode  has an invalid type S Map Cube Structure
+[2017.02.28-15.40.18:842][655]LogBlueprint:Error: [Compiler MyGameMode] Error Invalid property 'NewVar_1' structure 'S_MapCube' error: Struct 'UserDefinedStruct /Game/myBlueprint/Structures/S_MapCube.S_MapCube' Property 'Box_10_36B8520E48E9DFEA702D7A8002801D03' Error ( Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_Box_46' is not compiled )
+[2017.02.28-15.40.18:842][655]LogBlueprint:Error: [Compiler MyGameMode] Error The variable NewVar_1 declared in  MyGameMode  has an invalid type S Map Cube Structure
+[2017.02.28-15.40.18:842][655]LogBlueprint:Error: [Compiler MyGameMode] Error Invalid property 'NewVar_0' structure 'S_MapCube' error: Struct 'UserDefinedStruct /Game/myBlueprint/Structures/S_MapCube.S_MapCube' Property 'Box_10_36B8520E48E9DFEA702D7A8002801D03' Error ( Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_Box_46' is not compiled )
+[2017.02.28-15.40.18:842][655]LogBlueprint:Error: [Compiler MyGameMode] Error The variable NewVar_0 declared in  MyGameMode  has an invalid type S Map Cube Structure
+[2017.02.28-15.40.18:842][655]LogBlueprint:Error: [Compiler MyGameMode] Error Invalid property 'CubeInfo' structure 'S_MapCube' error: Struct 'UserDefinedStruct /Game/myBlueprint/Structures/S_MapCube.S_MapCube' Property 'Box_10_36B8520E48E9DFEA702D7A8002801D03' Error ( Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_Box_46' is not compiled )
+[2017.02.28-15.40.18:842][655]LogBlueprint:Error: [Compiler MyGameMode] Error The variable CubeInfo declared in  MyGameMode  has an invalid type S Map Cube Structure
+[2017.02.28-15.40.18:843][655]LogBlueprint:Error: [Compiler MyGameMode] Error Invalid property 'MapCubeInfo' structure 'S_MapCube' error: Struct 'UserDefinedStruct /Game/myBlueprint/Structures/S_MapCube.S_MapCube' Property 'Box_10_36B8520E48E9DFEA702D7A8002801D03' Error ( Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_Box_46' is not compiled )
+[2017.02.28-15.40.18:843][655]LogBlueprint:Error: [Compiler MyGameMode] Error The variable MapCubeInfo declared in  MyGameMode  has an invalid type Array of S Map Cube Structures
+[2017.02.28-15.40.19:122][655]BlueprintEditorCompileResults:Error: Error Invalid property 'NewVar_4' structure 'S_MapCube' error: Struct 'UserDefinedStruct /Game/myBlueprint/Structures/S_MapCube.S_MapCube' Property 'Box_10_36B8520E48E9DFEA702D7A8002801D03' Error ( Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_Box_46' is not compiled )
+[2017.02.28-15.40.19:122][655]BlueprintEditorCompileResults:Error: Error The variable NewVar_4 declared in  MyGameMode  has an invalid type S Map Cube Structure
+[2017.02.28-15.40.19:122][655]BlueprintEditorCompileResults:Error: Error Invalid property 'NewVar_3' structure 'S_MapCube' error: Struct 'UserDefinedStruct /Game/myBlueprint/Structures/S_MapCube.S_MapCube' Property 'Box_10_36B8520E48E9DFEA702D7A8002801D03' Error ( Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_Box_46' is not compiled )
+[2017.02.28-15.40.19:122][655]BlueprintEditorCompileResults:Error: Error The variable NewVar_3 declared in  MyGameMode  has an invalid type S Map Cube Structure
+[2017.02.28-15.40.19:122][655]BlueprintEditorCompileResults:Error: Error Invalid property 'NewVar_2' structure 'S_MapCube' error: Struct 'UserDefinedStruct /Game/myBlueprint/Structures/S_MapCube.S_MapCube' Property 'Box_10_36B8520E48E9DFEA702D7A8002801D03' Error ( Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_Box_46' is not compiled )
+[2017.02.28-15.40.19:122][655]BlueprintEditorCompileResults:Error: Error The variable NewVar_2 declared in  MyGameMode  has an invalid type S Map Cube Structure
+[2017.02.28-15.40.19:122][655]BlueprintEditorCompileResults:Error: Error Invalid property 'NewVar_1' structure 'S_MapCube' error: Struct 'UserDefinedStruct /Game/myBlueprint/Structures/S_MapCube.S_MapCube' Property 'Box_10_36B8520E48E9DFEA702D7A8002801D03' Error ( Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_Box_46' is not compiled )
+[2017.02.28-15.40.19:122][655]BlueprintEditorCompileResults:Error: Error The variable NewVar_1 declared in  MyGameMode  has an invalid type S Map Cube Structure
+[2017.02.28-15.40.19:122][655]BlueprintEditorCompileResults:Error: Error Invalid property 'NewVar_0' structure 'S_MapCube' error: Struct 'UserDefinedStruct /Game/myBlueprint/Structures/S_MapCube.S_MapCube' Property 'Box_10_36B8520E48E9DFEA702D7A8002801D03' Error ( Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_Box_46' is not compiled )
+[2017.02.28-15.40.19:122][655]BlueprintEditorCompileResults:Error: Error The variable NewVar_0 declared in  MyGameMode  has an invalid type S Map Cube Structure
+[2017.02.28-15.40.19:122][655]BlueprintEditorCompileResults:Error: Error Invalid property 'CubeInfo' structure 'S_MapCube' error: Struct 'UserDefinedStruct /Game/myBlueprint/Structures/S_MapCube.S_MapCube' Property 'Box_10_36B8520E48E9DFEA702D7A8002801D03' Error ( Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_Box_46' is not compiled )
+[2017.02.28-15.40.19:123][655]BlueprintEditorCompileResults:Error: Error The variable CubeInfo declared in  MyGameMode  has an invalid type S Map Cube Structure
+[2017.02.28-15.40.19:123][655]BlueprintEditorCompileResults:Error: Error Invalid property 'MapCubeInfo' structure 'S_MapCube' error: Struct 'UserDefinedStruct /Game/myBlueprint/Structures/S_MapCube.S_MapCube' Property 'Box_10_36B8520E48E9DFEA702D7A8002801D03' Error ( Struct 'UserDefinedStruct /Engine/Transient.STRUCT_REINST_S_Box_46' is not compiled )
+[2017.02.28-15.40.19:123][655]BlueprintEditorCompileResults:Error: Error The variable MapCubeInfo declared in  MyGameMode  has an invalid type Array of S Map Cube Structures
+[2017.02.28-15.40.19:123][655]LogBlueprint:Warning: [Compiler MyGameMode] Warning [2978.56] Compile of MyGameMode failed. 14 Fatal Issue(s) 0 Warning(s) [in 304 ms] (/Game/myBlueprint/MyGameMode.MyGameMode)
+[2017.02.28-15.40.21:702][797]LogBlueprint:Warning: Unknown type of hyperlinked object
+[2017.02.28-15.40.22:886][866]LogBlueprint:Warning: Unknown type of hyperlinked object
+[2017.02.28-15.40.23:109][879]LogBlueprint:Warning: Unknown type of hyperlinked object
+[2017.02.28-15.40.23:309][891]LogBlueprint:Warning: Unknown type of hyperlinked object
+[2017.02.28-15.40.23:460][900]LogBlueprint:Warning: Unknown type of hyperlinked object
+[2017.02.28-15.40.47:247][274]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/myBlueprint/Structures/S_MapCube" FILE="F:/FightWithBlock/FightWithBlock/Content/myBlueprint/Structures/S_MapCube.uasset" SILENT=true
+[2017.02.28-15.40.47:354][274]LogSavePackage: Save=6.55ms
+[2017.02.28-15.40.47:354][274]LogSavePackage: Moving 'F:/FightWithBlock/FightWithBlock/Saved/S_MapCube8E54A4534A24D0CE06326688431537E2.tmp' to 'F:/FightWithBlock/FightWithBlock/Content/myBlueprint/Structures/S_MapCube.uasset'
+[2017.02.28-15.40.47:364][274]LogSavePackage:Display: Finished SavePackage F:/FightWithBlock/FightWithBlock/Content/myBlueprint/Structures/S_MapCube.uasset
+[2017.02.28-15.41.11:241][630]LogClass:Warning: Property NewVar_5 of NewVar_5 has a struct type mismatch (tag S_Box != prop S_MapCube) in package:  FObjectReader. If that struct got renamed, add an entry to ActiveStructRedirects.
+[2017.02.28-15.41.20:525][109]BlueprintLog: New page: Compile MyGameMode
+[2017.02.28-15.41.20:552][109]LogClass:Warning: Property NewVar_5 of NewVar_5 has a struct type mismatch (tag S_Box != prop S_MapCube) in package:  FObjectReader. If that struct got renamed, add an entry to ActiveStructRedirects.
+[2017.02.28-15.41.40:982][185]BlueprintLog: New page: Compile MyGameMode
+[2017.02.28-15.44.00:589][361]Cmd: OBJ SAVEPACKAGE PACKAGE="/Temp/Untitled_1" FILE="F:/FightWithBlock/FightWithBlock/Saved/Autosaves/Temp/Untitled_1_Auto3.umap" SILENT=true AUTOSAVING=true KEEPDIRTY=false
+[2017.02.28-15.44.00:647][361]LogSavePackage: Save=57.14ms
+[2017.02.28-15.44.00:647][361]LogSavePackage: Moving 'F:/FightWithBlock/FightWithBlock/Saved/Untitled_1_Auto376EA9ADB4EB5DD41BB80A6BF06ABC6A6.tmp' to 'F:/FightWithBlock/FightWithBlock/Saved/Autosaves/Temp/Untitled_1_Auto3.umap'
+[2017.02.28-15.44.00:649][361]LogSavePackage:Display: Finished SavePackage F:/FightWithBlock/FightWithBlock/Saved/Autosaves/Temp/Untitled_1_Auto3.umap
+[2017.02.28-15.44.00:689][361]LogFileHelpers: Editor autosave (incl. sublevels) for '/Temp/Untitled_1' took 0.174
+[2017.02.28-15.44.00:689][361]LogFileHelpers: Editor autosave (incl. sublevels) for all levels took 0.174
+[2017.02.28-15.44.00:693][361]OBJ SavePackage: Generating thumbnails for [0] asset(s) in package [/Game/myBlueprint/MyGameMode] ([1] browsable assets)...
+[2017.02.28-15.44.00:693][361]OBJ SavePackage: Finished generating thumbnails for package [/Game/myBlueprint/MyGameMode]
+[2017.02.28-15.44.00:693][361]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/myBlueprint/MyGameMode" FILE="F:/FightWithBlock/FightWithBlock/Saved/Autosaves/Game/myBlueprint/MyGameMode_Auto3.uasset" SILENT=false AUTOSAVING=true
+[2017.02.28-15.44.00:775][361]LogSavePackage: Save=58.44ms
+[2017.02.28-15.44.00:775][361]LogSavePackage: Moving 'F:/FightWithBlock/FightWithBlock/Saved/MyGameMode_Auto349D875AF4E74D1FA31AAF5AE7328B53A.tmp' to 'F:/FightWithBlock/FightWithBlock/Saved/Autosaves/Game/myBlueprint/MyGameMode_Auto3.uasset'
+[2017.02.28-15.44.00:777][361]LogSavePackage:Display: Finished SavePackage F:/FightWithBlock/FightWithBlock/Saved/Autosaves/Game/myBlueprint/MyGameMode_Auto3.uasset
+[2017.02.28-15.44.00:778][361]OBJ SavePackage: Generating thumbnails for [0] asset(s) in package [/Game/myBlueprint/Structures/S_Box] ([1] browsable assets)...
+[2017.02.28-15.44.00:778][361]OBJ SavePackage: Finished generating thumbnails for package [/Game/myBlueprint/Structures/S_Box]
+[2017.02.28-15.44.00:778][361]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/myBlueprint/Structures/S_Box" FILE="F:/FightWithBlock/FightWithBlock/Saved/Autosaves/Game/myBlueprint/Structures/S_Box_Auto3.uasset" SILENT=false AUTOSAVING=true
+[2017.02.28-15.44.00:838][361]LogSavePackage: Save=13.00ms
+[2017.02.28-15.44.00:838][361]LogSavePackage: Moving 'F:/FightWithBlock/FightWithBlock/Saved/S_Box_Auto3D42050634315BBC32AA23B89669C316E.tmp' to 'F:/FightWithBlock/FightWithBlock/Saved/Autosaves/Game/myBlueprint/Structures/S_Box_Auto3.uasset'
+[2017.02.28-15.44.00:843][361]LogSavePackage:Display: Finished SavePackage F:/FightWithBlock/FightWithBlock/Saved/Autosaves/Game/myBlueprint/Structures/S_Box_Auto3.uasset
+[2017.02.28-15.44.00:845][361]OBJ SavePackage: Generating thumbnails for [0] asset(s) in package [/Game/myBlueprint/BoxBase] ([1] browsable assets)...
+[2017.02.28-15.44.00:845][361]OBJ SavePackage: Finished generating thumbnails for package [/Game/myBlueprint/BoxBase]
+[2017.02.28-15.44.00:845][361]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/myBlueprint/BoxBase" FILE="F:/FightWithBlock/FightWithBlock/Saved/Autosaves/Game/myBlueprint/BoxBase_Auto3.uasset" SILENT=false AUTOSAVING=true
+[2017.02.28-15.44.00:922][361]LogSavePackage: Save=42.99ms
+[2017.02.28-15.44.00:922][361]LogSavePackage: Moving 'F:/FightWithBlock/FightWithBlock/Saved/BoxBase_Auto3554554D9402A4499101D3585A31DB567.tmp' to 'F:/FightWithBlock/FightWithBlock/Saved/Autosaves/Game/myBlueprint/BoxBase_Auto3.uasset'
+[2017.02.28-15.44.00:925][361]LogSavePackage:Display: Finished SavePackage F:/FightWithBlock/FightWithBlock/Saved/Autosaves/Game/myBlueprint/BoxBase_Auto3.uasset
+[2017.02.28-15.44.00:927][361]OBJ SavePackage: Generating thumbnails for [0] asset(s) in package [/Game/myBlueprint/DataTables/D_Boxes] ([1] browsable assets)...
+[2017.02.28-15.44.00:927][361]OBJ SavePackage: Finished generating thumbnails for package [/Game/myBlueprint/DataTables/D_Boxes]
+[2017.02.28-15.44.00:927][361]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/myBlueprint/DataTables/D_Boxes" FILE="F:/FightWithBlock/FightWithBlock/Saved/Autosaves/Game/myBlueprint/DataTables/D_Boxes_Auto3.uasset" SILENT=false AUTOSAVING=true
+[2017.02.28-15.44.00:976][361]LogSavePackage: Save=5.28ms
+[2017.02.28-15.44.00:976][361]LogSavePackage: Moving 'F:/FightWithBlock/FightWithBlock/Saved/D_Boxes_Auto322FB4BC447A24BADBDAD4E88AAE7931B.tmp' to 'F:/FightWithBlock/FightWithBlock/Saved/Autosaves/Game/myBlueprint/DataTables/D_Boxes_Auto3.uasset'
+[2017.02.28-15.44.00:983][361]LogSavePackage:Display: Finished SavePackage F:/FightWithBlock/FightWithBlock/Saved/Autosaves/Game/myBlueprint/DataTables/D_Boxes_Auto3.uasset
+[2017.02.28-15.44.00:983][361]LogFileHelpers: Auto-saving content packages took 0.293
+[2017.02.28-15.44.06:476][684]BlueprintLog: New page: Compile MyGameMode
+[2017.02.28-15.44.08:936][820]LogTemp: Repeting last play command: New Editor Window (PIE)
+[2017.02.28-15.44.08:947][820]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2017.02.28-15.44.08:947][820]PIE: New page: PIE session: Untitled_1 (Mar 1, 2017, 7:44:08 AM)
+[2017.02.28-15.44.08:947][820]LogPlayLevel: Creating play world package: /Temp/UEDPIE_0_Untitled_1
+[2017.02.28-15.44.08:949][820]LogPlayLevel: PIE: StaticDuplicateObject took: (0.001895s)
+[2017.02.28-15.44.08:950][820]LogAIModule: Creating AISystem for world Untitled_1
+[2017.02.28-15.44.08:950][820]LogPlayLevel: PIE: World Init took: (0.001216s)
+[2017.02.28-15.44.08:951][820]LogPlayLevel: PIE: Created PIE world by copying editor world from /Temp/Untitled_1.Untitled_1 to /Temp/UEDPIE_0_Untitled_1.Untitled_1 (0.003488s)
+[2017.02.28-15.44.08:986][820]LogInit: XAudio2 using '扬声器 (Conexant SmartAudio HD)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2017.02.28-15.44.09:004][820]LogInit: FAudioDevice initialized.
+[2017.02.28-15.44.09:060][820]LogLoad: Game class is 'MyGameMode_C'
+[2017.02.28-15.44.09:062][820]LogWorld: Bringing World /Temp/UEDPIE_0_Untitled_1.Untitled_1 up for play (max tick rate 60) at 2017.02.28-23.44.09
+[2017.02.28-15.44.09:062][820]LogWorld: Bringing up level for play took: 0.001503
+[2017.02.28-15.44.09:064][820]LogBlueprintUserMessages: [MyGameMode_C_0] this is MyGameMode!
+[2017.02.28-15.44.09:075][820]PIE: Info Play in editor start time for /Temp/UEDPIE_0_Untitled_1 0.641
+[2017.02.28-15.44.40:482][624]LogClass:Warning: Type mismatch in CubeSize of SKEL_MyGameMode_C - Previous (StructProperty) Current(IntProperty) for package:  FObjectReader
+[2017.02.28-15.45.13:946][504]LogTemp: Repeting last play command: New Editor Window (PIE)
+[2017.02.28-15.45.13:960][504]BlueprintLog: New page: Pre-Play auto-recompile
+[2017.02.28-15.45.13:960][504]LogPlayLevel: [PlayLevel] Compiling MyGameMode before play...
+[2017.02.28-15.45.14:186][504]LogPlayLevel: PlayLevel: Blueprint regeneration took 226 ms (1 blueprints)
+[2017.02.28-15.45.14:187][504]PIE: New page: PIE session: Untitled_1 (Mar 1, 2017, 7:45:14 AM)
+[2017.02.28-15.45.14:187][504]LogPlayLevel: Creating play world package: /Temp/UEDPIE_0_Untitled_1
+[2017.02.28-15.45.14:190][504]LogPlayLevel: PIE: StaticDuplicateObject took: (0.002743s)
+[2017.02.28-15.45.14:191][504]LogAIModule: Creating AISystem for world Untitled_1
+[2017.02.28-15.45.14:191][504]LogPlayLevel: PIE: World Init took: (0.001144s)
+[2017.02.28-15.45.14:191][504]LogPlayLevel: PIE: Created PIE world by copying editor world from /Temp/Untitled_1.Untitled_1 to /Temp/UEDPIE_0_Untitled_1.Untitled_1 (0.004212s)
+[2017.02.28-15.45.14:229][504]LogInit: XAudio2 using '扬声器 (Conexant SmartAudio HD)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2017.02.28-15.45.14:248][504]LogInit: FAudioDevice initialized.
+[2017.02.28-15.45.14:297][504]LogLoad: Game class is 'MyGameMode_C'
+[2017.02.28-15.45.14:299][504]LogWorld: Bringing World /Temp/UEDPIE_0_Untitled_1.Untitled_1 up for play (max tick rate 60) at 2017.02.28-23.45.14
+[2017.02.28-15.45.14:299][504]LogWorld: Bringing up level for play took: 0.001282
+[2017.02.28-15.45.14:300][504]LogBlueprintUserMessages: [MyGameMode_C_0] this is MyGameMode!
+[2017.02.28-15.45.14:310][504]PIE: Info Play in editor start time for /Temp/UEDPIE_0_Untitled_1 -0.125
+[2017.02.28-15.45.43:092][175]LogTemp: Repeting last play command: New Editor Window (PIE)
+[2017.02.28-15.45.43:104][175]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2017.02.28-15.45.43:105][175]PIE: New page: PIE session: Untitled_1 (Mar 1, 2017, 7:45:43 AM)
+[2017.02.28-15.45.43:105][175]LogPlayLevel: Creating play world package: /Temp/UEDPIE_0_Untitled_1
+[2017.02.28-15.45.43:108][175]LogPlayLevel: PIE: StaticDuplicateObject took: (0.002963s)
+[2017.02.28-15.45.43:109][175]LogAIModule: Creating AISystem for world Untitled_1
+[2017.02.28-15.45.43:110][175]LogPlayLevel: PIE: World Init took: (0.001215s)
+[2017.02.28-15.45.43:110][175]LogPlayLevel: PIE: Created PIE world by copying editor world from /Temp/Untitled_1.Untitled_1 to /Temp/UEDPIE_0_Untitled_1.Untitled_1 (0.004495s)
+[2017.02.28-15.45.43:149][175]LogInit: XAudio2 using '扬声器 (Conexant SmartAudio HD)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2017.02.28-15.45.43:168][175]LogInit: FAudioDevice initialized.
+[2017.02.28-15.45.43:226][175]LogLoad: Game class is 'MyGameMode_C'
+[2017.02.28-15.45.43:228][175]LogWorld: Bringing World /Temp/UEDPIE_0_Untitled_1.Untitled_1 up for play (max tick rate 60) at 2017.02.28-23.45.43
+[2017.02.28-15.45.43:229][175]LogWorld: Bringing up level for play took: 0.001582
+[2017.02.28-15.45.43:230][175]LogBlueprintUserMessages: [MyGameMode_C_0] this is MyGameMode!
+[2017.02.28-15.45.43:240][175]PIE: Info Play in editor start time for /Temp/UEDPIE_0_Untitled_1 0.806
+[2017.02.28-15.46.04:795][331]LogTemp: Repeting last play command: New Editor Window (PIE)
+[2017.02.28-15.46.04:809][331]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2017.02.28-15.46.04:809][331]PIE: New page: PIE session: Untitled_1 (Mar 1, 2017, 7:46:04 AM)
+[2017.02.28-15.46.04:809][331]LogPlayLevel: Creating play world package: /Temp/UEDPIE_0_Untitled_1
+[2017.02.28-15.46.04:811][331]LogPlayLevel: PIE: StaticDuplicateObject took: (0.001739s)
+[2017.02.28-15.46.04:812][331]LogAIModule: Creating AISystem for world Untitled_1
+[2017.02.28-15.46.04:812][331]LogPlayLevel: PIE: World Init took: (0.001302s)
+[2017.02.28-15.46.04:812][331]LogPlayLevel: PIE: Created PIE world by copying editor world from /Temp/Untitled_1.Untitled_1 to /Temp/UEDPIE_0_Untitled_1.Untitled_1 (0.003366s)
+[2017.02.28-15.46.04:849][331]LogInit: XAudio2 using '扬声器 (Conexant SmartAudio HD)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2017.02.28-15.46.04:867][331]LogInit: FAudioDevice initialized.
+[2017.02.28-15.46.04:926][331]LogLoad: Game class is 'MyGameMode_C'
+[2017.02.28-15.46.04:928][331]LogWorld: Bringing World /Temp/UEDPIE_0_Untitled_1.Untitled_1 up for play (max tick rate 60) at 2017.02.28-23.46.04
+[2017.02.28-15.46.04:928][331]LogWorld: Bringing up level for play took: 0.001561
+[2017.02.28-15.46.04:929][331]LogBlueprintUserMessages: [MyGameMode_C_0] this is MyGameMode!
+[2017.02.28-15.46.04:939][331]PIE: Info Play in editor start time for /Temp/UEDPIE_0_Untitled_1 0.504
+[2017.02.28-15.47.22:611][895]BlueprintLog: New page: Compile MyGameMode
+[2017.02.28-15.47.23:781][950]LogTemp: Repeting last play command: New Editor Window (PIE)
+[2017.02.28-15.47.23:797][950]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2017.02.28-15.47.23:797][950]PIE: New page: PIE session: Untitled_1 (Mar 1, 2017, 7:47:23 AM)
+[2017.02.28-15.47.23:797][950]LogPlayLevel: Creating play world package: /Temp/UEDPIE_0_Untitled_1
+[2017.02.28-15.47.23:799][950]LogPlayLevel: PIE: StaticDuplicateObject took: (0.002235s)
+[2017.02.28-15.47.23:800][950]LogAIModule: Creating AISystem for world Untitled_1
+[2017.02.28-15.47.23:801][950]LogPlayLevel: PIE: World Init took: (0.001711s)
+[2017.02.28-15.47.23:801][950]LogPlayLevel: PIE: Created PIE world by copying editor world from /Temp/Untitled_1.Untitled_1 to /Temp/UEDPIE_0_Untitled_1.Untitled_1 (0.004247s)
+[2017.02.28-15.47.23:849][950]LogInit: XAudio2 using '扬声器 (Conexant SmartAudio HD)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2017.02.28-15.47.23:867][950]LogInit: FAudioDevice initialized.
+[2017.02.28-15.47.23:924][950]LogLoad: Game class is 'MyGameMode_C'
+[2017.02.28-15.47.23:926][950]LogWorld: Bringing World /Temp/UEDPIE_0_Untitled_1.Untitled_1 up for play (max tick rate 60) at 2017.02.28-23.47.23
+[2017.02.28-15.47.23:926][950]LogWorld: Bringing up level for play took: 0.001732
+[2017.02.28-15.47.23:928][950]LogBlueprintUserMessages: [MyGameMode_C_0] this is MyGameMode!
+[2017.02.28-15.47.23:936][950]PIE: Info Play in editor start time for /Temp/UEDPIE_0_Untitled_1 -0.499
+[2017.02.28-15.47.54:314][637]BlueprintLog: New page: Compile MyGameMode
+[2017.02.28-15.47.55:175][673]LogTemp: Repeting last play command: New Editor Window (PIE)
+[2017.02.28-15.47.55:191][673]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2017.02.28-15.47.55:191][673]PIE: New page: PIE session: Untitled_1 (Mar 1, 2017, 7:47:55 AM)
+[2017.02.28-15.47.55:191][673]LogPlayLevel: Creating play world package: /Temp/UEDPIE_0_Untitled_1
+[2017.02.28-15.47.55:193][673]LogPlayLevel: PIE: StaticDuplicateObject took: (0.002231s)
+[2017.02.28-15.47.55:194][673]LogAIModule: Creating AISystem for world Untitled_1
+[2017.02.28-15.47.55:195][673]LogPlayLevel: PIE: World Init took: (0.001415s)
+[2017.02.28-15.47.55:195][673]LogPlayLevel: PIE: Created PIE world by copying editor world from /Temp/Untitled_1.Untitled_1 to /Temp/UEDPIE_0_Untitled_1.Untitled_1 (0.003921s)
+[2017.02.28-15.47.55:240][673]LogInit: XAudio2 using '扬声器 (Conexant SmartAudio HD)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2017.02.28-15.47.55:259][673]LogInit: FAudioDevice initialized.
+[2017.02.28-15.47.55:318][673]LogLoad: Game class is 'MyGameMode_C'
+[2017.02.28-15.47.55:320][673]LogWorld: Bringing World /Temp/UEDPIE_0_Untitled_1.Untitled_1 up for play (max tick rate 60) at 2017.02.28-23.47.55
+[2017.02.28-15.47.55:320][673]LogWorld: Bringing up level for play took: 0.001394
+[2017.02.28-15.47.55:325][673]LogBlueprintUserMessages: [MyGameMode_C_0] this is MyGameMode!
+[2017.02.28-15.47.55:333][673]PIE: Info Play in editor start time for /Temp/UEDPIE_0_Untitled_1 0.899
+[2017.02.28-15.48.03:662][100]BlueprintLog: New page: Compile MyGameMode
+[2017.02.28-15.48.11:848][558]BlueprintLog: New page: Compile MyGameMode
+[2017.02.28-15.48.12:793][604]LogTemp: Repeting last play command: New Editor Window (PIE)
+[2017.02.28-15.48.12:809][604]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2017.02.28-15.48.12:809][604]PIE: New page: PIE session: Untitled_1 (Mar 1, 2017, 7:48:12 AM)
+[2017.02.28-15.48.12:809][604]LogPlayLevel: Creating play world package: /Temp/UEDPIE_0_Untitled_1
+[2017.02.28-15.48.12:814][604]LogPlayLevel: PIE: StaticDuplicateObject took: (0.004612s)
+[2017.02.28-15.48.12:817][604]LogAIModule: Creating AISystem for world Untitled_1
+[2017.02.28-15.48.12:818][604]LogPlayLevel: PIE: World Init took: (0.003535s)
+[2017.02.28-15.48.12:818][604]LogPlayLevel: PIE: Created PIE world by copying editor world from /Temp/Untitled_1.Untitled_1 to /Temp/UEDPIE_0_Untitled_1.Untitled_1 (0.008619s)
+[2017.02.28-15.48.12:887][604]LogInit: XAudio2 using '扬声器 (Conexant SmartAudio HD)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2017.02.28-15.48.12:912][604]LogInit: FAudioDevice initialized.
+[2017.02.28-15.48.12:985][604]LogLoad: Game class is 'MyGameMode_C'
+[2017.02.28-15.48.12:991][604]LogWorld: Bringing World /Temp/UEDPIE_0_Untitled_1.Untitled_1 up for play (max tick rate 60) at 2017.02.28-23.48.12
+[2017.02.28-15.48.12:992][604]LogWorld: Bringing up level for play took: 0.005348
+[2017.02.28-15.48.12:995][604]LogBlueprintUserMessages: [MyGameMode_C_0] this is MyGameMode!
