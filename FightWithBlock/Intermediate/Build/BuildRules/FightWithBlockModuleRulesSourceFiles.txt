@@ -1,0 +1,3 @@
+E:\UnrealProjects\FightWithBlock\Source\FightWithBlock\FightWithBlock.Build.cs
+E:\UnrealProjects\FightWithBlock\Source\FightWithBlock.Target.cs
+E:\UnrealProjects\FightWithBlock\Source\FightWithBlockEditor.Target.cs
