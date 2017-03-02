@@ -2,6 +2,7 @@
 
 #include "FightWithBlock.h"
 #include "MyCharacter.h"
+#include "structBUFF.h"
 
 
 // Sets default values
@@ -36,6 +37,9 @@ void AMyCharacter::BeginPlay()
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, TEXT("this is MyCharacter!"));
 	}
+	//FstructBUFF* myBUFF = FDataTableRowHandle::GetRow<FstructBUFF>(TEXT("D_BUFFs"));
+	//FDataTableRowHandle::GetRow(TEXT("D_BUFFs"));
+	//FDataTableRowHandle::
 	
 }
 

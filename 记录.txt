@@ -1,0 +1,25 @@
+关于DataTable中Structure的创建
+
+不再是继承于FTableRowBase.h中
+而是DataTable.h中
+
+正确写法：
+
+USTRUCT()
+struct FtestStructure: public FTableRowBase
+{
+GENERATED_USTRUCT_BODY()
+
+UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = ""test")
+int HP;
+}
+
+FTableRowBase已经被归在了DataTable.h中
+
+——2017.3.2
+
+
+DEBUG的方式
+ UE_LOG(ResLogger, Warning, TEXT("--- row:%s, key:%d, name:%s"), *it.Key.ToString(), tmpPtr->mId, *tmpPtr->mName);  
+
+——2017.3.2
