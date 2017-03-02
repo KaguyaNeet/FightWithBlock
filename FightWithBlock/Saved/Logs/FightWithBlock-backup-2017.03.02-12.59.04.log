@@ -1,0 +1,1102 @@
+﻿Log file open, 02/28/17 23:49:51
+LogInit:Display: Running engine for game: FightWithBlock
+LogPlatformFile: Not using cached read wrapper
+LogInit:Display: RandInit(-1530238601) SRandInit(-1530238601).
+LogTaskGraph: Started task graph with 5 named threads and 6 total threads with 1 sets of task threads.
+LogStats: Stats thread started at 0.065925
+LogInit: Using libcurl 7.47.1
+LogInit:  - built for x86_64-pc-win32
+LogInit:  - supports SSL with OpenSSL/1.0.2g
+LogInit:  - supports HTTP deflate (compression) using libz 1.2.8
+LogInit:  - other features:
+LogInit:      CURL_VERSION_SSL
+LogInit:      CURL_VERSION_LIBZ
+LogInit:      CURL_VERSION_IPV6
+LogInit:      CURL_VERSION_ASYNCHDNS
+LogInit:      CURL_VERSION_LARGEFILE
+LogInit:      CURL_VERSION_IDN
+LogInit:  CurlRequestOptions (configurable via config and command line):
+LogInit:  - bVerifyPeer = false  - Libcurl will NOT verify peer certificate
+LogInit:  - bUseHttpProxy = false  - Libcurl will NOT use HTTP proxy
+LogInit:  - bDontReuseConnections = false  - Libcurl will reuse connections
+LogInit:  - CertBundlePath = nullptr  - Libcurl will use whatever was configured at build time.
+LogInit: Build: ++UE4+Release-4.15-CL-3299760
+LogInit: Engine Version: 4.15.0-3299760+++UE4+Release-4.15
+LogInit: Compatible Engine Version: 4.15.0-3299760+++UE4+Release-4.15
+LogInit: Net CL: 3299760
+LogDevObjectVersion: Number of dev versions registered: 14
+LogDevObjectVersion:   Dev-Blueprints (B0D832E4-1F89-4F0D-ACCF-7EB736FD4AA2): 8
+LogDevObjectVersion:   Dev-Build (E1C64328-A22C-4D53-A36C-8E866417BD8C): 0
+LogDevObjectVersion:   Dev-Core (375EC13C-06E4-48FB-B500-84F0262A717E): 2
+LogDevObjectVersion:   Dev-Editor (E4B068ED-F494-42E9-A231-DA0B2E46BB41): 14
+LogDevObjectVersion:   Dev-Framework (CFFC743F-43B0-4480-9391-14DF171D2073): 22
+LogDevObjectVersion:   Dev-Mobile (B02B49B5-BB20-44E9-A304-32B752E40360): 0
+LogDevObjectVersion:   Dev-Networking (A4E4105C-59A1-49B5-A7C5-40C4547EDFEE): 0
+LogDevObjectVersion:   Dev-Online (39C831C9-5AE6-47DC-9A44-9C173E1C8E7C): 0
+LogDevObjectVersion:   Dev-Physics (78F01B33-EBEA-4F98-B9B4-84EACCB95AA2): 0
+LogDevObjectVersion:   Dev-Platform (6631380F-2D4D-43E0-8009-CF276956A95A): 0
+LogDevObjectVersion:   Dev-Rendering (12F88B9F-8875-4AFC-A67C-D90C383ABD29): 12
+LogDevObjectVersion:   Dev-Sequencer (7B5AE74C-D270-4C10-A958-57980B212A5A): 3
+LogDevObjectVersion:   Dev-VR (D7296918-1DD6-4BDD-9DE2-64A83CC13884): 0
+LogDevObjectVersion:   Dev-LoadTimes (C2A15278-BFE7-4AFE-6C17-90FF531DF755): 1
+LogInit: Compiled (64-bit): Feb 14 2017 02:04:14
+LogInit: Compiled with Visual C++: 19.00.23026.00
+LogInit: Build Configuration: Development
+LogInit: Branch Name: ++UE4+Release-4.15
+LogInit: Command line:  
+LogInit: Base directory: D:/Program Files (x86)/Epic Games/UE_4.15/Engine/Binaries/Win64/
+LogInit: Installed Engine Build: 1
+LogInit: Presizing for max 8388607 objects, including 0 objects not considered by GC, pre-allocating 0 bytes for permanent pool.
+LogInit: Object subsystem initialized
+[2017.02.28-15.49.52:233][  0]LogInit: Selected Device Profile: [Windows]
+[2017.02.28-15.49.52:233][  0]LogInit: Applying CVar settings loaded from the selected device profile: [Windows]
+[2017.02.28-15.49.52:261][  0]LogInit: Computer: WIN-01609080925
+[2017.02.28-15.49.52:261][  0]LogInit: User: Administrator
+[2017.02.28-15.49.52:261][  0]LogInit: CPU Page size=65536, Cores=2
+[2017.02.28-15.49.52:261][  0]LogInit: High frequency timer resolution =2.728070 MHz
+[2017.02.28-15.49.52:261][  0]LogMemory: Memory total: Physical=11.9GB (12GB approx)
+[2017.02.28-15.49.52:261][  0]LogMemory: Platform Memory Stats for Windows
+[2017.02.28-15.49.52:261][  0]LogMemory: Process Physical Memory: 262.98 MB used, 262.98 MB peak
+[2017.02.28-15.49.52:261][  0]LogMemory: Process Virtual Memory: 262.30 MB used, 262.30 MB peak
+[2017.02.28-15.49.52:261][  0]LogMemory: Physical Memory: 3199.01 MB used,  8978.05 MB free, 12177.06 MB total
+[2017.02.28-15.49.52:261][  0]LogMemory: Virtual Memory: 641.95 MB used,  8978.05 MB free, 134217728.00 MB total
+[2017.02.28-15.49.52:351][  0]LogInit: Overriding culture en with editor configuration.
+[2017.02.28-15.49.52:942][  0]LogD3D11RHI: D3D11 adapters:
+[2017.02.28-15.49.52:978][  0]LogD3D11RHI:    0. 'NVIDIA GeForce GTX 950M' (Feature Level 11_0)
+[2017.02.28-15.49.52:978][  0]LogD3D11RHI:       2018/0/6088 MB DedicatedVideo/DedicatedSystem/SharedSystem, Outputs:1, VendorId:0x10de
+[2017.02.28-15.49.52:984][  0]LogD3D11RHI:    1. 'Intel(R) HD Graphics 4600' (Feature Level 11_0)
+[2017.02.28-15.49.52:984][  0]LogD3D11RHI:       112/0/2048 MB DedicatedVideo/DedicatedSystem/SharedSystem, Outputs:0, VendorId:0x8086
+[2017.02.28-15.49.52:986][  0]LogD3D11RHI:    2. 'Microsoft Basic Render Driver' (Feature Level 11_0)
+[2017.02.28-15.49.52:986][  0]LogD3D11RHI:       0/0/6088 MB DedicatedVideo/DedicatedSystem/SharedSystem, Outputs:0, VendorId:0x1414
+[2017.02.28-15.49.52:986][  0]LogD3D11RHI: Chosen D3D11 Adapter: 0
+[2017.02.28-15.49.52:993][  0]LogD3D11RHI: Creating new Direct3DDevice
+[2017.02.28-15.49.52:993][  0]LogD3D11RHI:     GPU DeviceId: 0x139a (for the marketing name, search the web for "GPU Device Id")
+[2017.02.28-15.49.52:993][  0]LogWindows: EnumDisplayDevices:
+[2017.02.28-15.49.52:994][  0]LogWindows:    0. 'Intel(R) HD Graphics 4600' (P:1 D:1)
+[2017.02.28-15.49.52:994][  0]LogWindows:    1. 'Intel(R) HD Graphics 4600' (P:0 D:0)
+[2017.02.28-15.49.52:994][  0]LogWindows:    2. 'Intel(R) HD Graphics 4600' (P:0 D:0)
+[2017.02.28-15.49.52:994][  0]LogWindows: DebugString: PrimaryIsNotTheChoosenAdapter PrimaryIsNotTheChoosenAdapter PrimaryIsNotTheChoosenAdapter FoundDriverCount:0 
+[2017.02.28-15.49.52:994][  0]LogD3D11RHI:     Adapter Name: NVIDIA GeForce GTX 950M
+[2017.02.28-15.49.52:994][  0]LogD3D11RHI:   Driver Version: Unknown (internal:Unknown, unified:Unknown)
+[2017.02.28-15.49.52:994][  0]LogD3D11RHI:      Driver Date: Unknown
+[2017.02.28-15.49.52:994][  0]LogRHI: Texture pool is 1361 MB (70% of 1945 MB)
+[2017.02.28-15.49.53:010][  0]LogD3D11RHI: Async texture creation enabled
+[2017.02.28-15.49.53:021][  0]LogD3D11RHI: GPU Timing Frequency: 1000.000000 (Debug: 2 1)
+[2017.02.28-15.49.53:022][  0]LogShaderCompilers: Guid format shader working directory is 22 characters bigger than the processId version (F:/FightWithBlock/FightWithBlock/Intermediate/Shaders/WorkingDirectory/3212/).
+[2017.02.28-15.49.53:022][  0]LogShaderCompilers: Cleaned the shader compiler working directory 'C:/Users/Administrator/AppData/Local/Temp/UnrealShaderWorkingDir/6B15C7FC4464F86ED3F8B7BDB376BC7C/'.
+[2017.02.28-15.49.53:022][  0]LogShaderCompilers:Display: Using Local Shader Compiler.
+[2017.02.28-15.49.54:506][  0]LogTemp:Display: Loaded TP AllDesktopTargetPlatform
+[2017.02.28-15.49.54:566][  0]LogTemp:Display: Loaded TP MacClientTargetPlatform
+[2017.02.28-15.49.54:632][  0]LogTemp:Display: Loaded TP MacNoEditorTargetPlatform
+[2017.02.28-15.49.54:695][  0]LogTemp:Display: Loaded TP MacServerTargetPlatform
+[2017.02.28-15.49.54:798][  0]LogTemp:Display: Loaded TP MacTargetPlatform
+[2017.02.28-15.49.54:860][  0]LogTemp:Display: Loaded TP WindowsClientTargetPlatform
+[2017.02.28-15.49.54:922][  0]LogTemp:Display: Loaded TP WindowsNoEditorTargetPlatform
+[2017.02.28-15.49.54:982][  0]LogTemp:Display: Loaded TP WindowsServerTargetPlatform
+[2017.02.28-15.49.55:032][  0]LogTemp:Display: Loaded TP WindowsTargetPlatform
+[2017.02.28-15.49.55:120][  0]LogTemp:Display: Loaded TP AndroidTargetPlatform
+[2017.02.28-15.49.55:185][  0]LogTemp:Display: Loaded TP Android_ASTCTargetPlatform
+[2017.02.28-15.49.55:251][  0]LogTemp:Display: Loaded TP Android_ATCTargetPlatform
+[2017.02.28-15.49.55:312][  0]LogTemp:Display: Loaded TP Android_DXTTargetPlatform
+[2017.02.28-15.49.55:375][  0]LogTemp:Display: Loaded TP Android_ETC1TargetPlatform
+[2017.02.28-15.49.55:434][  0]LogTemp:Display: Loaded TP Android_ETC2TargetPlatform
+[2017.02.28-15.49.55:560][  0]LogTemp:Display: Loaded TP Android_MultiTargetPlatform
+[2017.02.28-15.49.55:560][  0]LogTemp:Display: Loaded TP Android_PVRTCTargetPlatform
+[2017.02.28-15.49.55:600][  0]LogTemp:Display: Loaded TP HTML5TargetPlatform
+[2017.02.28-15.49.55:788][  0]LogTemp:Display: Loaded TP IOSTargetPlatform
+[2017.02.28-15.49.55:832][  0]LogTemp:Display: Loaded TP TVOSTargetPlatform
+[2017.02.28-15.49.55:895][  0]LogTemp:Display: Loaded TP LinuxClientTargetPlatform
+[2017.02.28-15.49.55:951][  0]LogTemp:Display: Loaded TP LinuxNoEditorTargetPlatform
+[2017.02.28-15.49.56:013][  0]LogTemp:Display: Loaded TP LinuxServerTargetPlatform
+[2017.02.28-15.49.56:072][  0]LogTemp:Display: Loaded TP LinuxTargetPlatform
+[2017.02.28-15.49.56:072][  0]LogTargetPlatformManager:Display: Building Assets For Windows
+[2017.02.28-15.49.56:598][  0]LogDerivedDataCache:Display: Max Cache Size: 512 MB
+[2017.02.28-15.49.57:225][  0]LogDerivedDataCache: Loaded boot cache 0.63s 51MB C:/Users/Administrator/AppData/Local/UnrealEngine/4.15/DerivedDataCache/Boot.ddc.
+[2017.02.28-15.49.57:226][  0]LogDerivedDataCache:Display: Loaded Boot cache: C:/Users/Administrator/AppData/Local/UnrealEngine/4.15/DerivedDataCache/Boot.ddc
+[2017.02.28-15.49.57:226][  0]LogDerivedDataCache: FDerivedDataBackendGraph:  Pak pak cache file F:/FightWithBlock/FightWithBlock/DerivedDataCache/DDC.ddp not found, will not use a pak cache.
+[2017.02.28-15.49.57:226][  0]LogDerivedDataCache: Unable to find inner node Pak for hierarchical cache Hierarchy.
+[2017.02.28-15.49.57:226][  0]LogDerivedDataCache: FDerivedDataBackendGraph:  CompressedPak pak cache file F:/FightWithBlock/FightWithBlock/DerivedDataCache/Compressed.ddp not found, will not use a pak cache.
+[2017.02.28-15.49.57:226][  0]LogDerivedDataCache: Unable to find inner node CompressedPak for hierarchical cache Hierarchy.
+[2017.02.28-15.49.57:272][  0]LogDerivedDataCache:Display: Pak cache opened for reading ../../../Engine/DerivedDataCache/Compressed.ddp.
+[2017.02.28-15.49.57:284][  0]LogDerivedDataCache: Using Local data cache path C:/Users/Administrator/AppData/Local/UnrealEngine/Common/DerivedDataCache: Writable
+[2017.02.28-15.49.57:297][  0]LogSlate: Using Freetype 2.6.0
+[2017.02.28-15.49.57:304][  0]LogSlate: SlateFontCache - WITH_FREETYPE: 1, WITH_HARFBUZZ: 1
+[2017.02.28-15.49.57:304][  0]LogSlate: SlateFontCache - WITH_FREETYPE: 1, WITH_HARFBUZZ: 1
+[2017.02.28-15.49.58:246][  0]LogInit: Selected Device Profile: [Windows]
+[2017.02.28-15.49.58:248][  0]LogContentStreaming: Texture pool size is 0.00 MB
+[2017.02.28-15.49.58:482][  0]LogMeshUtilities: Using QuadricMeshReduction for automatic static mesh reduction
+[2017.02.28-15.49.58:530][  0]LogSimplygon: Simplygon DLL not present - disabling.
+[2017.02.28-15.49.58:584][  0]LogMeshUtilities: Using SimplygonSwarm for distributed automatic mesh merging
+[2017.02.28-15.49.58:584][  0]LogMeshUtilities: No automatic skeletal mesh reduction module available
+[2017.02.28-15.49.58:584][  0]LogMeshUtilities: No automatic mesh merging module available
+[2017.02.28-15.49.59:414][  0]LogNetVersion: GetLocalNetworkVersion: CL: 3299760, ProjectName: fightwithblock, ProjectVersion: , EngineNetworkVersion: 2, GameNetworkVersion: 0, NetworkChecksum: 311692676
+[2017.02.28-15.49.59:457][  0]LogAssetRegistry: FAssetRegistry took 0.0215 seconds to start up
+[2017.02.28-15.49.59:569][  0]LogPackageLocalizationCache: Processed 3 localized package path(s) for 1 prioritized culture(s) in 0.083860 seconds
+[2017.02.28-15.49.59:579][  0]LogUObjectArray: 32475 objects as part of root set at end of initial load.
+[2017.02.28-15.49.59:579][  0]LogUObjectAllocator: 7073360 out of 0 bytes used by permanent object pool.
+[2017.02.28-15.49.59:579][  0]LogUObjectArray: CloseDisregardForGC: 0/0 objects in disregard for GC pool
+[2017.02.28-15.49.59:657][  0]LogInit: WinSock: version 1.1 (2.2), MaxSocks=32767, MaxUdp=65467
+[2017.02.28-15.50.07:577][  0]LogTcpMessaging: Initializing TcpMessaging bridge
+[2017.02.28-15.50.07:618][  0]LogUdpMessaging: Initializing bridge on interface 0.0.0.0:0 to multicast group 230.0.0.1:6666.
+[2017.02.28-15.50.08:250][  0]LogMaterial: Uniform references updated for custom material expression Custom.
+[2017.02.28-15.50.08:776][  0]SourceControl: Info Source control is disabled
+[2017.02.28-15.50.08:778][  0]SourceControl: Info Source control is disabled
+[2017.02.28-15.50.08:832][  0]SourceControl: Info Source control is disabled
+[2017.02.28-15.50.08:878][  0]SourceControl: Info Source control is disabled
+[2017.02.28-15.50.10:260][  0]LogEngine: Initializing Engine...
+[2017.02.28-15.50.10:261][  0]LogHMD: Failed to initialize OpenVR with code 110
+[2017.02.28-15.50.10:550][  0]LogAIModule: Creating AISystem for world Untitled
+[2017.02.28-15.50.10:562][  0]LogInit: XAudio2 using '扬声器 (Conexant SmartAudio HD)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2017.02.28-15.50.10:591][  0]LogInit: FAudioDevice initialized.
+[2017.02.28-15.50.10:633][  0]LogDerivedDataCache: Saved boot cache 0.04s 51MB C:/Users/Administrator/AppData/Local/UnrealEngine/4.15/DerivedDataCache/Boot.ddc.
+[2017.02.28-15.50.10:643][  0]LogInit: Texture streaming: Enabled
+[2017.02.28-15.50.10:744][  0]LogEngineSessionManager: EngineSessionManager initialized
+[2017.02.28-15.50.10:846][  0]LogInit: Transaction tracking system initialized
+[2017.02.28-15.50.11:250][  0]BlueprintLog: New page: Editor Load
+[2017.02.28-15.50.12:298][  0]LocalizationService: Info Localization service is disabled
+[2017.02.28-15.50.13:095][  0]LogConsoleResponse:Display: 
+[2017.02.28-15.50.13:247][  0]LogCook:Display: Max memory allowance for cook 16384mb min free memory 0mb
+[2017.02.28-15.50.13:247][  0]LogCook:Display: Mobile HDR setting 1
+[2017.02.28-15.50.14:382][  0]LogFileCache: Scanning file cache for directory 'F:/FightWithBlock/FightWithBlock/Content/' took 0.01s
+[2017.02.28-15.50.14:434][  0]SourceControl: Info Source control is disabled
+[2017.02.28-15.50.14:583][  0]LogWindowsTextInputMethodSystem:Display: IME system now deactivated.
+[2017.02.28-15.50.14:614][  0]LogSlate: Took 0.000216 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Regular.ttf' (155K)
+[2017.02.28-15.50.18:418][  0]LogWindowsTextInputMethodSystem:Display: IME system now deactivated.
+[2017.02.28-15.50.18:419][  0]LogWindowsTextInputMethodSystem:Display: IME system now deactivated.
+[2017.02.28-15.50.18:431][  0]Cmd: MAP LOAD FILE="../../../Engine/Content/Maps/Templates/Template_Default.umap" TEMPLATE=1 SHOWPROGRESS=1 FEATURELEVEL=3
+[2017.02.28-15.50.18:431][  0]LightingResults: New page: Lighting Build
+[2017.02.28-15.50.18:509][  0]MapCheck: New page: Map Check
+[2017.02.28-15.50.18:509][  0]LightingResults: New page: Lighting Build
+[2017.02.28-15.50.18:831][  0]LogAIModule: Creating AISystem for world Untitled_1
+[2017.02.28-15.50.18:834][  0]LogActorComponent: RegisterComponentWithWorld: (/Temp/Untitled_1.Untitled_1:PersistentLevel.WorldSettings_1.StaticMeshComponent0) Trying to register component with IsPendingKill() == true. Aborting.
+[2017.02.28-15.50.18:846][  0]LogEditorServer: Finished looking for orphan Actors (0.000 secs)
+[2017.02.28-15.50.18:850][  0]Cmd: MAP CHECKDEP NOCLEARLOG
+[2017.02.28-15.50.18:912][  0]MapCheck: Info Map check complete: 0 Error(s), 0 Warning(s), took 61.897ms to complete.
+[2017.02.28-15.50.18:912][  0]LogFileHelpers: Loading map 'Template_Default' took 0.482
+[2017.02.28-15.50.19:319][  0]LogStats:Warning: MetaData mismatch. Did you assign a stat to two groups? New //STATGROUP_Threads//SplashScreenThread///Thread_76c_0///####STATCAT_Advanced#### old //STATGROUP_Threads//SplashScreenThread///Thread_1608_0///####STATCAT_Advanced####
+[2017.02.28-15.50.19:319][  0]LogCollectionManager: Loaded 0 collections in 0.001539 seconds
+[2017.02.28-15.50.19:411][  0]LogFileCache: Scanning file cache for directory 'F:/FightWithBlock/FightWithBlock/Saved/Collections/' took 0.01s
+[2017.02.28-15.50.19:411][  0]LogFileCache: Scanning file cache for directory 'F:/FightWithBlock/FightWithBlock/Content/Developers/Administrator/Collections/' took 0.01s
+[2017.02.28-15.50.19:411][  0]LogFileCache: Scanning file cache for directory 'F:/FightWithBlock/FightWithBlock/Content/Collections/' took 0.01s
+[2017.02.28-15.50.19:411][  0]LogCollectionManager: Rebuilt the GUID cache for 0 collections in 0.000001 seconds
+[2017.02.28-15.50.19:423][  0]LogContentBrowser: Native class hierarchy populated in 0.0118 seconds. Added 2245 classes and 452 folders.
+[2017.02.28-15.50.19:426][  0]LogStats: UGameplayTagsManager::ConstructGameplayTagTree: Construct from data asset -  0.000 s
+[2017.02.28-15.50.19:427][  0]LogStats: UGameplayTagsManager::ConstructGameplayTagTree: GameplayTagTreeChangedEvent.Broadcast -  0.000 s
+[2017.02.28-15.50.19:496][  0]LogContentBrowser: Native class hierarchy updated for 'WidgetCarousel' in 0.0011 seconds. Added 0 classes and 0 folders.
+[2017.02.28-15.50.19:911][  0]LogContentBrowser: Native class hierarchy updated for 'AddContentDialog' in 0.0012 seconds. Added 0 classes and 0 folders.
+[2017.02.28-15.50.19:984][  0]LogContentBrowser: Native class hierarchy updated for 'SceneOutliner' in 0.0011 seconds. Added 1 classes and 2 folders.
+[2017.02.28-15.50.20:049][  0]LogCrashTracker: Crashtracker disabled due to settings.
+[2017.02.28-15.50.20:058][  0]LogUObjectGlobals:Warning: Failed to find object 'Class None.'
+[2017.02.28-15.50.20:150][  0]LogContentBrowser: Native class hierarchy updated for 'HierarchicalLODOutliner' in 0.0013 seconds. Added 1 classes and 2 folders.
+[2017.02.28-15.50.20:150][  0]LogLoad: (Engine Initialization) Total time: 30.38 seconds
+[2017.02.28-15.50.20:150][  0]LogLoad: (Engine Initialization) Total Blueprint compile time: 0.18 seconds
+[2017.02.28-15.50.20:150][  0]LogExternalProfiler: Found external profiler: VSPerf
+[2017.02.28-15.50.20:150][  0]LogExternalProfiler: Using external profiler: VSPerf
+[2017.02.28-15.50.20:168][  0]LogOcInput: OculusInput pre-init called
+[2017.02.28-15.50.20:186][  0]LogContentStreaming: Texture pool size now 1000 MB
+[2017.02.28-15.50.20:236][  0]LogSlate: Took 0.039960 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Bold.ttf' (160K)
+[2017.02.28-15.50.20:273][  0]LogSlate: Took 0.025873 seconds to synchronously load lazily loaded font '../../../Engine/Content/Editor/Slate/Fonts/FontAwesome.ttf' (139K)
+[2017.02.28-15.50.20:440][  0]LogRenderer: Reallocating scene render targets to support 792x924 NumSamples 1 (Frame:2).
+[2017.02.28-15.50.20:540][  1]LogAssetRegistry: Asset discovery search completed in 21.1038 seconds
+[2017.02.28-15.50.20:540][  1]LogCollectionManager: Rebuilt the object cache for 0 collections in 0.000007 seconds (found 0 objects)
+[2017.02.28-15.50.20:540][  1]LogCollectionManager: Fixed up redirectors for 0 collections in 0.000022 seconds (updated 0 objects)
+[2017.02.28-15.50.21:196][ 30]LogSlate: Took 0.000239 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Light.ttf' (159K)
+[2017.02.28-15.50.32:464][702]LogSlate: Took 0.000146 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Light.ttf' (159K)
+[2017.02.28-15.50.32:646][702]LogLinker:Warning: Can't find file '/Game/myBlueprint/BoxBase'
+[2017.02.28-15.50.32:646][702]LogLinker:Warning: Can't find file for asset '/Game/myBlueprint/BoxBase' while loading F:/FightWithBlock/FightWithBlock/Content/myBlueprint/MyGameMode.uasset.
+[2017.02.28-15.50.32:646][702]LoadErrors:Error: Error /Game/myBlueprint/MyGameMode : Can't find file for asset. /Game/myBlueprint/BoxBase
+[2017.02.28-15.50.32:650][702]LogLinker:Warning: Can't find file '/Game/myBlueprint/BoxBase'
+[2017.02.28-15.50.32:650][702]LogLinker:Warning: Can't find file for asset '/Game/myBlueprint/BoxBase' while loading F:/FightWithBlock/FightWithBlock/Content/myBlueprint/MyGameMode.uasset.
+[2017.02.28-15.50.32:652][702]LogLinker:Warning: Can't find file '/Game/myBlueprint/BoxBase'
+[2017.02.28-15.50.32:652][702]LogLinker:Warning: Can't find file for asset '/Game/myBlueprint/BoxBase' while loading NULL.
+[2017.02.28-15.50.32:652][702]LogLinker:Warning: Can't find file '/Game/myBlueprint/BoxBase'
+[2017.02.28-15.50.32:652][702]LogLinker:Warning: Can't find file for asset '/Game/myBlueprint/BoxBase' while loading NULL.
+[2017.02.28-15.50.32:656][702]LogLinker:Warning: Can't find file '/Game/myBlueprint/BoxBase'
+[2017.02.28-15.50.32:656][702]LoadErrors: Info Failed to load /Game/myBlueprint/BoxBase.BoxBase_C Referenced by K2Node_SpawnActorFromClass_0
+[2017.02.28-15.50.32:656][702]LogLinker:Warning: Can't find file for asset '/Game/myBlueprint/BoxBase' while loading NULL.
+[2017.02.28-15.50.32:657][702]LogLinker:Warning: Can't find file '/Game/myBlueprint/BoxBase'
+[2017.02.28-15.50.32:657][702]LogLinker:Warning: Can't find file for asset '/Game/myBlueprint/BoxBase' while loading NULL.
+[2017.02.28-15.50.32:730][702]LogBlueprint:Error: [Compiler MyGameMode] Error Spawn node  SpawnActor NONE  must have a  Class  specified.
+[2017.02.28-15.50.32:735][702]LogBlueprint:Warning: [Compiler MyGameMode] Warning [0042.97] Compile of MyGameMode failed. 1 Fatal Issue(s) 0 Warning(s) [in 68 ms] (/Game/myBlueprint/MyGameMode.MyGameMode)
+[2017.02.28-15.50.32:735][702]LogBlueprint:Warning: [Compiler MyGameMode] Warning [0042.97] Compile of MyGameMode failed. 1 Fatal Issue(s) 1 Warning(s) [in 0 ms] (/Game/myBlueprint/MyGameMode.MyGameMode)
+[2017.02.28-15.50.32:735][702]LogBlueprint:Warning: [Compiler MyGameMode] Warning [0042.97] Compile of MyGameMode failed. 1 Fatal Issue(s) 2 Warning(s) [in 0 ms] (/Game/myBlueprint/MyGameMode.MyGameMode)
+[2017.02.28-15.50.33:212][702]LogContentBrowser: Native class hierarchy updated for 'BlueprintGraph' in 0.0014 seconds. Added 112 classes and 0 folders.
+[2017.02.28-15.50.33:912][702]LogSlate: Took 0.020115 seconds to synchronously load lazily loaded font '../../../Engine/Content/Editor/Slate/Fonts/Roboto-BoldCondensed.ttf' (158K)
+[2017.02.28-15.51.21:860][320]LogSlate:Warning: Prevented a slow task dialog from being summoned while a context menu was open
+[2017.02.28-15.51.24:610][466]BlueprintLog: New page: Compile MyGameMode
+[2017.02.28-15.51.29:583][736]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/myBlueprint/MyGameMode" FILE="F:/FightWithBlock/FightWithBlock/Content/myBlueprint/MyGameMode.uasset" SILENT=true
+[2017.02.28-15.51.29:636][736]LogSavePackage: Save=35.93ms
+[2017.02.28-15.51.29:636][736]LogSavePackage: Moving 'F:/FightWithBlock/FightWithBlock/Saved/MyGameModeA0817CB642996F2FE030349934043CC8.tmp' to 'F:/FightWithBlock/FightWithBlock/Content/myBlueprint/MyGameMode.uasset'
+[2017.02.28-15.51.29:642][736]LogSavePackage:Display: Finished SavePackage F:/FightWithBlock/FightWithBlock/Content/myBlueprint/MyGameMode.uasset
+[2017.02.28-15.51.39:116][276]LogRenderer: Reallocating scene render targets to support 1144x924 NumSamples 1 (Frame:3320).
+[2017.02.28-15.51.42:658][479]LogSlate: Took 0.000191 seconds to synchronously load lazily loaded font '../../../Engine/Content/Editor/Slate/Fonts/Roboto-Italic.ttf' (157K)
+[2017.02.28-15.52.02:402][633]LogSlate: Took 0.000213 seconds to synchronously load lazily loaded font '../../../Engine/Content/Editor/Slate/Fonts/Roboto-BoldCondensedItalic.ttf' (160K)
+[2017.02.28-15.52.07:461][927]BlueprintLog: New page: Compile BoxBase
+[2017.02.28-15.53.19:047][112]BlueprintLog: New page: Compile BoxBase
+[2017.02.28-15.53.46:733][695]BlueprintLog: New page: Compile MyGameMode
+[2017.02.28-15.54.27:618][ 69]LogEditorTransaction: Undo Move Node
+[2017.02.28-15.54.28:625][118]LogEditorTransaction: Undo Create Reroute Node
+[2017.02.28-15.55.06:063][287]BlueprintLog: New page: Compile MyGameMode
+[2017.02.28-15.55.11:932][617]BlueprintLog: New page: Compile MyGameMode
+[2017.02.28-15.55.12:511][639]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/myBlueprint/MyGameMode" FILE="F:/FightWithBlock/FightWithBlock/Content/myBlueprint/MyGameMode.uasset" SILENT=true
+[2017.02.28-15.55.12:973][639]LogSavePackage: Save=73.92ms
+[2017.02.28-15.55.12:973][639]LogSavePackage: Moving 'F:/FightWithBlock/FightWithBlock/Saved/MyGameMode72ABF5804CC33A11B1C73781E3F9A340.tmp' to 'F:/FightWithBlock/FightWithBlock/Content/myBlueprint/MyGameMode.uasset'
+[2017.02.28-15.55.12:979][639]LogSavePackage:Display: Finished SavePackage F:/FightWithBlock/FightWithBlock/Content/myBlueprint/MyGameMode.uasset
+[2017.02.28-15.55.53:078][ 14]BlueprintLog: New page: Compile MyGameMode
+[2017.02.28-15.56.02:698][566]BlueprintLog: New page: Compile MyGameMode
+[2017.02.28-15.56.47:996][187]BlueprintLog: New page: Compile MyGameMode
+[2017.02.28-15.56.49:033][239]LogTemp: Repeting last play command: New Editor Window (PIE)
+[2017.02.28-15.56.49:481][239]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2017.02.28-15.56.49:482][239]PIE: New page: PIE session: Untitled_1 (Mar 1, 2017, 7:56:49 AM)
+[2017.02.28-15.56.49:482][239]LogPlayLevel: Creating play world package: /Temp/UEDPIE_0_Untitled_1
+[2017.02.28-15.56.49:489][239]LogPlayLevel: PIE: StaticDuplicateObject took: (0.006873s)
+[2017.02.28-15.56.49:492][239]LogAIModule: Creating AISystem for world Untitled_1
+[2017.02.28-15.56.49:492][239]LogPlayLevel: PIE: World Init took: (0.003302s)
+[2017.02.28-15.56.49:493][239]LogPlayLevel: PIE: Created PIE world by copying editor world from /Temp/Untitled_1.Untitled_1 to /Temp/UEDPIE_0_Untitled_1.Untitled_1 (0.010720s)
+[2017.02.28-15.56.49:541][239]LogInit: XAudio2 using '扬声器 (Conexant SmartAudio HD)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2017.02.28-15.56.49:559][239]LogInit: FAudioDevice initialized.
+[2017.02.28-15.56.49:628][239]LogLoad: Game class is 'MyGameMode_C'
+[2017.02.28-15.56.49:631][239]LogWorld: Bringing World /Temp/UEDPIE_0_Untitled_1.Untitled_1 up for play (max tick rate 60) at 2017.02.28-23.56.49
+[2017.02.28-15.56.49:632][239]LogWorld: Bringing up level for play took: 0.002265
+[2017.02.28-15.56.49:707][239]LogContentBrowser: Native class hierarchy updated for 'MovieSceneCapture' in 0.0035 seconds. Added 11 classes and 0 folders.
+[2017.02.28-15.56.49:709][239]LogBlueprintUserMessages: [MyGameMode_C_0] this is MyGameMode!
+[2017.02.28-15.56.49:709][239]LogBlueprintUserMessages: [MyGameMode_C_0] 2
+[2017.02.28-15.56.49:709][239]LogBlueprintUserMessages: [MyGameMode_C_0] 3
+[2017.02.28-15.56.49:715][239]PIE: Info Play in editor start time for /Temp/UEDPIE_0_Untitled_1 -0.719
+[2017.02.28-15.56.49:767][239]LogRenderer: Reallocating scene render targets to support 1292x924 NumSamples 1 (Frame:13425).
+[2017.02.28-15.56.54:633][506]BlueprintLog: New page: Compile MyGameMode
+[2017.02.28-15.58.25:400][873]BlueprintLog: New page: Compile MyGameMode
+[2017.02.28-15.59.02:736][ 46]LogSlate: Took 0.000253 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Light.ttf' (159K)
+[2017.02.28-15.59.54:347][ 37]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/myBlueprint/BoxBase" FILE="F:/FightWithBlock/FightWithBlock/Content/myBlueprint/BoxBase.uasset" SILENT=true
+[2017.02.28-15.59.54:790][ 37]LogSavePackage: Save=33.78ms
+[2017.02.28-15.59.54:790][ 37]LogSavePackage: Moving 'F:/FightWithBlock/FightWithBlock/Saved/BoxBaseB8431F0C48214BD7D07EBCB693F266DB.tmp' to 'F:/FightWithBlock/FightWithBlock/Content/myBlueprint/BoxBase.uasset'
+[2017.02.28-15.59.54:795][ 37]LogSavePackage:Display: Finished SavePackage F:/FightWithBlock/FightWithBlock/Content/myBlueprint/BoxBase.uasset
+[2017.02.28-15.59.54:807][ 37]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/myBlueprint/DataTables/D_Boxes" FILE="F:/FightWithBlock/FightWithBlock/Content/myBlueprint/DataTables/D_Boxes.uasset" SILENT=true
+[2017.02.28-15.59.54:845][ 37]LogSavePackage: Save=2.98ms
+[2017.02.28-15.59.54:845][ 37]LogSavePackage: Moving 'F:/FightWithBlock/FightWithBlock/Saved/D_Boxes803D24D848CA3CB2AA43F29BFE6A2FB0.tmp' to 'F:/FightWithBlock/FightWithBlock/Content/myBlueprint/DataTables/D_Boxes.uasset'
+[2017.02.28-15.59.54:851][ 37]LogSavePackage:Display: Finished SavePackage F:/FightWithBlock/FightWithBlock/Content/myBlueprint/DataTables/D_Boxes.uasset
+[2017.02.28-15.59.54:865][ 37]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/myBlueprint/MyGameMode" FILE="F:/FightWithBlock/FightWithBlock/Content/myBlueprint/MyGameMode.uasset" SILENT=true
+[2017.02.28-15.59.54:977][ 37]LogSavePackage: Save=62.59ms
+[2017.02.28-15.59.54:977][ 37]LogSavePackage: Moving 'F:/FightWithBlock/FightWithBlock/Saved/MyGameMode2515994344346C72E60E869CE8E4F27D.tmp' to 'F:/FightWithBlock/FightWithBlock/Content/myBlueprint/MyGameMode.uasset'
+[2017.02.28-15.59.54:982][ 37]LogSavePackage:Display: Finished SavePackage F:/FightWithBlock/FightWithBlock/Content/myBlueprint/MyGameMode.uasset
+[2017.02.28-16.00.22:501][612]LogActor:Warning: VREditorButton /Engine/Transient.World_3:PersistentLevel.VREditorButton_0 has natively added scene component(s), but none of them were set as the actor's RootComponent - picking one arbitrarily
+[2017.02.28-16.00.35:331][302]LogSlate: Only BGRA pngs, bmps or icos are supported in by External Image Picker
+[2017.02.28-16.00.35:490][306]LogTemp:Display: Executing iPhonePackager certificates Engine -bundlename com.YourCompany.FightWithBlock
+
+[2017.02.28-16.00.35:490][306]LogTemp:Display: CWD: D:\Program Files (x86)\Epic Games\UE_4.15\Engine\Binaries\DotNET\IOS
+
+[2017.02.28-16.00.35:490][306]LogTemp:Display: Initial Dir: D:\Program Files (x86)\Epic Games\UE_4.15
+
+[2017.02.28-16.00.35:490][306]LogTemp:Display: Env CWD: D:\Program Files (x86)\Epic Games\UE_4.15\Engine\Binaries\DotNET\IOS
+
+[2017.02.28-16.00.35:506][307]LogTemp:Display: BranchPath = WIN-01609080925/D/Program Files (x86)/Epic Games/UE_4.15/Engine/Binaries --- GameBranchPath = WIN-01609080925/D/Program Files (x86)/Epic Games/UE_4.15/Engine/Binaries
+
+[2017.02.28-16.00.35:537][309]LogTemp:Display: IPP ERROR: Application exception: System.IO.DirectoryNotFoundException: δ???ҵ?·????C:\Users\Administrator\AppData\Local\Apple Computer\MobileDevice\Provisioning Profiles????һ???֡?
+
+[2017.02.28-16.00.35:537][309]LogTemp:Display:    ?? System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+
+[2017.02.28-16.00.35:537][309]LogTemp:Display:    ?? System.IO.FileSystemEnumerableIterator`1.CommonInit()
+
+[2017.02.28-16.00.35:537][309]LogTemp:Display:    ?? System.IO.Directory.EnumerateFiles(String path, String searchPattern)
+
+[2017.02.28-16.00.35:537][309]LogTemp:Display:    ?? iPhonePackager.CodeSignatureBuilder.FindProvisions(String CFBundleIdentifier)
+
+[2017.02.28-16.00.35:537][309]LogTemp:Display:    ?? iPhonePackager.Program.Main(String[] args)
+
+[2017.02.28-16.00.41:149][545]LogSlate: Took 0.072983 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/DroidSansFallback.ttf' (3848K)
+[2017.02.28-16.00.41:243][545]LogSlate: Took 0.087567 seconds to synchronously load lazily loaded font '../../../Engine/Content/SlateDebug/Fonts/LastResort.ttf' (5269K)
+[2017.02.28-16.00.45:283][764]LogTextLocalizationManager:Warning: Loaded localization resources contain conflicting entries for (Namespace:UObjectToolTips, Key:AnimNode_AssetPlayerBase:InternalTimeAccumulator):
+Localization Resource: (D:/Program Files (x86)/Epic Games/UE_4.15/Engine/Content/Localization/EditorTutorials/zh-CN/EditorTutorials.locres) Source String Hash: (502993589) Localized String: (用于引用此节点中的资源的累积时间)
+Localization Resource: (D:/Program Files (x86)/Epic Games/UE_4.15/Engine/Content/Localization/Engine/zh-CN/Engine.locres) Source String Hash: (502993589) Localized String: (引用该节点中资源所用的累计时间)
+[2017.02.28-16.00.45:283][764]LogTextLocalizationManager:Warning: Loaded localization resources contain conflicting entries for (Namespace:UObjectToolTips, Key:AnimNode_AssetPlayerBase:bIgnoreForRelevancyTest):
+Localization Resource: (D:/Program Files (x86)/Epic Games/UE_4.15/Engine/Content/Localization/EditorTutorials/zh-CN/EditorTutorials.locres) Source String Hash: (319969718) Localized String: (若为真，在状态中寻找最高权重动画的“相关动画”节点将忽视 此节点)
+Localization Resource: (D:/Program Files (x86)/Epic Games/UE_4.15/Engine/Content/Localization/Engine/zh-CN/Engine.locres) Source String Hash: (319969718) Localized String: (如果为真，那么将会忽略查找最高权重动画的"相关动画"节点。
+这个节点)
+[2017.02.28-16.00.45:283][764]LogTextLocalizationManager:Warning: Loaded localization resources contain conflicting entries for (Namespace:UObjectToolTips, Key:AnimNode_AssetPlayerBase:BlendWeight):
+Localization Resource: (D:/Program Files (x86)/Epic Games/UE_4.15/Engine/Content/Localization/EditorTutorials/zh-CN/EditorTutorials.locres) Source String Hash: (-1232800293) Localized String: (此节点最后交会的混合权重)
+Localization Resource: (D:/Program Files (x86)/Epic Games/UE_4.15/Engine/Content/Localization/Engine/zh-CN/Engine.locres) Source String Hash: (-1232800293) Localized String: (该节点上一次遇到的混合权重)
+[2017.02.28-16.00.45:581][765]LogSlate: Took 0.000218 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Regular.ttf' (155K)
+[2017.02.28-16.00.45:588][765]LogSlate: Took 0.002516 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/DroidSansFallback.ttf' (3848K)
+[2017.02.28-16.00.45:591][765]LogSlate: Took 0.000170 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Bold.ttf' (160K)
+[2017.02.28-16.00.45:597][765]LogSlate: Took 0.000207 seconds to synchronously load lazily loaded font '../../../Engine/Content/Editor/Slate/Fonts/FontAwesome.ttf' (139K)
+[2017.02.28-16.00.45:600][765]LogSlate: Took 0.000166 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Light.ttf' (159K)
+[2017.02.28-16.01.13:719][400]LogActorFactory: Actor Factory created SM_Cube_02
+[2017.02.28-16.01.13:966][414]LogActorFactory: Actor Factory created SM_Cube_02
+[2017.02.28-16.01.16:713][573]LogSlate: Took 0.000204 seconds to synchronously load lazily loaded font '../../../Engine/Content/Editor/Slate/Fonts/Roboto-Italic.ttf' (157K)
+[2017.02.28-16.01.26:305][ 88]LogEditorViewport: Clicking on Actor (LMB): StaticMeshActor (SM_Cube_02)
+[2017.02.28-16.01.26:656][108]Cmd: DELETE
+[2017.02.28-16.01.26:656][108]Cmd: ACTOR DELETE
+[2017.02.28-16.01.26:657][108]LogEditorActor: Deleted Actor: StaticMeshActor
+[2017.02.28-16.01.26:696][108]LogEditorActor: Deleted 1 Actors (0.040 secs)
+[2017.02.28-16.01.30:258][300]LogSlate: Took 0.000207 seconds to synchronously load lazily loaded font '../../../Engine/Content/Editor/Slate/Fonts/Roboto-BoldCondensed.ttf' (158K)
+[2017.02.28-16.01.44:011][107]BlueprintLog: New page: 编译BoxBase
+[2017.02.28-16.02.10:163][527]LogSlate: Took 0.000180 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Light.ttf' (159K)
+[2017.02.28-16.02.10:180][527]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/myBlueprint/DataTables/D_Boxes" FILE="F:/FightWithBlock/FightWithBlock/Content/myBlueprint/DataTables/D_Boxes.uasset" SILENT=true
+[2017.02.28-16.02.10:596][527]LogSavePackage: Save=4.49ms
+[2017.02.28-16.02.10:596][527]LogSavePackage: Moving 'F:/FightWithBlock/FightWithBlock/Saved/D_BoxesAEA4E556450309EDDA3120B26799E469.tmp' to 'F:/FightWithBlock/FightWithBlock/Content/myBlueprint/DataTables/D_Boxes.uasset'
+[2017.02.28-16.02.10:606][527]LogSavePackage:Display: Finished SavePackage F:/FightWithBlock/FightWithBlock/Content/myBlueprint/DataTables/D_Boxes.uasset
+[2017.02.28-16.02.46:217][544]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/myMap/Test" FILE="F:/FightWithBlock/FightWithBlock/Content/myMap/Test.umap" SILENT=true AUTOSAVING=false KEEPDIRTY=false
+[2017.02.28-16.02.46:538][544]LogSavePackage: Save=54.54ms
+[2017.02.28-16.02.46:539][544]LogSavePackage: Moving 'F:/FightWithBlock/FightWithBlock/Saved/Test2E6B01A044D0DD89A1773E9903C1C39F.tmp' to 'F:/FightWithBlock/FightWithBlock/Content/myMap/Test.umap'
+[2017.02.28-16.02.46:545][544]LogSavePackage:Display: Finished SavePackage F:/FightWithBlock/FightWithBlock/Content/myMap/Test.umap
+[2017.02.28-16.02.46:631][544]LogSlate: Took 0.000194 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Regular.ttf' (155K)
+[2017.02.28-16.02.46:632][544]LogFileHelpers: Saving map 'Test' took 1.500
+[2017.02.28-16.03.22:412][605]BlueprintLog: New page: 编译MyGameMode
+[2017.02.28-16.03.23:562][664]LogTemp: Repeting last play command: 新建编辑器窗口（在编辑器中运行）
+[2017.02.28-16.03.23:578][664]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2017.02.28-16.03.23:578][664]PIE: New page: PIE会话: Test (2017年3月1日 上午8:03:23)
+[2017.02.28-16.03.23:578][664]LogPlayLevel: Creating play world package: /Game/myMap/UEDPIE_0_Test
+[2017.02.28-16.03.23:580][664]LogPlayLevel: PIE: StaticDuplicateObject took: (0.002047s)
+[2017.02.28-16.03.23:581][664]LogAIModule: Creating AISystem for world Test
+[2017.02.28-16.03.23:582][664]LogPlayLevel: PIE: World Init took: (0.001178s)
+[2017.02.28-16.03.23:582][664]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/myMap/Test.Test to /Game/myMap/UEDPIE_0_Test.Test (0.003479s)
+[2017.02.28-16.03.23:623][664]LogInit: XAudio2 using '扬声器 (Conexant SmartAudio HD)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2017.02.28-16.03.23:642][664]LogInit: FAudioDevice initialized.
+[2017.02.28-16.03.23:695][664]LogLoad: Game class is 'MyGameMode_C'
+[2017.02.28-16.03.23:697][664]LogWorld: Bringing World /Game/myMap/UEDPIE_0_Test.Test up for play (max tick rate 60) at 2017.03.01-00.03.23
+[2017.02.28-16.03.23:697][664]LogWorld: Bringing up level for play took: 0.001404
+[2017.02.28-16.03.23:698][664]LogBlueprintUserMessages: [MyGameMode_C_0] this is MyGameMode!
+[2017.02.28-16.03.23:735][664]PIE: 信息 /Game/myMap/UEDPIE_0_Test的‘在编辑器中播放’的起始时间-0.7
+[2017.02.28-16.03.42:033][650]BlueprintLog: New page: 编译MyGameMode
+[2017.02.28-16.03.47:365][956]BlueprintLog: New page: 编译MyGameMode
+[2017.02.28-16.03.48:298][  0]LogTemp: Repeting last play command: 新建编辑器窗口（在编辑器中运行）
+[2017.02.28-16.03.48:313][  0]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2017.02.28-16.03.48:313][  0]PIE: New page: PIE会话: Test (2017年3月1日 上午8:03:48)
+[2017.02.28-16.03.48:313][  0]LogPlayLevel: Creating play world package: /Game/myMap/UEDPIE_0_Test
+[2017.02.28-16.03.48:315][  0]LogPlayLevel: PIE: StaticDuplicateObject took: (0.001755s)
+[2017.02.28-16.03.48:316][  0]LogAIModule: Creating AISystem for world Test
+[2017.02.28-16.03.48:316][  0]LogPlayLevel: PIE: World Init took: (0.001290s)
+[2017.02.28-16.03.48:317][  0]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/myMap/Test.Test to /Game/myMap/UEDPIE_0_Test.Test (0.003331s)
+[2017.02.28-16.03.48:356][  0]LogInit: XAudio2 using '扬声器 (Conexant SmartAudio HD)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2017.02.28-16.03.48:375][  0]LogInit: FAudioDevice initialized.
+[2017.02.28-16.03.48:431][  0]LogLoad: Game class is 'MyGameMode_C'
+[2017.02.28-16.03.48:432][  0]LogWorld: Bringing World /Game/myMap/UEDPIE_0_Test.Test up for play (max tick rate 60) at 2017.03.01-00.03.48
+[2017.02.28-16.03.48:433][  0]LogWorld: Bringing up level for play took: 0.001125
+[2017.02.28-16.03.48:434][  0]LogBlueprintUserMessages: [MyGameMode_C_0] this is MyGameMode!
+[2017.02.28-16.03.48:475][  0]PIE: 信息 /Game/myMap/UEDPIE_0_Test的‘在编辑器中播放’的起始时间0.041
+[2017.02.28-16.03.58:249][547]BlueprintLog: New page: 编译MyGameMode
+[2017.02.28-16.03.59:050][584]LogTemp: Repeting last play command: 新建编辑器窗口（在编辑器中运行）
+[2017.02.28-16.03.59:065][584]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2017.02.28-16.03.59:065][584]PIE: New page: PIE会话: Test (2017年3月1日 上午8:03:59)
+[2017.02.28-16.03.59:066][584]LogPlayLevel: Creating play world package: /Game/myMap/UEDPIE_0_Test
+[2017.02.28-16.03.59:068][584]LogPlayLevel: PIE: StaticDuplicateObject took: (0.002018s)
+[2017.02.28-16.03.59:069][584]LogAIModule: Creating AISystem for world Test
+[2017.02.28-16.03.59:069][584]LogPlayLevel: PIE: World Init took: (0.001454s)
+[2017.02.28-16.03.59:069][584]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/myMap/Test.Test to /Game/myMap/UEDPIE_0_Test.Test (0.003712s)
+[2017.02.28-16.03.59:112][584]LogInit: XAudio2 using '扬声器 (Conexant SmartAudio HD)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2017.02.28-16.03.59:130][584]LogInit: FAudioDevice initialized.
+[2017.02.28-16.03.59:190][584]LogLoad: Game class is 'MyGameMode_C'
+[2017.02.28-16.03.59:193][584]LogWorld: Bringing World /Game/myMap/UEDPIE_0_Test.Test up for play (max tick rate 60) at 2017.03.01-00.03.59
+[2017.02.28-16.03.59:193][584]LogWorld: Bringing up level for play took: 0.001743
+[2017.02.28-16.03.59:195][584]LogBlueprintUserMessages: [MyGameMode_C_0] this is MyGameMode!
+[2017.02.28-16.04.01:293][584]PIE: 信息 /Game/myMap/UEDPIE_0_Test的‘在编辑器中播放’的起始时间2.859
+[2017.02.28-16.04.39:081][648]LogTemp: Repeting last play command: 新建编辑器窗口（在编辑器中运行）
+[2017.02.28-16.04.39:096][648]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2017.02.28-16.04.39:096][648]PIE: New page: PIE会话: Test (2017年3月1日 上午8:04:39)
+[2017.02.28-16.04.39:096][648]LogPlayLevel: Creating play world package: /Game/myMap/UEDPIE_0_Test
+[2017.02.28-16.04.39:098][648]LogPlayLevel: PIE: StaticDuplicateObject took: (0.001678s)
+[2017.02.28-16.04.39:099][648]LogAIModule: Creating AISystem for world Test
+[2017.02.28-16.04.39:099][648]LogPlayLevel: PIE: World Init took: (0.001155s)
+[2017.02.28-16.04.39:099][648]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/myMap/Test.Test to /Game/myMap/UEDPIE_0_Test.Test (0.003090s)
+[2017.02.28-16.04.39:142][648]LogInit: XAudio2 using '扬声器 (Conexant SmartAudio HD)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2017.02.28-16.04.39:161][648]LogInit: FAudioDevice initialized.
+[2017.02.28-16.04.39:216][648]LogLoad: Game class is 'MyGameMode_C'
+[2017.02.28-16.04.39:218][648]LogWorld: Bringing World /Game/myMap/UEDPIE_0_Test.Test up for play (max tick rate 60) at 2017.03.01-00.04.39
+[2017.02.28-16.04.39:218][648]LogWorld: Bringing up level for play took: 0.001132
+[2017.02.28-16.04.39:219][648]LogBlueprintUserMessages: [MyGameMode_C_0] this is MyGameMode!
+[2017.02.28-16.04.41:278][648]PIE: 信息 /Game/myMap/UEDPIE_0_Test的‘在编辑器中播放’的起始时间2.844
+[2017.02.28-16.05.37:901][ 23]BlueprintLog: New page: 编译MyGameMode
+[2017.02.28-16.05.41:981][251]BlueprintLog: New page: 编译MyGameMode
+[2017.02.28-16.05.42:841][289]LogTemp: Repeting last play command: 新建编辑器窗口（在编辑器中运行）
+[2017.02.28-16.05.43:226][289]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2017.02.28-16.05.43:226][289]PIE: New page: PIE会话: Test (2017年3月1日 上午8:05:43)
+[2017.02.28-16.05.43:226][289]LogPlayLevel: Creating play world package: /Game/myMap/UEDPIE_0_Test
+[2017.02.28-16.05.43:228][289]LogPlayLevel: PIE: StaticDuplicateObject took: (0.001929s)
+[2017.02.28-16.05.43:230][289]LogAIModule: Creating AISystem for world Test
+[2017.02.28-16.05.43:230][289]LogPlayLevel: PIE: World Init took: (0.001420s)
+[2017.02.28-16.05.43:230][289]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/myMap/Test.Test to /Game/myMap/UEDPIE_0_Test.Test (0.003645s)
+[2017.02.28-16.05.43:284][289]LogInit: XAudio2 using '扬声器 (Conexant SmartAudio HD)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2017.02.28-16.05.43:312][289]LogInit: FAudioDevice initialized.
+[2017.02.28-16.05.43:378][289]LogLoad: Game class is 'MyGameMode_C'
+[2017.02.28-16.05.43:380][289]LogWorld: Bringing World /Game/myMap/UEDPIE_0_Test.Test up for play (max tick rate 60) at 2017.03.01-00.05.43
+[2017.02.28-16.05.43:380][289]LogWorld: Bringing up level for play took: 0.001414
+[2017.02.28-16.05.43:382][289]LogBlueprintUserMessages: [MyGameMode_C_0] this is MyGameMode!
+[2017.02.28-16.05.44:002][289]PIE: 信息 /Game/myMap/UEDPIE_0_Test的‘在编辑器中播放’的起始时间1.567
+[2017.02.28-16.06.54:150][188]BlueprintLog: New page: 编译MyGameMode
+[2017.02.28-16.06.59:392][487]LogTemp: Repeting last play command: 新建编辑器窗口（在编辑器中运行）
+[2017.02.28-16.06.59:408][487]BlueprintLog: New page: 运行前自动重新编译
+[2017.02.28-16.06.59:408][487]LogPlayLevel: [PlayLevel] Compiling MyGameMode before play...
+[2017.02.28-16.06.59:555][487]LogPlayLevel: PlayLevel: Blueprint regeneration took 146 ms (1 blueprints)
+[2017.02.28-16.06.59:555][487]PIE: New page: PIE会话: Test (2017年3月1日 上午8:06:59)
+[2017.02.28-16.06.59:555][487]LogPlayLevel: Creating play world package: /Game/myMap/UEDPIE_0_Test
+[2017.02.28-16.06.59:558][487]LogPlayLevel: PIE: StaticDuplicateObject took: (0.002847s)
+[2017.02.28-16.06.59:559][487]LogAIModule: Creating AISystem for world Test
+[2017.02.28-16.06.59:559][487]LogPlayLevel: PIE: World Init took: (0.001508s)
+[2017.02.28-16.06.59:560][487]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/myMap/Test.Test to /Game/myMap/UEDPIE_0_Test.Test (0.004678s)
+[2017.02.28-16.06.59:598][487]LogInit: XAudio2 using '扬声器 (Conexant SmartAudio HD)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2017.02.28-16.06.59:618][487]LogInit: FAudioDevice initialized.
+[2017.02.28-16.06.59:675][487]LogLoad: Game class is 'MyGameMode_C'
+[2017.02.28-16.06.59:677][487]LogWorld: Bringing World /Game/myMap/UEDPIE_0_Test.Test up for play (max tick rate 60) at 2017.03.01-00.06.59
+[2017.02.28-16.06.59:677][487]LogWorld: Bringing up level for play took: 0.001557
+[2017.02.28-16.06.59:679][487]LogBlueprintUserMessages: [MyGameMode_C_0] this is MyGameMode!
+[2017.02.28-16.07.00:951][487]PIE: 信息 /Game/myMap/UEDPIE_0_Test的‘在编辑器中播放’的起始时间2.516
+[2017.02.28-16.07.28:319][359]LogTemp: Repeting last play command: 新建编辑器窗口（在编辑器中运行）
+[2017.02.28-16.07.28:334][359]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2017.02.28-16.07.28:334][359]PIE: New page: PIE会话: Test (2017年3月1日 上午8:07:28)
+[2017.02.28-16.07.28:334][359]LogPlayLevel: Creating play world package: /Game/myMap/UEDPIE_0_Test
+[2017.02.28-16.07.28:336][359]LogPlayLevel: PIE: StaticDuplicateObject took: (0.001814s)
+[2017.02.28-16.07.28:337][359]LogAIModule: Creating AISystem for world Test
+[2017.02.28-16.07.28:339][359]LogPlayLevel: PIE: World Init took: (0.002939s)
+[2017.02.28-16.07.28:340][359]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/myMap/Test.Test to /Game/myMap/UEDPIE_0_Test.Test (0.005594s)
+[2017.02.28-16.07.28:383][359]LogInit: XAudio2 using '扬声器 (Conexant SmartAudio HD)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2017.02.28-16.07.28:402][359]LogInit: FAudioDevice initialized.
+[2017.02.28-16.07.28:462][359]LogLoad: Game class is 'MyGameMode_C'
+[2017.02.28-16.07.28:464][359]LogWorld: Bringing World /Game/myMap/UEDPIE_0_Test.Test up for play (max tick rate 60) at 2017.03.01-00.07.28
+[2017.02.28-16.07.28:464][359]LogWorld: Bringing up level for play took: 0.001246
+[2017.02.28-16.07.28:465][359]LogBlueprintUserMessages: [MyGameMode_C_0] this is MyGameMode!
+[2017.02.28-16.07.29:630][359]PIE: 信息 /Game/myMap/UEDPIE_0_Test的‘在编辑器中播放’的起始时间1.195
+[2017.02.28-16.07.54:634][ 11]BlueprintLog: New page: 编译MyGameMode
+[2017.02.28-16.08.26:831][883]BlueprintLog: New page: 编译BoxBase
+[2017.02.28-16.08.27:749][923]LogTemp: Repeting last play command: 新建编辑器窗口（在编辑器中运行）
+[2017.02.28-16.08.27:763][923]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2017.02.28-16.08.27:763][923]PIE: New page: PIE会话: Test (2017年3月1日 上午8:08:27)
+[2017.02.28-16.08.27:764][923]LogPlayLevel: Creating play world package: /Game/myMap/UEDPIE_0_Test
+[2017.02.28-16.08.27:766][923]LogPlayLevel: PIE: StaticDuplicateObject took: (0.002003s)
+[2017.02.28-16.08.27:767][923]LogAIModule: Creating AISystem for world Test
+[2017.02.28-16.08.27:767][923]LogPlayLevel: PIE: World Init took: (0.001323s)
+[2017.02.28-16.08.27:767][923]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/myMap/Test.Test to /Game/myMap/UEDPIE_0_Test.Test (0.003614s)
+[2017.02.28-16.08.27:811][923]LogInit: XAudio2 using '扬声器 (Conexant SmartAudio HD)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2017.02.28-16.08.27:830][923]LogInit: FAudioDevice initialized.
+[2017.02.28-16.08.27:883][923]LogLoad: Game class is 'MyGameMode_C'
+[2017.02.28-16.08.27:885][923]LogWorld: Bringing World /Game/myMap/UEDPIE_0_Test.Test up for play (max tick rate 60) at 2017.03.01-00.08.27
+[2017.02.28-16.08.27:885][923]LogWorld: Bringing up level for play took: 0.001441
+[2017.02.28-16.08.27:887][923]LogBlueprintUserMessages: [MyGameMode_C_0] this is MyGameMode!
+[2017.02.28-16.08.28:062][923]PIE: 信息 /Game/myMap/UEDPIE_0_Test的‘在编辑器中播放’的起始时间-0.373
+[2017.02.28-16.08.47:174][911]LogEditorViewport: Clicking on Actor (LMB): StaticMeshActor (Floor)
+[2017.02.28-16.08.54:282][314]LogTemp: Repeting last play command: 新建编辑器窗口（在编辑器中运行）
+[2017.02.28-16.08.54:297][314]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2017.02.28-16.08.54:297][314]PIE: New page: PIE会话: Test (2017年3月1日 上午8:08:54)
+[2017.02.28-16.08.54:297][314]LogPlayLevel: Creating play world package: /Game/myMap/UEDPIE_0_Test
+[2017.02.28-16.08.54:299][314]LogPlayLevel: PIE: StaticDuplicateObject took: (0.001816s)
+[2017.02.28-16.08.54:300][314]LogAIModule: Creating AISystem for world Test
+[2017.02.28-16.08.54:301][314]LogPlayLevel: PIE: World Init took: (0.001323s)
+[2017.02.28-16.08.54:301][314]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/myMap/Test.Test to /Game/myMap/UEDPIE_0_Test.Test (0.003368s)
+[2017.02.28-16.08.54:344][314]LogInit: XAudio2 using '扬声器 (Conexant SmartAudio HD)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2017.02.28-16.08.54:362][314]LogInit: FAudioDevice initialized.
+[2017.02.28-16.08.54:419][314]LogLoad: Game class is 'MyGameMode_C'
+[2017.02.28-16.08.54:422][314]LogWorld: Bringing World /Game/myMap/UEDPIE_0_Test.Test up for play (max tick rate 60) at 2017.03.01-00.08.54
+[2017.02.28-16.08.54:422][314]LogWorld: Bringing up level for play took: 0.001634
+[2017.02.28-16.08.54:423][314]LogBlueprintUserMessages: [MyGameMode_C_0] this is MyGameMode!
+[2017.02.28-16.08.54:586][314]PIE: 信息 /Game/myMap/UEDPIE_0_Test的‘在编辑器中播放’的起始时间0.152
+[2017.02.28-16.12.03:246][794]LogActorFactory: Actor Factory created Cube
+[2017.02.28-16.12.03:718][821]LogActorFactory: Actor Factory created Cube
+[2017.02.28-16.12.15:744][445]LogEditorViewport: Clicking on Actor (LMB): StaticMeshActor (Cube)
+[2017.02.28-16.12.16:069][464]Cmd: DELETE
+[2017.02.28-16.12.16:069][464]Cmd: ACTOR DELETE
+[2017.02.28-16.12.16:070][464]LogEditorActor: Deleted Actor: StaticMeshActor
+[2017.02.28-16.12.16:117][464]LogEditorActor: Deleted 1 Actors (0.048 secs)
+[2017.02.28-16.12.16:952][514]LogTemp: Repeting last play command: 新建编辑器窗口（在编辑器中运行）
+[2017.02.28-16.12.16:965][514]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2017.02.28-16.12.16:965][514]PIE: New page: PIE会话: Test (2017年3月1日 上午8:12:16)
+[2017.02.28-16.12.16:965][514]LogPlayLevel: Creating play world package: /Game/myMap/UEDPIE_0_Test
+[2017.02.28-16.12.16:967][514]LogPlayLevel: PIE: StaticDuplicateObject took: (0.001986s)
+[2017.02.28-16.12.16:969][514]LogAIModule: Creating AISystem for world Test
+[2017.02.28-16.12.16:969][514]LogPlayLevel: PIE: World Init took: (0.001581s)
+[2017.02.28-16.12.16:969][514]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/myMap/Test.Test to /Game/myMap/UEDPIE_0_Test.Test (0.003917s)
+[2017.02.28-16.12.17:005][514]LogInit: XAudio2 using '扬声器 (Conexant SmartAudio HD)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2017.02.28-16.12.17:023][514]LogInit: FAudioDevice initialized.
+[2017.02.28-16.12.17:089][514]LogLoad: Game class is 'MyGameMode_C'
+[2017.02.28-16.12.17:093][514]LogWorld: Bringing World /Game/myMap/UEDPIE_0_Test.Test up for play (max tick rate 60) at 2017.03.01-00.12.17
+[2017.02.28-16.12.17:094][514]LogWorld: Bringing up level for play took: 0.002425
+[2017.02.28-16.12.17:097][514]LogBlueprintUserMessages: [MyGameMode_C_0] this is MyGameMode!
+[2017.02.28-16.12.17:348][514]PIE: 信息 /Game/myMap/UEDPIE_0_Test的‘在编辑器中播放’的起始时间0.914
+[2017.02.28-16.12.33:736][269]LogEditorViewport: Clicking on Actor (LMB): StaticMeshActor (Floor)
+[2017.02.28-16.12.46:318][894]BlueprintLog: New page: 编译MyGameMode
+[2017.02.28-16.12.47:147][924]LogTemp: Repeting last play command: 新建编辑器窗口（在编辑器中运行）
+[2017.02.28-16.12.47:163][924]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2017.02.28-16.12.47:163][924]PIE: New page: PIE会话: Test (2017年3月1日 上午8:12:47)
+[2017.02.28-16.12.47:163][924]LogPlayLevel: Creating play world package: /Game/myMap/UEDPIE_0_Test
+[2017.02.28-16.12.47:165][924]LogPlayLevel: PIE: StaticDuplicateObject took: (0.001845s)
+[2017.02.28-16.12.47:166][924]LogAIModule: Creating AISystem for world Test
+[2017.02.28-16.12.47:166][924]LogPlayLevel: PIE: World Init took: (0.001170s)
+[2017.02.28-16.12.47:167][924]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/myMap/Test.Test to /Game/myMap/UEDPIE_0_Test.Test (0.003321s)
+[2017.02.28-16.12.47:209][924]LogInit: XAudio2 using '扬声器 (Conexant SmartAudio HD)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2017.02.28-16.12.47:227][924]LogInit: FAudioDevice initialized.
+[2017.02.28-16.12.47:286][924]LogLoad: Game class is 'MyGameMode_C'
+[2017.02.28-16.12.47:291][924]LogWorld: Bringing World /Game/myMap/UEDPIE_0_Test.Test up for play (max tick rate 60) at 2017.03.01-00.12.47
+[2017.02.28-16.12.47:291][924]LogWorld: Bringing up level for play took: 0.003590
+[2017.02.28-16.12.47:293][924]LogBlueprintUserMessages: [MyGameMode_C_0] this is MyGameMode!
+[2017.02.28-16.12.50:282][924]PIE: 信息 /Game/myMap/UEDPIE_0_Test的‘在编辑器中播放’的起始时间3.847
+[2017.02.28-16.13.07:394][167]BlueprintLog: New page: 编译MyGameMode
+[2017.02.28-16.13.08:456][211]LogTemp: Repeting last play command: 新建编辑器窗口（在编辑器中运行）
+[2017.02.28-16.13.08:474][211]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2017.02.28-16.13.08:474][211]PIE: New page: PIE会话: Test (2017年3月1日 上午8:13:08)
+[2017.02.28-16.13.08:474][211]LogPlayLevel: Creating play world package: /Game/myMap/UEDPIE_0_Test
+[2017.02.28-16.13.08:476][211]LogPlayLevel: PIE: StaticDuplicateObject took: (0.002111s)
+[2017.02.28-16.13.08:477][211]LogAIModule: Creating AISystem for world Test
+[2017.02.28-16.13.08:477][211]LogPlayLevel: PIE: World Init took: (0.001403s)
+[2017.02.28-16.13.08:478][211]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/myMap/Test.Test to /Game/myMap/UEDPIE_0_Test.Test (0.003767s)
+[2017.02.28-16.13.08:517][211]LogInit: XAudio2 using '扬声器 (Conexant SmartAudio HD)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2017.02.28-16.13.08:537][211]LogInit: FAudioDevice initialized.
+[2017.02.28-16.13.08:597][211]LogLoad: Game class is 'MyGameMode_C'
+[2017.02.28-16.13.08:598][211]LogWorld: Bringing World /Game/myMap/UEDPIE_0_Test.Test up for play (max tick rate 60) at 2017.03.01-00.13.08
+[2017.02.28-16.13.08:599][211]LogWorld: Bringing up level for play took: 0.001124
+[2017.02.28-16.13.08:600][211]LogBlueprintUserMessages: [MyGameMode_C_0] this is MyGameMode!
+[2017.02.28-16.13.08:934][211]PIE: 信息 /Game/myMap/UEDPIE_0_Test的‘在编辑器中播放’的起始时间0.5
+[2017.02.28-16.13.17:080][437]BlueprintLog: New page: 编译MyGameMode
+[2017.02.28-16.13.18:278][483]LogTemp: Repeting last play command: 新建编辑器窗口（在编辑器中运行）
+[2017.02.28-16.13.18:293][483]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2017.02.28-16.13.18:294][483]PIE: New page: PIE会话: Test (2017年3月1日 上午8:13:18)
+[2017.02.28-16.13.18:294][483]LogPlayLevel: Creating play world package: /Game/myMap/UEDPIE_0_Test
+[2017.02.28-16.13.18:295][483]LogPlayLevel: PIE: StaticDuplicateObject took: (0.001645s)
+[2017.02.28-16.13.18:296][483]LogAIModule: Creating AISystem for world Test
+[2017.02.28-16.13.18:297][483]LogPlayLevel: PIE: World Init took: (0.001326s)
+[2017.02.28-16.13.18:297][483]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/myMap/Test.Test to /Game/myMap/UEDPIE_0_Test.Test (0.003184s)
+[2017.02.28-16.13.18:337][483]LogInit: XAudio2 using '扬声器 (Conexant SmartAudio HD)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2017.02.28-16.13.18:355][483]LogInit: FAudioDevice initialized.
+[2017.02.28-16.13.18:412][483]LogLoad: Game class is 'MyGameMode_C'
+[2017.02.28-16.13.18:414][483]LogWorld: Bringing World /Game/myMap/UEDPIE_0_Test.Test up for play (max tick rate 60) at 2017.03.01-00.13.18
+[2017.02.28-16.13.18:414][483]LogWorld: Bringing up level for play took: 0.001393
+[2017.02.28-16.13.18:415][483]LogBlueprintUserMessages: [MyGameMode_C_0] this is MyGameMode!
+[2017.02.28-16.13.18:610][483]PIE: 信息 /Game/myMap/UEDPIE_0_Test的‘在编辑器中播放’的起始时间0.176
+[2017.02.28-16.16.08:097][611]BlueprintLog: New page: 编译MyGameMode
+[2017.02.28-16.16.09:897][696]LogTemp: Repeting last play command: 新建编辑器窗口（在编辑器中运行）
+[2017.02.28-16.16.09:914][696]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2017.02.28-16.16.09:915][696]PIE: New page: PIE会话: Test (2017年3月1日 上午8:16:09)
+[2017.02.28-16.16.09:915][696]LogPlayLevel: Creating play world package: /Game/myMap/UEDPIE_0_Test
+[2017.02.28-16.16.09:917][696]LogPlayLevel: PIE: StaticDuplicateObject took: (0.001913s)
+[2017.02.28-16.16.09:918][696]LogAIModule: Creating AISystem for world Test
+[2017.02.28-16.16.09:918][696]LogPlayLevel: PIE: World Init took: (0.001283s)
+[2017.02.28-16.16.09:918][696]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/myMap/Test.Test to /Game/myMap/UEDPIE_0_Test.Test (0.003453s)
+[2017.02.28-16.16.09:961][696]LogInit: XAudio2 using '扬声器 (Conexant SmartAudio HD)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2017.02.28-16.16.09:980][696]LogInit: FAudioDevice initialized.
+[2017.02.28-16.16.10:044][696]LogLoad: Game class is 'MyGameMode_C'
+[2017.02.28-16.16.10:046][696]LogWorld: Bringing World /Game/myMap/UEDPIE_0_Test.Test up for play (max tick rate 60) at 2017.03.01-00.16.10
+[2017.02.28-16.16.10:046][696]LogWorld: Bringing up level for play took: 0.001328
+[2017.02.28-16.16.10:047][696]LogBlueprintUserMessages: [MyGameMode_C_0] this is MyGameMode!
+[2017.02.28-16.16.10:215][696]PIE: 信息 /Game/myMap/UEDPIE_0_Test的‘在编辑器中播放’的起始时间-0.22
+[2017.02.28-16.16.31:695][774]LogEditorViewport: Clicking on Actor (LMB): StaticMeshActor (Floor)
+[2017.02.28-16.16.33:908][904]LogTemp: Repeting last play command: 新建编辑器窗口（在编辑器中运行）
+[2017.02.28-16.16.33:924][904]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2017.02.28-16.16.33:924][904]PIE: New page: PIE会话: Test (2017年3月1日 上午8:16:33)
+[2017.02.28-16.16.33:924][904]LogPlayLevel: Creating play world package: /Game/myMap/UEDPIE_0_Test
+[2017.02.28-16.16.33:926][904]LogPlayLevel: PIE: StaticDuplicateObject took: (0.001937s)
+[2017.02.28-16.16.33:927][904]LogAIModule: Creating AISystem for world Test
+[2017.02.28-16.16.33:927][904]LogPlayLevel: PIE: World Init took: (0.001119s)
+[2017.02.28-16.16.33:927][904]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/myMap/Test.Test to /Game/myMap/UEDPIE_0_Test.Test (0.003280s)
+[2017.02.28-16.16.33:966][904]LogInit: XAudio2 using '扬声器 (Conexant SmartAudio HD)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2017.02.28-16.16.33:984][904]LogInit: FAudioDevice initialized.
+[2017.02.28-16.16.34:044][904]LogLoad: Game class is 'MyGameMode_C'
+[2017.02.28-16.16.34:045][904]LogWorld: Bringing World /Game/myMap/UEDPIE_0_Test.Test up for play (max tick rate 60) at 2017.03.01-00.16.34
+[2017.02.28-16.16.34:046][904]LogWorld: Bringing up level for play took: 0.001259
+[2017.02.28-16.16.34:047][904]LogBlueprintUserMessages: [MyGameMode_C_0] this is MyGameMode!
+[2017.02.28-16.16.34:229][904]PIE: 信息 /Game/myMap/UEDPIE_0_Test的‘在编辑器中播放’的起始时间-0.206
+[2017.02.28-16.16.38:146][ 44]LogEditorViewport: Clicking on Actor (LMB): StaticMeshActor (Floor)
+[2017.02.28-16.16.42:986][275]LogTemp: Repeting last play command: 新建编辑器窗口（在编辑器中运行）
+[2017.02.28-16.16.43:008][275]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2017.02.28-16.16.43:008][275]PIE: New page: PIE会话: Test (2017年3月1日 上午8:16:43)
+[2017.02.28-16.16.43:008][275]LogPlayLevel: Creating play world package: /Game/myMap/UEDPIE_0_Test
+[2017.02.28-16.16.43:015][275]LogPlayLevel: PIE: StaticDuplicateObject took: (0.006893s)
+[2017.02.28-16.16.43:018][275]LogAIModule: Creating AISystem for world Test
+[2017.02.28-16.16.43:018][275]LogPlayLevel: PIE: World Init took: (0.002909s)
+[2017.02.28-16.16.43:019][275]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/myMap/Test.Test to /Game/myMap/UEDPIE_0_Test.Test (0.010638s)
+[2017.02.28-16.16.43:091][275]LogInit: XAudio2 using '扬声器 (Conexant SmartAudio HD)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2017.02.28-16.16.43:116][275]LogInit: FAudioDevice initialized.
+[2017.02.28-16.16.43:178][275]LogLoad: Game class is 'MyGameMode_C'
+[2017.02.28-16.16.43:179][275]LogWorld: Bringing World /Game/myMap/UEDPIE_0_Test.Test up for play (max tick rate 60) at 2017.03.01-00.16.43
+[2017.02.28-16.16.43:180][275]LogWorld: Bringing up level for play took: 0.001142
+[2017.02.28-16.16.43:181][275]LogBlueprintUserMessages: [MyGameMode_C_0] this is MyGameMode!
+[2017.02.28-16.16.43:359][275]PIE: 信息 /Game/myMap/UEDPIE_0_Test的‘在编辑器中播放’的起始时间0.924
+[2017.02.28-16.17.10:131][451]BlueprintLog: New page: 编译MyGameMode
+[2017.02.28-16.17.11:082][489]LogTemp: Repeting last play command: 新建编辑器窗口（在编辑器中运行）
+[2017.02.28-16.17.11:098][489]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2017.02.28-16.17.11:098][489]PIE: New page: PIE会话: Test (2017年3月1日 上午8:17:11)
+[2017.02.28-16.17.11:098][489]LogPlayLevel: Creating play world package: /Game/myMap/UEDPIE_0_Test
+[2017.02.28-16.17.11:100][489]LogPlayLevel: PIE: StaticDuplicateObject took: (0.001655s)
+[2017.02.28-16.17.11:101][489]LogAIModule: Creating AISystem for world Test
+[2017.02.28-16.17.11:101][489]LogPlayLevel: PIE: World Init took: (0.001333s)
+[2017.02.28-16.17.11:101][489]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/myMap/Test.Test to /Game/myMap/UEDPIE_0_Test.Test (0.003245s)
+[2017.02.28-16.17.11:144][489]LogInit: XAudio2 using '扬声器 (Conexant SmartAudio HD)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2017.02.28-16.17.11:162][489]LogInit: FAudioDevice initialized.
+[2017.02.28-16.17.11:224][489]LogLoad: Game class is 'MyGameMode_C'
+[2017.02.28-16.17.11:226][489]LogWorld: Bringing World /Game/myMap/UEDPIE_0_Test.Test up for play (max tick rate 60) at 2017.03.01-00.17.11
+[2017.02.28-16.17.11:226][489]LogWorld: Bringing up level for play took: 0.001466
+[2017.02.28-16.17.11:228][489]LogBlueprintUserMessages: [MyGameMode_C_0] this is MyGameMode!
+[2017.02.28-16.17.11:402][489]PIE: 信息 /Game/myMap/UEDPIE_0_Test的‘在编辑器中播放’的起始时间0.967
+[2017.02.28-16.17.42:061][754]LogActorFactory: Actor Factory created SM_Cube_02
+[2017.02.28-16.17.42:309][768]LogActorFactory: Actor Factory created SM_Cube_02
+[2017.02.28-16.17.45:563][916]LogEditorViewport: Clicking on Actor (LMB): StaticMeshActor (SM_Cube_02)
+[2017.02.28-16.17.46:223][955]Cmd: DELETE
+[2017.02.28-16.17.46:223][955]Cmd: ACTOR DELETE
+[2017.02.28-16.17.46:223][955]LogEditorActor: Deleted Actor: StaticMeshActor
+[2017.02.28-16.17.46:262][955]LogEditorActor: Deleted 1 Actors (0.039 secs)
+[2017.02.28-16.17.53:748][347]LogTemp: Repeting last play command: 新建编辑器窗口（在编辑器中运行）
+[2017.02.28-16.17.53:763][347]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2017.02.28-16.17.53:764][347]PIE: New page: PIE会话: Test (2017年3月1日 上午8:17:53)
+[2017.02.28-16.17.53:764][347]LogPlayLevel: Creating play world package: /Game/myMap/UEDPIE_0_Test
+[2017.02.28-16.17.53:765][347]LogPlayLevel: PIE: StaticDuplicateObject took: (0.001788s)
+[2017.02.28-16.17.53:766][347]LogAIModule: Creating AISystem for world Test
+[2017.02.28-16.17.53:767][347]LogPlayLevel: PIE: World Init took: (0.001134s)
+[2017.02.28-16.17.53:767][347]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/myMap/Test.Test to /Game/myMap/UEDPIE_0_Test.Test (0.003237s)
+[2017.02.28-16.17.53:806][347]LogInit: XAudio2 using '扬声器 (Conexant SmartAudio HD)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2017.02.28-16.17.53:826][347]LogInit: FAudioDevice initialized.
+[2017.02.28-16.17.53:881][347]LogLoad: Game class is 'MyGameMode_C'
+[2017.02.28-16.17.53:882][347]LogWorld: Bringing World /Game/myMap/UEDPIE_0_Test.Test up for play (max tick rate 60) at 2017.03.01-00.17.53
+[2017.02.28-16.17.53:883][347]LogWorld: Bringing up level for play took: 0.001327
+[2017.02.28-16.17.53:884][347]LogBlueprintUserMessages: [MyGameMode_C_0] this is MyGameMode!
+[2017.02.28-16.17.54:051][347]PIE: 信息 /Game/myMap/UEDPIE_0_Test的‘在编辑器中播放’的起始时间-0.384
+[2017.02.28-16.18.33:678][252]BlueprintLog: New page: 编译MyGameMode
+[2017.02.28-16.18.34:699][297]LogTemp: Repeting last play command: 新建编辑器窗口（在编辑器中运行）
+[2017.02.28-16.18.34:715][297]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2017.02.28-16.18.34:715][297]PIE: New page: PIE会话: Test (2017年3月1日 上午8:18:34)
+[2017.02.28-16.18.34:715][297]LogPlayLevel: Creating play world package: /Game/myMap/UEDPIE_0_Test
+[2017.02.28-16.18.34:717][297]LogPlayLevel: PIE: StaticDuplicateObject took: (0.001926s)
+[2017.02.28-16.18.34:718][297]LogAIModule: Creating AISystem for world Test
+[2017.02.28-16.18.34:719][297]LogPlayLevel: PIE: World Init took: (0.001359s)
+[2017.02.28-16.18.34:719][297]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/myMap/Test.Test to /Game/myMap/UEDPIE_0_Test.Test (0.003562s)
+[2017.02.28-16.18.34:767][297]LogInit: XAudio2 using '扬声器 (Conexant SmartAudio HD)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2017.02.28-16.18.34:789][297]LogInit: FAudioDevice initialized.
+[2017.02.28-16.18.34:846][297]LogLoad: Game class is 'MyGameMode_C'
+[2017.02.28-16.18.34:847][297]LogWorld: Bringing World /Game/myMap/UEDPIE_0_Test.Test up for play (max tick rate 60) at 2017.03.01-00.18.34
+[2017.02.28-16.18.34:847][297]LogWorld: Bringing up level for play took: 0.001185
+[2017.02.28-16.18.34:848][297]LogBlueprintUserMessages: [MyGameMode_C_0] this is MyGameMode!
+[2017.02.28-16.18.35:124][297]PIE: 信息 /Game/myMap/UEDPIE_0_Test的‘在编辑器中播放’的起始时间0.689
+[2017.02.28-16.20.48:647][932]BlueprintLog: New page: 编译MyGameMode
+[2017.02.28-16.20.49:875][983]LogTemp: Repeting last play command: 新建编辑器窗口（在编辑器中运行）
+[2017.02.28-16.20.49:913][983]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2017.02.28-16.20.49:914][983]PIE: New page: PIE会话: Test (2017年3月1日 上午8:20:49)
+[2017.02.28-16.20.49:914][983]LogPlayLevel: Creating play world package: /Game/myMap/UEDPIE_0_Test
+[2017.02.28-16.20.49:918][983]LogPlayLevel: PIE: StaticDuplicateObject took: (0.004607s)
+[2017.02.28-16.20.49:923][983]LogAIModule: Creating AISystem for world Test
+[2017.02.28-16.20.49:924][983]LogPlayLevel: PIE: World Init took: (0.005219s)
+[2017.02.28-16.20.49:924][983]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/myMap/Test.Test to /Game/myMap/UEDPIE_0_Test.Test (0.010363s)
+[2017.02.28-16.20.49:988][983]LogInit: XAudio2 using '扬声器 (Conexant SmartAudio HD)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2017.02.28-16.20.50:014][983]LogInit: FAudioDevice initialized.
+[2017.02.28-16.20.50:079][983]LogLoad: Game class is 'MyGameMode_C'
+[2017.02.28-16.20.50:081][983]LogWorld: Bringing World /Game/myMap/UEDPIE_0_Test.Test up for play (max tick rate 60) at 2017.03.01-00.20.50
+[2017.02.28-16.20.50:081][983]LogWorld: Bringing up level for play took: 0.001410
+[2017.02.28-16.20.50:083][983]LogBlueprintUserMessages: [MyGameMode_C_0] this is MyGameMode!
+[2017.02.28-16.20.50:349][983]PIE: 信息 /Game/myMap/UEDPIE_0_Test的‘在编辑器中播放’的起始时间-0.086
+[2017.02.28-16.21.04:383][487]BlueprintLog: New page: 编译MyGameMode
+[2017.02.28-16.21.09:359][747]BlueprintLog: New page: 编译MyGameMode
+[2017.02.28-16.21.10:175][776]LogTemp: Repeting last play command: 新建编辑器窗口（在编辑器中运行）
+[2017.02.28-16.21.10:192][776]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2017.02.28-16.21.10:192][776]PIE: New page: PIE会话: Test (2017年3月1日 上午8:21:10)
+[2017.02.28-16.21.10:192][776]LogPlayLevel: Creating play world package: /Game/myMap/UEDPIE_0_Test
+[2017.02.28-16.21.10:194][776]LogPlayLevel: PIE: StaticDuplicateObject took: (0.001665s)
+[2017.02.28-16.21.10:195][776]LogAIModule: Creating AISystem for world Test
+[2017.02.28-16.21.10:195][776]LogPlayLevel: PIE: World Init took: (0.001183s)
+[2017.02.28-16.21.10:195][776]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/myMap/Test.Test to /Game/myMap/UEDPIE_0_Test.Test (0.003056s)
+[2017.02.28-16.21.10:234][776]LogInit: XAudio2 using '扬声器 (Conexant SmartAudio HD)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2017.02.28-16.21.10:252][776]LogInit: FAudioDevice initialized.
+[2017.02.28-16.21.10:311][776]LogLoad: Game class is 'MyGameMode_C'
+[2017.02.28-16.21.10:313][776]LogWorld: Bringing World /Game/myMap/UEDPIE_0_Test.Test up for play (max tick rate 60) at 2017.03.01-00.21.10
+[2017.02.28-16.21.10:313][776]LogWorld: Bringing up level for play took: 0.001315
+[2017.02.28-16.21.10:314][776]LogBlueprintUserMessages: [MyGameMode_C_0] this is MyGameMode!
+[2017.02.28-16.21.10:502][776]PIE: 信息 /Game/myMap/UEDPIE_0_Test的‘在编辑器中播放’的起始时间0.067
+[2017.02.28-16.21.42:796][992]BlueprintLog: New page: 编译MyGameMode
+[2017.02.28-16.21.43:760][ 32]LogTemp: Repeting last play command: 新建编辑器窗口（在编辑器中运行）
+[2017.02.28-16.21.43:777][ 32]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2017.02.28-16.21.43:777][ 32]PIE: New page: PIE会话: Test (2017年3月1日 上午8:21:43)
+[2017.02.28-16.21.43:777][ 32]LogPlayLevel: Creating play world package: /Game/myMap/UEDPIE_0_Test
+[2017.02.28-16.21.43:779][ 32]LogPlayLevel: PIE: StaticDuplicateObject took: (0.001896s)
+[2017.02.28-16.21.43:780][ 32]LogAIModule: Creating AISystem for world Test
+[2017.02.28-16.21.43:780][ 32]LogPlayLevel: PIE: World Init took: (0.001293s)
+[2017.02.28-16.21.43:780][ 32]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/myMap/Test.Test to /Game/myMap/UEDPIE_0_Test.Test (0.003471s)
+[2017.02.28-16.21.43:823][ 32]LogInit: XAudio2 using '扬声器 (Conexant SmartAudio HD)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2017.02.28-16.21.43:844][ 32]LogInit: FAudioDevice initialized.
+[2017.02.28-16.21.43:902][ 32]LogLoad: Game class is 'MyGameMode_C'
+[2017.02.28-16.21.43:908][ 32]LogWorld: Bringing World /Game/myMap/UEDPIE_0_Test.Test up for play (max tick rate 60) at 2017.03.01-00.21.43
+[2017.02.28-16.21.43:908][ 32]LogWorld: Bringing up level for play took: 0.005385
+[2017.02.28-16.21.43:910][ 32]LogBlueprintUserMessages: [MyGameMode_C_0] this is MyGameMode!
+[2017.02.28-16.21.44:091][ 32]PIE: 信息 /Game/myMap/UEDPIE_0_Test的‘在编辑器中播放’的起始时间-0.344
+[2017.02.28-16.23.06:145][992]LogSlate: Took 0.000293 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Light.ttf' (159K)
+[2017.02.28-16.23.15:218][471]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/myMap/Test" FILE="F:/FightWithBlock/FightWithBlock/Saved/Autosaves/Game/myMap/Test_Auto1.umap" SILENT=true AUTOSAVING=true KEEPDIRTY=false
+[2017.02.28-16.23.15:286][471]LogSavePackage: Save=38.56ms
+[2017.02.28-16.23.15:287][471]LogSavePackage: Moving 'F:/FightWithBlock/FightWithBlock/Saved/Test_Auto1A080194B42EA91E296ED27907C12E439.tmp' to 'F:/FightWithBlock/FightWithBlock/Saved/Autosaves/Game/myMap/Test_Auto1.umap'
+[2017.02.28-16.23.15:289][471]LogSavePackage:Display: Finished SavePackage F:/FightWithBlock/FightWithBlock/Saved/Autosaves/Game/myMap/Test_Auto1.umap
+[2017.02.28-16.23.15:353][471]LogFileHelpers: Editor autosave (incl. sublevels) for '/Game/myMap/Test' took 0.174
+[2017.02.28-16.23.15:353][471]LogFileHelpers: Editor autosave (incl. sublevels) for all levels took 0.174
+[2017.02.28-16.23.15:359][471]OBJ SavePackage: Generating thumbnails for [0] asset(s) in package [/Game/myBlueprint/DataTables/D_Boxes] ([1] browsable assets)...
+[2017.02.28-16.23.15:359][471]OBJ SavePackage: Finished generating thumbnails for package [/Game/myBlueprint/DataTables/D_Boxes]
+[2017.02.28-16.23.15:359][471]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/myBlueprint/DataTables/D_Boxes" FILE="F:/FightWithBlock/FightWithBlock/Saved/Autosaves/Game/myBlueprint/DataTables/D_Boxes_Auto1.uasset" SILENT=false AUTOSAVING=true
+[2017.02.28-16.23.15:394][471]LogSavePackage: Save=4.13ms
+[2017.02.28-16.23.15:394][471]LogSavePackage: Moving 'F:/FightWithBlock/FightWithBlock/Saved/D_Boxes_Auto1BCE02A344B616944160305BF2C30347C.tmp' to 'F:/FightWithBlock/FightWithBlock/Saved/Autosaves/Game/myBlueprint/DataTables/D_Boxes_Auto1.uasset'
+[2017.02.28-16.23.15:398][471]LogSavePackage:Display: Finished SavePackage F:/FightWithBlock/FightWithBlock/Saved/Autosaves/Game/myBlueprint/DataTables/D_Boxes_Auto1.uasset
+[2017.02.28-16.23.15:400][471]OBJ SavePackage: Generating thumbnails for [0] asset(s) in package [/Game/myBlueprint/MyGameMode] ([1] browsable assets)...
+[2017.02.28-16.23.15:400][471]OBJ SavePackage: Finished generating thumbnails for package [/Game/myBlueprint/MyGameMode]
+[2017.02.28-16.23.15:400][471]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/myBlueprint/MyGameMode" FILE="F:/FightWithBlock/FightWithBlock/Saved/Autosaves/Game/myBlueprint/MyGameMode_Auto1.uasset" SILENT=false AUTOSAVING=true
+[2017.02.28-16.23.15:510][471]LogSavePackage: Save=74.46ms
+[2017.02.28-16.23.15:510][471]LogSavePackage: Moving 'F:/FightWithBlock/FightWithBlock/Saved/MyGameMode_Auto16418D61647A2BE0A58D8E68A1F351C8E.tmp' to 'F:/FightWithBlock/FightWithBlock/Saved/Autosaves/Game/myBlueprint/MyGameMode_Auto1.uasset'
+[2017.02.28-16.23.15:513][471]LogSavePackage:Display: Finished SavePackage F:/FightWithBlock/FightWithBlock/Saved/Autosaves/Game/myBlueprint/MyGameMode_Auto1.uasset
+[2017.02.28-16.23.15:514][471]OBJ SavePackage: Generating thumbnails for [0] asset(s) in package [/Game/myBlueprint/BoxBase] ([1] browsable assets)...
+[2017.02.28-16.23.15:514][471]OBJ SavePackage: Finished generating thumbnails for package [/Game/myBlueprint/BoxBase]
+[2017.02.28-16.23.15:514][471]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/myBlueprint/BoxBase" FILE="F:/FightWithBlock/FightWithBlock/Saved/Autosaves/Game/myBlueprint/BoxBase_Auto1.uasset" SILENT=false AUTOSAVING=true
+[2017.02.28-16.23.15:641][471]LogSavePackage: Save=38.26ms
+[2017.02.28-16.23.15:641][471]LogSavePackage: Moving 'F:/FightWithBlock/FightWithBlock/Saved/BoxBase_Auto145D69E714DE43BA95F65B382AA1234AF.tmp' to 'F:/FightWithBlock/FightWithBlock/Saved/Autosaves/Game/myBlueprint/BoxBase_Auto1.uasset'
+[2017.02.28-16.23.15:643][471]LogSavePackage:Display: Finished SavePackage F:/FightWithBlock/FightWithBlock/Saved/Autosaves/Game/myBlueprint/BoxBase_Auto1.uasset
+[2017.02.28-16.23.15:643][471]LogFileHelpers: Auto-saving content packages took 0.286
+[2017.02.28-16.23.17:582][573]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/myBlueprint/MyGameMode" FILE="F:/FightWithBlock/FightWithBlock/Content/myBlueprint/MyGameMode.uasset" SILENT=true
+[2017.02.28-16.23.17:651][573]LogSavePackage: Save=51.49ms
+[2017.02.28-16.23.17:651][573]LogSavePackage: Moving 'F:/FightWithBlock/FightWithBlock/Saved/MyGameMode1E641097451E60C0BADDD2877BBA4543.tmp' to 'F:/FightWithBlock/FightWithBlock/Content/myBlueprint/MyGameMode.uasset'
+[2017.02.28-16.23.17:658][573]LogSavePackage:Display: Finished SavePackage F:/FightWithBlock/FightWithBlock/Content/myBlueprint/MyGameMode.uasset
+[2017.02.28-16.23.23:310][883]BlueprintLog: New page: 编译MyGameMode
+[2017.02.28-16.23.41:542][899]BlueprintLog: New page: 编译BoxBase
+[2017.02.28-16.23.42:491][936]LogTemp: Repeting last play command: 新建编辑器窗口（在编辑器中运行）
+[2017.02.28-16.23.42:508][936]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2017.02.28-16.23.42:508][936]PIE: New page: PIE会话: Test (2017年3月1日 上午8:23:42)
+[2017.02.28-16.23.42:508][936]LogPlayLevel: Creating play world package: /Game/myMap/UEDPIE_0_Test
+[2017.02.28-16.23.42:510][936]LogPlayLevel: PIE: StaticDuplicateObject took: (0.001902s)
+[2017.02.28-16.23.42:511][936]LogAIModule: Creating AISystem for world Test
+[2017.02.28-16.23.42:512][936]LogPlayLevel: PIE: World Init took: (0.001389s)
+[2017.02.28-16.23.42:512][936]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/myMap/Test.Test to /Game/myMap/UEDPIE_0_Test.Test (0.003557s)
+[2017.02.28-16.23.42:559][936]LogInit: XAudio2 using '扬声器 (Conexant SmartAudio HD)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2017.02.28-16.23.42:581][936]LogInit: FAudioDevice initialized.
+[2017.02.28-16.23.42:641][936]LogLoad: Game class is 'MyGameMode_C'
+[2017.02.28-16.23.42:643][936]LogWorld: Bringing World /Game/myMap/UEDPIE_0_Test.Test up for play (max tick rate 60) at 2017.03.01-00.23.42
+[2017.02.28-16.23.42:643][936]LogWorld: Bringing up level for play took: 0.001353
+[2017.02.28-16.23.42:645][936]LogBlueprintUserMessages: [MyGameMode_C_0] this is MyGameMode!
+[2017.02.28-16.23.42:818][936]PIE: 信息 /Game/myMap/UEDPIE_0_Test的‘在编辑器中播放’的起始时间0.384
+[2017.02.28-16.24.11:750][266]BlueprintLog: New page: 编译MyGameMode
+[2017.02.28-16.24.12:830][316]LogTemp: Repeting last play command: 新建编辑器窗口（在编辑器中运行）
+[2017.02.28-16.24.12:845][316]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2017.02.28-16.24.12:845][316]PIE: New page: PIE会话: Test (2017年3月1日 上午8:24:12)
+[2017.02.28-16.24.12:845][316]LogPlayLevel: Creating play world package: /Game/myMap/UEDPIE_0_Test
+[2017.02.28-16.24.12:847][316]LogPlayLevel: PIE: StaticDuplicateObject took: (0.001958s)
+[2017.02.28-16.24.12:848][316]LogAIModule: Creating AISystem for world Test
+[2017.02.28-16.24.12:848][316]LogPlayLevel: PIE: World Init took: (0.001317s)
+[2017.02.28-16.24.12:849][316]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/myMap/Test.Test to /Game/myMap/UEDPIE_0_Test.Test (0.003527s)
+[2017.02.28-16.24.12:886][316]LogInit: XAudio2 using '扬声器 (Conexant SmartAudio HD)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2017.02.28-16.24.12:902][316]LogInit: FAudioDevice initialized.
+[2017.02.28-16.24.12:960][316]LogLoad: Game class is 'MyGameMode_C'
+[2017.02.28-16.24.12:962][316]LogWorld: Bringing World /Game/myMap/UEDPIE_0_Test.Test up for play (max tick rate 60) at 2017.03.01-00.24.12
+[2017.02.28-16.24.12:962][316]LogWorld: Bringing up level for play took: 0.001289
+[2017.02.28-16.24.12:963][316]LogBlueprintUserMessages: [MyGameMode_C_0] this is MyGameMode!
+[2017.02.28-16.24.13:475][316]PIE: 信息 /Game/myMap/UEDPIE_0_Test的‘在编辑器中播放’的起始时间1.041
+[2017.02.28-16.24.49:596][739]BlueprintLog: New page: 编译MyGameMode
+[2017.02.28-16.24.50:642][789]LogTemp: Repeting last play command: 新建编辑器窗口（在编辑器中运行）
+[2017.02.28-16.24.50:659][789]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2017.02.28-16.24.50:659][789]PIE: New page: PIE会话: Test (2017年3月1日 上午8:24:50)
+[2017.02.28-16.24.50:659][789]LogPlayLevel: Creating play world package: /Game/myMap/UEDPIE_0_Test
+[2017.02.28-16.24.50:661][789]LogPlayLevel: PIE: StaticDuplicateObject took: (0.001801s)
+[2017.02.28-16.24.50:662][789]LogAIModule: Creating AISystem for world Test
+[2017.02.28-16.24.50:663][789]LogPlayLevel: PIE: World Init took: (0.001242s)
+[2017.02.28-16.24.50:663][789]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/myMap/Test.Test to /Game/myMap/UEDPIE_0_Test.Test (0.003264s)
+[2017.02.28-16.24.50:702][789]LogInit: XAudio2 using '扬声器 (Conexant SmartAudio HD)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2017.02.28-16.24.50:723][789]LogInit: FAudioDevice initialized.
+[2017.02.28-16.24.50:786][789]LogLoad: Game class is 'MyGameMode_C'
+[2017.02.28-16.24.50:790][789]LogWorld: Bringing World /Game/myMap/UEDPIE_0_Test.Test up for play (max tick rate 60) at 2017.03.01-00.24.50
+[2017.02.28-16.24.50:791][789]LogWorld: Bringing up level for play took: 0.004567
+[2017.02.28-16.24.50:793][789]LogBlueprintUserMessages: [MyGameMode_C_0] this is MyGameMode!
+[2017.02.28-16.24.51:260][789]PIE: 信息 /Game/myMap/UEDPIE_0_Test的‘在编辑器中播放’的起始时间0.826
+[2017.02.28-16.25.07:578][322]BlueprintLog: New page: 编译MyGameMode
+[2017.02.28-16.25.08:524][362]LogTemp: Repeting last play command: 新建编辑器窗口（在编辑器中运行）
+[2017.02.28-16.25.08:543][362]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2017.02.28-16.25.08:543][362]PIE: New page: PIE会话: Test (2017年3月1日 上午8:25:08)
+[2017.02.28-16.25.08:543][362]LogPlayLevel: Creating play world package: /Game/myMap/UEDPIE_0_Test
+[2017.02.28-16.25.08:546][362]LogPlayLevel: PIE: StaticDuplicateObject took: (0.002242s)
+[2017.02.28-16.25.08:547][362]LogAIModule: Creating AISystem for world Test
+[2017.02.28-16.25.08:547][362]LogPlayLevel: PIE: World Init took: (0.001211s)
+[2017.02.28-16.25.08:547][362]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/myMap/Test.Test to /Game/myMap/UEDPIE_0_Test.Test (0.003704s)
+[2017.02.28-16.25.08:592][362]LogInit: XAudio2 using '扬声器 (Conexant SmartAudio HD)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2017.02.28-16.25.08:612][362]LogInit: FAudioDevice initialized.
+[2017.02.28-16.25.08:668][362]LogLoad: Game class is 'MyGameMode_C'
+[2017.02.28-16.25.08:671][362]LogWorld: Bringing World /Game/myMap/UEDPIE_0_Test.Test up for play (max tick rate 60) at 2017.03.01-00.25.08
+[2017.02.28-16.25.08:673][362]LogWorld: Bringing up level for play took: 0.004431
+[2017.02.28-16.25.08:676][362]LogBlueprintUserMessages: [MyGameMode_C_0] this is MyGameMode!
+[2017.02.28-16.25.09:225][362]PIE: 信息 /Game/myMap/UEDPIE_0_Test的‘在编辑器中播放’的起始时间0.79
+[2017.02.28-16.28.02:415][710]BlueprintLog: New page: 编译MyGameMode
+[2017.02.28-16.28.03:359][741]LogActorComponent: UnregisterComponent: (/Engine/Transient.EditorFloorComp) Not registered. Aborting.
+[2017.02.28-16.28.08:713][965]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/myMap/Test" FILE="F:/FightWithBlock/FightWithBlock/Content/myMap/Test.umap" SILENT=true AUTOSAVING=false KEEPDIRTY=false
+[2017.02.28-16.28.08:815][965]LogSavePackage: Save=40.71ms
+[2017.02.28-16.28.08:815][965]LogSavePackage: Moving 'F:/FightWithBlock/FightWithBlock/Saved/TestA2E07F8F4F3D94BB7839EEB49392C67D.tmp' to 'F:/FightWithBlock/FightWithBlock/Content/myMap/Test.umap'
+[2017.02.28-16.28.08:821][965]LogSavePackage:Display: Finished SavePackage F:/FightWithBlock/FightWithBlock/Content/myMap/Test.umap
+[2017.02.28-16.28.08:888][965]LogFileHelpers: Saving map 'Test' took 1.319
+[2017.02.28-16.28.08:895][965]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/myBlueprint/DataTables/D_Boxes" FILE="F:/FightWithBlock/FightWithBlock/Content/myBlueprint/DataTables/D_Boxes.uasset" SILENT=true
+[2017.02.28-16.28.08:933][965]LogSavePackage: Save=5.65ms
+[2017.02.28-16.28.08:933][965]LogSavePackage: Moving 'F:/FightWithBlock/FightWithBlock/Saved/D_Boxes8EE480BE4A36A88FCABE0491966825F2.tmp' to 'F:/FightWithBlock/FightWithBlock/Content/myBlueprint/DataTables/D_Boxes.uasset'
+[2017.02.28-16.28.08:945][965]LogSavePackage:Display: Finished SavePackage F:/FightWithBlock/FightWithBlock/Content/myBlueprint/DataTables/D_Boxes.uasset
+[2017.02.28-16.28.08:952][965]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/myBlueprint/MyGameMode" FILE="F:/FightWithBlock/FightWithBlock/Content/myBlueprint/MyGameMode.uasset" SILENT=true
+[2017.02.28-16.28.09:062][965]LogSavePackage: Save=64.85ms
+[2017.02.28-16.28.09:062][965]LogSavePackage: Moving 'F:/FightWithBlock/FightWithBlock/Saved/MyGameModeC8AA12F24CB5D76296139F92306F86D4.tmp' to 'F:/FightWithBlock/FightWithBlock/Content/myBlueprint/MyGameMode.uasset'
+[2017.02.28-16.28.09:067][965]LogSavePackage:Display: Finished SavePackage F:/FightWithBlock/FightWithBlock/Content/myBlueprint/MyGameMode.uasset
+[2017.02.28-16.28.09:070][965]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/myBlueprint/BoxBase" FILE="F:/FightWithBlock/FightWithBlock/Content/myBlueprint/BoxBase.uasset" SILENT=true
+[2017.02.28-16.28.09:165][965]LogSavePackage: Save=37.84ms
+[2017.02.28-16.28.09:165][965]LogSavePackage: Moving 'F:/FightWithBlock/FightWithBlock/Saved/BoxBase0EBCC3A847001A3B68C491BDE2BC0C49.tmp' to 'F:/FightWithBlock/FightWithBlock/Content/myBlueprint/BoxBase.uasset'
+[2017.02.28-16.28.09:172][965]LogSavePackage:Display: Finished SavePackage F:/FightWithBlock/FightWithBlock/Content/myBlueprint/BoxBase.uasset
+[2017.02.28-16.28.10:186][  8]LogWindowsTextInputMethodSystem:Display: IME system now deactivated.
+[2017.02.28-16.28.10:452][  9]Cmd: QUIT_EDITOR
+[2017.02.28-16.28.11:509][  9]LogExit: Preparing to exit.
+[2017.02.28-16.28.12:772][  9]LogExit: Editor shut down
+[2017.02.28-16.28.12:772][  9]LogExit: Transaction tracking system shut down
+[2017.02.28-16.28.12:899][  9]LogObj: Freed 0b from 0 cluster array pools.
+[2017.02.28-16.28.12:899][  9]LogExit: Object subsystem successfully closed.
+[2017.02.28-16.28.12:926][  9]LogD3D11RHI: Shutdown
+[2017.02.28-16.28.12:926][  9]LogD3D11RHI: CleanupD3DDevice
+[2017.02.28-16.28.13:085][  9]LogD3D11RHI: ~FD3D11DynamicRHI
+[2017.02.28-16.28.13:136][  9]LogModuleManager: Shutting down and abandoning module ExternalImagePicker (508)
+[2017.02.28-16.28.13:136][  9]LogModuleManager: Shutting down and abandoning module MovieSceneCapture (506)
+[2017.02.28-16.28.13:136][  9]LogModuleManager: Shutting down and abandoning module BlueprintGraph (504)
+[2017.02.28-16.28.13:136][  9]LogModuleManager: Shutting down and abandoning module BlueprintProfiler (502)
+[2017.02.28-16.28.13:148][  9]LogModuleManager: Shutting down and abandoning module DataTableEditor (500)
+[2017.02.28-16.28.13:148][  9]LogModuleManager: Shutting down and abandoning module HierarchicalLODOutliner (498)
+[2017.02.28-16.28.13:148][  9]LogModuleManager: Shutting down and abandoning module CrashTracker (496)
+[2017.02.28-16.28.13:148][  9]LogModuleManager: Shutting down and abandoning module SceneOutliner (494)
+[2017.02.28-16.28.13:148][  9]LogModuleManager: Shutting down and abandoning module AddContentDialog (492)
+[2017.02.28-16.28.13:148][  9]LogDirectoryWatcher: A directory notification for 'D:/Program Files (x86)/Epic Games/UE_4.15/FeaturePacks/' was aborted.
+[2017.02.28-16.28.13:152][  9]LogModuleManager: Shutting down and abandoning module WidgetCarousel (491)
+[2017.02.28-16.28.13:152][  9]LogModuleManager: Shutting down and abandoning module EditorWidgets (488)
+[2017.02.28-16.28.13:152][  9]LogModuleManager: Shutting down and abandoning module CollectionManager (486)
+[2017.02.28-16.28.13:152][  9]LogDirectoryWatcher: A directory notification for 'F:/FightWithBlock/FightWithBlock/Content/Collections/' was aborted.
+[2017.02.28-16.28.13:152][  9]LogDirectoryWatcher: A directory notification for 'F:/FightWithBlock/FightWithBlock/Content/Developers/Administrator/Collections/' was aborted.
+[2017.02.28-16.28.13:152][  9]LogDirectoryWatcher: A directory notification for 'F:/FightWithBlock/FightWithBlock/Saved/Collections/' was aborted.
+[2017.02.28-16.28.13:153][  9]LogModuleManager: Shutting down and abandoning module StatsViewer (484)
+[2017.02.28-16.28.13:153][  9]LogModuleManager: Shutting down and abandoning module FoliageEdit (482)
+[2017.02.28-16.28.13:153][  9]LogModuleManager: Shutting down and abandoning module LandscapeEditor (480)
+[2017.02.28-16.28.13:177][  9]LogModuleManager: Shutting down and abandoning module SceneDepthPickerMode (478)
+[2017.02.28-16.28.13:177][  9]LogModuleManager: Shutting down and abandoning module ActorPickerMode (476)
+[2017.02.28-16.28.13:177][  9]LogModuleManager: Shutting down and abandoning module GeometryMode (474)
+[2017.02.28-16.28.13:177][  9]LogModuleManager: Shutting down and abandoning module TextureAlignMode (472)
+[2017.02.28-16.28.13:177][  9]LogModuleManager: Shutting down and abandoning module BspMode (470)
+[2017.02.28-16.28.13:177][  9]LogModuleManager: Shutting down and abandoning module HardwareSurvey (468)
+[2017.02.28-16.28.13:178][  9]LogModuleManager: Shutting down and abandoning module SequenceRecorderSections (466)
+[2017.02.28-16.28.13:178][  9]LogModuleManager: Shutting down and abandoning module AutomationWorker (464)
+[2017.02.28-16.28.13:178][  9]LogModuleManager: Shutting down and abandoning module MatineeToLevelSequence (462)
+[2017.02.28-16.28.13:178][  9]LogModuleManager: Shutting down and abandoning module LevelSequenceEditor (460)
+[2017.02.28-16.28.13:178][  9]LogModuleManager: Shutting down and abandoning module PlacementMode (459)
+[2017.02.28-16.28.13:178][  9]LogModuleManager: Shutting down and abandoning module WmfMediaFactory (456)
+[2017.02.28-16.28.13:178][  9]LogModuleManager: Shutting down and abandoning module WmfMediaEditor (454)
+[2017.02.28-16.28.13:178][  9]LogModuleManager: Shutting down and abandoning module MfMediaFactory (452)
+[2017.02.28-16.28.13:178][  9]LogModuleManager: Shutting down and abandoning module MfMediaEditor (450)
+[2017.02.28-16.28.13:178][  9]LogModuleManager: Shutting down and abandoning module AvfMediaFactory (448)
+[2017.02.28-16.28.13:178][  9]LogModuleManager: Shutting down and abandoning module AvfMediaEditor (446)
+[2017.02.28-16.28.13:178][  9]LogModuleManager: Shutting down and abandoning module AndroidMediaFactory (444)
+[2017.02.28-16.28.13:178][  9]LogModuleManager: Shutting down and abandoning module Media (443)
+[2017.02.28-16.28.13:178][  9]LogModuleManager: Shutting down and abandoning module AndroidMediaEditor (440)
+[2017.02.28-16.28.13:178][  9]LogModuleManager: Shutting down and abandoning module CharacterAI (438)
+[2017.02.28-16.28.13:178][  9]LogModuleManager: Shutting down and abandoning module AudioCapture (436)
+[2017.02.28-16.28.13:178][  9]LogModuleManager: Shutting down and abandoning module SequenceRecorder (435)
+[2017.02.28-16.28.13:178][  9]LogModuleManager: Shutting down and abandoning module SmartSnapping (432)
+[2017.02.28-16.28.13:178][  9]LogModuleManager: Shutting down and abandoning module SessionServices (430)
+[2017.02.28-16.28.13:179][  9]LogModuleManager: Shutting down and abandoning module ViewportSnapping (428)
+[2017.02.28-16.28.13:179][  9]LogModuleManager: Shutting down and abandoning module ViewportInteraction (426)
+[2017.02.28-16.28.13:179][  9]LogModuleManager: Shutting down and abandoning module LogVisualizer (424)
+[2017.02.28-16.28.13:179][  9]LogModuleManager: Shutting down and abandoning module IntroTutorials (422)
+[2017.02.28-16.28.13:179][  9]LogModuleManager: Shutting down and abandoning module GameProjectGeneration (421)
+[2017.02.28-16.28.13:179][  9]LogModuleManager: Shutting down and abandoning module EditorLiveStreaming (418)
+[2017.02.28-16.28.13:179][  9]LogModuleManager: Shutting down and abandoning module IOSPlatformEditor (416)
+[2017.02.28-16.28.13:179][  9]LogModuleManager: Shutting down and abandoning module HTML5PlatformEditor (414)
+[2017.02.28-16.28.13:179][  9]LogModuleManager: Shutting down and abandoning module AndroidPlatformEditor (412)
+[2017.02.28-16.28.13:179][  9]LogModuleManager: Shutting down and abandoning module AndroidDeviceDetection (411)
+[2017.02.28-16.28.13:560][  9]LogModuleManager: Shutting down and abandoning module IOSRuntimeSettings (408)
+[2017.02.28-16.28.13:561][  9]LogModuleManager: Shutting down and abandoning module AndroidRuntimeSettings (406)
+[2017.02.28-16.28.13:561][  9]LogModuleManager: Shutting down and abandoning module InputBindingEditor (404)
+[2017.02.28-16.28.13:561][  9]LogModuleManager: Shutting down and abandoning module NiagaraEditor (402)
+[2017.02.28-16.28.13:561][  9]LogModuleManager: Shutting down and abandoning module MergeActors (400)
+[2017.02.28-16.28.13:561][  9]LogModuleManager: Shutting down and abandoning module SizeMap (398)
+[2017.02.28-16.28.13:561][  9]LogModuleManager: Shutting down and abandoning module TreeMap (396)
+[2017.02.28-16.28.13:561][  9]LogModuleManager: Shutting down and abandoning module ReferenceViewer (394)
+[2017.02.28-16.28.13:561][  9]LogModuleManager: Shutting down and abandoning module LocalizationDashboard (392)
+[2017.02.28-16.28.13:562][  9]LogModuleManager: Shutting down and abandoning module LocalizationService (391)
+[2017.02.28-16.28.13:562][  9]LogModuleManager: Shutting down and abandoning module HardwareTargeting (388)
+[2017.02.28-16.28.13:562][  9]LogModuleManager: Shutting down and abandoning module DeviceProfileEditor (386)
+[2017.02.28-16.28.13:562][  9]LogModuleManager: Shutting down and abandoning module UndoHistory (384)
+[2017.02.28-16.28.13:562][  9]LogModuleManager: Shutting down and abandoning module UserFeedback (382)
+[2017.02.28-16.28.13:562][  9]LogModuleManager: Shutting down and abandoning module XmlParser (380)
+[2017.02.28-16.28.13:562][  9]LogModuleManager: Shutting down and abandoning module Blutility (378)
+[2017.02.28-16.28.13:562][  9]LogModuleManager: Shutting down and abandoning module ProjectSettingsViewer (376)
+[2017.02.28-16.28.13:562][  9]LogModuleManager: Shutting down and abandoning module ProjectTargetPlatformEditor (375)
+[2017.02.28-16.28.13:562][  9]LogModuleManager: Shutting down and abandoning module EditorSettingsViewer (372)
+[2017.02.28-16.28.13:563][  9]LogModuleManager: Shutting down and abandoning module SettingsEditor (370)
+[2017.02.28-16.28.13:563][  9]LogModuleManager: Shutting down and abandoning module ProjectLauncher (368)
+[2017.02.28-16.28.13:563][  9]LogModuleManager: Shutting down and abandoning module SessionFrontend (366)
+[2017.02.28-16.28.13:563][  9]LogModuleManager: Shutting down and abandoning module ProfilerClient (364)
+[2017.02.28-16.28.13:563][  9]LogModuleManager: Shutting down and abandoning module DeviceManager (362)
+[2017.02.28-16.28.13:563][  9]LogModuleManager: Shutting down and abandoning module TargetDeviceServices (361)
+[2017.02.28-16.28.13:605][  9]LogModuleManager: Shutting down and abandoning module AutomationController (358)
+[2017.02.28-16.28.13:605][  9]LogModuleManager: Shutting down and abandoning module AutomationWindow (356)
+[2017.02.28-16.28.13:605][  9]LogModuleManager: Shutting down and abandoning module Layers (354)
+[2017.02.28-16.28.13:630][  9]LogModuleManager: Shutting down and abandoning module ComponentVisualizers (352)
+[2017.02.28-16.28.13:631][  9]LogModuleManager: Shutting down and abandoning module DetailCustomizations (350)
+[2017.02.28-16.28.13:631][  9]LogModuleManager: Shutting down and abandoning module PackagesDialog (348)
+[2017.02.28-16.28.13:631][  9]LogModuleManager: Shutting down and abandoning module Persona (346)
+[2017.02.28-16.28.13:632][  9]LogModuleManager: Shutting down and abandoning module AnimGraph (345)
+[2017.02.28-16.28.13:632][  9]LogModuleManager: Shutting down and abandoning module Kismet (342)
+[2017.02.28-16.28.13:660][  9]LogModuleManager: Shutting down and abandoning module GraphEditor (340)
+[2017.02.28-16.28.13:660][  9]LogModuleManager: Shutting down and abandoning module ClassViewer (338)
+[2017.02.28-16.28.13:663][  9]LogModuleManager: Shutting down and abandoning module Toolbox (336)
+[2017.02.28-16.28.13:663][  9]LogModuleManager: Shutting down and abandoning module ModuleUI (334)
+[2017.02.28-16.28.13:663][  9]LogModuleManager: Shutting down and abandoning module MovieSceneTools (332)
+[2017.02.28-16.28.13:663][  9]LogModuleManager: Shutting down and abandoning module OutputLog (330)
+[2017.02.28-16.28.13:663][  9]LogModuleManager: Shutting down and abandoning module GammaUI (328)
+[2017.02.28-16.28.13:663][  9]LogModuleManager: Shutting down and abandoning module Documentation (326)
+[2017.02.28-16.28.13:663][  9]LogModuleManager: Shutting down and abandoning module Niagara (324)
+[2017.02.28-16.28.13:663][  9]LogModuleManager: Shutting down and abandoning module StreamingPauseRendering (322)
+[2017.02.28-16.28.13:663][  9]LogModuleManager: Shutting down and abandoning module AnalyticsET (320)
+[2017.02.28-16.28.13:663][  9]LogModuleManager: Shutting down and abandoning module PortalServices (318)
+[2017.02.28-16.28.13:663][  9]LogModuleManager: Shutting down and abandoning module PortalRpc (316)
+[2017.02.28-16.28.13:663][  9]LogModuleManager: Shutting down and abandoning module MessagingRpc (314)
+[2017.02.28-16.28.13:663][  9]LogModuleManager: Shutting down and abandoning module AIModule (312)
+[2017.02.28-16.28.13:663][  9]LogModuleManager: Shutting down and abandoning module GameplayDebugger (311)
+[2017.02.28-16.28.13:663][  9]LogModuleManager: Shutting down and abandoning module AITestSuite (309)
+[2017.02.28-16.28.13:663][  9]LogModuleManager: Shutting down and abandoning module ProfilerService (306)
+[2017.02.28-16.28.13:699][  9]LogModuleManager: Shutting down and abandoning module TaskGraph (304)
+[2017.02.28-16.28.13:699][  9]LogModuleManager: Shutting down and abandoning module SteamVRController (302)
+[2017.02.28-16.28.13:699][  9]LogModuleManager: Shutting down and abandoning module SteamVR (300)
+[2017.02.28-16.28.13:699][  9]LogModuleManager: Shutting down and abandoning module ProceduralMeshComponentEditor (298)
+[2017.02.28-16.28.13:699][  9]LogModuleManager: Shutting down and abandoning module ProceduralMeshComponent (296)
+[2017.02.28-16.28.13:699][  9]LogModuleManager: Shutting down and abandoning module OculusLibrary (294)
+[2017.02.28-16.28.13:699][  9]LogModuleManager: Shutting down and abandoning module OculusInput (292)
+[2017.02.28-16.28.13:699][  9]LogModuleManager: Shutting down and abandoning module MobilePatchingUtils (290)
+[2017.02.28-16.28.13:699][  9]LogModuleManager: Shutting down and abandoning module CustomMeshComponent (288)
+[2017.02.28-16.28.13:699][  9]LogModuleManager: Shutting down and abandoning module CableComponent (286)
+[2017.02.28-16.28.13:699][  9]LogModuleManager: Shutting down and abandoning module ArchVisCharacter (284)
+[2017.02.28-16.28.13:699][  9]LogModuleManager: Shutting down and abandoning module MediaPlayerEditor (280)
+[2017.02.28-16.28.13:699][  9]LogModuleManager: Shutting down and abandoning module HTML5Networking (278)
+[2017.02.28-16.28.13:699][  9]LogModuleManager: Shutting down and abandoning module AlembicImporter (276)
+[2017.02.28-16.28.13:699][  9]LogModuleManager: Shutting down and abandoning module AlembicLibrary (275)
+[2017.02.28-16.28.13:699][  9]LogModuleManager: Shutting down and abandoning module GeometryCache (274)
+[2017.02.28-16.28.13:699][  9]LogModuleManager: Shutting down and abandoning module GeometryCacheEd (273)
+[2017.02.28-16.28.13:699][  9]LogModuleManager: Shutting down and abandoning module SuperSearchEditor (268)
+[2017.02.28-16.28.13:699][  9]LogModuleManager: Shutting down and abandoning module SuperSearch (267)
+[2017.02.28-16.28.13:699][  9]LogModuleManager: Shutting down and abandoning module SpeedTreeImporter (264)
+[2017.02.28-16.28.13:699][  9]LogModuleManager: Shutting down and abandoning module PluginBrowser (262)
+[2017.02.28-16.28.13:699][  9]LogModuleManager: Shutting down and abandoning module MobileLauncherProfileWizard (260)
+[2017.02.28-16.28.13:699][  9]LogModuleManager: Shutting down and abandoning module EpicSurvey (258)
+[2017.02.28-16.28.13:699][  9]LogModuleManager: Shutting down and abandoning module VisualStudioSourceCodeAccess (256)
+[2017.02.28-16.28.13:699][  9]LogModuleManager: Shutting down and abandoning module DesktopPlatform (255)
+[2017.02.28-16.28.13:699][  9]LogModuleManager: Shutting down and abandoning module UObjectPlugin (252)
+[2017.02.28-16.28.13:700][  9]LogModuleManager: Shutting down and abandoning module SubversionSourceControl (250)
+[2017.02.28-16.28.13:700][  9]LogModuleManager: Shutting down and abandoning module PerforceSourceControl (248)
+[2017.02.28-16.28.13:700][  9]LogModuleManager: Shutting down and abandoning module GitSourceControl (246)
+[2017.02.28-16.28.13:700][  9]LogModuleManager: Shutting down and abandoning module SourceControl (245)
+[2017.02.28-16.28.13:700][  9]LogModuleManager: Shutting down and abandoning module LightPropagationVolumeEditor (242)
+[2017.02.28-16.28.13:700][  9]LogModuleManager: Shutting down and abandoning module PaperTiledImporter (240)
+[2017.02.28-16.28.13:700][  9]LogModuleManager: Shutting down and abandoning module PaperSpriteSheetImporter (238)
+[2017.02.28-16.28.13:700][  9]LogModuleManager: Shutting down and abandoning module Paper2DEditor (236)
+[2017.02.28-16.28.13:700][  9]LogModuleManager: Shutting down and abandoning module MeshPaint (235)
+[2017.02.28-16.28.13:700][  9]LogModuleManager: Shutting down and abandoning module LevelEditor (233)
+[2017.02.28-16.28.13:701][  9]LogModuleManager: Shutting down and abandoning module PixelInspectorModule (232)
+[2017.02.28-16.28.13:702][  9]LogModuleManager: Shutting down and abandoning module MainFrame (230)
+[2017.02.28-16.28.13:702][  9]LogModuleManager: Shutting down and abandoning module HotReload (229)
+[2017.02.28-16.28.13:702][  9]LogDirectoryWatcher: A directory notification for 'F:/FightWithBlock/FightWithBlock/Binaries/Win64' was aborted.
+[2017.02.28-16.28.13:703][  9]LogModuleManager: Shutting down and abandoning module ContentBrowser (225)
+[2017.02.28-16.28.13:707][  9]LogModuleManager: Shutting down and abandoning module FightWithBlock (222)
+[2017.02.28-16.28.13:707][  9]LogModuleManager: Shutting down and abandoning module PhysXVehiclesEditor (220)
+[2017.02.28-16.28.13:707][  9]LogModuleManager: Shutting down and abandoning module PhysXVehicles (218)
+[2017.02.28-16.28.13:707][  9]LogModuleManager: Shutting down and abandoning module LocationServicesBPLibrary (216)
+[2017.02.28-16.28.13:707][  9]LogModuleManager: Shutting down and abandoning module UdpMessaging (214)
+[2017.02.28-16.28.13:808][  9]LogModuleManager: Shutting down and abandoning module TcpMessaging (212)
+[2017.02.28-16.28.13:908][  9]LogModuleManager: Shutting down and abandoning module GameplayTagsEditor (210)
+[2017.02.28-16.28.13:908][  9]LogModuleManager: Shutting down and abandoning module FacialAnimationEditor (208)
+[2017.02.28-16.28.13:908][  9]LogModuleManager: Shutting down and abandoning module FacialAnimation (206)
+[2017.02.28-16.28.13:908][  9]LogModuleManager: Shutting down and abandoning module LightPropagationVolumeRuntime (204)
+[2017.02.28-16.28.13:908][  9]LogModuleManager: Shutting down and abandoning module Paper2D (202)
+[2017.02.28-16.28.13:908][  9]LogModuleManager: Shutting down and abandoning module WindowsMoviePlayer (200)
+[2017.02.28-16.28.13:908][  9]LogModuleManager: Shutting down and abandoning module WmfMedia (198)
+[2017.02.28-16.28.13:909][  9]LogModuleManager: Shutting down and abandoning module MfMedia (196)
+[2017.02.28-16.28.13:909][  9]LogModuleManager: Shutting down and abandoning module MediaAssets (194)
+[2017.02.28-16.28.13:909][  9]LogModuleManager: Shutting down and abandoning module GameLiveStreaming (192)
+[2017.02.28-16.28.13:909][  9]LogModuleManager: Shutting down and abandoning module VREditor (190)
+[2017.02.28-16.28.13:909][  9]LogModuleManager: Shutting down and abandoning module GameplayTasksEditor (188)
+[2017.02.28-16.28.13:909][  9]LogModuleManager: Shutting down and abandoning module BehaviorTreeEditor (186)
+[2017.02.28-16.28.13:909][  9]LogModuleManager: Shutting down and abandoning module FunctionalTesting (184)
+[2017.02.28-16.28.13:909][  9]LogModuleManager: Shutting down and abandoning module CollisionAnalyzer (182)
+[2017.02.28-16.28.13:909][  9]LogModuleManager: Shutting down and abandoning module UMG (180)
+[2017.02.28-16.28.13:909][  9]LogModuleManager: Shutting down and abandoning module UMGEditor (179)
+[2017.02.28-16.28.13:909][  9]LogModuleManager: Shutting down and abandoning module Sequencer (178)
+[2017.02.28-16.28.13:912][  9]LogModuleManager: Shutting down and abandoning module AssetTools (176)
+[2017.02.28-16.28.13:913][  9]LogModuleManager: Shutting down and abandoning module MessageLog (175)
+[2017.02.28-16.28.13:913][  9]LogModuleManager: Shutting down and abandoning module WorkspaceMenuStructure (174)
+[2017.02.28-16.28.13:913][  9]LogModuleManager: Shutting down and abandoning module SlateReflector (168)
+[2017.02.28-16.28.13:913][  9]LogModuleManager: Shutting down and abandoning module Slate (166)
+[2017.02.28-16.28.13:913][  9]LogModuleManager: Shutting down and abandoning module EditorStyle (164)
+[2017.02.28-16.28.13:915][  9]LogModuleManager: Shutting down and abandoning module SourceCodeAccess (162)
+[2017.02.28-16.28.13:915][  9]LogModuleManager: Shutting down and abandoning module HeadMountedDisplay (160)
+[2017.02.28-16.28.13:915][  9]LogModuleManager: Shutting down and abandoning module XAudio2 (158)
+[2017.02.28-16.28.13:916][  9]LogModuleManager: Shutting down and abandoning module Networking (156)
+[2017.02.28-16.28.13:916][  9]LogModuleManager: Shutting down and abandoning module Core (152)
+[2017.02.28-16.28.13:916][  9]LogModuleManager: Shutting down and abandoning module AssetRegistry (150)
+[2017.02.28-16.28.14:121][  9]LogDirectoryWatcher: A directory notification for '../../../Engine/Content/' was aborted.
+[2017.02.28-16.28.14:121][  9]LogDirectoryWatcher: A directory notification for 'F:/FightWithBlock/FightWithBlock/Content/' was aborted.
+[2017.02.28-16.28.14:121][  9]LogDirectoryWatcher: A directory notification for '../../../Engine/Plugins/2D/Paper2D/Content/' was aborted.
+[2017.02.28-16.28.14:122][  9]LogModuleManager: Shutting down and abandoning module DirectoryWatcher (149)
+[2017.02.28-16.28.14:127][  9]LogModuleManager: Shutting down and abandoning module KismetCompiler (146)
+[2017.02.28-16.28.14:127][  9]LogModuleManager: Shutting down and abandoning module PhysXFormats (144)
+[2017.02.28-16.28.14:127][  9]LogModuleManager: Shutting down and abandoning module MeshUtilities (142)
+[2017.02.28-16.28.14:127][  9]LogModuleManager: Shutting down and abandoning module SimplygonSwarm (141)
+[2017.02.28-16.28.14:127][  9]LogModuleManager: Shutting down and abandoning module SimplygonMeshReduction (139)
+[2017.02.28-16.28.14:128][  9]LogModuleManager: Shutting down and abandoning module QuadricMeshReduction (137)
+[2017.02.28-16.28.14:128][  9]LogModuleManager: Shutting down and abandoning module PropertyEditor (135)
+[2017.02.28-16.28.14:128][  9]LogModuleManager: Shutting down and abandoning module DerivedDataCache (132)
+[2017.02.28-16.28.14:211][  9]LogDerivedDataCache: Shutdown
+[2017.02.28-16.28.14:211][  9]LogModuleManager: Shutting down and abandoning module TargetPlatform (130)
+[2017.02.28-16.28.14:211][  9]LogModuleManager: Shutting down and abandoning module VulkanShaderFormat (129)
+[2017.02.28-16.28.14:211][  9]LogModuleManager: Shutting down and abandoning module ShaderFormatOpenGL (127)
+[2017.02.28-16.28.14:211][  9]LogModuleManager: Shutting down and abandoning module ShaderFormatD3D (125)
+[2017.02.28-16.28.14:211][  9]LogModuleManager: Shutting down and abandoning module MetalShaderFormat (123)
+[2017.02.28-16.28.14:211][  9]LogModuleManager: Shutting down and abandoning module TextureFormatUncompressed (121)
+[2017.02.28-16.28.14:211][  9]LogModuleManager: Shutting down and abandoning module TextureFormatPVR (119)
+[2017.02.28-16.28.14:211][  9]LogModuleManager: Shutting down and abandoning module TextureFormatDXT (117)
+[2017.02.28-16.28.14:211][  9]LogModuleManager: Shutting down and abandoning module TextureFormatIntelISPCTexComp (115)
+[2017.02.28-16.28.14:211][  9]LogModuleManager: Shutting down and abandoning module TextureFormatASTC (113)
+[2017.02.28-16.28.14:211][  9]LogModuleManager: Shutting down and abandoning module ImageWrapper (112)
+[2017.02.28-16.28.14:211][  9]LogModuleManager: Shutting down and abandoning module TextureFormatAndroid (109)
+[2017.02.28-16.28.14:211][  9]LogModuleManager: Shutting down and abandoning module AudioFormatOpus (107)
+[2017.02.28-16.28.14:211][  9]LogModuleManager: Shutting down and abandoning module AudioFormatOgg (105)
+[2017.02.28-16.28.14:212][  9]LogModuleManager: Shutting down and abandoning module AudioFormatADPCM (103)
+[2017.02.28-16.28.14:212][  9]LogModuleManager: Shutting down and abandoning module LinuxTargetPlatform (101)
+[2017.02.28-16.28.14:212][  9]LogModuleManager: Shutting down and abandoning module LinuxServerTargetPlatform (99)
+[2017.02.28-16.28.14:212][  9]LogModuleManager: Shutting down and abandoning module LinuxNoEditorTargetPlatform (97)
+[2017.02.28-16.28.14:212][  9]LogModuleManager: Shutting down and abandoning module LinuxClientTargetPlatform (95)
+[2017.02.28-16.28.14:212][  9]LogModuleManager: Shutting down and abandoning module TVOSTargetPlatform (93)
+[2017.02.28-16.28.14:212][  9]LogModuleManager: Shutting down and abandoning module Messaging (91)
+[2017.02.28-16.28.14:212][  9]LogModuleManager: Shutting down and abandoning module IOSTargetPlatform (89)
+[2017.02.28-16.28.14:212][  9]LogModuleManager: Shutting down and abandoning module HTML5TargetPlatform (87)
+[2017.02.28-16.28.14:212][  9]LogModuleManager: Shutting down and abandoning module Android_PVRTCTargetPlatform (85)
+[2017.02.28-16.28.14:212][  9]LogModuleManager: Shutting down and abandoning module Android_MultiTargetPlatform (83)
+[2017.02.28-16.28.14:212][  9]LogModuleManager: Shutting down and abandoning module Android_ETC2TargetPlatform (81)
+[2017.02.28-16.28.14:212][  9]LogModuleManager: Shutting down and abandoning module Android_ETC1TargetPlatform (79)
+[2017.02.28-16.28.14:212][  9]LogModuleManager: Shutting down and abandoning module Android_DXTTargetPlatform (77)
+[2017.02.28-16.28.14:212][  9]LogModuleManager: Shutting down and abandoning module Android_ATCTargetPlatform (75)
+[2017.02.28-16.28.14:212][  9]LogModuleManager: Shutting down and abandoning module Android_ASTCTargetPlatform (73)
+[2017.02.28-16.28.14:212][  9]LogModuleManager: Shutting down and abandoning module AndroidTargetPlatform (71)
+[2017.02.28-16.28.14:212][  9]LogModuleManager: Shutting down and abandoning module WindowsTargetPlatform (69)
+[2017.02.28-16.28.14:212][  9]LogModuleManager: Shutting down and abandoning module WindowsServerTargetPlatform (67)
+[2017.02.28-16.28.14:212][  9]LogModuleManager: Shutting down and abandoning module WindowsNoEditorTargetPlatform (65)
+[2017.02.28-16.28.14:212][  9]LogModuleManager: Shutting down and abandoning module WindowsClientTargetPlatform (63)
+[2017.02.28-16.28.14:212][  9]LogModuleManager: Shutting down and abandoning module MacTargetPlatform (61)
+[2017.02.28-16.28.14:212][  9]LogModuleManager: Shutting down and abandoning module MacServerTargetPlatform (59)
+[2017.02.28-16.28.14:212][  9]LogModuleManager: Shutting down and abandoning module MacNoEditorTargetPlatform (57)
+[2017.02.28-16.28.14:212][  9]LogModuleManager: Shutting down and abandoning module MacClientTargetPlatform (55)
+[2017.02.28-16.28.14:212][  9]LogModuleManager: Shutting down and abandoning module AllDesktopTargetPlatform (53)
+[2017.02.28-16.28.14:212][  9]LogModuleManager: Shutting down and abandoning module InputCore (50)
+[2017.02.28-16.28.14:212][  9]LogModuleManager: Shutting down and abandoning module Settings (48)
+[2017.02.28-16.28.14:212][  9]LogModuleManager: Shutting down and abandoning module OculusRift (46)
+[2017.02.28-16.28.14:212][  9]LogModuleManager: Shutting down and abandoning module ExampleDeviceProfileSelector (44)
+[2017.02.28-16.28.14:212][  9]LogModuleManager: Shutting down and abandoning module OnlineBlueprintSupport (42)
+[2017.02.28-16.28.14:212][  9]LogModuleManager: Shutting down and abandoning module OnlineSubsystem (38)
+[2017.02.28-16.28.14:212][  9]LogOnline:Display: Unloading online subsystem: NULL
+[2017.02.28-16.28.14:212][  9]LogModuleManager: Shutting down and abandoning module XMPP (37)
+[2017.02.28-16.28.14:212][  9]LogModuleManager: Shutting down and abandoning module HTTP (35)
+[2017.02.28-16.28.14:212][  9]LogHttp:Display: Http module shutting down, but needs to wait on 2 outstanding Http requests:
+[2017.02.28-16.28.14:212][  9]LogHttp:Display: 	verb=[POST] url=[https://datarouter.ol.epicgames.com/datarouter/api/v1/public/data?SessionID=%7B9C040E04-40ED-3ACA-3518-009CEC84593A%7D&AppID=UEEditor.Rocket.Release&AppVersion=4.15.0-3299760%2B%2B%2BUE4%2BRelease-4.15&UserID=784c841646adef6eff1444986ebbbfe3%7C0623e00743f14765a97d84c1d93e77a9%7C68cc216b-79ac-4c3e-99ac-cbd0ebc65f00&AppEnvironment=datacollector-binary&UploadType=eteventstream] status=Processing
+[2017.02.28-16.28.14:212][  9]LogHttp:Display: 	verb=[POST] url=[https://datarouter.ol.epicgames.com/datarouter/api/v1/public/data?SessionID=%7B9C040E04-40ED-3ACA-3518-009CEC84593A%7D&AppID=UEEditor.Rocket.Release&AppVersion=4.15.0-3299760%2B%2B%2BUE4%2BRelease-4.15&UserID=784c841646adef6eff1444986ebbbfe3%7C0623e00743f14765a97d84c1d93e77a9%7C68cc216b-79ac-4c3e-99ac-cbd0ebc65f00&AppEnvironment=datacollector-binary&UploadType=eteventstream] status=Processing
+[2017.02.28-16.28.14:231][  9]LogModuleManager: Shutting down and abandoning module SSL (34)
+[2017.02.28-16.28.14:234][  9]LogModuleManager: Shutting down and abandoning module AudioEditor (30)
+[2017.02.28-16.28.14:234][  9]LogModuleManager: Shutting down and abandoning module TextureCompressor (28)
+[2017.02.28-16.28.14:234][  9]LogModuleManager: Shutting down and abandoning module ShaderCore (26)
+[2017.02.28-16.28.14:234][  9]LogModuleManager: Shutting down and abandoning module Landscape (24)
+[2017.02.28-16.28.14:234][  9]LogModuleManager: Shutting down and abandoning module SlateRHIRenderer (22)
+[2017.02.28-16.28.14:243][  9]LogModuleManager: Shutting down and abandoning module OpenGLDrv (20)
+[2017.02.28-16.28.14:243][  9]LogModuleManager: Shutting down and abandoning module D3D11RHI (18)
+[2017.02.28-16.28.14:243][  9]LogModuleManager: Shutting down and abandoning module AnimGraphRuntime (16)
+[2017.02.28-16.28.14:243][  9]LogModuleManager: Shutting down and abandoning module Renderer (14)
+[2017.02.28-16.28.14:243][  9]LogModuleManager: Shutting down and abandoning module Engine (12)
+[2017.02.28-16.28.14:243][  9]LogModuleManager: Shutting down and abandoning module CoreUObject (10)
+[2017.02.28-16.28.14:243][  9]LogModuleManager: Shutting down and abandoning module NetworkFile (8)
+[2017.02.28-16.28.14:243][  9]LogModuleManager: Shutting down and abandoning module StreamingFile (6)
+[2017.02.28-16.28.14:243][  9]LogModuleManager: Shutting down and abandoning module SandboxFile (4)
+[2017.02.28-16.28.14:243][  9]LogModuleManager: Shutting down and abandoning module PakFile (2)
+[2017.02.28-16.28.14:246][  9]LogExit: Exiting.
+[2017.02.28-16.28.14:262][  9]Log file closed, 03/01/17 00:28:14
