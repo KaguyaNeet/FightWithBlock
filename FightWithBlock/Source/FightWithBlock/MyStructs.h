@@ -1,48 +1,58 @@
-ï»¿// Fill out your copyright notice in the Description page of Project Settings.
+// Fill out your copyright notice in the Description page of Project Settings.
 
 #pragma once
 
 #include "Engine/DataTable.h"
-#include "structBUFF.generated.h"
+#include "MyStructs.generated.h"
 
 /**
  * 
  */
+UCLASS()
+class FIGHTWITHBLOCK_API UMyStructs : public UDataTable
+{
+	GENERATED_BODY()
+	
+	
+	
+	
+};
+
 USTRUCT()
 struct FstructBUFF : public FTableRowBase
 {
 	GENERATED_USTRUCT_BODY()
-	//BUFFç¼–å·
+	//BUFF±àºÅ
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "BUFF")
-		 int32 ID;
-	//å¼€å‘è€…ç”¨çš„åå­—
+		int32 ID;
+	//¿ª·¢ÕßÓÃµÄÃû×Ö
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "BUFF")
 		FName dName;
-	//ç©å®¶ç”¨çš„åå­—
+	//Íæ¼ÒÓÃµÄÃû×Ö
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "BUFF")
 		FName pName;
-	//ç©å®¶çœ‹çš„æè¿°
+	//Íæ¼Ò¿´µÄÃèÊö
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "BUFF")
 		FString miaoshu;
-	//ç©å®¶çœ‹çš„å›¾æ ‡
+	//Íæ¼Ò¿´µÄÍ¼±ê
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "BUFF")
 		UTexture2D* tubiao;
-	//BUFFæŒç»­æ—¶é—´
+	//BUFF³ÖĞøÊ±¼ä
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "BUFF")
 		float LifeTime;
-	//BUFFæ˜¯å¦æ™•çœ©ï¼Œtrueä¸ºæ™•çœ©
+	//BUFFÊÇ·ñÔÎÑ££¬trueÎªÔÎÑ£
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "BUFF")
 		bool xuanyun;
-	//BUFFæ˜¯å¦ç¦é”¢ï¼Œtrueä¸ºç¦é”¢
+	//BUFFÊÇ·ñ½ûïÀ£¬trueÎª½ûïÀ
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "BUFF")
 		bool jingu;
-	//BUFFå¯¹é€Ÿåº¦çš„æ”¹å˜ï¼ŒåŸé€Ÿåº¦ä¸º1
+	//BUFF¶ÔËÙ¶ÈµÄ¸Ä±ä£¬Ô­ËÙ¶ÈÎª1
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "BUFF")
 		float changeSpeed;
-	//æ¯ç§’å¯¹ç”Ÿå‘½å€¼çš„å½±å“
+	//Ã¿Ãë¶ÔÉúÃüÖµµÄÓ°Ïì
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "BUFF")
 		float changeHP;
-	//å¢åŠ /å‡å°‘åŠ›é‡ï¼ˆæ”»å‡»åŠ›ï¼‰
+	//Ôö¼Ó/¼õÉÙÁ¦Á¿£¨¹¥»÷Á¦£©
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "BUFF")
 		float changePower;
 };
