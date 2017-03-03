@@ -4,6 +4,7 @@
 #include "MyCharacter.h"
 
 
+
 // Sets default values
 AMyCharacter::AMyCharacter()
 {
@@ -35,6 +36,7 @@ void AMyCharacter::BeginPlay()
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, TEXT("this is MyCharacter!"));
 	}
+
 }
 
 // Called every frame
@@ -58,11 +60,11 @@ void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 
 void AMyCharacter::MoveForward(float val)
 {
-	AddMovementInput(GetActorForwardVector(), val * MoveSpeed);
+	AddMovementInput(GetActorForwardVector(), val * HeroInitProperty.MoveSpeed);
 }
 
 void AMyCharacter::MoveRight(float val)
 {
-	AddMovementInput(GetActorRightVector(), val * MoveSpeed);
+	AddMovementInput(GetActorRightVector(), val * HeroInitProperty.MoveSpeed);
 }
 

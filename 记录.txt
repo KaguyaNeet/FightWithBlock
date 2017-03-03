@@ -23,3 +23,26 @@ DEBUG的方式
  UE_LOG(ResLogger, Warning, TEXT("--- row:%s, key:%d, name:%s"), *it.Key.ToString(), tmpPtr->mId, *tmpPtr->mName);  
 
 ——2017.3.2
+
+使用datatable的方法 未尝试
+
+UDataTable* ExcelTable;
+ ConstructorHelpers::FObjectFinder<UDataTable> ExcelTable_BP(TEXT("DataTable'/Game/DataTables/ExcelExample.ExcelExample'"));
+ ExcelTable = ExcelTable_BP.Object;
+ 
+ FExcelData* RowLookUp = ExcelTable->FindRow<FDGExcellData>(TEXT("Enemy1"), TEXT("LookUp Operation"));
+ 
+可以用~
+
+
+SpawnEmitterAttach：并不在world中实现
+
+ UGameplayStatics::SpawnEmitterAttached(
+     ThePSC, //UParticleSystem*
+     SkelMeshToAttachTo, 
+     SocketName, 
+     FVector(0,0,0), //relative offset 
+     FRotator(0,0,0), //relative rotation
+     EAttachLocation::KeepRelativeOffset, 
+     true //auto delete on completion
+ );

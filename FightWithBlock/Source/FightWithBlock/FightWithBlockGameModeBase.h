@@ -5,6 +5,8 @@
 #include "GameFramework/GameModeBase.h"
 #include "FightWithBlockGameModeBase.generated.h"
 
+const int32 BAGSPACE = 2;
+
 /**
  * 
  */
