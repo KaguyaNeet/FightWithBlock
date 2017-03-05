@@ -34,8 +34,9 @@ void AMyCharacter::BeginPlay()
 
 	if (GEngine)
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, TEXT("this is MyCharacter!"));
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, TEXT("this is MyCharacter!"));	
 	}
+	handBlock = Bag[0];
 
 }
 
@@ -56,6 +57,11 @@ void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 	PlayerInputComponent->BindAxis("TurnX", this, &APawn::AddControllerYawInput);
 	PlayerInputComponent->BindAxis("TurnY", this, &APawn::AddControllerPitchInput);
 
+	PlayerInputComponent->BindAction("Item_1", IE_Pressed, this, &AMyCharacter::chooseItem_1);
+	PlayerInputComponent->BindAction("Item_2", IE_Pressed, this, &AMyCharacter::chooseItem_2);
+	PlayerInputComponent->BindAction("Item_3", IE_Pressed, this, &AMyCharacter::chooseItem_3);
+	PlayerInputComponent->BindAction("Fire", IE_Pressed, this, &AMyCharacter::Fire);
+
 }
 
 void AMyCharacter::MoveForward(float val)
@@ -68,3 +74,58 @@ void AMyCharacter::MoveRight(float val)
 	AddMovementInput(GetActorRightVector(), val * HeroInitProperty.MoveSpeed);
 }
 
+bool AMyCharacter::AddItem(FBlock Item)
+{
+	for (int i = 0; i < BAGSPACE; i++)
+	{
+		if (Bag[i].Empty)
+		{
+			Bag[i].Block = Item;
+			Bag[i].Empty = false;
+			return true;
+		}
+	}
+	return false;
+}
+
+
+void AMyCharacter::chooseItem_1()
+{
+	handBlock = Bag[0];
+}
+
+void AMyCharacter::chooseItem_2()
+{
+	handBlock = Bag[1];
+}
+
+void AMyCharacter::chooseItem_3()
+{
+	handBlock = Bag[2];
+}
+
+FTransform AMyCharacter::CounterFireTransform()
+{
+	FTransform tempTransform;
+	FVector tempLocation = FVector(0, 0, 0);
+	FRotator tempRotation = FRotator(0, 0, 0);
+	FVector tempSize = FVector(1, 1, 1);
+	tempTransform = FTransform(tempRotation, tempLocation, tempSize);
+	return tempTransform;
+}
+
+void AMyCharacter::Fire()
+{
+	if (handBlock.Empty == false)
+	{
+		//UWorld* World = GetWorld();
+		//if (World)
+		//{
+		//	FActorSpawnParameters SpawnParams;
+		//	SpawnParams.Owner = this;
+		//	SpawnParams.Instigator = Instigator;
+		//	ABoltBlock* BoltBlockClass;
+		//	ABoltBlock* tempBlock = World->SpawnActor<ABoltBlock>(BoltBlockClass, CounterFireTransform(), SpawnParams);
+		//}
+	}
+}

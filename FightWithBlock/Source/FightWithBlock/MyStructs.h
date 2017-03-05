@@ -1,5 +1,4 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
 
 #include "Engine/DataTable.h"
@@ -137,5 +136,16 @@ struct FBlock : public FTableRowBase
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Block")
 		UParticleSystem* explosionParticle;
 
+};
+
+USTRUCT()
+struct FItem : public FTableRowBase
+{
+	GENERATED_USTRUCT_BODY()
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Item")
+		bool Empty = true;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Item")
+		FBlock Block;
 };
 

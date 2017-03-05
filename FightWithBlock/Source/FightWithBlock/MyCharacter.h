@@ -2,6 +2,7 @@
 
 #include "MyStructs.h"
 #include "FightWithBlockGameModeBase.h"
+#include "BoltBlock.h"
 
 #pragma once
 
@@ -26,6 +27,10 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "InitProperty")
 		FHero HeroInitProperty;
 
+		FItem Bag[BAGSPACE];
+
+
+
 protected:
 	// Called when the game starts or when spawned
 
@@ -43,7 +48,19 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+	bool AddItem(FBlock Item);
 
+	void chooseItem_1();
+	void chooseItem_2();
+	void chooseItem_3();
 
-	
+	void Fire();
+
+	FItem handBlock;
+
+private:
+
+	FTransform FireTransform;
+
+	FTransform CounterFireTransform();
 };
