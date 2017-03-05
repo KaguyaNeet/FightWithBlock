@@ -18,8 +18,7 @@ public:
 	UPROPERTY(VisibleAnywhere)
 		class UStaticMeshComponent* StaticMesh;
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "InitProperty")
-		FBlock CBGBlockInitProperty;
+
 
 protected:
 	// Called when the game starts or when spawned
@@ -31,6 +30,10 @@ public:
 
 	void floatUpDown();
 
+	void SetInitProperty(FBlock Block);
+
 	
-	
+private:
+
+	FBlock BlockProperty;
 };

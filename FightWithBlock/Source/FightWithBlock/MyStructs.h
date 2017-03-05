@@ -34,9 +34,11 @@ USTRUCT()
 struct FBUFF : public FTableRowBase
 {
 	GENERATED_USTRUCT_BODY()
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Block")
+		bool NotEmpty = false;
 	//BUFF编号
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "BUFF")
-		int32 ID;
+		int32 ID = 1;
 	//开发者用的名字
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "BUFF")
 		FName dName;
@@ -126,6 +128,8 @@ struct FBlock : public FTableRowBase
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Block")
 		float Size;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Block")
+		int32 LifeValue;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Block")
 		UParticleSystem* selfParticle;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Block")
 		UParticleSystem* handParticle;
@@ -135,6 +139,12 @@ struct FBlock : public FTableRowBase
 		UParticleSystem* traceParticle;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Block")
 		UParticleSystem* explosionParticle;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Block")
+		FBUFF ToMinerBUFF;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Block")
+		FBUFF ToOwnerBUFF;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Block")
+		FBUFF ToEnemyBUFF;
 
 };
 

@@ -104,28 +104,33 @@ void AMyCharacter::chooseItem_3()
 	handBlock = Bag[2];
 }
 
-FTransform AMyCharacter::CounterFireTransform()
+
+FVector AMyCharacter::GetFireLocation()
 {
-	FTransform tempTransform;
 	FVector tempLocation = FVector(0, 0, 0);
+	return tempLocation;
+}
+
+FRotator AMyCharacter::GetFireRotation()
+{
 	FRotator tempRotation = FRotator(0, 0, 0);
-	FVector tempSize = FVector(1, 1, 1);
-	tempTransform = FTransform(tempRotation, tempLocation, tempSize);
-	return tempTransform;
+	return tempRotation;
 }
 
 void AMyCharacter::Fire()
 {
 	if (handBlock.Empty == false)
 	{
-		//UWorld* World = GetWorld();
-		//if (World)
-		//{
-		//	FActorSpawnParameters SpawnParams;
-		//	SpawnParams.Owner = this;
-		//	SpawnParams.Instigator = Instigator;
-		//	ABoltBlock* BoltBlockClass;
-		//	ABoltBlock* tempBlock = World->SpawnActor<ABoltBlock>(BoltBlockClass, CounterFireTransform(), SpawnParams);
-		//}
+		UWorld* World = GetWorld();
+		if (World)
+		{
+			FActorSpawnParameters SpawnParams;
+			SpawnParams.Owner = this;
+			SpawnParams.Instigator = Instigator;
+			ABoltBlock* tempBlock = World->SpawnActor<ABoltBlock>(GetClass(), GetFireLocation(), GetFireRotation(), SpawnParams);
+			tempBlock->SetInitProperty(handBlock.Block);
+			tempBlock->SetFireDirection(GetActorRotation().Vector());
+			handBlock.Empty = true;
+		}
 	}
 }

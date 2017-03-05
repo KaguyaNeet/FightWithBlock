@@ -20,6 +20,8 @@ public:
 		class UStaticMeshComponent* StaticMesh;
 	UPROPERTY(VisibleAnywhere)
 		class UProjectileMovementComponent* ProjectileMovement;
+	UPROPERTY(VisibleAnywhere)
+		class UBoxComponent* CollisionComponent;
 
 protected:
 	// Called when the game starts or when spawned
@@ -29,6 +31,11 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	void SetInitProperty(FBlock Block);
+
+	void SetFireDirection(const FVector& Direction);
 	
-	
+
+	FBlock BlockProperty;
+
 };

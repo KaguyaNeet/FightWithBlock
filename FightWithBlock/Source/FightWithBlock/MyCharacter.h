@@ -60,7 +60,7 @@ public:
 
 private:
 
-	FTransform FireTransform;
+	FVector GetFireLocation();
+	FRotator GetFireRotation();
 
-	FTransform CounterFireTransform();
 };

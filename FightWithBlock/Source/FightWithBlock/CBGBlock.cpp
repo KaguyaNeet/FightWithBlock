@@ -40,3 +40,8 @@ void ACBGBlock::floatUpDown()
 {
 
 }
+
+void ACBGBlock::SetInitProperty(FBlock Block)
+{
+	BlockProperty = Block;
+}

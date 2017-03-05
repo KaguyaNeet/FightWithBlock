@@ -1,5 +1,8 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 #include "MyStructs.h"
+#include "CBGBlock.h"
+#include "MyCharacter.h"
+
 #pragma once
 
 #include "GameFramework/Actor.h"
@@ -16,12 +19,7 @@ public:
 	ABlockBase();
 
 	UPROPERTY(VisibleAnywhere)
-		class UStaticMeshComponent* StaticMesh;
-
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "InitProperty")
-		FBlock BlockInitProperty;
-
-	
+		class UStaticMeshComponent* StaticMesh;	
 
 protected:
 	// Called when the game starts or when spawned
@@ -32,5 +30,13 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	void BeBreak();
+
+	void SetInitProperty(FBlock Block);
+
+	void ApplyPointDamage(AMyCharacter* Causer, int32 DamageValue);
+
+private:
+
+	FBlock BlockProperty;
 	
 };

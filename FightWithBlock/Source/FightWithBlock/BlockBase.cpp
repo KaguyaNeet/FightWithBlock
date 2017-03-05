@@ -40,8 +40,31 @@ void ABlockBase::Tick(float DeltaTime)
 
 }
 
+void ABlockBase::SetInitProperty(FBlock Block)
+{
+	BlockProperty = Block;
+}
+
 void ABlockBase::BeBreak()
 {
+		UWorld* World = GetWorld();
+		if (World)
+		{
+			FActorSpawnParameters SpawnParameter;
+			SpawnParameter.Owner = this;
+			SpawnParameter.Instigator = Instigator;
+			if (BlockProperty.breakParticle && BlockProperty.breakParticle->IsTemplate())
+				UGameplayStatics::SpawnEmitterAtLocation(World, BlockProperty.breakParticle, GetActorTransform(), true);
+			ACBGBlock* tempCBGBlock = World->SpawnActor<ACBGBlock>(GetClass(), GetActorLocation(), GetActorRotation(), SpawnParameter);
+			tempCBGBlock->SetInitProperty(BlockProperty);
+		}
+}
 
+void ABlockBase::ApplyPointDamage(AMyCharacter* Causer, int32 DamageValue)
+{
+	if (BlockProperty.ToMinerBUFF.NotEmpty)
+	{
+
+	}
 }
 

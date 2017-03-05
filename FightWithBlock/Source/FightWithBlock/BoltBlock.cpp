@@ -13,7 +13,14 @@ ABoltBlock::ABoltBlock()
 	StaticMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StaticMesh"));
 	StaticMesh->SetMobility(EComponentMobility::Movable);
 
+	CollisionComponent = CreateDefaultSubobject<UBoxComponent>(TEXT("CollisionComponent"));
+	SetRootComponent(CollisionComponent);
+
 	ProjectileMovement = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("ProjectileMovement"));
+	ProjectileMovement->SetUpdatedComponent(CollisionComponent);
+	ProjectileMovement->InitialSpeed = 3000.f;
+	ProjectileMovement->bRotationFollowsVelocity = true;
+
 
 }
 
@@ -30,4 +37,15 @@ void ABoltBlock::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 }
+
+void ABoltBlock::SetInitProperty(FBlock Block)
+{
+	BlockProperty = Block;
+}
+
+void ABoltBlock::SetFireDirection(const FVector& Direction)
+{
+	ProjectileMovement->Velocity = Direction * ProjectileMovement->InitialSpeed;
+}
+
 
