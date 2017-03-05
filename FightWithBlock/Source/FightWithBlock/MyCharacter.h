@@ -24,10 +24,14 @@ public:
 	UPROPERTY(VisibleAnywhere)
 		class USkeletalMeshComponent* FPSMesh;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "InitProperty")
+	UPROPERTY(VisibleAnywhere)
+		class UCharacterMovementComponent* MovementComponent;
+
 		FHero HeroInitProperty;
 
 		FItem Bag[BAGSPACE];
+
+
 
 
 
@@ -58,9 +62,17 @@ public:
 
 	FItem handBlock;
 
+	void AddBUFF(FBUFF BUFF);
+	void RunBUFF(float DeltaTime);
+	void EndBUFF(int i);
+	void ReloadProperty();
+
 private:
 
 	FVector GetFireLocation();
 	FRotator GetFireRotation();
+
+	TArray<FBUFF> myBUFF;
+	FHero HeroProperty;
 
 };

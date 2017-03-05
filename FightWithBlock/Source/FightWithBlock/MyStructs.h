@@ -63,6 +63,8 @@ struct FBUFF : public FTableRowBase
 	//BUFF对速度的改变，原速度为1
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "BUFF")
 		float changeSpeed;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "BUFF")
+		bool alreadyChangeSpeed = true;
 	//每秒对生命值的影响
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "BUFF")
 		int32 changeHP;

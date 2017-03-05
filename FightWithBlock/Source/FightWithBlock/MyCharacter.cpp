@@ -22,6 +22,9 @@ AMyCharacter::AMyCharacter()
 	FPSMesh->CastShadow = false;
 	FPSMesh->SetOnlyOwnerSee(true);
 
+	MovementComponent = CreateDefaultSubobject<UCharacterMovementComponent>(TEXT("MovementComponent"));
+	MovementComponent->MaxWalkSpeed = HeroProperty.MoveSpeed;
+
 	GetMesh()->SetOwnerNoSee(true);
 
 	AutoPossessPlayer = EAutoReceiveInput::Player0;
@@ -44,6 +47,8 @@ void AMyCharacter::BeginPlay()
 void AMyCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+	RunBUFF(DeltaTime);
 
 }
 
@@ -119,7 +124,7 @@ FRotator AMyCharacter::GetFireRotation()
 
 void AMyCharacter::Fire()
 {
-	if (handBlock.Empty == false)
+	if (!handBlock.Empty)
 	{
 		UWorld* World = GetWorld();
 		if (World)
@@ -134,3 +139,46 @@ void AMyCharacter::Fire()
 		}
 	}
 }
+
+void AMyCharacter::ReloadProperty()
+{
+	MovementComponent->MaxWalkSpeed = HeroProperty.MoveSpeed;
+}
+
+
+void AMyCharacter::AddBUFF(FBUFF BUFF)
+{
+	myBUFF.Add(BUFF);
+}
+
+void AMyCharacter::RunBUFF(float DeltaTime)
+{
+	for (int i = 0; i < myBUFF.Max(); i++)
+	{
+		if (i == myBUFF.Max())
+			break;
+		else
+		{
+			if (myBUFF[i].LifeTime <= 0)
+			{
+				EndBUFF(i);
+			}
+			myBUFF[i].LifeTime -= DeltaTime;
+			if (myBUFF[i].xuanyun)
+			{
+				MovementComponent->MaxWalkSpeed = 0;
+			}
+			if (!myBUFF[i].alreadyChangeSpeed)
+				MovementComponent->MaxWalkSpeed *= myBUFF[i].changeSpeed;
+			HeroProperty.LifeValue += myBUFF[i].changeHP * DeltaTime;
+			HeroProperty.Power += myBUFF[i].changePower * DeltaTime;
+		}
+	}
+}
+
+void AMyCharacter::EndBUFF(int i)
+{
+	myBUFF.RemoveAt(i);
+	ReloadProperty();
+}
+

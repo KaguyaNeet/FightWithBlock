@@ -11,33 +11,39 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define FIGHTWITHBLOCK_MyStructs_generated_h
 
-#define FightWithBlock_Source_FightWithBlock_MyStructs_h_109_GENERATED_BODY \
+#define FightWithBlock_Source_FightWithBlock_MyStructs_h_156_GENERATED_BODY \
+	friend FIGHTWITHBLOCK_API class UScriptStruct* Z_Construct_UScriptStruct_FItem(); \
+	FIGHTWITHBLOCK_API static class UScriptStruct* StaticStruct(); \
+	typedef FTableRowBase Super;
+
+
+#define FightWithBlock_Source_FightWithBlock_MyStructs_h_112_GENERATED_BODY \
 	friend FIGHTWITHBLOCK_API class UScriptStruct* Z_Construct_UScriptStruct_FBlock(); \
 	FIGHTWITHBLOCK_API static class UScriptStruct* StaticStruct(); \
 	typedef FTableRowBase Super;
 
 
-#define FightWithBlock_Source_FightWithBlock_MyStructs_h_77_GENERATED_BODY \
+#define FightWithBlock_Source_FightWithBlock_MyStructs_h_80_GENERATED_BODY \
 	friend FIGHTWITHBLOCK_API class UScriptStruct* Z_Construct_UScriptStruct_FHero(); \
 	FIGHTWITHBLOCK_API static class UScriptStruct* StaticStruct(); \
 	typedef FTableRowBase Super;
 
 
-#define FightWithBlock_Source_FightWithBlock_MyStructs_h_37_GENERATED_BODY \
+#define FightWithBlock_Source_FightWithBlock_MyStructs_h_36_GENERATED_BODY \
 	friend FIGHTWITHBLOCK_API class UScriptStruct* Z_Construct_UScriptStruct_FBUFF(); \
 	FIGHTWITHBLOCK_API static class UScriptStruct* StaticStruct(); \
 	typedef FTableRowBase Super;
 
 
-#define FightWithBlock_Source_FightWithBlock_MyStructs_h_24_GENERATED_BODY \
+#define FightWithBlock_Source_FightWithBlock_MyStructs_h_23_GENERATED_BODY \
 	friend FIGHTWITHBLOCK_API class UScriptStruct* Z_Construct_UScriptStruct_FPosition(); \
 	FIGHTWITHBLOCK_API static class UScriptStruct* StaticStruct(); \
 	typedef FTableRowBase Super;
 
 
-#define FightWithBlock_Source_FightWithBlock_MyStructs_h_14_RPC_WRAPPERS
-#define FightWithBlock_Source_FightWithBlock_MyStructs_h_14_RPC_WRAPPERS_NO_PURE_DECLS
-#define FightWithBlock_Source_FightWithBlock_MyStructs_h_14_INCLASS_NO_PURE_DECLS \
+#define FightWithBlock_Source_FightWithBlock_MyStructs_h_13_RPC_WRAPPERS
+#define FightWithBlock_Source_FightWithBlock_MyStructs_h_13_RPC_WRAPPERS_NO_PURE_DECLS
+#define FightWithBlock_Source_FightWithBlock_MyStructs_h_13_INCLASS_NO_PURE_DECLS \
 	private: \
 	static void StaticRegisterNativesUMyStructs(); \
 	friend FIGHTWITHBLOCK_API class UClass* Z_Construct_UClass_UMyStructs(); \
@@ -48,7 +54,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	enum {IsIntrinsic=COMPILED_IN_INTRINSIC};
 
 
-#define FightWithBlock_Source_FightWithBlock_MyStructs_h_14_INCLASS \
+#define FightWithBlock_Source_FightWithBlock_MyStructs_h_13_INCLASS \
 	private: \
 	static void StaticRegisterNativesUMyStructs(); \
 	friend FIGHTWITHBLOCK_API class UClass* Z_Construct_UClass_UMyStructs(); \
@@ -59,7 +65,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	enum {IsIntrinsic=COMPILED_IN_INTRINSIC};
 
 
-#define FightWithBlock_Source_FightWithBlock_MyStructs_h_14_STANDARD_CONSTRUCTORS \
+#define FightWithBlock_Source_FightWithBlock_MyStructs_h_13_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API UMyStructs(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(UMyStructs) \
@@ -72,7 +78,7 @@ private: \
 public:
 
 
-#define FightWithBlock_Source_FightWithBlock_MyStructs_h_14_ENHANCED_CONSTRUCTORS \
+#define FightWithBlock_Source_FightWithBlock_MyStructs_h_13_ENHANCED_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API UMyStructs(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()) : Super(ObjectInitializer) { }; \
 private: \
@@ -85,26 +91,26 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UMyStructs); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(UMyStructs)
 
 
-#define FightWithBlock_Source_FightWithBlock_MyStructs_h_14_PRIVATE_PROPERTY_OFFSET
-#define FightWithBlock_Source_FightWithBlock_MyStructs_h_11_PROLOG
-#define FightWithBlock_Source_FightWithBlock_MyStructs_h_14_GENERATED_BODY_LEGACY \
+#define FightWithBlock_Source_FightWithBlock_MyStructs_h_13_PRIVATE_PROPERTY_OFFSET
+#define FightWithBlock_Source_FightWithBlock_MyStructs_h_10_PROLOG
+#define FightWithBlock_Source_FightWithBlock_MyStructs_h_13_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FightWithBlock_Source_FightWithBlock_MyStructs_h_14_PRIVATE_PROPERTY_OFFSET \
-	FightWithBlock_Source_FightWithBlock_MyStructs_h_14_RPC_WRAPPERS \
-	FightWithBlock_Source_FightWithBlock_MyStructs_h_14_INCLASS \
-	FightWithBlock_Source_FightWithBlock_MyStructs_h_14_STANDARD_CONSTRUCTORS \
+	FightWithBlock_Source_FightWithBlock_MyStructs_h_13_PRIVATE_PROPERTY_OFFSET \
+	FightWithBlock_Source_FightWithBlock_MyStructs_h_13_RPC_WRAPPERS \
+	FightWithBlock_Source_FightWithBlock_MyStructs_h_13_INCLASS \
+	FightWithBlock_Source_FightWithBlock_MyStructs_h_13_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define FightWithBlock_Source_FightWithBlock_MyStructs_h_14_GENERATED_BODY \
+#define FightWithBlock_Source_FightWithBlock_MyStructs_h_13_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FightWithBlock_Source_FightWithBlock_MyStructs_h_14_PRIVATE_PROPERTY_OFFSET \
-	FightWithBlock_Source_FightWithBlock_MyStructs_h_14_RPC_WRAPPERS_NO_PURE_DECLS \
-	FightWithBlock_Source_FightWithBlock_MyStructs_h_14_INCLASS_NO_PURE_DECLS \
-	FightWithBlock_Source_FightWithBlock_MyStructs_h_14_ENHANCED_CONSTRUCTORS \
+	FightWithBlock_Source_FightWithBlock_MyStructs_h_13_PRIVATE_PROPERTY_OFFSET \
+	FightWithBlock_Source_FightWithBlock_MyStructs_h_13_RPC_WRAPPERS_NO_PURE_DECLS \
+	FightWithBlock_Source_FightWithBlock_MyStructs_h_13_INCLASS_NO_PURE_DECLS \
+	FightWithBlock_Source_FightWithBlock_MyStructs_h_13_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
