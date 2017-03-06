@@ -46,3 +46,40 @@ SpawnEmitterAttach：并不在world中实现
      EAttachLocation::KeepRelativeOffset, 
      true //auto delete on completion
  );
+
+
+射线检测
+void ANanProjectCharacter::Raycast()
+{
+	FHitResult hitResult(ForceInit); 
+	FVector pos, dir;
+	FCollisionQueryParams ccq(FName(TEXT("CombatTrace")), true, NULL);
+	ccq.bTraceComplex = true;
+	ccq.bTraceAsyncScene = false;
+	ccq.bReturnPhysicalMaterial = false;
+	ccq.AddIgnoredActor(this);
+
+	pos = GetActorLocation();
+
+	const FRotator Rotation = CapsuleComponent->GetComponentRotation();
+	const FRotator YawRotation(0, Rotation.Yaw, 0);
+
+	// get forward vector
+	dir = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
+
+	FVector posBegin = pos;
+	FVector posEnd = pos + dir * 500;
+
+	GetWorld()->LineTraceSingle(hitResult,
+		posBegin,
+		posEnd,
+		ECC_WorldStatic,
+		ccq);
+
+	DrawDebugLine(this->GetWorld(), posBegin, posEnd, FColor(1.0f, 0.f, 0.f, 1.f), false, 20.f);
+	if (hitResult.GetActor())
+	{
+		DrawDebugSphere(GetWorld(), hitResult.Location, 10, 10, FColor::Red, false, 20.f);
+		
+	}
+}

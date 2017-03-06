@@ -10,8 +10,13 @@ ACBGBlock::ACBGBlock()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
+	CollisionComponent = CreateDefaultSubobject<UBoxComponent>(TEXT("CollisionComponent"));
+	RootComponent = CollisionComponent;
+	CollisionComponent->OnComponentHit.__Internal_AddDynamic(this, &ACBGBlock::OnHit, TEXT("OnHit"));
+
 	StaticMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StaticMesh"));
 	StaticMesh->SetMobility(EComponentMobility::Movable);
+	StaticMesh->AttachTo(RootComponent);
 	if (StaticMesh->GetBodyInstance())
 	{
 		StaticMesh->GetBodyInstance()->bLockXRotation = true;
@@ -19,6 +24,9 @@ ACBGBlock::ACBGBlock()
 		StaticMesh->GetBodyInstance()->bLockXTranslation = true;
 		StaticMesh->GetBodyInstance()->bLockYTranslation = true;
 	}
+
+	
+
 
 }
 
@@ -44,4 +52,9 @@ void ACBGBlock::floatUpDown()
 void ACBGBlock::SetInitProperty(FBlock Block)
 {
 	BlockProperty = Block;
+}
+
+void ACBGBlock::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherCompnent, FVector NormalImpulse, const FHitResult& Hit)
+{
+
 }

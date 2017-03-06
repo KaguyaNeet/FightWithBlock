@@ -2,7 +2,7 @@
 	"TargetName" : "FightWithBlockEditor",
 	"Platform" : "Win64",
 	"Configuration" : "Development",
-	"BuildId" : "",
+	"BuildId" : "fe913454-679c-4749-9c76-a1ad3b58e1f6",
 	"Version" : 
 	{
 		"MajorVersion" : 4,
@@ -17,15 +17,15 @@
 	"BuildProducts" :
 	[
 		{
-			"Path" : "$(ProjectDir)/Binaries/Win64/UE4Editor-FightWithBlock.dll",
+			"Path" : "$(ProjectDir)/Binaries/Win64/UE4Editor-FightWithBlock-9138.dll",
 			"Type" : "DynamicLibrary"
 		},
 		{
-			"Path" : "$(ProjectDir)/Binaries/Win64/UE4Editor-FightWithBlock.pdb",
+			"Path" : "$(ProjectDir)/Binaries/Win64/UE4Editor-FightWithBlock-9138.pdb",
 			"Type" : "SymbolFile"
 		},
 		{
-			"Path" : "$(ProjectDir)/Intermediate/Build/Win64/UE4Editor/Development/UE4Editor-FightWithBlock.lib",
+			"Path" : "$(ProjectDir)/Intermediate/Build/Win64/UE4Editor/Development/UE4Editor-FightWithBlock-9138.lib",
 			"Type" : "ImportLibrary"
 		},
 		{
