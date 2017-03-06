@@ -58,3 +58,8 @@ void ACBGBlock::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPr
 {
 
 }
+
+void ACBGBlock::DestroySelf()
+{
+	this->Destroy(true);
+}

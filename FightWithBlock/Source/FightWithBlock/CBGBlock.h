@@ -36,8 +36,7 @@ public:
 
 	void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherCompnent, FVector NormalImpulse, const FHitResult& Hit);
 
-	
-private:
+	void DestroySelf();
 
 	FBlock BlockProperty;
 };

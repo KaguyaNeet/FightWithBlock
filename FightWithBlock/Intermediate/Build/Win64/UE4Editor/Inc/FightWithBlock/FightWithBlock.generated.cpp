@@ -115,10 +115,6 @@ static struct FScriptStruct_FightWithBlock_StaticRegisterNativesFPosition
 	{
 	}
 	IMPLEMENT_CLASS(UMyStructs, 3368637034);
-	void ACBGBlock::StaticRegisterNativesACBGBlock()
-	{
-	}
-	IMPLEMENT_CLASS(ACBGBlock, 207366327);
 	void AFightWithBlockGameModeBase::StaticRegisterNativesAFightWithBlockGameModeBase()
 	{
 	}
@@ -127,6 +123,10 @@ static struct FScriptStruct_FightWithBlock_StaticRegisterNativesFPosition
 	{
 	}
 	IMPLEMENT_CLASS(ABoltBlock, 171311294);
+	void ACBGBlock::StaticRegisterNativesACBGBlock()
+	{
+	}
+	IMPLEMENT_CLASS(ACBGBlock, 1123485943);
 	void AMyCharacter::StaticRegisterNativesAMyCharacter()
 	{
 	}
@@ -143,11 +143,11 @@ static struct FScriptStruct_FightWithBlock_StaticRegisterNativesFPosition
 	ENGINE_API class UClass* Z_Construct_UClass_UStaticMesh_NoRegister();
 	ENGINE_API class UClass* Z_Construct_UClass_UTexture2D_NoRegister();
 	ENGINE_API class UClass* Z_Construct_UClass_UDataTable();
-	ENGINE_API class UClass* Z_Construct_UClass_AActor();
-	ENGINE_API class UClass* Z_Construct_UClass_UStaticMeshComponent_NoRegister();
 	ENGINE_API class UClass* Z_Construct_UClass_AGameModeBase();
+	ENGINE_API class UClass* Z_Construct_UClass_AActor();
 	ENGINE_API class UClass* Z_Construct_UClass_UBoxComponent_NoRegister();
 	ENGINE_API class UClass* Z_Construct_UClass_UProjectileMovementComponent_NoRegister();
+	ENGINE_API class UClass* Z_Construct_UClass_UStaticMeshComponent_NoRegister();
 	ENGINE_API class UClass* Z_Construct_UClass_ACharacter();
 	ENGINE_API class UClass* Z_Construct_UClass_UCharacterMovementComponent_NoRegister();
 	ENGINE_API class UClass* Z_Construct_UClass_USkeletalMeshComponent_NoRegister();
@@ -160,12 +160,12 @@ static struct FScriptStruct_FightWithBlock_StaticRegisterNativesFPosition
 	FIGHTWITHBLOCK_API class UScriptStruct* Z_Construct_UScriptStruct_FPosition();
 	FIGHTWITHBLOCK_API class UClass* Z_Construct_UClass_UMyStructs_NoRegister();
 	FIGHTWITHBLOCK_API class UClass* Z_Construct_UClass_UMyStructs();
-	FIGHTWITHBLOCK_API class UClass* Z_Construct_UClass_ACBGBlock_NoRegister();
-	FIGHTWITHBLOCK_API class UClass* Z_Construct_UClass_ACBGBlock();
 	FIGHTWITHBLOCK_API class UClass* Z_Construct_UClass_AFightWithBlockGameModeBase_NoRegister();
 	FIGHTWITHBLOCK_API class UClass* Z_Construct_UClass_AFightWithBlockGameModeBase();
 	FIGHTWITHBLOCK_API class UClass* Z_Construct_UClass_ABoltBlock_NoRegister();
 	FIGHTWITHBLOCK_API class UClass* Z_Construct_UClass_ABoltBlock();
+	FIGHTWITHBLOCK_API class UClass* Z_Construct_UClass_ACBGBlock_NoRegister();
+	FIGHTWITHBLOCK_API class UClass* Z_Construct_UClass_ACBGBlock();
 	FIGHTWITHBLOCK_API class UClass* Z_Construct_UClass_AMyCharacter_NoRegister();
 	FIGHTWITHBLOCK_API class UClass* Z_Construct_UClass_AMyCharacter();
 	FIGHTWITHBLOCK_API class UClass* Z_Construct_UClass_ABlockBase_NoRegister();
@@ -442,44 +442,6 @@ static struct FScriptStruct_FightWithBlock_StaticRegisterNativesFPosition
 	}
 	static FCompiledInDefer Z_CompiledInDefer_UClass_UMyStructs(Z_Construct_UClass_UMyStructs, &UMyStructs::StaticClass, TEXT("UMyStructs"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(UMyStructs);
-	UClass* Z_Construct_UClass_ACBGBlock_NoRegister()
-	{
-		return ACBGBlock::StaticClass();
-	}
-	UClass* Z_Construct_UClass_ACBGBlock()
-	{
-		static UClass* OuterClass = NULL;
-		if (!OuterClass)
-		{
-			Z_Construct_UClass_AActor();
-			Z_Construct_UPackage__Script_FightWithBlock();
-			OuterClass = ACBGBlock::StaticClass();
-			if (!(OuterClass->ClassFlags & CLASS_Constructed))
-			{
-				UObjectForceRegistration(OuterClass);
-				OuterClass->ClassFlags |= 0x20900080;
-
-
-PRAGMA_DISABLE_DEPRECATION_WARNINGS
-				UProperty* NewProp_StaticMesh = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("StaticMesh"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(CPP_PROPERTY_BASE(StaticMesh, ACBGBlock), 0x00100000000a0009, Z_Construct_UClass_UStaticMeshComponent_NoRegister());
-PRAGMA_ENABLE_DEPRECATION_WARNINGS
-				OuterClass->StaticLink();
-#if WITH_METADATA
-				UMetaData* MetaData = OuterClass->GetOutermost()->GetMetaData();
-				MetaData->SetValue(OuterClass, TEXT("IncludePath"), TEXT("CBGBlock.h"));
-				MetaData->SetValue(OuterClass, TEXT("ModuleRelativePath"), TEXT("CBGBlock.h"));
-				MetaData->SetValue(OuterClass, TEXT("ToolTip"), TEXT("???\x01f4??\x9dfd?? ???\x0275\x013f?\x02b0\x0221?\x0137??? ???\x06b5??\x03f8???"));
-				MetaData->SetValue(NewProp_StaticMesh, TEXT("Category"), TEXT("CBGBlock"));
-				MetaData->SetValue(NewProp_StaticMesh, TEXT("EditInline"), TEXT("true"));
-				MetaData->SetValue(NewProp_StaticMesh, TEXT("ModuleRelativePath"), TEXT("CBGBlock.h"));
-#endif
-			}
-		}
-		check(OuterClass->GetClass());
-		return OuterClass;
-	}
-	static FCompiledInDefer Z_CompiledInDefer_UClass_ACBGBlock(Z_Construct_UClass_ACBGBlock, &ACBGBlock::StaticClass, TEXT("ACBGBlock"), false, nullptr, nullptr, nullptr);
-	DEFINE_VTABLE_PTR_HELPER_CTOR(ACBGBlock);
 	UClass* Z_Construct_UClass_AFightWithBlockGameModeBase_NoRegister()
 	{
 		return AFightWithBlockGameModeBase::StaticClass();
@@ -559,6 +521,48 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 	}
 	static FCompiledInDefer Z_CompiledInDefer_UClass_ABoltBlock(Z_Construct_UClass_ABoltBlock, &ABoltBlock::StaticClass, TEXT("ABoltBlock"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(ABoltBlock);
+	UClass* Z_Construct_UClass_ACBGBlock_NoRegister()
+	{
+		return ACBGBlock::StaticClass();
+	}
+	UClass* Z_Construct_UClass_ACBGBlock()
+	{
+		static UClass* OuterClass = NULL;
+		if (!OuterClass)
+		{
+			Z_Construct_UClass_AActor();
+			Z_Construct_UPackage__Script_FightWithBlock();
+			OuterClass = ACBGBlock::StaticClass();
+			if (!(OuterClass->ClassFlags & CLASS_Constructed))
+			{
+				UObjectForceRegistration(OuterClass);
+				OuterClass->ClassFlags |= 0x20900080;
+
+
+PRAGMA_DISABLE_DEPRECATION_WARNINGS
+				UProperty* NewProp_CollisionComponent = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("CollisionComponent"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(CPP_PROPERTY_BASE(CollisionComponent, ACBGBlock), 0x00100000000a0009, Z_Construct_UClass_UBoxComponent_NoRegister());
+				UProperty* NewProp_StaticMesh = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("StaticMesh"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(CPP_PROPERTY_BASE(StaticMesh, ACBGBlock), 0x00100000000a0009, Z_Construct_UClass_UStaticMeshComponent_NoRegister());
+PRAGMA_ENABLE_DEPRECATION_WARNINGS
+				OuterClass->StaticLink();
+#if WITH_METADATA
+				UMetaData* MetaData = OuterClass->GetOutermost()->GetMetaData();
+				MetaData->SetValue(OuterClass, TEXT("IncludePath"), TEXT("CBGBlock.h"));
+				MetaData->SetValue(OuterClass, TEXT("ModuleRelativePath"), TEXT("CBGBlock.h"));
+				MetaData->SetValue(OuterClass, TEXT("ToolTip"), TEXT("???\x01f4??\x9dfd?? ???\x0275\x013f?\x02b0\x0221?\x0137??? ???\x06b5??\x03f8???"));
+				MetaData->SetValue(NewProp_CollisionComponent, TEXT("Category"), TEXT("CBGBlock"));
+				MetaData->SetValue(NewProp_CollisionComponent, TEXT("EditInline"), TEXT("true"));
+				MetaData->SetValue(NewProp_CollisionComponent, TEXT("ModuleRelativePath"), TEXT("CBGBlock.h"));
+				MetaData->SetValue(NewProp_StaticMesh, TEXT("Category"), TEXT("CBGBlock"));
+				MetaData->SetValue(NewProp_StaticMesh, TEXT("EditInline"), TEXT("true"));
+				MetaData->SetValue(NewProp_StaticMesh, TEXT("ModuleRelativePath"), TEXT("CBGBlock.h"));
+#endif
+			}
+		}
+		check(OuterClass->GetClass());
+		return OuterClass;
+	}
+	static FCompiledInDefer Z_CompiledInDefer_UClass_ACBGBlock(Z_Construct_UClass_ACBGBlock, &ACBGBlock::StaticClass, TEXT("ACBGBlock"), false, nullptr, nullptr, nullptr);
+	DEFINE_VTABLE_PTR_HELPER_CTOR(ACBGBlock);
 	UClass* Z_Construct_UClass_AMyCharacter_NoRegister()
 	{
 		return AMyCharacter::StaticClass();
@@ -650,8 +654,8 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 			ReturnPackage = CastChecked<UPackage>(StaticFindObjectFast(UPackage::StaticClass(), NULL, FName(TEXT("/Script/FightWithBlock")), false, false));
 			ReturnPackage->SetPackageFlags(PKG_CompiledIn | 0x00000000);
 			FGuid Guid;
-			Guid.A = 0xA531FCC4;
-			Guid.B = 0x3526A08B;
+			Guid.A = 0x54F7EE34;
+			Guid.B = 0x0177863C;
 			Guid.C = 0x00000000;
 			Guid.D = 0x00000000;
 			ReturnPackage->SetGuid(Guid);

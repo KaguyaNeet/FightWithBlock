@@ -11,9 +11,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define FIGHTWITHBLOCK_BlockBase_generated_h
 
-#define FightWithBlock_Source_FightWithBlock_BlockBase_h_15_RPC_WRAPPERS
-#define FightWithBlock_Source_FightWithBlock_BlockBase_h_15_RPC_WRAPPERS_NO_PURE_DECLS
-#define FightWithBlock_Source_FightWithBlock_BlockBase_h_15_INCLASS_NO_PURE_DECLS \
+#define FightWithBlock_Source_FightWithBlock_BlockBase_h_14_RPC_WRAPPERS
+#define FightWithBlock_Source_FightWithBlock_BlockBase_h_14_RPC_WRAPPERS_NO_PURE_DECLS
+#define FightWithBlock_Source_FightWithBlock_BlockBase_h_14_INCLASS_NO_PURE_DECLS \
 	private: \
 	static void StaticRegisterNativesABlockBase(); \
 	friend FIGHTWITHBLOCK_API class UClass* Z_Construct_UClass_ABlockBase(); \
@@ -24,7 +24,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	enum {IsIntrinsic=COMPILED_IN_INTRINSIC};
 
 
-#define FightWithBlock_Source_FightWithBlock_BlockBase_h_15_INCLASS \
+#define FightWithBlock_Source_FightWithBlock_BlockBase_h_14_INCLASS \
 	private: \
 	static void StaticRegisterNativesABlockBase(); \
 	friend FIGHTWITHBLOCK_API class UClass* Z_Construct_UClass_ABlockBase(); \
@@ -35,7 +35,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	enum {IsIntrinsic=COMPILED_IN_INTRINSIC};
 
 
-#define FightWithBlock_Source_FightWithBlock_BlockBase_h_15_STANDARD_CONSTRUCTORS \
+#define FightWithBlock_Source_FightWithBlock_BlockBase_h_14_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API ABlockBase(const FObjectInitializer& ObjectInitializer); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(ABlockBase) \
@@ -48,7 +48,7 @@ private: \
 public:
 
 
-#define FightWithBlock_Source_FightWithBlock_BlockBase_h_15_ENHANCED_CONSTRUCTORS \
+#define FightWithBlock_Source_FightWithBlock_BlockBase_h_14_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	NO_API ABlockBase(ABlockBase&&); \
@@ -59,26 +59,26 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(ABlockBase); \
 	DEFINE_DEFAULT_CONSTRUCTOR_CALL(ABlockBase)
 
 
-#define FightWithBlock_Source_FightWithBlock_BlockBase_h_15_PRIVATE_PROPERTY_OFFSET
-#define FightWithBlock_Source_FightWithBlock_BlockBase_h_12_PROLOG
-#define FightWithBlock_Source_FightWithBlock_BlockBase_h_15_GENERATED_BODY_LEGACY \
+#define FightWithBlock_Source_FightWithBlock_BlockBase_h_14_PRIVATE_PROPERTY_OFFSET
+#define FightWithBlock_Source_FightWithBlock_BlockBase_h_11_PROLOG
+#define FightWithBlock_Source_FightWithBlock_BlockBase_h_14_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FightWithBlock_Source_FightWithBlock_BlockBase_h_15_PRIVATE_PROPERTY_OFFSET \
-	FightWithBlock_Source_FightWithBlock_BlockBase_h_15_RPC_WRAPPERS \
-	FightWithBlock_Source_FightWithBlock_BlockBase_h_15_INCLASS \
-	FightWithBlock_Source_FightWithBlock_BlockBase_h_15_STANDARD_CONSTRUCTORS \
+	FightWithBlock_Source_FightWithBlock_BlockBase_h_14_PRIVATE_PROPERTY_OFFSET \
+	FightWithBlock_Source_FightWithBlock_BlockBase_h_14_RPC_WRAPPERS \
+	FightWithBlock_Source_FightWithBlock_BlockBase_h_14_INCLASS \
+	FightWithBlock_Source_FightWithBlock_BlockBase_h_14_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define FightWithBlock_Source_FightWithBlock_BlockBase_h_15_GENERATED_BODY \
+#define FightWithBlock_Source_FightWithBlock_BlockBase_h_14_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FightWithBlock_Source_FightWithBlock_BlockBase_h_15_PRIVATE_PROPERTY_OFFSET \
-	FightWithBlock_Source_FightWithBlock_BlockBase_h_15_RPC_WRAPPERS_NO_PURE_DECLS \
-	FightWithBlock_Source_FightWithBlock_BlockBase_h_15_INCLASS_NO_PURE_DECLS \
-	FightWithBlock_Source_FightWithBlock_BlockBase_h_15_ENHANCED_CONSTRUCTORS \
+	FightWithBlock_Source_FightWithBlock_BlockBase_h_14_PRIVATE_PROPERTY_OFFSET \
+	FightWithBlock_Source_FightWithBlock_BlockBase_h_14_RPC_WRAPPERS_NO_PURE_DECLS \
+	FightWithBlock_Source_FightWithBlock_BlockBase_h_14_INCLASS_NO_PURE_DECLS \
+	FightWithBlock_Source_FightWithBlock_BlockBase_h_14_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

@@ -22,9 +22,7 @@ AMyCharacter::AMyCharacter()
 	FPSMesh->CastShadow = false;
 	FPSMesh->SetOnlyOwnerSee(true);
 
-	MovementComponent = CreateDefaultSubobject<UCharacterMovementComponent>(TEXT("MovementComponent"));
-	MovementComponent->MaxWalkSpeed = HeroProperty.MoveSpeed;
-
+	GetCapsuleComponent()->OnComponentBeginOverlap.__Internal_AddDynamic(this, &AMyCharacter::BeginOverlap, TEXT("BeginOverlap"));
 	GetMesh()->SetOwnerNoSee(true);
 
 	AutoPossessPlayer = EAutoReceiveInput::Player0;
@@ -66,17 +64,19 @@ void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 	PlayerInputComponent->BindAction("Item_2", IE_Pressed, this, &AMyCharacter::chooseItem_2);
 	PlayerInputComponent->BindAction("Item_3", IE_Pressed, this, &AMyCharacter::chooseItem_3);
 	PlayerInputComponent->BindAction("Fire", IE_Pressed, this, &AMyCharacter::Fire);
+	PlayerInputComponent->BindAction("GetItem", IE_Pressed, this, &AMyCharacter::Pressed_R);
+	PlayerInputComponent->BindAction("GetItem", IE_Released, this, &AMyCharacter::Released_R);
 
 }
 
 void AMyCharacter::MoveForward(float val)
 {
-	AddMovementInput(GetActorForwardVector(), val * HeroInitProperty.MoveSpeed);
+	AddMovementInput(GetActorForwardVector(), val * 10);
 }
 
 void AMyCharacter::MoveRight(float val)
 {
-	AddMovementInput(GetActorRightVector(), val * HeroInitProperty.MoveSpeed);
+	AddMovementInput(GetActorRightVector(), val * 10);
 }
 
 bool AMyCharacter::AddItem(FBlock Item)
@@ -182,3 +182,32 @@ void AMyCharacter::EndBUFF(int i)
 	ReloadProperty();
 }
 
+void AMyCharacter::BeginOverlap(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherCompnent, int32 OtherBodyIndex, bool FromSweep, const FHitResult& Hit)
+{
+	ACBGBlock* CBGBlock = Cast<ACBGBlock>(OtherActor);
+	if (CBGBlock)
+	{
+		if (Keyboard_F_Pressed)
+		{
+			if (AddItem(CBGBlock->BlockProperty))
+			{
+				CBGBlock->DestroySelf();
+			}
+		}
+	}
+}
+
+void AMyCharacter::Pressed_R()
+{
+	Keyboard_F_Pressed = true;
+}
+
+void AMyCharacter::Released_R()
+{
+	Keyboard_F_Pressed = false;
+}
+
+void AMyCharacter::PrintItem(FBlock BlockProperty)
+{
+
+}

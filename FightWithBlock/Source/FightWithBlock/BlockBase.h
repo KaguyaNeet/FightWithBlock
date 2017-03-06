@@ -1,6 +1,5 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 #include "MyStructs.h"
-#include "CBGBlock.h"
 #include "MyCharacter.h"
 
 #pragma once

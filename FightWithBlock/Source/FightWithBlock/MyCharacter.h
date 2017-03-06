@@ -3,6 +3,7 @@
 #include "MyStructs.h"
 #include "FightWithBlockGameModeBase.h"
 #include "BoltBlock.h"
+#include "CBGBlock.h"
 
 #pragma once
 
@@ -67,6 +68,12 @@ public:
 	void EndBUFF(int i);
 	void ReloadProperty();
 
+	void BeginOverlap(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherCompnent, int32 OtherBodyIndex, bool FromSweep, const FHitResult& Hit);
+
+	void Pressed_R();
+	void Released_R();
+	void PrintItem(FBlock BlockProperty);
+
 private:
 
 	FVector GetFireLocation();
@@ -75,4 +82,5 @@ private:
 	TArray<FBUFF> myBUFF;
 	FHero HeroProperty;
 
+	bool Keyboard_F_Pressed = false;
 };
