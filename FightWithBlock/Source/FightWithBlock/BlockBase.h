@@ -1,8 +1,14 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-#include "MyStructs.h"
+//#ifndef BLOCKBASE_H_
+//
+//#define BLOCKBASE_H_
+
 #include "MyCharacter.h"
+#include "MyStructs.h"
 
 #pragma once
+
+
 
 #include "GameFramework/Actor.h"
 #include "BlockBase.generated.h"
@@ -39,3 +45,4 @@ private:
 	FBlock BlockProperty;
 	
 };
+//#endif

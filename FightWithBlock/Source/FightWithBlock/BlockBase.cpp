@@ -62,9 +62,16 @@ void ABlockBase::BeBreak()
 
 void ABlockBase::ApplyPointDamage(AMyCharacter* Causer, int32 DamageValue)
 {
+	if (BlockProperty.LifeValue <= 0)
+	{
+		BeBreak();
+		return;
+	}
 	if (BlockProperty.ToMinerBUFF.NotEmpty)
 	{
-
+		Causer->AddBUFF(BlockProperty.ToMinerBUFF);
 	}
+	BlockProperty.LifeValue -= DamageValue;
+	return;
 }
 

@@ -103,6 +103,12 @@ struct FHero : public FTableRowBase
 	//yi dong su du
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Hero")
 		float MoveSpeed;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Hero")
+		float MineDistance;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Hero")
+		float MineRate;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Hero")
+		int32 BlockDamage;
 };
 
 USTRUCT()

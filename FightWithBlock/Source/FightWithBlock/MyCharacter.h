@@ -28,6 +28,9 @@ public:
 	UPROPERTY(VisibleAnywhere)
 		class UCharacterMovementComponent* MovementComponent;
 
+	UPROPERTY(VisibleAnywhere)
+		class UArrowComponent* MineTraceStartArrow;
+
 		FHero HeroInitProperty;
 
 		FItem Bag[BAGSPACE];
@@ -74,6 +77,11 @@ public:
 	void Released_R();
 	void PrintItem(FBlock BlockProperty);
 
+	void MineBlock(float DeltaTime);
+	void MineLineTraceResult(const FHitResult& Hit);
+
+	void ApplyPointDamage(AMyCharacter* Causer, int32 DamageValue);
+
 private:
 
 	FVector GetFireLocation();
@@ -83,4 +91,6 @@ private:
 	FHero HeroProperty;
 
 	bool Keyboard_F_Pressed = false;
+
+	float MineTimeCounter = 0;
 };

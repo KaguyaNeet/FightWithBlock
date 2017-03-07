@@ -31,11 +31,15 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	void SetInitProperty(FBlock Block);
+	void SetInitProperty(FBlock Block,class AMyCharacter* Owner_);
 
 	void SetFireDirection(const FVector& Direction);
 	
 
 	FBlock BlockProperty;
+
+private:
+
+	class AMyCharacter* Owner;
 
 };

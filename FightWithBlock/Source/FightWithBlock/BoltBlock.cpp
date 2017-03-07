@@ -2,6 +2,7 @@
 
 #include "FightWithBlock.h"
 #include "BoltBlock.h"
+#include "MyCharacter.h"
 
 
 // Sets default values
@@ -38,9 +39,10 @@ void ABoltBlock::Tick(float DeltaTime)
 
 }
 
-void ABoltBlock::SetInitProperty(FBlock Block)
+void ABoltBlock::SetInitProperty(FBlock Block, AMyCharacter* Owner_)
 {
 	BlockProperty = Block;
+	Owner = Owner;
 }
 
 void ABoltBlock::SetFireDirection(const FVector& Direction)

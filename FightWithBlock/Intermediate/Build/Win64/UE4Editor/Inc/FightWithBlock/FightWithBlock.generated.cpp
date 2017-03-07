@@ -130,7 +130,7 @@ static struct FScriptStruct_FightWithBlock_StaticRegisterNativesFPosition
 	void AMyCharacter::StaticRegisterNativesAMyCharacter()
 	{
 	}
-	IMPLEMENT_CLASS(AMyCharacter, 846165550);
+	IMPLEMENT_CLASS(AMyCharacter, 1613910017);
 	void ABlockBase::StaticRegisterNativesABlockBase()
 	{
 	}
@@ -149,6 +149,7 @@ static struct FScriptStruct_FightWithBlock_StaticRegisterNativesFPosition
 	ENGINE_API class UClass* Z_Construct_UClass_UProjectileMovementComponent_NoRegister();
 	ENGINE_API class UClass* Z_Construct_UClass_UStaticMeshComponent_NoRegister();
 	ENGINE_API class UClass* Z_Construct_UClass_ACharacter();
+	ENGINE_API class UClass* Z_Construct_UClass_UArrowComponent_NoRegister();
 	ENGINE_API class UClass* Z_Construct_UClass_UCharacterMovementComponent_NoRegister();
 	ENGINE_API class UClass* Z_Construct_UClass_USkeletalMeshComponent_NoRegister();
 	ENGINE_API class UClass* Z_Construct_UClass_UCameraComponent_NoRegister();
@@ -274,6 +275,9 @@ static struct FScriptStruct_FightWithBlock_StaticRegisterNativesFPosition
 		if (!ReturnStruct)
 		{
 			ReturnStruct = new(EC_InternalUseOnlyConstructor, Outer, TEXT("Hero"), RF_Public|RF_Transient|RF_MarkAsNative) UScriptStruct(FObjectInitializer(), Z_Construct_UScriptStruct_FTableRowBase(), new UScriptStruct::TCppStructOps<FHero>, EStructFlags(0x00000001));
+			UProperty* NewProp_BlockDamage = new(EC_InternalUseOnlyConstructor, ReturnStruct, TEXT("BlockDamage"), RF_Public|RF_Transient|RF_MarkAsNative) UIntProperty(CPP_PROPERTY_BASE(BlockDamage, FHero), 0x0010000000000015);
+			UProperty* NewProp_MineRate = new(EC_InternalUseOnlyConstructor, ReturnStruct, TEXT("MineRate"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(MineRate, FHero), 0x0010000000000015);
+			UProperty* NewProp_MineDistance = new(EC_InternalUseOnlyConstructor, ReturnStruct, TEXT("MineDistance"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(MineDistance, FHero), 0x0010000000000015);
 			UProperty* NewProp_MoveSpeed = new(EC_InternalUseOnlyConstructor, ReturnStruct, TEXT("MoveSpeed"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(MoveSpeed, FHero), 0x0010000000000015);
 			UProperty* NewProp_Power = new(EC_InternalUseOnlyConstructor, ReturnStruct, TEXT("Power"), RF_Public|RF_Transient|RF_MarkAsNative) UIntProperty(CPP_PROPERTY_BASE(Power, FHero), 0x0010000000000015);
 			UProperty* NewProp_LifeValue = new(EC_InternalUseOnlyConstructor, ReturnStruct, TEXT("LifeValue"), RF_Public|RF_Transient|RF_MarkAsNative) UIntProperty(CPP_PROPERTY_BASE(LifeValue, FHero), 0x0010000000000015);
@@ -286,6 +290,12 @@ static struct FScriptStruct_FightWithBlock_StaticRegisterNativesFPosition
 #if WITH_METADATA
 			UMetaData* MetaData = ReturnStruct->GetOutermost()->GetMetaData();
 			MetaData->SetValue(ReturnStruct, TEXT("ModuleRelativePath"), TEXT("MyStructs.h"));
+			MetaData->SetValue(NewProp_BlockDamage, TEXT("Category"), TEXT("Hero"));
+			MetaData->SetValue(NewProp_BlockDamage, TEXT("ModuleRelativePath"), TEXT("MyStructs.h"));
+			MetaData->SetValue(NewProp_MineRate, TEXT("Category"), TEXT("Hero"));
+			MetaData->SetValue(NewProp_MineRate, TEXT("ModuleRelativePath"), TEXT("MyStructs.h"));
+			MetaData->SetValue(NewProp_MineDistance, TEXT("Category"), TEXT("Hero"));
+			MetaData->SetValue(NewProp_MineDistance, TEXT("ModuleRelativePath"), TEXT("MyStructs.h"));
 			MetaData->SetValue(NewProp_MoveSpeed, TEXT("Category"), TEXT("Hero"));
 			MetaData->SetValue(NewProp_MoveSpeed, TEXT("ModuleRelativePath"), TEXT("MyStructs.h"));
 			MetaData->SetValue(NewProp_MoveSpeed, TEXT("ToolTip"), TEXT("yi dong su du"));
@@ -314,7 +324,7 @@ static struct FScriptStruct_FightWithBlock_StaticRegisterNativesFPosition
 		}
 		return ReturnStruct;
 	}
-	uint32 Get_Z_Construct_UScriptStruct_FHero_CRC() { return 3237772221U; }
+	uint32 Get_Z_Construct_UScriptStruct_FHero_CRC() { return 2487848162U; }
 	UScriptStruct* Z_Construct_UScriptStruct_FBUFF()
 	{
 		UPackage* Outer = Z_Construct_UPackage__Script_FightWithBlock();
@@ -582,6 +592,7 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
+				UProperty* NewProp_MineTraceStartArrow = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("MineTraceStartArrow"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(CPP_PROPERTY_BASE(MineTraceStartArrow, AMyCharacter), 0x00100000000a0009, Z_Construct_UClass_UArrowComponent_NoRegister());
 				UProperty* NewProp_MovementComponent = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("MovementComponent"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(CPP_PROPERTY_BASE(MovementComponent, AMyCharacter), 0x00100000000a0009, Z_Construct_UClass_UCharacterMovementComponent_NoRegister());
 				UProperty* NewProp_FPSMesh = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("FPSMesh"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(CPP_PROPERTY_BASE(FPSMesh, AMyCharacter), 0x00100000000a0009, Z_Construct_UClass_USkeletalMeshComponent_NoRegister());
 				UProperty* NewProp_Camera = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("Camera"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(CPP_PROPERTY_BASE(Camera, AMyCharacter), 0x00100000000a0009, Z_Construct_UClass_UCameraComponent_NoRegister());
@@ -592,6 +603,9 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 				MetaData->SetValue(OuterClass, TEXT("HideCategories"), TEXT("Navigation"));
 				MetaData->SetValue(OuterClass, TEXT("IncludePath"), TEXT("MyCharacter.h"));
 				MetaData->SetValue(OuterClass, TEXT("ModuleRelativePath"), TEXT("MyCharacter.h"));
+				MetaData->SetValue(NewProp_MineTraceStartArrow, TEXT("Category"), TEXT("MyCharacter"));
+				MetaData->SetValue(NewProp_MineTraceStartArrow, TEXT("EditInline"), TEXT("true"));
+				MetaData->SetValue(NewProp_MineTraceStartArrow, TEXT("ModuleRelativePath"), TEXT("MyCharacter.h"));
 				MetaData->SetValue(NewProp_MovementComponent, TEXT("Category"), TEXT("MyCharacter"));
 				MetaData->SetValue(NewProp_MovementComponent, TEXT("EditInline"), TEXT("true"));
 				MetaData->SetValue(NewProp_MovementComponent, TEXT("ModuleRelativePath"), TEXT("MyCharacter.h"));
@@ -654,7 +668,7 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 			ReturnPackage = CastChecked<UPackage>(StaticFindObjectFast(UPackage::StaticClass(), NULL, FName(TEXT("/Script/FightWithBlock")), false, false));
 			ReturnPackage->SetPackageFlags(PKG_CompiledIn | 0x00000000);
 			FGuid Guid;
-			Guid.A = 0x54F7EE34;
+			Guid.A = 0xAFDCF164;
 			Guid.B = 0x0177863C;
 			Guid.C = 0x00000000;
 			Guid.D = 0x00000000;

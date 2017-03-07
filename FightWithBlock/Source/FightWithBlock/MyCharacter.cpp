@@ -2,7 +2,7 @@
 
 #include "FightWithBlock.h"
 #include "MyCharacter.h"
-
+#include "BlockBase.h"
 
 
 // Sets default values
@@ -24,6 +24,8 @@ AMyCharacter::AMyCharacter()
 
 	GetCapsuleComponent()->OnComponentBeginOverlap.__Internal_AddDynamic(this, &AMyCharacter::BeginOverlap, TEXT("BeginOverlap"));
 	GetMesh()->SetOwnerNoSee(true);
+
+	MineTraceStartArrow = CreateDefaultSubobject<UArrowComponent>(TEXT("MineTraceStartArrow"));
 
 	AutoPossessPlayer = EAutoReceiveInput::Player0;
 }
@@ -133,7 +135,7 @@ void AMyCharacter::Fire()
 			SpawnParams.Owner = this;
 			SpawnParams.Instigator = Instigator;
 			ABoltBlock* tempBlock = World->SpawnActor<ABoltBlock>(GetClass(), GetFireLocation(), GetFireRotation(), SpawnParams);
-			tempBlock->SetInitProperty(handBlock.Block);
+			tempBlock->SetInitProperty(handBlock.Block, this);
 			tempBlock->SetFireDirection(GetActorRotation().Vector());
 			handBlock.Empty = true;
 		}
@@ -148,7 +150,7 @@ void AMyCharacter::ReloadProperty()
 
 void AMyCharacter::AddBUFF(FBUFF BUFF)
 {
-	myBUFF.Add(BUFF);
+		myBUFF.Add(BUFF);
 }
 
 void AMyCharacter::RunBUFF(float DeltaTime)
@@ -208,6 +210,40 @@ void AMyCharacter::Released_R()
 }
 
 void AMyCharacter::PrintItem(FBlock BlockProperty)
+{
+
+}
+
+void AMyCharacter::MineBlock(float DeltaTime)
+{
+	MineTimeCounter += DeltaTime;
+	if (MineTimeCounter >= HeroProperty.MineRate)
+	{
+		MineTimeCounter = 0;
+		UWorld* World = GetWorld();
+		if (World)
+		{
+			FHitResult TraceHit;
+			if (World->LineTraceSingleByChannel(TraceHit, MineTraceStartArrow->GetComponentLocation(), MineTraceStartArrow->GetComponentLocation() + MineTraceStartArrow->GetForwardVector() * HeroProperty.MineDistance, ECollisionChannel::ECC_WorldStatic))
+			{
+				MineLineTraceResult(TraceHit);
+			}
+		}
+	}
+	else
+		return;
+}
+
+void AMyCharacter::MineLineTraceResult(const FHitResult& Hit)
+{
+	ABlockBase* HitBlock = Cast<ABlockBase>(Hit.GetActor());
+	if (HitBlock)
+	{
+		HitBlock->ApplyPointDamage(this, HeroProperty.BlockDamage);
+	}
+}
+
+void AMyCharacter::ApplyPointDamage(AMyCharacter* Causer, int32 DmageValue)
 {
 
 }
