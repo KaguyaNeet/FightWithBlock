@@ -4,6 +4,7 @@
 #include "FightWithBlockGameModeBase.h"
 #include "BoltBlock.h"
 #include "CBGBlock.h"
+#include "MyEnums.h"
 
 #pragma once
 
@@ -77,10 +78,14 @@ public:
 	void Released_R();
 	void PrintItem(FBlock BlockProperty);
 
-	void MineBlock(float DeltaTime);
+	void MineBlock();
 	void MineLineTraceResult(const FHitResult& Hit);
 
 	void ApplyPointDamage(AMyCharacter* Causer, int32 DamageValue);
+
+	ECamp MyCamp = EDefault;
+
+	void Death(AMyCharacter* Causer);
 
 private:
 

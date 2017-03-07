@@ -4,5 +4,8 @@
 #include "FightWithBlockGameModeBase.h"
 
 
+void AFightWithBlockGameModeBase::PrintKillMessage(class AMyCharacter* Killer, class AMyCharacter* beKiller)
+{
 
+}
 

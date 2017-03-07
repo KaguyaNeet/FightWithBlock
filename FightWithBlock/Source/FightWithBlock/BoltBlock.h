@@ -22,6 +22,8 @@ public:
 		class UProjectileMovementComponent* ProjectileMovement;
 	UPROPERTY(VisibleAnywhere)
 		class UBoxComponent* CollisionComponent;
+	UPROPERTY(VisibleAnywhere)
+		class USphereComponent* ExplosionCollisionComponent;
 
 protected:
 	// Called when the game starts or when spawned
@@ -34,12 +36,20 @@ public:
 	void SetInitProperty(FBlock Block,class AMyCharacter* Owner_);
 
 	void SetFireDirection(const FVector& Direction);
+
+	void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpsule, const FHitResult& Hit);
+
+	void BeginOverlap(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherCompnent, int32 OtherBodyIndex, bool FromSweep, const FHitResult& Hit);
 	
 
 	FBlock BlockProperty;
 
+	void Explosion();
+	void BeBreak();
+
 private:
 
+	bool bExplosion = false;
 	class AMyCharacter* Owner;
 
 };

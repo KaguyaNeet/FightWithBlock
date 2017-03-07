@@ -11,7 +11,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define FIGHTWITHBLOCK_MyStructs_generated_h
 
-#define FightWithBlock_Source_FightWithBlock_MyStructs_h_162_GENERATED_BODY \
+#define FightWithBlock_Source_FightWithBlock_MyStructs_h_166_GENERATED_BODY \
 	friend FIGHTWITHBLOCK_API class UScriptStruct* Z_Construct_UScriptStruct_FItem(); \
 	FIGHTWITHBLOCK_API static class UScriptStruct* StaticStruct(); \
 	typedef FTableRowBase Super;

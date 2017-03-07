@@ -115,26 +115,42 @@ static struct FScriptStruct_FightWithBlock_StaticRegisterNativesFPosition
 	{
 	}
 	IMPLEMENT_CLASS(UMyStructs, 3368637034);
-	void AFightWithBlockGameModeBase::StaticRegisterNativesAFightWithBlockGameModeBase()
-	{
-	}
-	IMPLEMENT_CLASS(AFightWithBlockGameModeBase, 2952682755);
-	void ABoltBlock::StaticRegisterNativesABoltBlock()
-	{
-	}
-	IMPLEMENT_CLASS(ABoltBlock, 171311294);
-	void ACBGBlock::StaticRegisterNativesACBGBlock()
-	{
-	}
-	IMPLEMENT_CLASS(ACBGBlock, 1123485943);
-	void AMyCharacter::StaticRegisterNativesAMyCharacter()
-	{
-	}
-	IMPLEMENT_CLASS(AMyCharacter, 1613910017);
 	void ABlockBase::StaticRegisterNativesABlockBase()
 	{
 	}
 	IMPLEMENT_CLASS(ABlockBase, 1715385292);
+	void ABoltBlock::StaticRegisterNativesABoltBlock()
+	{
+	}
+	IMPLEMENT_CLASS(ABoltBlock, 4002722501);
+	void ACBGBlock::StaticRegisterNativesACBGBlock()
+	{
+	}
+	IMPLEMENT_CLASS(ACBGBlock, 2151252593);
+	void AFightWithBlockGameModeBase::StaticRegisterNativesAFightWithBlockGameModeBase()
+	{
+	}
+	IMPLEMENT_CLASS(AFightWithBlockGameModeBase, 2952682755);
+static class UEnum* ECamp_StaticEnum()
+{
+	extern FIGHTWITHBLOCK_API class UPackage* Z_Construct_UPackage__Script_FightWithBlock();
+	static class UEnum* Singleton = NULL;
+	if (!Singleton)
+	{
+		extern FIGHTWITHBLOCK_API class UEnum* Z_Construct_UEnum_FightWithBlock_ECamp();
+		Singleton = GetStaticEnum(Z_Construct_UEnum_FightWithBlock_ECamp, Z_Construct_UPackage__Script_FightWithBlock(), TEXT("ECamp"));
+	}
+	return Singleton;
+}
+static FCompiledInDeferEnum Z_CompiledInDeferEnum_UEnum_ECamp(ECamp_StaticEnum, TEXT("/Script/FightWithBlock"), TEXT("ECamp"), false, nullptr, nullptr);
+	void UMyEnums::StaticRegisterNativesUMyEnums()
+	{
+	}
+	IMPLEMENT_CLASS(UMyEnums, 118225117);
+	void AMyCharacter::StaticRegisterNativesAMyCharacter()
+	{
+	}
+	IMPLEMENT_CLASS(AMyCharacter, 1613910017);
 #if USE_COMPILED_IN_NATIVES
 // Cross Module References
 	ENGINE_API class UScriptStruct* Z_Construct_UScriptStruct_FTableRowBase();
@@ -143,11 +159,13 @@ static struct FScriptStruct_FightWithBlock_StaticRegisterNativesFPosition
 	ENGINE_API class UClass* Z_Construct_UClass_UStaticMesh_NoRegister();
 	ENGINE_API class UClass* Z_Construct_UClass_UTexture2D_NoRegister();
 	ENGINE_API class UClass* Z_Construct_UClass_UDataTable();
-	ENGINE_API class UClass* Z_Construct_UClass_AGameModeBase();
 	ENGINE_API class UClass* Z_Construct_UClass_AActor();
+	ENGINE_API class UClass* Z_Construct_UClass_UStaticMeshComponent_NoRegister();
+	ENGINE_API class UClass* Z_Construct_UClass_USphereComponent_NoRegister();
 	ENGINE_API class UClass* Z_Construct_UClass_UBoxComponent_NoRegister();
 	ENGINE_API class UClass* Z_Construct_UClass_UProjectileMovementComponent_NoRegister();
-	ENGINE_API class UClass* Z_Construct_UClass_UStaticMeshComponent_NoRegister();
+	ENGINE_API class UClass* Z_Construct_UClass_AGameModeBase();
+	ENGINE_API class UClass* Z_Construct_UClass_UUserDefinedEnum();
 	ENGINE_API class UClass* Z_Construct_UClass_ACharacter();
 	ENGINE_API class UClass* Z_Construct_UClass_UArrowComponent_NoRegister();
 	ENGINE_API class UClass* Z_Construct_UClass_UCharacterMovementComponent_NoRegister();
@@ -161,16 +179,19 @@ static struct FScriptStruct_FightWithBlock_StaticRegisterNativesFPosition
 	FIGHTWITHBLOCK_API class UScriptStruct* Z_Construct_UScriptStruct_FPosition();
 	FIGHTWITHBLOCK_API class UClass* Z_Construct_UClass_UMyStructs_NoRegister();
 	FIGHTWITHBLOCK_API class UClass* Z_Construct_UClass_UMyStructs();
-	FIGHTWITHBLOCK_API class UClass* Z_Construct_UClass_AFightWithBlockGameModeBase_NoRegister();
-	FIGHTWITHBLOCK_API class UClass* Z_Construct_UClass_AFightWithBlockGameModeBase();
+	FIGHTWITHBLOCK_API class UClass* Z_Construct_UClass_ABlockBase_NoRegister();
+	FIGHTWITHBLOCK_API class UClass* Z_Construct_UClass_ABlockBase();
 	FIGHTWITHBLOCK_API class UClass* Z_Construct_UClass_ABoltBlock_NoRegister();
 	FIGHTWITHBLOCK_API class UClass* Z_Construct_UClass_ABoltBlock();
 	FIGHTWITHBLOCK_API class UClass* Z_Construct_UClass_ACBGBlock_NoRegister();
 	FIGHTWITHBLOCK_API class UClass* Z_Construct_UClass_ACBGBlock();
+	FIGHTWITHBLOCK_API class UClass* Z_Construct_UClass_AFightWithBlockGameModeBase_NoRegister();
+	FIGHTWITHBLOCK_API class UClass* Z_Construct_UClass_AFightWithBlockGameModeBase();
+	FIGHTWITHBLOCK_API class UEnum* Z_Construct_UEnum_FightWithBlock_ECamp();
+	FIGHTWITHBLOCK_API class UClass* Z_Construct_UClass_UMyEnums_NoRegister();
+	FIGHTWITHBLOCK_API class UClass* Z_Construct_UClass_UMyEnums();
 	FIGHTWITHBLOCK_API class UClass* Z_Construct_UClass_AMyCharacter_NoRegister();
 	FIGHTWITHBLOCK_API class UClass* Z_Construct_UClass_AMyCharacter();
-	FIGHTWITHBLOCK_API class UClass* Z_Construct_UClass_ABlockBase_NoRegister();
-	FIGHTWITHBLOCK_API class UClass* Z_Construct_UClass_ABlockBase();
 	FIGHTWITHBLOCK_API class UPackage* Z_Construct_UPackage__Script_FightWithBlock();
 	UScriptStruct* Z_Construct_UScriptStruct_FItem()
 	{
@@ -212,6 +233,8 @@ static struct FScriptStruct_FightWithBlock_StaticRegisterNativesFPosition
 			UProperty* NewProp_breakParticle = new(EC_InternalUseOnlyConstructor, ReturnStruct, TEXT("breakParticle"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(CPP_PROPERTY_BASE(breakParticle, FBlock), 0x0010000000000015, Z_Construct_UClass_UParticleSystem_NoRegister());
 			UProperty* NewProp_handParticle = new(EC_InternalUseOnlyConstructor, ReturnStruct, TEXT("handParticle"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(CPP_PROPERTY_BASE(handParticle, FBlock), 0x0010000000000015, Z_Construct_UClass_UParticleSystem_NoRegister());
 			UProperty* NewProp_selfParticle = new(EC_InternalUseOnlyConstructor, ReturnStruct, TEXT("selfParticle"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(CPP_PROPERTY_BASE(selfParticle, FBlock), 0x0010000000000015, Z_Construct_UClass_UParticleSystem_NoRegister());
+			UProperty* NewProp_ExplosionDamageValue = new(EC_InternalUseOnlyConstructor, ReturnStruct, TEXT("ExplosionDamageValue"), RF_Public|RF_Transient|RF_MarkAsNative) UIntProperty(CPP_PROPERTY_BASE(ExplosionDamageValue, FBlock), 0x0010000000000015);
+			UProperty* NewProp_DamageValue = new(EC_InternalUseOnlyConstructor, ReturnStruct, TEXT("DamageValue"), RF_Public|RF_Transient|RF_MarkAsNative) UIntProperty(CPP_PROPERTY_BASE(DamageValue, FBlock), 0x0010000000000015);
 			UProperty* NewProp_LifeValue = new(EC_InternalUseOnlyConstructor, ReturnStruct, TEXT("LifeValue"), RF_Public|RF_Transient|RF_MarkAsNative) UIntProperty(CPP_PROPERTY_BASE(LifeValue, FBlock), 0x0010000000000015);
 			UProperty* NewProp_Size = new(EC_InternalUseOnlyConstructor, ReturnStruct, TEXT("Size"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(Size, FBlock), 0x0010000000000015);
 			UProperty* NewProp_Position = new(EC_InternalUseOnlyConstructor, ReturnStruct, TEXT("Position"), RF_Public|RF_Transient|RF_MarkAsNative) UStructProperty(CPP_PROPERTY_BASE(Position, FBlock), 0x0010000000000015, Z_Construct_UScriptStruct_FPosition());
@@ -242,6 +265,10 @@ static struct FScriptStruct_FightWithBlock_StaticRegisterNativesFPosition
 			MetaData->SetValue(NewProp_handParticle, TEXT("ModuleRelativePath"), TEXT("MyStructs.h"));
 			MetaData->SetValue(NewProp_selfParticle, TEXT("Category"), TEXT("Block"));
 			MetaData->SetValue(NewProp_selfParticle, TEXT("ModuleRelativePath"), TEXT("MyStructs.h"));
+			MetaData->SetValue(NewProp_ExplosionDamageValue, TEXT("Category"), TEXT("Block"));
+			MetaData->SetValue(NewProp_ExplosionDamageValue, TEXT("ModuleRelativePath"), TEXT("MyStructs.h"));
+			MetaData->SetValue(NewProp_DamageValue, TEXT("Category"), TEXT("Block"));
+			MetaData->SetValue(NewProp_DamageValue, TEXT("ModuleRelativePath"), TEXT("MyStructs.h"));
 			MetaData->SetValue(NewProp_LifeValue, TEXT("Category"), TEXT("Block"));
 			MetaData->SetValue(NewProp_LifeValue, TEXT("ModuleRelativePath"), TEXT("MyStructs.h"));
 			MetaData->SetValue(NewProp_Size, TEXT("Category"), TEXT("Block"));
@@ -266,7 +293,7 @@ static struct FScriptStruct_FightWithBlock_StaticRegisterNativesFPosition
 		}
 		return ReturnStruct;
 	}
-	uint32 Get_Z_Construct_UScriptStruct_FBlock_CRC() { return 2006695138U; }
+	uint32 Get_Z_Construct_UScriptStruct_FBlock_CRC() { return 3539279528U; }
 	UScriptStruct* Z_Construct_UScriptStruct_FHero()
 	{
 		UPackage* Outer = Z_Construct_UPackage__Script_FightWithBlock();
@@ -452,39 +479,43 @@ static struct FScriptStruct_FightWithBlock_StaticRegisterNativesFPosition
 	}
 	static FCompiledInDefer Z_CompiledInDefer_UClass_UMyStructs(Z_Construct_UClass_UMyStructs, &UMyStructs::StaticClass, TEXT("UMyStructs"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(UMyStructs);
-	UClass* Z_Construct_UClass_AFightWithBlockGameModeBase_NoRegister()
+	UClass* Z_Construct_UClass_ABlockBase_NoRegister()
 	{
-		return AFightWithBlockGameModeBase::StaticClass();
+		return ABlockBase::StaticClass();
 	}
-	UClass* Z_Construct_UClass_AFightWithBlockGameModeBase()
+	UClass* Z_Construct_UClass_ABlockBase()
 	{
 		static UClass* OuterClass = NULL;
 		if (!OuterClass)
 		{
-			Z_Construct_UClass_AGameModeBase();
+			Z_Construct_UClass_AActor();
 			Z_Construct_UPackage__Script_FightWithBlock();
-			OuterClass = AFightWithBlockGameModeBase::StaticClass();
+			OuterClass = ABlockBase::StaticClass();
 			if (!(OuterClass->ClassFlags & CLASS_Constructed))
 			{
 				UObjectForceRegistration(OuterClass);
-				OuterClass->ClassFlags |= 0x20900288;
+				OuterClass->ClassFlags |= 0x20900080;
 
 
+PRAGMA_DISABLE_DEPRECATION_WARNINGS
+				UProperty* NewProp_StaticMesh = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("StaticMesh"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(CPP_PROPERTY_BASE(StaticMesh, ABlockBase), 0x00100000000a0009, Z_Construct_UClass_UStaticMeshComponent_NoRegister());
+PRAGMA_ENABLE_DEPRECATION_WARNINGS
 				OuterClass->StaticLink();
 #if WITH_METADATA
 				UMetaData* MetaData = OuterClass->GetOutermost()->GetMetaData();
-				MetaData->SetValue(OuterClass, TEXT("HideCategories"), TEXT("Info Rendering MovementReplication Replication Actor Input Movement Collision Rendering Utilities|Transformation"));
-				MetaData->SetValue(OuterClass, TEXT("IncludePath"), TEXT("FightWithBlockGameModeBase.h"));
-				MetaData->SetValue(OuterClass, TEXT("ModuleRelativePath"), TEXT("FightWithBlockGameModeBase.h"));
-				MetaData->SetValue(OuterClass, TEXT("ShowCategories"), TEXT("Input|MouseInput Input|TouchInput"));
+				MetaData->SetValue(OuterClass, TEXT("IncludePath"), TEXT("BlockBase.h"));
+				MetaData->SetValue(OuterClass, TEXT("ModuleRelativePath"), TEXT("BlockBase.h"));
+				MetaData->SetValue(NewProp_StaticMesh, TEXT("Category"), TEXT("BlockBase"));
+				MetaData->SetValue(NewProp_StaticMesh, TEXT("EditInline"), TEXT("true"));
+				MetaData->SetValue(NewProp_StaticMesh, TEXT("ModuleRelativePath"), TEXT("BlockBase.h"));
 #endif
 			}
 		}
 		check(OuterClass->GetClass());
 		return OuterClass;
 	}
-	static FCompiledInDefer Z_CompiledInDefer_UClass_AFightWithBlockGameModeBase(Z_Construct_UClass_AFightWithBlockGameModeBase, &AFightWithBlockGameModeBase::StaticClass, TEXT("AFightWithBlockGameModeBase"), false, nullptr, nullptr, nullptr);
-	DEFINE_VTABLE_PTR_HELPER_CTOR(AFightWithBlockGameModeBase);
+	static FCompiledInDefer Z_CompiledInDefer_UClass_ABlockBase(Z_Construct_UClass_ABlockBase, &ABlockBase::StaticClass, TEXT("ABlockBase"), false, nullptr, nullptr, nullptr);
+	DEFINE_VTABLE_PTR_HELPER_CTOR(ABlockBase);
 	UClass* Z_Construct_UClass_ABoltBlock_NoRegister()
 	{
 		return ABoltBlock::StaticClass();
@@ -504,6 +535,7 @@ static struct FScriptStruct_FightWithBlock_StaticRegisterNativesFPosition
 
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
+				UProperty* NewProp_ExplosionCollisionComponent = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("ExplosionCollisionComponent"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(CPP_PROPERTY_BASE(ExplosionCollisionComponent, ABoltBlock), 0x00100000000a0009, Z_Construct_UClass_USphereComponent_NoRegister());
 				UProperty* NewProp_CollisionComponent = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("CollisionComponent"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(CPP_PROPERTY_BASE(CollisionComponent, ABoltBlock), 0x00100000000a0009, Z_Construct_UClass_UBoxComponent_NoRegister());
 				UProperty* NewProp_ProjectileMovement = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("ProjectileMovement"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(CPP_PROPERTY_BASE(ProjectileMovement, ABoltBlock), 0x00100000000a0009, Z_Construct_UClass_UProjectileMovementComponent_NoRegister());
 				UProperty* NewProp_StaticMesh = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("StaticMesh"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(CPP_PROPERTY_BASE(StaticMesh, ABoltBlock), 0x00100000000a0009, Z_Construct_UClass_UStaticMeshComponent_NoRegister());
@@ -514,6 +546,9 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 				MetaData->SetValue(OuterClass, TEXT("IncludePath"), TEXT("BoltBlock.h"));
 				MetaData->SetValue(OuterClass, TEXT("ModuleRelativePath"), TEXT("BoltBlock.h"));
 				MetaData->SetValue(OuterClass, TEXT("ToolTip"), TEXT("???????????\x03fa??\x04f3?\x0225?\x0137???"));
+				MetaData->SetValue(NewProp_ExplosionCollisionComponent, TEXT("Category"), TEXT("BoltBlock"));
+				MetaData->SetValue(NewProp_ExplosionCollisionComponent, TEXT("EditInline"), TEXT("true"));
+				MetaData->SetValue(NewProp_ExplosionCollisionComponent, TEXT("ModuleRelativePath"), TEXT("BoltBlock.h"));
 				MetaData->SetValue(NewProp_CollisionComponent, TEXT("Category"), TEXT("BoltBlock"));
 				MetaData->SetValue(NewProp_CollisionComponent, TEXT("EditInline"), TEXT("true"));
 				MetaData->SetValue(NewProp_CollisionComponent, TEXT("ModuleRelativePath"), TEXT("BoltBlock.h"));
@@ -550,7 +585,7 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-				UProperty* NewProp_CollisionComponent = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("CollisionComponent"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(CPP_PROPERTY_BASE(CollisionComponent, ACBGBlock), 0x00100000000a0009, Z_Construct_UClass_UBoxComponent_NoRegister());
+				UProperty* NewProp_CollisionComponent = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("CollisionComponent"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(CPP_PROPERTY_BASE(CollisionComponent, ACBGBlock), 0x00100000000a0009, Z_Construct_UClass_USphereComponent_NoRegister());
 				UProperty* NewProp_StaticMesh = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("StaticMesh"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(CPP_PROPERTY_BASE(StaticMesh, ACBGBlock), 0x00100000000a0009, Z_Construct_UClass_UStaticMeshComponent_NoRegister());
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 				OuterClass->StaticLink();
@@ -573,6 +608,93 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 	}
 	static FCompiledInDefer Z_CompiledInDefer_UClass_ACBGBlock(Z_Construct_UClass_ACBGBlock, &ACBGBlock::StaticClass, TEXT("ACBGBlock"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(ACBGBlock);
+	UClass* Z_Construct_UClass_AFightWithBlockGameModeBase_NoRegister()
+	{
+		return AFightWithBlockGameModeBase::StaticClass();
+	}
+	UClass* Z_Construct_UClass_AFightWithBlockGameModeBase()
+	{
+		static UClass* OuterClass = NULL;
+		if (!OuterClass)
+		{
+			Z_Construct_UClass_AGameModeBase();
+			Z_Construct_UPackage__Script_FightWithBlock();
+			OuterClass = AFightWithBlockGameModeBase::StaticClass();
+			if (!(OuterClass->ClassFlags & CLASS_Constructed))
+			{
+				UObjectForceRegistration(OuterClass);
+				OuterClass->ClassFlags |= 0x20900288;
+
+
+				OuterClass->StaticLink();
+#if WITH_METADATA
+				UMetaData* MetaData = OuterClass->GetOutermost()->GetMetaData();
+				MetaData->SetValue(OuterClass, TEXT("HideCategories"), TEXT("Info Rendering MovementReplication Replication Actor Input Movement Collision Rendering Utilities|Transformation"));
+				MetaData->SetValue(OuterClass, TEXT("IncludePath"), TEXT("FightWithBlockGameModeBase.h"));
+				MetaData->SetValue(OuterClass, TEXT("ModuleRelativePath"), TEXT("FightWithBlockGameModeBase.h"));
+				MetaData->SetValue(OuterClass, TEXT("ShowCategories"), TEXT("Input|MouseInput Input|TouchInput"));
+#endif
+			}
+		}
+		check(OuterClass->GetClass());
+		return OuterClass;
+	}
+	static FCompiledInDefer Z_CompiledInDefer_UClass_AFightWithBlockGameModeBase(Z_Construct_UClass_AFightWithBlockGameModeBase, &AFightWithBlockGameModeBase::StaticClass, TEXT("AFightWithBlockGameModeBase"), false, nullptr, nullptr, nullptr);
+	DEFINE_VTABLE_PTR_HELPER_CTOR(AFightWithBlockGameModeBase);
+	UEnum* Z_Construct_UEnum_FightWithBlock_ECamp()
+	{
+		UPackage* Outer=Z_Construct_UPackage__Script_FightWithBlock();
+		extern uint32 Get_Z_Construct_UEnum_FightWithBlock_ECamp_CRC();
+		static UEnum* ReturnEnum = FindExistingEnumIfHotReloadOrDynamic(Outer, TEXT("ECamp"), 0, Get_Z_Construct_UEnum_FightWithBlock_ECamp_CRC(), false);
+		if (!ReturnEnum)
+		{
+			ReturnEnum = new(EC_InternalUseOnlyConstructor, Outer, TEXT("ECamp"), RF_Public|RF_Transient|RF_MarkAsNative) UEnum(FObjectInitializer());
+			TArray<TPair<FName, int64>> EnumNames;
+			EnumNames.Add(TPairInitializer<FName, int64>(FName(TEXT("EBlue")), 0));
+			EnumNames.Add(TPairInitializer<FName, int64>(FName(TEXT("ERed")), 1));
+			EnumNames.Add(TPairInitializer<FName, int64>(FName(TEXT("EDefault")), 2));
+			EnumNames.Add(TPairInitializer<FName, int64>(FName(TEXT("ECamp_MAX")), 3));
+			ReturnEnum->SetEnums(EnumNames, UEnum::ECppForm::Regular);
+			ReturnEnum->CppType = TEXT("ECamp");
+#if WITH_METADATA
+			UMetaData* MetaData = ReturnEnum->GetOutermost()->GetMetaData();
+			MetaData->SetValue(ReturnEnum, TEXT("ModuleRelativePath"), TEXT("MyEnums.h"));
+#endif
+		}
+		return ReturnEnum;
+	}
+	uint32 Get_Z_Construct_UEnum_FightWithBlock_ECamp_CRC() { return 1411922338U; }
+	UClass* Z_Construct_UClass_UMyEnums_NoRegister()
+	{
+		return UMyEnums::StaticClass();
+	}
+	UClass* Z_Construct_UClass_UMyEnums()
+	{
+		static UClass* OuterClass = NULL;
+		if (!OuterClass)
+		{
+			Z_Construct_UClass_UUserDefinedEnum();
+			Z_Construct_UPackage__Script_FightWithBlock();
+			OuterClass = UMyEnums::StaticClass();
+			if (!(OuterClass->ClassFlags & CLASS_Constructed))
+			{
+				UObjectForceRegistration(OuterClass);
+				OuterClass->ClassFlags |= 0x20100080;
+
+
+				OuterClass->StaticLink();
+#if WITH_METADATA
+				UMetaData* MetaData = OuterClass->GetOutermost()->GetMetaData();
+				MetaData->SetValue(OuterClass, TEXT("IncludePath"), TEXT("MyEnums.h"));
+				MetaData->SetValue(OuterClass, TEXT("ModuleRelativePath"), TEXT("MyEnums.h"));
+#endif
+			}
+		}
+		check(OuterClass->GetClass());
+		return OuterClass;
+	}
+	static FCompiledInDefer Z_CompiledInDefer_UClass_UMyEnums(Z_Construct_UClass_UMyEnums, &UMyEnums::StaticClass, TEXT("UMyEnums"), false, nullptr, nullptr, nullptr);
+	DEFINE_VTABLE_PTR_HELPER_CTOR(UMyEnums);
 	UClass* Z_Construct_UClass_AMyCharacter_NoRegister()
 	{
 		return AMyCharacter::StaticClass();
@@ -623,43 +745,6 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 	}
 	static FCompiledInDefer Z_CompiledInDefer_UClass_AMyCharacter(Z_Construct_UClass_AMyCharacter, &AMyCharacter::StaticClass, TEXT("AMyCharacter"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(AMyCharacter);
-	UClass* Z_Construct_UClass_ABlockBase_NoRegister()
-	{
-		return ABlockBase::StaticClass();
-	}
-	UClass* Z_Construct_UClass_ABlockBase()
-	{
-		static UClass* OuterClass = NULL;
-		if (!OuterClass)
-		{
-			Z_Construct_UClass_AActor();
-			Z_Construct_UPackage__Script_FightWithBlock();
-			OuterClass = ABlockBase::StaticClass();
-			if (!(OuterClass->ClassFlags & CLASS_Constructed))
-			{
-				UObjectForceRegistration(OuterClass);
-				OuterClass->ClassFlags |= 0x20900080;
-
-
-PRAGMA_DISABLE_DEPRECATION_WARNINGS
-				UProperty* NewProp_StaticMesh = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("StaticMesh"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(CPP_PROPERTY_BASE(StaticMesh, ABlockBase), 0x00100000000a0009, Z_Construct_UClass_UStaticMeshComponent_NoRegister());
-PRAGMA_ENABLE_DEPRECATION_WARNINGS
-				OuterClass->StaticLink();
-#if WITH_METADATA
-				UMetaData* MetaData = OuterClass->GetOutermost()->GetMetaData();
-				MetaData->SetValue(OuterClass, TEXT("IncludePath"), TEXT("BlockBase.h"));
-				MetaData->SetValue(OuterClass, TEXT("ModuleRelativePath"), TEXT("BlockBase.h"));
-				MetaData->SetValue(NewProp_StaticMesh, TEXT("Category"), TEXT("BlockBase"));
-				MetaData->SetValue(NewProp_StaticMesh, TEXT("EditInline"), TEXT("true"));
-				MetaData->SetValue(NewProp_StaticMesh, TEXT("ModuleRelativePath"), TEXT("BlockBase.h"));
-#endif
-			}
-		}
-		check(OuterClass->GetClass());
-		return OuterClass;
-	}
-	static FCompiledInDefer Z_CompiledInDefer_UClass_ABlockBase(Z_Construct_UClass_ABlockBase, &ABlockBase::StaticClass, TEXT("ABlockBase"), false, nullptr, nullptr, nullptr);
-	DEFINE_VTABLE_PTR_HELPER_CTOR(ABlockBase);
 	UPackage* Z_Construct_UPackage__Script_FightWithBlock()
 	{
 		static UPackage* ReturnPackage = NULL;
@@ -668,8 +753,8 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 			ReturnPackage = CastChecked<UPackage>(StaticFindObjectFast(UPackage::StaticClass(), NULL, FName(TEXT("/Script/FightWithBlock")), false, false));
 			ReturnPackage->SetPackageFlags(PKG_CompiledIn | 0x00000000);
 			FGuid Guid;
-			Guid.A = 0xAFDCF164;
-			Guid.B = 0x0177863C;
+			Guid.A = 0xEBED9F6C;
+			Guid.B = 0x41CCD980;
 			Guid.C = 0x00000000;
 			Guid.D = 0x00000000;
 			ReturnPackage->SetGuid(Guid);

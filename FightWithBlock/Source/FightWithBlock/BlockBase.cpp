@@ -2,7 +2,7 @@
 
 #include "FightWithBlock.h"
 #include "BlockBase.h"
-
+#include "MyCharacter.h"
 
 // Sets default values
 ABlockBase::ABlockBase()
@@ -24,6 +24,7 @@ ABlockBase::ABlockBase()
 	}
 	StaticMesh->SetMobility(EComponentMobility::Static);
 
+	BlockProperty.LifeValue = 3;
 }
 
 // Called when the game starts or when spawned
@@ -37,6 +38,9 @@ void ABlockBase::BeginPlay()
 void ABlockBase::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+	if (!AddBUFF)
+		BUFFTimeCounter(DeltaTime);
 
 }
 
@@ -62,16 +66,39 @@ void ABlockBase::BeBreak()
 
 void ABlockBase::ApplyPointDamage(AMyCharacter* Causer, int32 DamageValue)
 {
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("ApplyDamage"));
+	if (BlockProperty.ToMinerBUFF.NotEmpty)
+	{
+		if (AddBUFF)
+		{
+			Causer->AddBUFF(BlockProperty.ToMinerBUFF);
+			AddBUFF = false;
+		}
+	}
+	BlockProperty.LifeValue -= DamageValue;
 	if (BlockProperty.LifeValue <= 0)
 	{
 		BeBreak();
 		return;
 	}
-	if (BlockProperty.ToMinerBUFF.NotEmpty)
-	{
-		Causer->AddBUFF(BlockProperty.ToMinerBUFF);
-	}
-	BlockProperty.LifeValue -= DamageValue;
 	return;
+}
+
+void ABlockBase::BUFFTimeCounter(float DeltaTime)
+{
+	if(!AddBUFF)
+	{
+		AddBUFFTimeCounter += DeltaTime;
+		if (AddBUFFTimeCounter >= AddBUFFRateTime)
+		{
+			AddBUFF = true;
+			AddBUFFTimeCounter = 0.f;
+			return;
+		}
+	}
+	else
+	{
+		return;
+	}
 }
 

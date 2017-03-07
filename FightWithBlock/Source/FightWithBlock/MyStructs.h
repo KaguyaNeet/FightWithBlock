@@ -138,6 +138,10 @@ struct FBlock : public FTableRowBase
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Block")
 		int32 LifeValue;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Block")
+		int32 DamageValue;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Block")
+		int32 ExplosionDamageValue;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Block")
 		UParticleSystem* selfParticle;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Block")
 		UParticleSystem* handParticle;

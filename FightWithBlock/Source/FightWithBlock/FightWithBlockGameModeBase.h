@@ -16,6 +16,7 @@ class FIGHTWITHBLOCK_API AFightWithBlockGameModeBase : public AGameModeBase
 	GENERATED_BODY()
 	
 	
-	
+public:
+	void PrintKillMessage(class AMyCharacter* Killer, class AMyCharacter* beKiller);
 	
 };

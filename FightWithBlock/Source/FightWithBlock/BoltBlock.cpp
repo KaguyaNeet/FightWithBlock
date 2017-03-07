@@ -16,6 +16,10 @@ ABoltBlock::ABoltBlock()
 
 	CollisionComponent = CreateDefaultSubobject<UBoxComponent>(TEXT("CollisionComponent"));
 	SetRootComponent(CollisionComponent);
+	CollisionComponent->OnComponentHit.__Internal_AddDynamic(this, &ABoltBlock::OnHit, TEXT("OnHit"));
+
+	ExplosionCollisionComponent = CreateDefaultSubobject<USphereComponent>(TEXT("ExplosionComponent"));
+	ExplosionCollisionComponent->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 
 	ProjectileMovement = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("ProjectileMovement"));
 	ProjectileMovement->SetUpdatedComponent(CollisionComponent);
@@ -50,4 +54,51 @@ void ABoltBlock::SetFireDirection(const FVector& Direction)
 	ProjectileMovement->Velocity = Direction * ProjectileMovement->InitialSpeed;
 }
 
+void ABoltBlock::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpsule, const FHitResult& Hit)
+{
+	AMyCharacter* HitEnemy = Cast<AMyCharacter>(OtherActor);
+	if (HitEnemy && HitEnemy->MyCamp != Owner->MyCamp)
+	{
+		HitEnemy->ApplyPointDamage(Owner, BlockProperty.DamageValue);
+		Explosion();
+	}
+	else
+	{
+		Explosion();
+	}
+}
+
+void ABoltBlock::Explosion()
+{
+	if (!bExplosion)
+	{
+		bExplosion = true;
+		ExplosionCollisionComponent->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
+		ExplosionCollisionComponent->OnComponentBeginOverlap.__Internal_AddDynamic(this, &ABoltBlock::BeginOverlap, TEXT("BeginOverlap"));
+		BeBreak();
+	}
+	else
+	{
+		BeBreak();
+	}
+}
+
+void ABoltBlock::BeginOverlap(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherCompnent, int32 OtherBodyIndex, bool FromSweep, const FHitResult& Hit)
+{
+	AMyCharacter* HitEnemy = Cast<AMyCharacter>(OtherActor);
+	if (HitEnemy && HitEnemy->MyCamp != Owner->MyCamp)
+	{
+		HitEnemy->ApplyPointDamage(Owner, BlockProperty.ExplosionDamageValue);
+		if (BlockProperty.ToEnemyBUFF.NotEmpty)
+		{
+			HitEnemy->AddBUFF(BlockProperty.ToEnemyBUFF);
+		}
+	}
+}
+
+void ABoltBlock::BeBreak()
+{
+	UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), BlockProperty.explosionParticle, FTransform(FRotator(0.f, 0.f, 0.f), GetActorLocation(), FVector(1, 1, 1)));
+	this->Destroy(true);
+}
 

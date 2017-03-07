@@ -1,9 +1,4 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-//#ifndef BLOCKBASE_H_
-//
-//#define BLOCKBASE_H_
-
-#include "MyCharacter.h"
 #include "MyStructs.h"
 
 #pragma once
@@ -26,6 +21,7 @@ public:
 	UPROPERTY(VisibleAnywhere)
 		class UStaticMeshComponent* StaticMesh;	
 
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -38,11 +34,16 @@ public:
 
 	void SetInitProperty(FBlock Block);
 
-	void ApplyPointDamage(AMyCharacter* Causer, int32 DamageValue);
+	void ApplyPointDamage(class AMyCharacter* Causer, int32 DamageValue);
 
 private:
 
 	FBlock BlockProperty;
+
+	float AddBUFFRateTime = 5.f;
+	float AddBUFFTimeCounter = 0.f;
+	bool AddBUFF = true;
+
+	void BUFFTimeCounter(float DeltaTime);
 	
 };
-//#endif

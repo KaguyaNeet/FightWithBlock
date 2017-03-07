@@ -18,7 +18,7 @@ public:
 	UPROPERTY(VisibleAnywhere)
 		class UStaticMeshComponent* StaticMesh;
 	UPROPERTY(VisibleAnywhere)
-		class UBoxComponent* CollisionComponent;
+		class USphereComponent* CollisionComponent;
 
 
 
@@ -33,8 +33,6 @@ public:
 	void floatUpDown();
 
 	void SetInitProperty(FBlock Block);
-
-	void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherCompnent, FVector NormalImpulse, const FHitResult& Hit);
 
 	void DestroySelf();
 

@@ -28,6 +28,12 @@ AMyCharacter::AMyCharacter()
 	MineTraceStartArrow = CreateDefaultSubobject<UArrowComponent>(TEXT("MineTraceStartArrow"));
 
 	AutoPossessPlayer = EAutoReceiveInput::Player0;
+	//测试用要删的！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+	//多打几行引起注意！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+	HeroProperty.LifeValue = 1;
+	HeroProperty.BlockDamage = 1;
+	HeroProperty.MineRate = 2;
+	HeroProperty.MineDistance = 1000;
 }
 
 // Called when the game starts or when spawned
@@ -49,7 +55,10 @@ void AMyCharacter::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 	RunBUFF(DeltaTime);
+	MineTimeCounter += DeltaTime;
 
+	//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("%f"), HeroProperty.MineDistance);
+	UE_LOG(LogTemp, Warning, TEXT("DISTANCE:%f"), HeroProperty.MineDistance);
 }
 
 // Called to bind functionality to input
@@ -68,6 +77,7 @@ void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 	PlayerInputComponent->BindAction("Fire", IE_Pressed, this, &AMyCharacter::Fire);
 	PlayerInputComponent->BindAction("GetItem", IE_Pressed, this, &AMyCharacter::Pressed_R);
 	PlayerInputComponent->BindAction("GetItem", IE_Released, this, &AMyCharacter::Released_R);
+	PlayerInputComponent->BindAction("MineBlock", IE_Pressed, this, &AMyCharacter::MineBlock);
 
 }
 
@@ -89,6 +99,7 @@ bool AMyCharacter::AddItem(FBlock Item)
 		{
 			Bag[i].Block = Item;
 			Bag[i].Empty = false;
+			AddBUFF(Item.ToOwnerBUFF);
 			return true;
 		}
 	}
@@ -214,11 +225,11 @@ void AMyCharacter::PrintItem(FBlock BlockProperty)
 
 }
 
-void AMyCharacter::MineBlock(float DeltaTime)
+void AMyCharacter::MineBlock()
 {
-	MineTimeCounter += DeltaTime;
 	if (MineTimeCounter >= HeroProperty.MineRate)
 	{
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Mine"));
 		MineTimeCounter = 0;
 		UWorld* World = GetWorld();
 		if (World)
@@ -226,8 +237,10 @@ void AMyCharacter::MineBlock(float DeltaTime)
 			FHitResult TraceHit;
 			if (World->LineTraceSingleByChannel(TraceHit, MineTraceStartArrow->GetComponentLocation(), MineTraceStartArrow->GetComponentLocation() + MineTraceStartArrow->GetForwardVector() * HeroProperty.MineDistance, ECollisionChannel::ECC_WorldStatic))
 			{
+				GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("MineHit"));
 				MineLineTraceResult(TraceHit);
 			}
+			//UE_LOG(LogTemp, Warning, TEXT("eND:%f"), MineTraceStartArrow->GetComponentLocation() + MineTraceStartArrow->GetForwardVector() * HeroProperty.MineDistance)
 		}
 	}
 	else
@@ -243,7 +256,19 @@ void AMyCharacter::MineLineTraceResult(const FHitResult& Hit)
 	}
 }
 
-void AMyCharacter::ApplyPointDamage(AMyCharacter* Causer, int32 DmageValue)
+void AMyCharacter::ApplyPointDamage(AMyCharacter* Causer, int32 DamageValue)
 {
+	HeroProperty.LifeValue -= DamageValue;
+	if (HeroProperty.LifeValue <= 0)
+	{
+		Death(Causer);
+	}
+}
 
+void AMyCharacter::Death(AMyCharacter* Causer)
+{
+	if (GetWorld())
+		GetWorld()->GetAuthGameMode<AFightWithBlockGameModeBase>()->PrintKillMessage(Causer, this);
+	this->Destroy(true);
+	return;
 }
