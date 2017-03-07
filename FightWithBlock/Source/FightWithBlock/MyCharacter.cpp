@@ -26,14 +26,15 @@ AMyCharacter::AMyCharacter()
 	GetMesh()->SetOwnerNoSee(true);
 
 	MineTraceStartArrow = CreateDefaultSubobject<UArrowComponent>(TEXT("MineTraceStartArrow"));
+	MineTraceStartArrow->SetupAttachment(RootComponent);
 
 	AutoPossessPlayer = EAutoReceiveInput::Player0;
 	//测试用要删的！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
 	//多打几行引起注意！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
 	HeroProperty.LifeValue = 1;
 	HeroProperty.BlockDamage = 1;
-	HeroProperty.MineRate = 2;
-	HeroProperty.MineDistance = 1000;
+	HeroProperty.MineRate = 0.2;
+	HeroProperty.MineDistance = 100;
 }
 
 // Called when the game starts or when spawned
@@ -58,7 +59,7 @@ void AMyCharacter::Tick(float DeltaTime)
 	MineTimeCounter += DeltaTime;
 
 	//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("%f"), HeroProperty.MineDistance);
-	UE_LOG(LogTemp, Warning, TEXT("DISTANCE:%f"), HeroProperty.MineDistance);
+	//UE_LOG(LogTemp, Warning, TEXT("DISTANCE:%f"), HeroProperty.MineDistance);
 }
 
 // Called to bind functionality to input
@@ -240,7 +241,6 @@ void AMyCharacter::MineBlock()
 				GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("MineHit"));
 				MineLineTraceResult(TraceHit);
 			}
-			//UE_LOG(LogTemp, Warning, TEXT("eND:%f"), MineTraceStartArrow->GetComponentLocation() + MineTraceStartArrow->GetForwardVector() * HeroProperty.MineDistance)
 		}
 	}
 	else
@@ -252,6 +252,7 @@ void AMyCharacter::MineLineTraceResult(const FHitResult& Hit)
 	ABlockBase* HitBlock = Cast<ABlockBase>(Hit.GetActor());
 	if (HitBlock)
 	{
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Result"));
 		HitBlock->ApplyPointDamage(this, HeroProperty.BlockDamage);
 	}
 }
