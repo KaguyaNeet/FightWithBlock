@@ -16,6 +16,13 @@ ACBGBlock::ACBGBlock()
 	StaticMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StaticMesh"));
 	StaticMesh->SetMobility(EComponentMobility::Movable);
 	StaticMesh->AttachTo(RootComponent);
+	//测试用的添加了StaticMesh！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+	ConstructorHelpers::FObjectFinder<UStaticMesh> CubeMesh(TEXT("StaticMesh'/Engine/EngineMeshes/Cube.Cube'"));
+	if (CubeMesh.Succeeded())
+		StaticMesh->SetStaticMesh(CubeMesh.Object);
+	StaticMesh->SetWorldScale3D(FVector(0.5f, 0.5f, 0.5f));
+	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	StaticMesh->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
 	if (StaticMesh->GetBodyInstance())
 	{
 		StaticMesh->GetBodyInstance()->bLockXRotation = true;

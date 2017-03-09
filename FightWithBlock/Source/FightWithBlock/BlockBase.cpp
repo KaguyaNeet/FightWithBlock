@@ -60,8 +60,8 @@ void ABlockBase::BeBreak()
 			if (BlockProperty.breakParticle && BlockProperty.breakParticle->IsTemplate())
 				UGameplayStatics::SpawnEmitterAtLocation(World, BlockProperty.breakParticle, GetActorTransform(), true);
 			//TMD就是这里出的问题。。我感觉是那个GetClass(),绝壁有问题，但我不知道怎么改啊 我能怎么办 我也很绝望啊，怎么得到ACBGBlock的class嘛 非得重新声明一个吗！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
-			ACBGBlock temp;
-			/*ACBGBlock* tempCBGBlock = World->SpawnActor<ACBGBlock>(temp.GetClass(), GetActorLocation(), GetActorRotation(), SpawnParameter);*/
+			//ACBGBlock temp;
+			ACBGBlock* tempCBGBlock = World->SpawnActor<ACBGBlock>(GetActorLocation(), GetActorRotation(), SpawnParameter);
 			tempCBGBlock->SetInitProperty(BlockProperty);
 			this->Destroy(true);
 		}
