@@ -22,7 +22,12 @@ AMyCharacter::AMyCharacter()
 	FPSMesh->CastShadow = false;
 	FPSMesh->SetOnlyOwnerSee(true);
 
-	GetCapsuleComponent()->OnComponentBeginOverlap.__Internal_AddDynamic(this, &AMyCharacter::BeginOverlap, TEXT("BeginOverlap"));
+
+	GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+	GetCapsuleComponent()->SetCollisionObjectType(ECollisionChannel::ECC_Pawn);
+	GetCapsuleComponent()->SetCollisionResponseToChannel(ECollisionChannel::ECC_GameTraceChannel1, ECollisionResponse::ECR_Overlap);
+	GetCapsuleComponent()->OnComponentBeginOverlap.AddDynamic(this, &AMyCharacter::BeginOverlap);
+	GetCapsuleComponent()->OnComponentEndOverlap.AddDynamic(this, &AMyCharacter::EndOverlap);
 	GetMesh()->SetOwnerNoSee(true);
 
 	MineTraceStartArrow = CreateDefaultSubobject<UArrowComponent>(TEXT("MineTraceStartArrow"));
@@ -198,17 +203,26 @@ void AMyCharacter::EndBUFF(int i)
 
 void AMyCharacter::BeginOverlap(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherCompnent, int32 OtherBodyIndex, bool FromSweep, const FHitResult& Hit)
 {
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("Overlap!"));
 	ACBGBlock* CBGBlock = Cast<ACBGBlock>(OtherActor);
 	if (CBGBlock)
 	{
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("Find!"));
 		if (Keyboard_F_Pressed)
 		{
+			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("F!"));
 			if (AddItem(CBGBlock->BlockProperty))
 			{
+				GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("GET!"));
 				CBGBlock->DestroySelf();
 			}
 		}
 	}
+}
+
+void AMyCharacter::EndOverlap(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherCompnent, int32 OtherBodyIndex)
+{
+
 }
 
 void AMyCharacter::Pressed_R()
@@ -238,7 +252,6 @@ void AMyCharacter::MineBlock()
 			FHitResult TraceHit;
 			if (World->LineTraceSingleByChannel(TraceHit, MineTraceStartArrow->GetComponentLocation(), MineTraceStartArrow->GetComponentLocation() + MineTraceStartArrow->GetForwardVector() * HeroProperty.MineDistance, ECollisionChannel::ECC_WorldStatic))
 			{
-				GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("MineHit"));
 				MineLineTraceResult(TraceHit);
 			}
 		}
@@ -252,7 +265,7 @@ void AMyCharacter::MineLineTraceResult(const FHitResult& Hit)
 	ABlockBase* HitBlock = Cast<ABlockBase>(Hit.GetActor());
 	if (HitBlock)
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Result"));
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("MineHit"));
 		HitBlock->ApplyPointDamage(this, HeroProperty.BlockDamage);
 	}
 }

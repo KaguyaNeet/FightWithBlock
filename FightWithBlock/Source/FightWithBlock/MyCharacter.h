@@ -72,7 +72,11 @@ public:
 	void EndBUFF(int i);
 	void ReloadProperty();
 
+	UFUNCTION()
 	void BeginOverlap(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherCompnent, int32 OtherBodyIndex, bool FromSweep, const FHitResult& Hit);
+
+	UFUNCTION()
+	void EndOverlap(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, int32 OtherBodyIndex);
 
 	void Pressed_R();
 	void Released_R();
@@ -98,4 +102,6 @@ private:
 	bool Keyboard_F_Pressed = false;
 
 	float MineTimeCounter = 0;
+
+	TArray<ACBGBlock> PreCBG;
 };

@@ -18,7 +18,7 @@ public:
 	UPROPERTY(VisibleAnywhere)
 		class UStaticMeshComponent* StaticMesh;
 	UPROPERTY(VisibleAnywhere)
-		class USphereComponent* CollisionComponent;
+		class UStaticMeshComponent* CollisionComponent;
 
 
 

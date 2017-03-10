@@ -10,19 +10,29 @@ ACBGBlock::ACBGBlock()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	CollisionComponent = CreateDefaultSubobject<USphereComponent>(TEXT("CollisionComponent"));
+	CollisionComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("CollisionComponent"));
 	RootComponent = CollisionComponent;
+	CollisionComponent->SetWorldScale3D(FVector(3.f, 3.f, 3.f));
+	CollisionComponent->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+	CollisionComponent->SetCollisionObjectType(ECollisionChannel::ECC_GameTraceChannel1);
+	CollisionComponent->SetCollisionResponseToChannel(ECollisionChannel::ECC_Pawn, ECollisionResponse::ECR_Overlap);
+
+	//测试用！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+	ConstructorHelpers::FObjectFinder<UStaticMesh> textMesh(TEXT("StaticMesh'/Engine/BasicShapes/Sphere.Sphere'"));
+	if (textMesh.Succeeded())
+		CollisionComponent->SetStaticMesh(textMesh.Object);
 
 	StaticMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StaticMesh"));
 	StaticMesh->SetMobility(EComponentMobility::Movable);
 	StaticMesh->AttachTo(RootComponent);
+	StaticMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	//测试用的添加了StaticMesh！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
 	ConstructorHelpers::FObjectFinder<UStaticMesh> CubeMesh(TEXT("StaticMesh'/Engine/EngineMeshes/Cube.Cube'"));
 	if (CubeMesh.Succeeded())
 		StaticMesh->SetStaticMesh(CubeMesh.Object);
-	StaticMesh->SetWorldScale3D(FVector(0.5f, 0.5f, 0.5f));
+	StaticMesh->SetWorldScale3D(FVector(0.2f, 0.2f, 0.2f));
 	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	StaticMesh->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
+
 	if (StaticMesh->GetBodyInstance())
 	{
 		StaticMesh->GetBodyInstance()->bLockXRotation = true;
