@@ -46,20 +46,17 @@ AMyCharacter::AMyCharacter()
 void AMyCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-
 	if (GEngine)
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, TEXT("this is MyCharacter!"));	
 	}
-	handBlock = Bag[0];
-
+	handBlock = &Bag[0];
 }
 
 // Called every frame
 void AMyCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
 	RunBUFF(DeltaTime);
 	MineTimeCounter += DeltaTime;
 
@@ -109,23 +106,43 @@ bool AMyCharacter::AddItem(FBlock Item)
 			return true;
 		}
 	}
+	if (!handBlock->Empty)
+	{
+		UWorld* World = GetWorld();
+		if (World)
+		{
+			GEngine->AddOnScreenDebugMessage(-1, 4, FColor::Red, TEXT("FULL!!!"));
+			FActorSpawnParameters SpawnParams;
+			SpawnParams.Owner = this;
+			SpawnParams.Instigator = Instigator;
+			ACBGBlock* tempBlock = World->SpawnActor<ACBGBlock>(GetActorLocation(), GetActorRotation(), SpawnParams);
+			tempBlock->SetInitProperty(handBlock->Block);
+			UE_LOG(LogTemp, Warning, TEXT("%s"), *Camera->GetForwardVector().ToString());
+			tempBlock->Drop(Camera->GetForwardVector());
+			handBlock->Block = Item;
+			handBlock->Empty = false;
+			AddBUFF(Item.ToOwnerBUFF);
+			return true;
+		}
+	}
+	GEngine->AddOnScreenDebugMessage(-1, 4, FColor::Red, TEXT("Warning!!!"));
 	return false;
 }
 
 
 void AMyCharacter::chooseItem_1()
 {
-	handBlock = Bag[0];
+	handBlock = &Bag[0];
 }
 
 void AMyCharacter::chooseItem_2()
 {
-	handBlock = Bag[1];
+	handBlock = &Bag[1];
 }
 
 void AMyCharacter::chooseItem_3()
 {
-	handBlock = Bag[2];
+	handBlock = &Bag[2];
 }
 
 
@@ -143,7 +160,7 @@ FRotator AMyCharacter::GetFireRotation()
 
 void AMyCharacter::Fire()
 {
-	if (!handBlock.Empty)
+	if (!handBlock->Empty)
 	{
 		UWorld* World = GetWorld();
 		if (World)
@@ -152,16 +169,17 @@ void AMyCharacter::Fire()
 			SpawnParams.Owner = this;
 			SpawnParams.Instigator = Instigator;
 			ABoltBlock* tempBlock = World->SpawnActor<ABoltBlock>(GetClass(), GetFireLocation(), GetFireRotation(), SpawnParams);
-			tempBlock->SetInitProperty(handBlock.Block, this);
+			tempBlock->SetInitProperty(handBlock->Block, this);
 			tempBlock->SetFireDirection(GetActorRotation().Vector());
-			handBlock.Empty = true;
+			handBlock->Empty = true;
 		}
 	}
 }
 
 void AMyCharacter::ReloadProperty()
 {
-	MovementComponent->MaxWalkSpeed = HeroProperty.MoveSpeed;
+	//MovementComponent->MaxWalkSpeed = 300.f;
+	//HeroProperty.MoveSpeed
 }
 
 
@@ -172,15 +190,17 @@ void AMyCharacter::AddBUFF(FBUFF BUFF)
 
 void AMyCharacter::RunBUFF(float DeltaTime)
 {
-	for (int i = 0; i < myBUFF.Max(); i++)
+	for (int i = 0; i < myBUFF.Num(); i++)
 	{
-		if (i == myBUFF.Max())
+		if (i == myBUFF.Num())
 			break;
 		else
 		{
+			UE_LOG(LogTemp, Warning, TEXT("%d"), myBUFF.Num())
 			if (myBUFF[i].LifeTime <= 0)
 			{
 				EndBUFF(i);
+				return;
 			}
 			myBUFF[i].LifeTime -= DeltaTime;
 			if (myBUFF[i].xuanyun)
@@ -208,26 +228,65 @@ void AMyCharacter::BeginOverlap(UPrimitiveComponent* HitComponent, AActor* Other
 	if (CBGBlock)
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("Find!"));
-		if (Keyboard_F_Pressed)
-		{
-			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("F!"));
-			if (AddItem(CBGBlock->BlockProperty))
-			{
-				GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("GET!"));
-				CBGBlock->DestroySelf();
-			}
-		}
+		AddBlockToPre(CBGBlock);
 	}
 }
 
 void AMyCharacter::EndOverlap(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherCompnent, int32 OtherBodyIndex)
 {
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("EndOverlap!"));
+	ACBGBlock* CBGBlock = Cast<ACBGBlock>(OtherActor);
+	if (CBGBlock)
+	{
+		RemoveBlockFromPre(CBGBlock);
+	}
+}
 
+void AMyCharacter::AddBlockToPre(ACBGBlock* Block)
+{
+	for (int i = 0; i < 3; i++)
+	{
+		if (printBlock[i] == NULL)
+		{
+			printBlock[i] = Block;
+			break;
+		}
+	}
+}
+
+void AMyCharacter::RemoveBlockFromPre(ACBGBlock* Block)
+{
+	for (int i = 0; i < 3; i++)
+	{
+		if (printBlock[i] == Block)
+		{
+			printBlock[i] = NULL;
+			break;
+		}
+	}
 }
 
 void AMyCharacter::Pressed_R()
 {
-	Keyboard_F_Pressed = true;
+	for (int i = 0; i < 3; i++)
+	{
+		if (printBlock[i] != NULL)
+		{
+			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("PreGET!"));
+			if (AddItem(printBlock[i]->BlockProperty))
+			{
+				GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("GET!"));
+				printBlock[i]->DestroySelf();
+				printBlock[i] = NULL;
+				break;
+			}
+			else
+			{
+				GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("GETFalse!"));
+				printBlock[i] = NULL;
+			}
+		}
+	}
 }
 
 void AMyCharacter::Released_R()

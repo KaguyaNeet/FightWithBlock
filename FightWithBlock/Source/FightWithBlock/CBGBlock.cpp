@@ -10,17 +10,16 @@ ACBGBlock::ACBGBlock()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	CollisionComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("CollisionComponent"));
+	CollisionComponent = CreateDefaultSubobject<USphereComponent>(TEXT("CollisionComponent"));
 	RootComponent = CollisionComponent;
-	CollisionComponent->SetWorldScale3D(FVector(3.f, 3.f, 3.f));
+	CollisionComponent->SetMobility(EComponentMobility::Movable);
+	CollisionComponent->SetSphereRadius(100.f);
 	CollisionComponent->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 	CollisionComponent->SetCollisionObjectType(ECollisionChannel::ECC_GameTraceChannel1);
 	CollisionComponent->SetCollisionResponseToChannel(ECollisionChannel::ECC_Pawn, ECollisionResponse::ECR_Overlap);
-
-	//²âÊÔÓÃ£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡
-	ConstructorHelpers::FObjectFinder<UStaticMesh> textMesh(TEXT("StaticMesh'/Engine/BasicShapes/Sphere.Sphere'"));
-	if (textMesh.Succeeded())
-		CollisionComponent->SetStaticMesh(textMesh.Object);
+	CollisionComponent->SetCollisionResponseToChannel(ECollisionChannel::ECC_WorldStatic, ECollisionResponse::ECR_Block);
+	CollisionComponent->SetSimulatePhysics(true);
+	CollisionComponent->SetEnableGravity(true);
 
 	StaticMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StaticMesh"));
 	StaticMesh->SetMobility(EComponentMobility::Movable);
@@ -30,7 +29,7 @@ ACBGBlock::ACBGBlock()
 	ConstructorHelpers::FObjectFinder<UStaticMesh> CubeMesh(TEXT("StaticMesh'/Engine/EngineMeshes/Cube.Cube'"));
 	if (CubeMesh.Succeeded())
 		StaticMesh->SetStaticMesh(CubeMesh.Object);
-	StaticMesh->SetWorldScale3D(FVector(0.2f, 0.2f, 0.2f));
+	StaticMesh->SetWorldScale3D(FVector(0.1f, 0.1f, 0.1f));
 	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 	if (StaticMesh->GetBodyInstance())
@@ -58,6 +57,8 @@ void ACBGBlock::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	Spin(DeltaTime);
+
 }
 
 void ACBGBlock::floatUpDown()
@@ -73,4 +74,14 @@ void ACBGBlock::SetInitProperty(FBlock Block)
 void ACBGBlock::DestroySelf()
 {
 	this->Destroy(true);
+}
+
+void ACBGBlock::Spin(float DeltaTime)
+{
+	SetActorRotation(FRotator(GetActorRotation().Pitch, GetActorRotation().Yaw + DeltaTime * SpinSpeed, GetActorRotation().Roll));
+}
+
+void ACBGBlock::Drop(FVector Direction)
+{
+	CollisionComponent->AddForce(Direction * DropForce);
 }

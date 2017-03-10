@@ -53,7 +53,7 @@ struct FBUFF : public FTableRowBase
 		UTexture2D* tubiao;
 	//BUFF持续时间
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "BUFF")
-		float LifeTime;
+		float LifeTime = 0;
 	//BUFF是否晕眩，true为晕眩
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "BUFF")
 		bool xuanyun;
@@ -102,7 +102,7 @@ struct FHero : public FTableRowBase
 		int32 Power;
 	//yi dong su du
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Hero")
-		float MoveSpeed;
+		float MoveSpeed = 300.f;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Hero")
 		float MineDistance;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Hero")
@@ -170,4 +170,6 @@ struct FItem : public FTableRowBase
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Item")
 		FBlock Block;
 };
+
+
 

@@ -40,6 +40,7 @@ public:
 
 
 
+
 protected:
 	// Called when the game starts or when spawned
 
@@ -65,7 +66,7 @@ public:
 
 	void Fire();
 
-	FItem handBlock;
+	FItem* handBlock;
 
 	void AddBUFF(FBUFF BUFF);
 	void RunBUFF(float DeltaTime);
@@ -91,6 +92,10 @@ public:
 
 	void Death(AMyCharacter* Causer);
 
+	void AddBlockToPre(ACBGBlock* Block);
+	void RemoveBlockFromPre(ACBGBlock* Block);
+
+
 private:
 
 	FVector GetFireLocation();
@@ -103,5 +108,6 @@ private:
 
 	float MineTimeCounter = 0;
 
-	TArray<ACBGBlock> PreCBG;
+	ACBGBlock* printBlock[3] = {NULL};
+
 };

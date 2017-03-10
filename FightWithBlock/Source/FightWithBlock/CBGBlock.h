@@ -18,11 +18,16 @@ public:
 	UPROPERTY(VisibleAnywhere)
 		class UStaticMeshComponent* StaticMesh;
 	UPROPERTY(VisibleAnywhere)
-		class UStaticMeshComponent* CollisionComponent;
+		class USphereComponent* CollisionComponent;
+
+	UPROPERTY(EditAnywhere)
+		float SpinSpeed = 20.f;
+
+	UPROPERTY(EditAnywhere)
+		float DropForce = 1000.f;
 
 
 
-protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
@@ -37,4 +42,9 @@ public:
 	void DestroySelf();
 
 	FBlock BlockProperty;
+
+	void Drop(FVector Direction);
+
+private:
+	void Spin(float DeltaTime);
 };
