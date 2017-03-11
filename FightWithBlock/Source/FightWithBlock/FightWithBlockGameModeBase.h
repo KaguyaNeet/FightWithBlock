@@ -18,5 +18,6 @@ class FIGHTWITHBLOCK_API AFightWithBlockGameModeBase : public AGameModeBase
 	
 public:
 	void PrintKillMessage(class AMyCharacter* Killer, class AMyCharacter* beKiller);
-	
+protected:
+	virtual void BeginPlay() override;
 };

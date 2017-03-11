@@ -46,7 +46,8 @@ void ABoltBlock::Tick(float DeltaTime)
 void ABoltBlock::SetInitProperty(FBlock Block, AMyCharacter* Owner_)
 {
 	BlockProperty = Block;
-	Owner = Owner;
+	Owner = Owner_;
+	UGameplayStatics::SpawnEmitterAttached(BlockProperty.traceParticle, StaticMesh);
 }
 
 void ABoltBlock::SetFireDirection(const FVector& Direction)

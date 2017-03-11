@@ -115,10 +115,8 @@ bool AMyCharacter::AddItem(FBlock Item)
 			FActorSpawnParameters SpawnParams;
 			SpawnParams.Owner = this;
 			SpawnParams.Instigator = Instigator;
-			ACBGBlock* tempBlock = World->SpawnActor<ACBGBlock>(GetActorLocation(), GetActorRotation(), SpawnParams);
+			ACBGBlock* tempBlock = World->SpawnActor<ACBGBlock>(Camera->GetComponentLocation(), GetActorRotation(), SpawnParams);
 			tempBlock->SetInitProperty(handBlock->Block);
-			UE_LOG(LogTemp, Warning, TEXT("%s"), *Camera->GetForwardVector().ToString());
-			tempBlock->Drop(Camera->GetForwardVector());
 			handBlock->Block = Item;
 			handBlock->Empty = false;
 			AddBUFF(Item.ToOwnerBUFF);
@@ -211,6 +209,7 @@ void AMyCharacter::RunBUFF(float DeltaTime)
 				MovementComponent->MaxWalkSpeed *= myBUFF[i].changeSpeed;
 			HeroProperty.LifeValue += myBUFF[i].changeHP * DeltaTime;
 			HeroProperty.Power += myBUFF[i].changePower * DeltaTime;
+			UGameplayStatics::SpawnEmitterAttached(myBUFF[i].Particle, GetMesh());
 		}
 	}
 }

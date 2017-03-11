@@ -23,8 +23,6 @@ public:
 	UPROPERTY(EditAnywhere)
 		float SpinSpeed = 20.f;
 
-	UPROPERTY(EditAnywhere)
-		float DropForce = 1000.f;
 
 
 
@@ -43,7 +41,6 @@ public:
 
 	FBlock BlockProperty;
 
-	void Drop(FVector Direction);
 
 private:
 	void Spin(float DeltaTime);

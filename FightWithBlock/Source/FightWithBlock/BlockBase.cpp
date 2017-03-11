@@ -14,6 +14,13 @@ ABlockBase::ABlockBase()
 	StaticMesh->AttachTo(RootComponent);
 	StaticMesh->SetLockedAxis(EDOFMode::Default);
 	StaticMesh->SetConstraintMode(EDOFMode::Default);
+
+	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	ConstructorHelpers::FObjectFinder<UStaticMesh> tempCube(TEXT("StaticMesh'/Engine/EngineMeshes/Cube.Cube'"));
+	StaticMesh->SetStaticMesh(tempCube.Object);
+
+
+
 	if (StaticMesh->GetBodyInstance())
 	{
 		StaticMesh->GetBodyInstance()->bLockXTranslation = true;
@@ -47,6 +54,21 @@ void ABlockBase::Tick(float DeltaTime)
 void ABlockBase::SetInitProperty(FBlock Block)
 {
 	BlockProperty = Block;
+
+	//测试用！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+	ConstructorHelpers::FObjectFinder<UStaticMesh> tempCube(TEXT("StaticMesh'/Engine/EngineMeshes/Cube.Cube'"));
+	//ConstructorHelpers::FObjectFinder<UParticleSystem> tempFire(TEXT("ParticleSystem'/Game/StarterContent/Particles/P_Fire.P_Fire'"));
+	//ConstructorHelpers::FObjectFinder<UParticleSystem> tempExplosion(TEXT("ParticleSystem'/Game/StarterContent/Particles/P_Explosion.P_Explosion'"));
+
+	//BlockProperty.selfParticle = tempFire.Object;
+	//BlockProperty.handParticle = tempFire.Object;
+	//BlockProperty.traceParticle = tempFire.Object;
+	//BlockProperty.breakParticle = tempExplosion.Object;
+	//BlockProperty.explosionParticle = tempExplosion.Object;
+	//！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+
+	//UGameplayStatics::SpawnEmitterAttached(BlockProperty.selfParticle, StaticMesh);
+
 }
 
 void ABlockBase::BeBreak()
@@ -59,10 +81,9 @@ void ABlockBase::BeBreak()
 			SpawnParameter.Instigator = Instigator;
 			if (BlockProperty.breakParticle && BlockProperty.breakParticle->IsTemplate())
 				UGameplayStatics::SpawnEmitterAtLocation(World, BlockProperty.breakParticle, GetActorTransform(), true);
-			//TMD就是这里出的问题。。我感觉是那个GetClass(),绝壁有问题，但我不知道怎么改啊 我能怎么办 我也很绝望啊，怎么得到ACBGBlock的class嘛 非得重新声明一个吗！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
-			//ACBGBlock temp;
 			ACBGBlock* tempCBGBlock = World->SpawnActor<ACBGBlock>(GetActorLocation(), GetActorRotation(), SpawnParameter);
 			tempCBGBlock->SetInitProperty(BlockProperty);
+			UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), BlockProperty.breakParticle, GetActorLocation(), GetActorRotation(), true);
 			this->Destroy(true);
 		}
 }
@@ -81,8 +102,6 @@ void ABlockBase::ApplyPointDamage(AMyCharacter* Causer, int32 DamageValue)
 	BlockProperty.LifeValue -= DamageValue;
 	if (BlockProperty.LifeValue <= 0)
 	{
-		//引人注意！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
-		//BeBreak()有问题 目前没有解决 调用的时候会导致崩溃 艹！
 		BeBreak();
 		return;
 	}

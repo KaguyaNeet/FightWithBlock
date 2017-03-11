@@ -13,11 +13,12 @@ ACBGBlock::ACBGBlock()
 	CollisionComponent = CreateDefaultSubobject<USphereComponent>(TEXT("CollisionComponent"));
 	RootComponent = CollisionComponent;
 	CollisionComponent->SetMobility(EComponentMobility::Movable);
-	CollisionComponent->SetSphereRadius(100.f);
+	CollisionComponent->SetSphereRadius(80.f);
 	CollisionComponent->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 	CollisionComponent->SetCollisionObjectType(ECollisionChannel::ECC_GameTraceChannel1);
 	CollisionComponent->SetCollisionResponseToChannel(ECollisionChannel::ECC_Pawn, ECollisionResponse::ECR_Overlap);
 	CollisionComponent->SetCollisionResponseToChannel(ECollisionChannel::ECC_WorldStatic, ECollisionResponse::ECR_Block);
+	CollisionComponent->SetCollisionResponseToChannel(ECollisionChannel::ECC_GameTraceChannel1, ECollisionResponse::ECR_Block);
 	CollisionComponent->SetSimulatePhysics(true);
 	CollisionComponent->SetEnableGravity(true);
 
@@ -79,9 +80,4 @@ void ACBGBlock::DestroySelf()
 void ACBGBlock::Spin(float DeltaTime)
 {
 	SetActorRotation(FRotator(GetActorRotation().Pitch, GetActorRotation().Yaw + DeltaTime * SpinSpeed, GetActorRotation().Roll));
-}
-
-void ACBGBlock::Drop(FVector Direction)
-{
-	CollisionComponent->AddForce(Direction * DropForce);
 }

@@ -71,6 +71,8 @@ struct FBUFF : public FTableRowBase
 	//增加/减少力量（攻击力）
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "BUFF")
 		int32 changePower;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "BUFF")
+		UParticleSystem* Particle;
 };
 
 USTRUCT()
