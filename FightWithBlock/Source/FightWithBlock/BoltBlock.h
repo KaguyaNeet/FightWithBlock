@@ -35,7 +35,7 @@ public:
 
 	void SetInitProperty(FBlock Block,class AMyCharacter* Owner_);
 
-	void SetFireDirection(const FVector& Direction);
+	void SetFireDirection(const FVector& Direction, float DropForce);
 
 	void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpsule, const FHitResult& Hit);
 

@@ -86,7 +86,7 @@ struct FHero : public FTableRowBase
 		int32 ID;
 	//kai fa zhe yong de ming zi
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Hero")
-		FName dName;
+		FName dName = TEXT("Hero!");
 	//wan jia kan dao de ming zi
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Hero")
 		FName pName;

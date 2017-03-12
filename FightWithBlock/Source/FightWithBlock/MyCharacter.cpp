@@ -31,7 +31,9 @@ AMyCharacter::AMyCharacter()
 	GetMesh()->SetOwnerNoSee(true);
 
 	MineTraceStartArrow = CreateDefaultSubobject<UArrowComponent>(TEXT("MineTraceStartArrow"));
-	MineTraceStartArrow->SetupAttachment(RootComponent);
+	MineTraceStartArrow->AttachTo(Camera);
+	MineTraceStartArrow->SetRelativeLocation(FVector(0, 0, 0));
+	MineTraceStartArrow->SetHiddenInGame(true);
 
 	AutoPossessPlayer = EAutoReceiveInput::Player0;
 	//测试用要删的！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
@@ -39,7 +41,16 @@ AMyCharacter::AMyCharacter()
 	HeroProperty.LifeValue = 1;
 	HeroProperty.BlockDamage = 1;
 	HeroProperty.MineRate = 0.2;
-	HeroProperty.MineDistance = 100;
+	HeroProperty.MineDistance = 200;
+	//ConstructorHelpers::FObjectFinder<UDataTable> TestTable(TEXT("DataTable'/Game/myBlueprint/DataTables/TestUse.TestUse'"));
+	//if (TestTable.Succeeded())
+	//{
+	//	GEngine->AddOnScreenDebugMessage(-1, 4, FColor::Red, TEXT("Find TestUse"));
+	//	UDataTable* TestUse = TestTable.Object;
+	//	TArray<FName> RowNames = TestUse->GetRowNames();
+	//	FHero* MyHero = TestUse->FindRow<FHero>(RowNames[0], TEXT(""));
+	//	UE_LOG(LogTemp, Warning, TEXT("%s"), *MyHero->dName.ToString());
+	//}
 }
 
 // Called when the game starts or when spawned
@@ -163,12 +174,10 @@ void AMyCharacter::Fire()
 		UWorld* World = GetWorld();
 		if (World)
 		{
-			FActorSpawnParameters SpawnParams;
-			SpawnParams.Owner = this;
-			SpawnParams.Instigator = Instigator;
-			ABoltBlock* tempBlock = World->SpawnActor<ABoltBlock>(GetClass(), GetFireLocation(), GetFireRotation(), SpawnParams);
+			UE_LOG(LogTemp, Warning, TEXT("%s"), *(MineTraceStartArrow->GetComponentLocation()).ToString());
+			ABoltBlock* tempBlock = World->SpawnActor<ABoltBlock>(MineTraceStartArrow->GetComponentLocation(), GetFireRotation());
 			tempBlock->SetInitProperty(handBlock->Block, this);
-			tempBlock->SetFireDirection(GetActorRotation().Vector());
+			tempBlock->SetFireDirection(MineTraceStartArrow->GetForwardVector(), 1000);
 			handBlock->Empty = true;
 		}
 	}
@@ -308,7 +317,10 @@ void AMyCharacter::MineBlock()
 		if (World)
 		{
 			FHitResult TraceHit;
-			if (World->LineTraceSingleByChannel(TraceHit, MineTraceStartArrow->GetComponentLocation(), MineTraceStartArrow->GetComponentLocation() + MineTraceStartArrow->GetForwardVector() * HeroProperty.MineDistance, ECollisionChannel::ECC_WorldStatic))
+			//UE_LOG(LogTemp, Warning, TEXT("起始点：%s"), *(MineTraceStartArrow->GetComponentLocation()).ToString());
+			//UE_LOG(LogTemp, Warning, TEXT("末尾点：%s"), *(MineTraceStartArrow->GetComponentLocation() + MineTraceStartArrow->GetForwardVector() * HeroProperty.MineDistance).ToString());
+			//UE_LOG(LogTemp, Warning, TEXT("距离：%f"), ((MineTraceStartArrow->GetForwardVector() * HeroProperty.MineDistance) - (MineTraceStartArrow->GetComponentLocation())).Size());
+			if (World->LineTraceSingleByChannel(TraceHit, MineTraceStartArrow->GetComponentLocation(), MineTraceStartArrow->GetComponentLocation() + MineTraceStartArrow->GetForwardVector() * HeroProperty.MineDistance, ECollisionChannel::ECC_Visibility))
 			{
 				MineLineTraceResult(TraceHit);
 			}

@@ -14,6 +14,7 @@ ABlockBase::ABlockBase()
 	StaticMesh->AttachTo(RootComponent);
 	StaticMesh->SetLockedAxis(EDOFMode::Default);
 	StaticMesh->SetConstraintMode(EDOFMode::Default);
+	StaticMesh->SetCollisionObjectType(ECollisionChannel::ECC_WorldStatic);
 
 	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	ConstructorHelpers::FObjectFinder<UStaticMesh> tempCube(TEXT("StaticMesh'/Engine/EngineMeshes/Cube.Cube'"));
@@ -30,8 +31,19 @@ ABlockBase::ABlockBase()
 		StaticMesh->GetBodyInstance()->bLockZRotation = true;
 	}
 	StaticMesh->SetMobility(EComponentMobility::Static);
-
+	//²âÊÔÓÃ£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡
 	BlockProperty.LifeValue = 3;
+	ConstructorHelpers::FObjectFinder<UParticleSystem> tempFire(TEXT("ParticleSystem'/Game/StarterContent/Particles/P_Fire.P_Fire'"));
+	ConstructorHelpers::FObjectFinder<UParticleSystem> tempExplosion(TEXT("ParticleSystem'/Game/StarterContent/Particles/P_Explosion.P_Explosion'"));
+
+	BlockProperty.selfParticle = tempFire.Object;
+	BlockProperty.handParticle = tempFire.Object;
+	BlockProperty.traceParticle = tempFire.Object;
+	BlockProperty.breakParticle = tempExplosion.Object;
+	BlockProperty.explosionParticle = tempExplosion.Object;
+	//£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡
+
+	//UGameplayStatics::SpawnEmitterAttached(BlockProperty.selfParticle, StaticMesh);
 }
 
 // Called when the game starts or when spawned
@@ -53,22 +65,7 @@ void ABlockBase::Tick(float DeltaTime)
 
 void ABlockBase::SetInitProperty(FBlock Block)
 {
-	BlockProperty = Block;
-
-	//²âÊÔÓÃ£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡
-	ConstructorHelpers::FObjectFinder<UStaticMesh> tempCube(TEXT("StaticMesh'/Engine/EngineMeshes/Cube.Cube'"));
-	//ConstructorHelpers::FObjectFinder<UParticleSystem> tempFire(TEXT("ParticleSystem'/Game/StarterContent/Particles/P_Fire.P_Fire'"));
-	//ConstructorHelpers::FObjectFinder<UParticleSystem> tempExplosion(TEXT("ParticleSystem'/Game/StarterContent/Particles/P_Explosion.P_Explosion'"));
-
-	//BlockProperty.selfParticle = tempFire.Object;
-	//BlockProperty.handParticle = tempFire.Object;
-	//BlockProperty.traceParticle = tempFire.Object;
-	//BlockProperty.breakParticle = tempExplosion.Object;
-	//BlockProperty.explosionParticle = tempExplosion.Object;
-	//£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡
-
-	//UGameplayStatics::SpawnEmitterAttached(BlockProperty.selfParticle, StaticMesh);
-
+	//BlockProperty = Block;
 }
 
 void ABlockBase::BeBreak()
