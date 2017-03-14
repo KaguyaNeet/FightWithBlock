@@ -16,19 +16,28 @@ AMyCharacter::AMyCharacter()
 	Camera->AttachTo(RootComponent);
 	Camera->bUsePawnControlRotation = true;
 
+	ConstructorHelpers::FObjectFinder<USkeletalMesh> FPSSkeletalMesh(TEXT("SkeletalMesh'/Game/FirstPerson/Character/Mesh/SK_Mannequin_Arms.SK_Mannequin_Arms'"));
 	FPSMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("myFPSMesh"));
+	FPSMesh->SetSkeletalMesh(FPSSkeletalMesh.Object);
+	FPSMesh->SetRelativeLocation(FVector(0, 0, -170));
+	FPSMesh->SetRelativeRotation(FRotator(0, -90, 0));
 	FPSMesh->AttachTo(Camera);
 	FPSMesh->bCastDynamicShadow = false;
 	FPSMesh->CastShadow = false;
 	FPSMesh->SetOnlyOwnerSee(true);
 
+	ConstructorHelpers::FObjectFinder<USkeletalMesh> TPSSkeletalMesh(TEXT("SkeletalMesh'/Game/Mannequin/Character/Mesh/SK_Mannequin.SK_Mannequin'"));
+	GetMesh()->SetSkeletalMesh(TPSSkeletalMesh.Object);
+	GetMesh()->SetRelativeLocation(FVector(0, 0, -90));
+	GetMesh()->SetOwnerNoSee(true);
+	GetMesh()->SetRelativeRotation(FRotator(0, -90, 0));
 
 	GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 	GetCapsuleComponent()->SetCollisionObjectType(ECollisionChannel::ECC_Pawn);
 	GetCapsuleComponent()->SetCollisionResponseToChannel(ECollisionChannel::ECC_GameTraceChannel1, ECollisionResponse::ECR_Overlap);
 	GetCapsuleComponent()->OnComponentBeginOverlap.AddDynamic(this, &AMyCharacter::BeginOverlap);
 	GetCapsuleComponent()->OnComponentEndOverlap.AddDynamic(this, &AMyCharacter::EndOverlap);
-	GetMesh()->SetOwnerNoSee(true);
+
 
 	MineTraceStartArrow = CreateDefaultSubobject<UArrowComponent>(TEXT("MineTraceStartArrow"));
 	MineTraceStartArrow->AttachTo(Camera);
@@ -192,24 +201,24 @@ void AMyCharacter::ReloadProperty()
 
 void AMyCharacter::AddBUFF(FBUFF BUFF)
 {
+	//GEngine->AddOnScreenDebugMessage(-1, 4, FColor::Green, TEXT("addBUFF"));
 		myBUFF.Add(BUFF);
 }
 
 void AMyCharacter::RunBUFF(float DeltaTime)
 {
+	
 	for (int i = 0; i < myBUFF.Num(); i++)
 	{
-		if (i == myBUFF.Num())
-			break;
-		else
+		myBUFF[i].LifeTime -= DeltaTime;
+		if (myBUFF[i].LifeTime <= 0)
 		{
-			UE_LOG(LogTemp, Warning, TEXT("%d"), myBUFF.Num())
-			if (myBUFF[i].LifeTime <= 0)
-			{
-				EndBUFF(i);
-				return;
-			}
-			myBUFF[i].LifeTime -= DeltaTime;
+			EndBUFF(i);
+			return;
+		}
+		else if(!myBUFF[i].IsRun)
+		{
+			myBUFF[i].IsRun = true;
 			if (myBUFF[i].xuanyun)
 			{
 				MovementComponent->MaxWalkSpeed = 0;
@@ -218,13 +227,20 @@ void AMyCharacter::RunBUFF(float DeltaTime)
 				MovementComponent->MaxWalkSpeed *= myBUFF[i].changeSpeed;
 			HeroProperty.LifeValue += myBUFF[i].changeHP * DeltaTime;
 			HeroProperty.Power += myBUFF[i].changePower * DeltaTime;
-			UGameplayStatics::SpawnEmitterAttached(myBUFF[i].Particle, GetMesh());
+			
+			myBUFF[i].TempParticle = UGameplayStatics::SpawnEmitterAttached(myBUFF[i].Particle, GetCapsuleComponent());
 		}
 	}
 }
 
 void AMyCharacter::EndBUFF(int i)
 {
+	
+	if (myBUFF[i].TempParticle)
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 4, FColor::Green, TEXT("rEMOVE"));
+		myBUFF[i].TempParticle->DestroyComponent();
+	}
 	myBUFF.RemoveAt(i);
 	ReloadProperty();
 }

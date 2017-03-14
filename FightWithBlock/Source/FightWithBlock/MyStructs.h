@@ -36,6 +36,8 @@ struct FBUFF : public FTableRowBase
 	GENERATED_USTRUCT_BODY()
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Block")
 		bool NotEmpty = false;
+
+	bool IsRun = false;
 	//BUFF±àºÅ
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "BUFF")
 		int32 ID = 1;
@@ -73,6 +75,7 @@ struct FBUFF : public FTableRowBase
 		int32 changePower;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "BUFF")
 		UParticleSystem* Particle;
+	UParticleSystemComponent* TempParticle = NULL;
 };
 
 USTRUCT()
@@ -161,7 +164,6 @@ struct FBlock : public FTableRowBase
 		FBUFF ToOwnerBUFF;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Block")
 		FBUFF ToEnemyBUFF;
-
 };
 
 USTRUCT()

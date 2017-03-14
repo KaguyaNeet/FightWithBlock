@@ -32,13 +32,12 @@ public:
 	UPROPERTY(VisibleAnywhere)
 		class UArrowComponent* MineTraceStartArrow;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Camp")
+		ECamp MyCamp = ECamp::EDefault;
+
 		FHero HeroInitProperty;
 
 		FItem Bag[BAGSPACE];
-
-
-
-
 
 
 protected:
@@ -88,7 +87,6 @@ public:
 
 	void ApplyPointDamage(AMyCharacter* Causer, int32 DamageValue);
 
-	ECamp MyCamp = EDefault;
 
 	void Death(AMyCharacter* Causer);
 

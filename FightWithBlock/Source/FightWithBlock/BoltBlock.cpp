@@ -27,11 +27,11 @@ ABoltBlock::ABoltBlock()
 
 	StaticMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StaticMesh"));
 	StaticMesh->AttachTo(RootComponent);
-	
 	StaticMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	StaticMesh->SetWorldScale3D(FVector(0.2, 0.2, 0.2));
 	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	ConstructorHelpers::FObjectFinder<UStaticMesh> CubeMesh(TEXT("StaticMesh'/Engine/BasicShapes/Cube.Cube'"));
-	StaticMesh->SetStaticMesh(CubeMesh.Object);
+	//ConstructorHelpers::FObjectFinder<UStaticMesh> CubeMesh(TEXT("StaticMesh'/Engine/BasicShapes/Cube.Cube'"));
+	//StaticMesh->SetStaticMesh(CubeMesh.Object);
 	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
@@ -72,6 +72,9 @@ void ABoltBlock::SetInitProperty(FBlock Block, AMyCharacter* Owner_)
 	UGameplayStatics::SpawnEmitterAttached(BlockProperty.traceParticle, StaticMesh);
 	ProjectileMovement->InitialSpeed = BlockProperty.InitialSpeed;
 	ProjectileMovement->MaxSpeed = BlockProperty.InitialSpeed;
+	StaticMesh->SetStaticMesh(BlockProperty.StaticMesh);
+	StaticMesh->SetMaterial(0, BlockProperty.Material);
+	StaticMesh->SetWorldScale3D(StaticMesh->GetComponentScale() * BlockProperty.Size);
 }
 
 void ABoltBlock::SetFireDirection(const FVector& Direction, float DropForce)
@@ -101,9 +104,11 @@ void ABoltBlock::BeginOverlap(UPrimitiveComponent* HitComponent, AActor* OtherAc
 	if (HitEnemy && HitEnemy->MyCamp != Owner->MyCamp)
 	{
 		HitEnemy->ApplyPointDamage(Owner, BlockProperty.ExplosionDamageValue);
+		Explosion();
 		if (BlockProperty.ToEnemyBUFF.NotEmpty)
 		{
 			HitEnemy->AddBUFF(BlockProperty.ToEnemyBUFF);
+			GEngine->AddOnScreenDebugMessage(-1, 4, FColor::Green, TEXT("addBUFF"));
 		}
 	}
 	else

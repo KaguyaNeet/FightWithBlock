@@ -26,11 +26,12 @@ ACBGBlock::ACBGBlock()
 	StaticMesh->SetMobility(EComponentMobility::Movable);
 	StaticMesh->AttachTo(RootComponent);
 	StaticMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
-	//测试用的添加了StaticMesh！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
-	ConstructorHelpers::FObjectFinder<UStaticMesh> CubeMesh(TEXT("StaticMesh'/Engine/EngineMeshes/Cube.Cube'"));
-	if (CubeMesh.Succeeded())
-		StaticMesh->SetStaticMesh(CubeMesh.Object);
 	StaticMesh->SetWorldScale3D(FVector(0.1f, 0.1f, 0.1f));
+	//测试用的添加了StaticMesh！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+	//ConstructorHelpers::FObjectFinder<UStaticMesh> CubeMesh(TEXT("StaticMesh'/Engine/EngineMeshes/Cube.Cube'"));
+	//if (CubeMesh.Succeeded())
+	//	StaticMesh->SetStaticMesh(CubeMesh.Object);
+
 	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 	if (StaticMesh->GetBodyInstance())
@@ -70,6 +71,10 @@ void ACBGBlock::floatUpDown()
 void ACBGBlock::SetInitProperty(FBlock Block)
 {
 	BlockProperty = Block;
+	StaticMesh->SetStaticMesh(BlockProperty.StaticMesh);
+	StaticMesh->SetMaterial(0, BlockProperty.Material);
+	UGameplayStatics::SpawnEmitterAttached(BlockProperty.selfParticle, StaticMesh);
+	StaticMesh->SetWorldScale3D(StaticMesh->GetComponentScale() * BlockProperty.Size);
 }
 
 void ACBGBlock::DestroySelf()

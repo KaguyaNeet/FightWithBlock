@@ -18,10 +18,10 @@ class FIGHTWITHBLOCK_API UMyEnums : public UUserDefinedEnum
 	
 };
 
-UENUM()
-enum ECamp
+UENUM(BlueprintType)
+enum class ECamp: uint8
 {
-	EBlue,
-	ERed,
-	EDefault,
+	EBlue UMETA(DisplayName = "Blue"),
+	ERed UMETA(DisplayName = "Red"),
+	EDefault UMETA(DisplayName = "neutral")
 };

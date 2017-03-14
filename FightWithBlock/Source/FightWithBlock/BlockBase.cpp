@@ -35,15 +35,15 @@ ABlockBase::ABlockBase()
 	}
 	StaticMesh->SetMobility(EComponentMobility::Static);
 	//²âÊÔÓÃ£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡
-	BlockProperty.LifeValue = 3;
-	ConstructorHelpers::FObjectFinder<UParticleSystem> tempFire(TEXT("ParticleSystem'/Game/StarterContent/Particles/P_Fire.P_Fire'"));
-	ConstructorHelpers::FObjectFinder<UParticleSystem> tempExplosion(TEXT("ParticleSystem'/Game/StarterContent/Particles/P_Explosion.P_Explosion'"));
+	//BlockProperty.LifeValue = 3;
+	//ConstructorHelpers::FObjectFinder<UParticleSystem> tempFire(TEXT("ParticleSystem'/Game/StarterContent/Particles/P_Fire.P_Fire'"));
+	//ConstructorHelpers::FObjectFinder<UParticleSystem> tempExplosion(TEXT("ParticleSystem'/Game/StarterContent/Particles/P_Explosion.P_Explosion'"));
 
-	BlockProperty.selfParticle = tempFire.Object;
-	BlockProperty.handParticle = tempFire.Object;
-	BlockProperty.traceParticle = tempFire.Object;
-	BlockProperty.breakParticle = tempExplosion.Object;
-	BlockProperty.explosionParticle = tempExplosion.Object;
+	//BlockProperty.selfParticle = tempFire.Object;
+	//BlockProperty.handParticle = tempFire.Object;
+	//BlockProperty.traceParticle = tempFire.Object;
+	//BlockProperty.breakParticle = tempExplosion.Object;
+	//BlockProperty.explosionParticle = tempExplosion.Object;
 	//£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡
 
 	//UGameplayStatics::SpawnEmitterAttached(BlockProperty.selfParticle, StaticMesh);
@@ -68,7 +68,11 @@ void ABlockBase::Tick(float DeltaTime)
 
 void ABlockBase::SetInitProperty(FBlock Block)
 {
-	//BlockProperty = Block;
+	BlockProperty = Block;
+	StaticMesh->SetStaticMesh(BlockProperty.StaticMesh);
+	StaticMesh->SetMaterial(0, BlockProperty.Material);
+	UGameplayStatics::SpawnEmitterAttached(BlockProperty.selfParticle, StaticMesh);
+	StaticMesh->SetWorldScale3D(StaticMesh->GetComponentScale() * BlockProperty.Size);
 }
 
 void ABlockBase::BeBreak()
