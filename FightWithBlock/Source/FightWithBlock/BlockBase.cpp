@@ -15,6 +15,9 @@ ABlockBase::ABlockBase()
 	StaticMesh->SetLockedAxis(EDOFMode::Default);
 	StaticMesh->SetConstraintMode(EDOFMode::Default);
 	StaticMesh->SetCollisionObjectType(ECollisionChannel::ECC_WorldStatic);
+	StaticMesh->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+	StaticMesh->SetCollisionResponseToChannel(ECollisionChannel::ECC_GameTraceChannel2, ECollisionResponse::ECR_Overlap);
+	StaticMesh->SetCollisionResponseToChannel(ECollisionChannel::ECC_Pawn, ECollisionResponse::ECR_Block);
 
 	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	ConstructorHelpers::FObjectFinder<UStaticMesh> tempCube(TEXT("StaticMesh'/Engine/EngineMeshes/Cube.Cube'"));

@@ -175,7 +175,7 @@ void AMyCharacter::Fire()
 		if (World)
 		{
 			UE_LOG(LogTemp, Warning, TEXT("%s"), *(MineTraceStartArrow->GetComponentLocation()).ToString());
-			ABoltBlock* tempBlock = World->SpawnActor<ABoltBlock>(MineTraceStartArrow->GetComponentLocation(), GetFireRotation());
+			ABoltBlock* tempBlock = World->SpawnActor<ABoltBlock>(MineTraceStartArrow->GetComponentLocation(), MineTraceStartArrow->GetComponentRotation());
 			tempBlock->SetInitProperty(handBlock->Block, this);
 			tempBlock->SetFireDirection(MineTraceStartArrow->GetForwardVector(), 1000);
 			handBlock->Empty = true;

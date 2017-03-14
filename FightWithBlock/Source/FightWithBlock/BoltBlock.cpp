@@ -3,6 +3,7 @@
 #include "FightWithBlock.h"
 #include "BoltBlock.h"
 #include "MyCharacter.h"
+#include "BlockBase.h"
 
 
 // Sets default values
@@ -13,9 +14,11 @@ ABoltBlock::ABoltBlock()
 
 	CollisionComponent = CreateDefaultSubobject<UBoxComponent>(TEXT("CollisionComponent"));
 	SetRootComponent(CollisionComponent);
+	RootComponent->SetMobility(EComponentMobility::Movable);
 	CollisionComponent->SetWorldScale3D(FVector(1, 1, 1));
-	CollisionComponent->SetSimulatePhysics(true);
-	CollisionComponent->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
+	CollisionComponent->SetBoxExtent(FVector(50, 50, 50));
+	//CollisionComponent->SetSimulatePhysics(true);
+	CollisionComponent->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	CollisionComponent->SetCollisionObjectType(ECollisionChannel::ECC_GameTraceChannel2);
 	CollisionComponent->SetCollisionResponseToChannel(ECollisionChannel::ECC_Pawn, ECollisionResponse::ECR_Overlap);
 	CollisionComponent->SetCollisionResponseToChannel(ECollisionChannel::ECC_WorldStatic, ECollisionResponse::ECR_Overlap);
@@ -24,7 +27,7 @@ ABoltBlock::ABoltBlock()
 
 	StaticMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StaticMesh"));
 	StaticMesh->AttachTo(RootComponent);
-	RootComponent->SetMobility(EComponentMobility::Movable);
+	
 	StaticMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	ConstructorHelpers::FObjectFinder<UStaticMesh> CubeMesh(TEXT("StaticMesh'/Engine/BasicShapes/Cube.Cube'"));
@@ -39,7 +42,8 @@ ABoltBlock::ABoltBlock()
 
 	ProjectileMovement = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("ProjectileMovement"));
 	ProjectileMovement->SetUpdatedComponent(CollisionComponent);
-	ProjectileMovement->InitialSpeed = 0.f;
+	ProjectileMovement->InitialSpeed = 3000;
+	ProjectileMovement->MaxSpeed = 3000;
 	ProjectileMovement->bRotationFollowsVelocity = true;
 
 
@@ -57,36 +61,24 @@ void ABoltBlock::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	UE_LOG(LogTemp, Warning, TEXT("%s"), *GetActorLocation().ToString());
-
+	
 }
 
 void ABoltBlock::SetInitProperty(FBlock Block, AMyCharacter* Owner_)
 {
 	BlockProperty = Block;
 	Owner = Owner_;
+	CollisionComponent->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
 	UGameplayStatics::SpawnEmitterAttached(BlockProperty.traceParticle, StaticMesh);
+	ProjectileMovement->InitialSpeed = BlockProperty.InitialSpeed;
+	ProjectileMovement->MaxSpeed = BlockProperty.InitialSpeed;
 }
 
 void ABoltBlock::SetFireDirection(const FVector& Direction, float DropForce)
 {
-	CollisionComponent->AddForce(Direction * DropForce);
-	GEngine->AddOnScreenDebugMessage(-1, 4, FColor::Blue, TEXT("Fire1!~~~~~~~~"));
+	//ProjectileMovement->Velocity = Direction * ProjectileMovement->InitialSpeed;
 }
 
-void ABoltBlock::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpsule, const FHitResult& Hit)
-{
-	AMyCharacter* HitEnemy = Cast<AMyCharacter>(OtherActor);
-	if (HitEnemy && HitEnemy->MyCamp != Owner->MyCamp)
-	{
-		HitEnemy->ApplyPointDamage(Owner, BlockProperty.DamageValue);
-		Explosion();
-	}
-	else
-	{
-		Explosion();
-	}
-}
 
 void ABoltBlock::Explosion()
 {
@@ -103,7 +95,7 @@ void ABoltBlock::Explosion()
 	}
 }
 
-void ABoltBlock::BeginOverlap(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherCompnent, int32 OtherBodyIndex, bool FromSweep, const FHitResult& Hit)
+void ABoltBlock::BeginOverlap(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, int32 OtherBodyIndex, bool FromSweep, const FHitResult& Hit)
 {
 	AMyCharacter* HitEnemy = Cast<AMyCharacter>(OtherActor);
 	if (HitEnemy && HitEnemy->MyCamp != Owner->MyCamp)
@@ -112,6 +104,14 @@ void ABoltBlock::BeginOverlap(UPrimitiveComponent* HitComponent, AActor* OtherAc
 		if (BlockProperty.ToEnemyBUFF.NotEmpty)
 		{
 			HitEnemy->AddBUFF(BlockProperty.ToEnemyBUFF);
+		}
+	}
+	else
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 4, FColor::Red, TEXT("OtherOverlap"));
+		if (OtherComponent->GetCollisionObjectType() == ECollisionChannel::ECC_WorldStatic)
+		{
+			Explosion();
 		}
 	}
 }

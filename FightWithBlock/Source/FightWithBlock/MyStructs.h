@@ -144,6 +144,8 @@ struct FBlock : public FTableRowBase
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Block")
 		int32 ExplosionDamageValue;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Block")
+		float InitialSpeed = 1000.f;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Block")
 		UParticleSystem* selfParticle;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Block")
 		UParticleSystem* handParticle;

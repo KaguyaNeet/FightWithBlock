@@ -5,7 +5,7 @@
 #include "GameFramework/GameModeBase.h"
 #include "FightWithBlockGameModeBase.generated.h"
 
-const int32 BAGSPACE = 1;
+const int32 BAGSPACE = 3;
 const int32 WarningSize = 100;
 
 /**

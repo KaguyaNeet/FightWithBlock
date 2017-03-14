@@ -37,9 +37,8 @@ public:
 
 	void SetFireDirection(const FVector& Direction, float DropForce);
 
-	void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpsule, const FHitResult& Hit);
-
-	void BeginOverlap(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherCompnent, int32 OtherBodyIndex, bool FromSweep, const FHitResult& Hit);
+	UFUNCTION()
+	void BeginOverlap(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, int32 OtherBodyIndex, bool FromSweep, const FHitResult& Hit);
 	
 
 	FBlock BlockProperty;
