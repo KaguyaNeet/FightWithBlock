@@ -1,0 +1,85 @@
+关于DataTable中Structure的创建
+
+不再是继承于FTableRowBase.h中
+而是DataTable.h中
+
+正确写法：
+
+USTRUCT()
+struct FtestStructure: public FTableRowBase
+{
+GENERATED_USTRUCT_BODY()
+
+UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = ""test")
+int HP;
+}
+
+FTableRowBase已经被归在了DataTable.h中
+
+——2017.3.2
+
+
+DEBUG的方式
+ UE_LOG(ResLogger, Warning, TEXT("--- row:%s, key:%d, name:%s"), *it.Key.ToString(), tmpPtr->mId, *tmpPtr->mName);  
+
+——2017.3.2
+
+使用datatable的方法 未尝试
+
+UDataTable* ExcelTable;
+ ConstructorHelpers::FObjectFinder<UDataTable> ExcelTable_BP(TEXT("DataTable'/Game/DataTables/ExcelExample.ExcelExample'"));
+ ExcelTable = ExcelTable_BP.Object;
+ 
+ FExcelData* RowLookUp = ExcelTable->FindRow<FDGExcellData>(TEXT("Enemy1"), TEXT("LookUp Operation"));
+ 
+可以用~
+
+
+SpawnEmitterAttach：并不在world中实现
+
+ UGameplayStatics::SpawnEmitterAttached(
+     ThePSC, //UParticleSystem*
+     SkelMeshToAttachTo, 
+     SocketName, 
+     FVector(0,0,0), //relative offset 
+     FRotator(0,0,0), //relative rotation
+     EAttachLocation::KeepRelativeOffset, 
+     true //auto delete on completion
+ );
+
+
+射线检测
+void ANanProjectCharacter::Raycast()
+{
+	FHitResult hitResult(ForceInit); 
+	FVector pos, dir;
+	FCollisionQueryParams ccq(FName(TEXT("CombatTrace")), true, NULL);
+	ccq.bTraceComplex = true;
+	ccq.bTraceAsyncScene = false;
+	ccq.bReturnPhysicalMaterial = false;
+	ccq.AddIgnoredActor(this);
+
+	pos = GetActorLocation();
+
+	const FRotator Rotation = CapsuleComponent->GetComponentRotation();
+	const FRotator YawRotation(0, Rotation.Yaw, 0);
+
+	// get forward vector
+	dir = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
+
+	FVector posBegin = pos;
+	FVector posEnd = pos + dir * 500;
+
+	GetWorld()->LineTraceSingle(hitResult,
+		posBegin,
+		posEnd,
+		ECC_WorldStatic,
+		ccq);
+
+	DrawDebugLine(this->GetWorld(), posBegin, posEnd, FColor(1.0f, 0.f, 0.f, 1.f), false, 20.f);
+	if (hitResult.GetActor())
+	{
+		DrawDebugSphere(GetWorld(), hitResult.Location, 10, 10, FColor::Red, false, 20.f);
+		
+	}
+}

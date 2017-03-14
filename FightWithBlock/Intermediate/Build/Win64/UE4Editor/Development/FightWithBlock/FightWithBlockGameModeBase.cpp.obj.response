@@ -23,9 +23,9 @@
 /wd4838
 /w44668
 /I "F:\Epic Games\UE_4.15\Engine\Source"
-/I E:\UnrealProjects\FightWithBlock\Source
-/I E:\UnrealProjects\FightWithBlock\Intermediate\Build\Win64\UE4Editor\Inc\FightWithBlock
-/I E:\UnrealProjects\FightWithBlock\Source\FightWithBlock
+/I C:\UnrealProjects\FightWithBlock\FightWithBlock\Source
+/I C:\UnrealProjects\FightWithBlock\FightWithBlock\Intermediate\Build\Win64\UE4Editor\Inc\FightWithBlock
+/I C:\UnrealProjects\FightWithBlock\FightWithBlock\Source\FightWithBlock
 /I "F:\Epic Games\UE_4.15\Engine\Source\Runtime\Core\Public"
 /I "F:\Epic Games\UE_4.15\Engine\Source\Runtime\Core\Public\Internationalization"
 /I "F:\Epic Games\UE_4.15\Engine\Source\Runtime\Core\Public\Async"
@@ -303,11 +303,11 @@
 /I "F:\Epic Games\UE_4.15\Engine\Source\Editor\Kismet"
 /I "F:\Epic Games\UE_4.15\Engine\Source\Runtime\NetworkReplayStreaming\NetworkReplayStreaming\Public"
 /I "F:\Epic Games\UE_4.15\Engine\Source\Runtime\NetworkReplayStreaming\NetworkReplayStreaming"
-/FI"E:\UnrealProjects\FightWithBlock\Source\FightWithBlock\FightWithBlock.h"
-/Yu"E:\UnrealProjects\FightWithBlock\Source\FightWithBlock\FightWithBlock.h"
-/Fp"E:\UnrealProjects\FightWithBlock\Intermediate\Build\Win64\UE4Editor\Development\FightWithBlock\PCH.FightWithBlock.h.pch"
-"E:\UnrealProjects\FightWithBlock\Source\FightWithBlock\FightWithBlockGameModeBase.cpp"
-/Fo"E:\UnrealProjects\FightWithBlock\Intermediate\Build\Win64\UE4Editor\Development\FightWithBlock\FightWithBlockGameModeBase.cpp.obj"
+/FI"C:\UnrealProjects\FightWithBlock\FightWithBlock\Source\FightWithBlock\FightWithBlock.h"
+/Yu"C:\UnrealProjects\FightWithBlock\FightWithBlock\Source\FightWithBlock\FightWithBlock.h"
+/Fp"C:\UnrealProjects\FightWithBlock\FightWithBlock\Intermediate\Build\Win64\UE4Editor\Development\FightWithBlock\PCH.FightWithBlock.h.pch"
+"C:\UnrealProjects\FightWithBlock\FightWithBlock\Source\FightWithBlock\FightWithBlockGameModeBase.cpp"
+/Fo"C:\UnrealProjects\FightWithBlock\FightWithBlock\Intermediate\Build\Win64\UE4Editor\Development\FightWithBlock\FightWithBlockGameModeBase.cpp.obj"
 /TP
 /GR-
 /W4
