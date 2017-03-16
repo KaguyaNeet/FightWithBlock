@@ -10,6 +10,8 @@ AMyCharacter::AMyCharacter()
 {
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+	bReplicates = true;
+	bReplicateMovement = true;
 
 	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
 	Camera->SetRelativeLocation(FVector(0.f, 0.f, 80.f));
@@ -31,6 +33,12 @@ AMyCharacter::AMyCharacter()
 	GetMesh()->SetRelativeLocation(FVector(0, 0, -90));
 	GetMesh()->SetOwnerNoSee(true);
 	GetMesh()->SetRelativeRotation(FRotator(0, -90, 0));
+	ConstructorHelpers::FObjectFinder<UAnimBlueprint> AnimationBlueprint(TEXT("AnimBlueprint'/Game/myBlueprint/MyCharacterTPS_ABP.MyCharacterTPS_ABP'"));
+	if (AnimationBlueprint.Succeeded())
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 4, FColor::Blue, TEXT("ANIMBP"));
+		GetMesh()->SetAnimInstanceClass(AnimationBlueprint.Object->GeneratedClass);
+	}
 
 	GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 	GetCapsuleComponent()->SetCollisionObjectType(ECollisionChannel::ECC_Pawn);
@@ -101,6 +109,7 @@ void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 	PlayerInputComponent->BindAction("GetItem", IE_Pressed, this, &AMyCharacter::Pressed_R);
 	PlayerInputComponent->BindAction("GetItem", IE_Released, this, &AMyCharacter::Released_R);
 	PlayerInputComponent->BindAction("MineBlock", IE_Pressed, this, &AMyCharacter::MineBlock);
+	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &AMyCharacter::Jump);
 
 }
 
@@ -174,6 +183,11 @@ FRotator AMyCharacter::GetFireRotation()
 {
 	FRotator tempRotation = FRotator(0, 0, 0);
 	return tempRotation;
+}
+
+void AMyCharacter::Jump()
+{
+
 }
 
 void AMyCharacter::Fire()
