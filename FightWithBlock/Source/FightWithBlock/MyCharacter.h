@@ -50,8 +50,6 @@ protected:
 
 	void MoveRight(float val);
 
-
-
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -64,8 +62,6 @@ public:
 	void chooseItem_1();
 	void chooseItem_2();
 	void chooseItem_3();
-
-	void Jump();
 
 	void Fire();
 
