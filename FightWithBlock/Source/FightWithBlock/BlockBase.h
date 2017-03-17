@@ -32,7 +32,8 @@ public:
 
 	void BeBreak();
 
-	void SetInitProperty(FBlock Block);
+	UFUNCTION(reliable, client, WithValidation)
+		void SetInitProperty(FBlock Block);
 
 	void ApplyPointDamage(class AMyCharacter* Causer, int32 DamageValue);
 

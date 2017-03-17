@@ -10,6 +10,7 @@ ABlockBase::ABlockBase()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
+	bReplicates = true;
 	StaticMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StaticMesh"));
 	StaticMesh->AttachTo(RootComponent);
 	StaticMesh->SetLockedAxis(EDOFMode::Default);
@@ -66,13 +67,17 @@ void ABlockBase::Tick(float DeltaTime)
 
 }
 
-void ABlockBase::SetInitProperty(FBlock Block)
+void ABlockBase::SetInitProperty_Implementation(FBlock Block)
 {
 	BlockProperty = Block;
 	StaticMesh->SetStaticMesh(BlockProperty.StaticMesh);
 	StaticMesh->SetMaterial(0, BlockProperty.Material);
 	UGameplayStatics::SpawnEmitterAttached(BlockProperty.selfParticle, StaticMesh);
 	StaticMesh->SetWorldScale3D(StaticMesh->GetComponentScale() * BlockProperty.Size);
+}
+bool ABlockBase::SetInitProperty_Validate(FBlock Block)
+{
+	return true;
 }
 
 void ABlockBase::BeBreak()
