@@ -2,13 +2,14 @@
 
 #include "FightWithBlock.h"
 #include "CBGBlock.h"
-
+#include "NET/UnrealNetwork.h"
 
 // Sets default values
 ACBGBlock::ACBGBlock()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+	bReplicates = true;
 
 	CollisionComponent = CreateDefaultSubobject<USphereComponent>(TEXT("CollisionComponent"));
 	RootComponent = CollisionComponent;
@@ -63,6 +64,15 @@ void ACBGBlock::Tick(float DeltaTime)
 
 }
 
+void ACBGBlock::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps)const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+	DOREPLIFETIME(ACBGBlock, BlockProperty);
+	DOREPLIFETIME(ACBGBlock, IsInit);
+	
+}
+
 void ACBGBlock::floatUpDown()
 {
 
@@ -70,11 +80,16 @@ void ACBGBlock::floatUpDown()
 
 void ACBGBlock::SetInitProperty(FBlock Block)
 {
+	IsInit = true;
 	BlockProperty = Block;
 	StaticMesh->SetStaticMesh(BlockProperty.StaticMesh);
 	StaticMesh->SetMaterial(0, BlockProperty.Material);
 	UGameplayStatics::SpawnEmitterAttached(BlockProperty.selfParticle, StaticMesh);
 	StaticMesh->SetWorldScale3D(StaticMesh->GetComponentScale() * BlockProperty.Size);
+}
+void ACBGBlock::OnRep_Init()
+{
+	SetInitProperty(BlockProperty);
 }
 
 void ACBGBlock::DestroySelf()

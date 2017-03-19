@@ -3,7 +3,7 @@
 #include "FightWithBlock.h"
 #include "MyCharacter.h"
 #include "BlockBase.h"
-
+#include "NET/UnrealNetwork.h"
 
 // Sets default values
 AMyCharacter::AMyCharacter()
@@ -52,7 +52,7 @@ AMyCharacter::AMyCharacter()
 	MineTraceStartArrow->SetRelativeLocation(FVector(0, 0, 0));
 	MineTraceStartArrow->SetHiddenInGame(true);
 
-	AutoPossessPlayer = EAutoReceiveInput::Player0;
+	//AutoPossessPlayer = EAutoReceiveInput::Player0;
 	//测试用要删的！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
 	//多打几行引起注意！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
 	HeroProperty.LifeValue = 1;
@@ -79,6 +79,12 @@ void AMyCharacter::BeginPlay()
 		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, TEXT("this is MyCharacter!"));	
 	}
 	handBlock = &Bag[0];
+	//if (Role == ROLE_Authority)
+	//	GEngine->AddOnScreenDebugMessage(-1, 50, FColor::Black, TEXT("ROLE_Authority!!!!!!!!!!"));
+	//if (Role == ROLE_AutonomousProxy)
+	//	GEngine->AddOnScreenDebugMessage(-1, 50, FColor::Black, TEXT("ROLE_AutonomousProxy!!!!!!!!!!"));
+	//if (Role == ROLE_SimulatedProxy)
+	//	GEngine->AddOnScreenDebugMessage(-1, 50, FColor::Black, TEXT("ROLE_SimulatedProxy!!!!!!!!!!"));
 }
 
 // Called every frame
@@ -111,6 +117,17 @@ void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 	PlayerInputComponent->BindAction("MineBlock", IE_Pressed, this, &AMyCharacter::MineBlock);
 	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &AMyCharacter::Jump);
 
+}
+
+void AMyCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps)const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+	//DOREPLIFETIME(AMyCharacter, handBlock);
+	DOREPLIFETIME(AMyCharacter, myBUFF);
+	DOREPLIFETIME(AMyCharacter, HeroProperty);
+	DOREPLIFETIME(AMyCharacter, MyCamp);
+	DOREPLIFETIME(AMyCharacter, Bag);
 }
 
 void AMyCharacter::MoveForward(float val)
@@ -185,7 +202,7 @@ FRotator AMyCharacter::GetFireRotation()
 	return tempRotation;
 }
 
-void AMyCharacter::Fire()
+void AMyCharacter::Fire_()
 {
 	if (!handBlock->Empty)
 	{
@@ -199,6 +216,25 @@ void AMyCharacter::Fire()
 			handBlock->Empty = true;
 		}
 	}
+}
+void AMyCharacter::Fire()
+{
+	if (Role < ROLE_Authority)
+	{
+		ServerFire();
+	}
+	else
+	{
+		ServerFire_Implementation();
+	}
+}
+void AMyCharacter::ServerFire_Implementation()
+{
+	Fire_();
+}
+bool AMyCharacter::ServerFire_Validate()
+{
+	return true;
 }
 
 void AMyCharacter::ReloadProperty()
@@ -299,7 +335,7 @@ void AMyCharacter::RemoveBlockFromPre(ACBGBlock* Block)
 	}
 }
 
-void AMyCharacter::Pressed_R()
+void AMyCharacter::Pressed_R_()
 {
 	for (int i = 0; i < 3; i++)
 	{
@@ -321,6 +357,25 @@ void AMyCharacter::Pressed_R()
 		}
 	}
 }
+void AMyCharacter::Pressed_R()
+{
+	if (Role < ROLE_Authority)
+	{
+		ServerPressed_R();
+	}
+	else
+	{
+		ServerPressed_R_Implementation();
+	}
+}
+void AMyCharacter::ServerPressed_R_Implementation()
+{
+	Pressed_R_();
+}
+bool AMyCharacter::ServerPressed_R_Validate()
+{
+	return true;
+}
 
 void AMyCharacter::Released_R()
 {
@@ -332,7 +387,7 @@ void AMyCharacter::PrintItem(FBlock BlockProperty)
 
 }
 
-void AMyCharacter::MineBlock()
+void AMyCharacter::MineBlock_()
 {
 	if (MineTimeCounter >= HeroProperty.MineRate)
 	{
@@ -354,6 +409,25 @@ void AMyCharacter::MineBlock()
 	else
 		return;
 }
+void AMyCharacter::MineBlock()
+{
+	if (Role < ROLE_Authority)
+	{
+		ServerMineBlock();
+	}
+	else
+	{
+		ServerMineBlock_Implementation();
+	}
+}
+void AMyCharacter::ServerMineBlock_Implementation()
+{
+	MineBlock_();
+}
+bool AMyCharacter::ServerMineBlock_Validate()
+{
+	return true;
+}
 
 void AMyCharacter::MineLineTraceResult(const FHitResult& Hit)
 {
@@ -365,19 +439,42 @@ void AMyCharacter::MineLineTraceResult(const FHitResult& Hit)
 	}
 }
 
-void AMyCharacter::ApplyPointDamage(AMyCharacter* Causer, int32 DamageValue)
+void AMyCharacter::ApplyPointDamage_(AMyCharacter* Causer, int32 DamageValue)
 {
 	HeroProperty.LifeValue -= DamageValue;
+	UE_LOG(LogTemp, Warning, TEXT("Life:%f, Damage:%f"), HeroProperty.LifeValue, DamageValue);
 	if (HeroProperty.LifeValue <= 0)
 	{
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Death"));
 		Death(Causer);
 	}
+}
+void AMyCharacter::ApplyPointDamage(AMyCharacter* Causer, int32 DamageValue)
+{
+	if (Role < ROLE_Authority)
+	{
+		ServerApplyPointDamage(Causer, DamageValue);
+	}
+	else
+	{
+		ServerApplyPointDamage_Implementation(Causer, DamageValue);
+	}
+}
+void AMyCharacter::ServerApplyPointDamage_Implementation(AMyCharacter* Causer, int32 DamageValue)
+{
+	ApplyPointDamage_(Causer, DamageValue);
+}
+bool AMyCharacter::ServerApplyPointDamage_Validate(AMyCharacter* Causer, int32 DamageValue)
+{
+	return true;
 }
 
 void AMyCharacter::Death(AMyCharacter* Causer)
 {
 	if (GetWorld())
-		GetWorld()->GetAuthGameMode<AFightWithBlockGameModeBase>()->PrintKillMessage(Causer, this);
-	this->Destroy(true);
+		GetWorld()->GetAuthGameMode<AMyGameMode>()->PrintKillMessage(Causer, this);
+	GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	GetMesh()->SetCollisionEnabled(ECollisionEnabled::PhysicsOnly);
+	GetMesh()->SetSimulatePhysics(true);
 	return;
 }

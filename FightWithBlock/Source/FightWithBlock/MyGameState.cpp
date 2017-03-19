@@ -1,11 +1,13 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "FightWithBlock.h"
-#include "TestLevelScriptActor.h"
+#include "MyGameState.h"
 #include "BlockBase.h"
 #include "MyStructs.h"
 
-ATestLevelScriptActor::ATestLevelScriptActor()
+
+
+AMyGameState::AMyGameState()
 {
 	static ConstructorHelpers::FObjectFinder<UDataTable> GroundTable(TEXT("DataTable'/Game/myBlueprint/DataTables/D_Ground.D_Ground'"));
 	static ConstructorHelpers::FObjectFinder<UDataTable> SurfaceTable(TEXT("DataTable'/Game/myBlueprint/DataTables/D_Surface.D_Surface'"));
@@ -18,18 +20,20 @@ ATestLevelScriptActor::ATestLevelScriptActor()
 	}
 }
 
-void ATestLevelScriptActor::BeginPlay()
+void AMyGameState::BeginPlay()
 {
-	if (Role == ROLE_Authority)
-	{
-		GenerateGround();
-	}
+	/*GenerateGround();
+	if(Role == ROLE_Authority)
+		GEngine->AddOnScreenDebugMessage(-1, 50, FColor::Black, TEXT("ROLE_Authority!!!!!!!!!!"));
+	if(Role == ROLE_AutonomousProxy)
+		GEngine->AddOnScreenDebugMessage(-1, 50, FColor::Black, TEXT("ROLE_AutonomousProxy!!!!!!!!!!"));
+	if(Role == ROLE_SimulatedProxy)
+		GEngine->AddOnScreenDebugMessage(-1, 50, FColor::Black, TEXT("ROLE_SimulatedProxy!!!!!!!!!!"));*/
 }
 
-void ATestLevelScriptActor::GenerateGround()
+void AMyGameState::GenerateGround_()
 {
-	GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Black, TEXT("GenerateGround_()!!!!!!!!!!"));
-	if (MapSize > WarningSize)
+	if (MapSize > 100)
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("MapSize is too Big!!!!!!!!!!"));
 		return;
@@ -59,11 +63,31 @@ void ATestLevelScriptActor::GenerateGround()
 		return;
 	}
 }
-
-
-ABlockBase* ATestLevelScriptActor::SpawnBlock(const FBlock* Block, float Size)
+void AMyGameState::GenerateGround()
 {
-	//GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("Spawn!!!!!!!!!!"));
+	if (Role < ROLE_Authority)
+	{
+		//GEngine->AddOnScreenDebugMessage(-1, 50, FColor::Green, TEXT("Client!!!!!!!!!!!!!!!!"));
+	}
+	else
+	{
+		//GEngine->AddOnScreenDebugMessage(-1, 50, FColor::Black, TEXT("Server!!!!!!!!!!!!!!!!"));
+		ServerGenerateGround();
+	}
+}
+void AMyGameState::ServerGenerateGround_Implementation()
+{
+	GEngine->AddOnScreenDebugMessage(-1, 50, FColor::Black, TEXT("Spawn!!!!!!!!!!!!!!!!"));
+	GenerateGround_();
+}
+bool AMyGameState::ServerGenerateGround_Validate()
+{
+	return true;
+}
+
+ABlockBase* AMyGameState::SpawnBlock(const FBlock* Block, float Size)
+{
+	//GEngine->AddOnScreenDebugMessage(-1, 50, FColor::Black, TEXT("Spawn!!!!!!!!!!!!!!!!"));
 	FVector location = FVector(Block->Position.X * Size, Block->Position.Y * Size, Block->Position.Z * Size);
 	UWorld* World = GetWorld();
 	ABlockBase* tempBlock = NULL;

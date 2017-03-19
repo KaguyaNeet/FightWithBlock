@@ -37,7 +37,7 @@ void AFightWithBlockGameModeBase::BeginPlay()
 	//	FBlock MyBlock;
 	//	temp->SetInitProperty(MyBlock);
 	//}
-	GenerateGround();
+	//GenerateGround();
 }
 
 void AFightWithBlockGameModeBase::PrintKillMessage(class AMyCharacter* Killer, class AMyCharacter* beKiller)
@@ -47,7 +47,7 @@ void AFightWithBlockGameModeBase::PrintKillMessage(class AMyCharacter* Killer, c
 
 void AFightWithBlockGameModeBase::GenerateGround()
 {
-	if (MapSize > WarningSize)
+	if (MapSize > 100)
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("MapSize is too Big!!!!!!!!!!"));
 		return;

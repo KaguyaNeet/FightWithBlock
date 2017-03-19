@@ -1,11 +1,13 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "FightWithBlock.h"
-#include "TestLevelScriptActor.h"
+#include "MyGameMode.h"
 #include "BlockBase.h"
 #include "MyStructs.h"
 
-ATestLevelScriptActor::ATestLevelScriptActor()
+
+
+AMyGameMode::AMyGameMode()
 {
 	static ConstructorHelpers::FObjectFinder<UDataTable> GroundTable(TEXT("DataTable'/Game/myBlueprint/DataTables/D_Ground.D_Ground'"));
 	static ConstructorHelpers::FObjectFinder<UDataTable> SurfaceTable(TEXT("DataTable'/Game/myBlueprint/DataTables/D_Surface.D_Surface'"));
@@ -18,18 +20,20 @@ ATestLevelScriptActor::ATestLevelScriptActor()
 	}
 }
 
-void ATestLevelScriptActor::BeginPlay()
+void AMyGameMode::PrintKillMessage(class AMyCharacter* Killer, class AMyCharacter* beKiller)
 {
-	if (Role == ROLE_Authority)
-	{
-		GenerateGround();
-	}
+
 }
 
-void ATestLevelScriptActor::GenerateGround()
+void AMyGameMode::BeginPlay()
+{
+	//GenerateGround();
+}
+
+void AMyGameMode::GenerateGround_()
 {
 	GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Black, TEXT("GenerateGround_()!!!!!!!!!!"));
-	if (MapSize > WarningSize)
+	if (MapSize > 100)
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("MapSize is too Big!!!!!!!!!!"));
 		return;
@@ -60,10 +64,22 @@ void ATestLevelScriptActor::GenerateGround()
 	}
 }
 
-
-ABlockBase* ATestLevelScriptActor::SpawnBlock(const FBlock* Block, float Size)
+void AMyGameMode::GenerateGround()
 {
-	//GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("Spawn!!!!!!!!!!"));
+	MulticastGenerateGround();
+}
+void AMyGameMode::MulticastGenerateGround_Implementation()
+{
+	GenerateGround_();
+}
+bool AMyGameMode::MulticastGenerateGround_Validate()
+{
+	return true;
+}
+
+ABlockBase* AMyGameMode::SpawnBlock(const FBlock* Block, float Size)
+{
+	//GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("MapSize is too Big!!!!!!!!!!"));
 	FVector location = FVector(Block->Position.X * Size, Block->Position.Y * Size, Block->Position.Z * Size);
 	UWorld* World = GetWorld();
 	ABlockBase* tempBlock = NULL;

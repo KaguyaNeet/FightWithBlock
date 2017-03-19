@@ -3,7 +3,7 @@
 #include "FightWithBlock.h"
 #include "BlockBase.h"
 #include "MyCharacter.h"
-
+#include "Net/UnrealNetwork.h"
 // Sets default values
 ABlockBase::ABlockBase()
 {
@@ -50,51 +50,85 @@ ABlockBase::ABlockBase()
 	//UGameplayStatics::SpawnEmitterAttached(BlockProperty.selfParticle, StaticMesh);
 }
 
+void ABlockBase::GetLifetimeReplicatedProps(TArray< FLifetimeProperty > & OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+	DOREPLIFETIME(ABlockBase, BlockProperty);
+	DOREPLIFETIME(ABlockBase, Init);
+	DOREPLIFETIME(ABlockBase, IsBreak);
+	DOREPLIFETIME(ABlockBase, IsDestroy);
+}
 // Called when the game starts or when spawned
 void ABlockBase::BeginPlay()
 {
 	Super::BeginPlay();
-	
+	//if(Role == ROLE_Authority)
+	//	GEngine->AddOnScreenDebugMessage(-1, 50, FColor::Blue, TEXT("Authority!!!!!!~~~~~~~~~~~~"));
+	//if(Role == ROLE_AutonomousProxy)
+	//	GEngine->AddOnScreenDebugMessage(-1, 50, FColor::Blue, TEXT("AutonomousProxy!!!!!!~~~~~~~~~~~~"));
+	//if(Role == ROLE_SimulatedProxy)
+	//	GEngine->AddOnScreenDebugMessage(-1, 50, FColor::Blue, TEXT("SimulatedProxy!!!!!!~~~~~~~~~~~~"));
 }
 
 // Called every frame
 void ABlockBase::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
+	//UE_LOG(LogTemp, Warning, TEXT("%d"), BlockProperty.ID);
 	if (!AddBUFF)
 		BUFFTimeCounter(DeltaTime);
-
 }
 
-void ABlockBase::SetInitProperty_Implementation(FBlock Block)
+void ABlockBase::SetInitProperty(FBlock Block)
 {
+	//GEngine->AddOnScreenDebugMessage(-1, 50, FColor::Blue, TEXT("Init!!!!!!~~~~~~~~~~~~"));
 	BlockProperty = Block;
 	StaticMesh->SetStaticMesh(BlockProperty.StaticMesh);
 	StaticMesh->SetMaterial(0, BlockProperty.Material);
 	UGameplayStatics::SpawnEmitterAttached(BlockProperty.selfParticle, StaticMesh);
 	StaticMesh->SetWorldScale3D(StaticMesh->GetComponentScale() * BlockProperty.Size);
+	Init = true;
 }
-bool ABlockBase::SetInitProperty_Validate(FBlock Block)
+void ABlockBase::OnRep_ReplicateInit()
 {
-	return true;
+	//GEngine->AddOnScreenDebugMessage(-1, 20, FColor::Blue,TEXT("OnRep!!!!!!"));
+	if (Init)
+	{
+		//if(BlockProperty.ID == 0)
+		//	GEngine->AddOnScreenDebugMessage(-1, 20, FColor::Blue, TEXT("noooooooooooooooo!!!!!!"));
+		SetInitProperty(BlockProperty);
+	}
 }
+//bool ABlockBase::SetInitProperty_Validate(FBlock Block)
+//{
+//	return true;
+//}
+//void ABlockBase::ServerSetInitProperty(FBlock Block)
+//{
+//
+//}
+//bool ABlockBase::ServerSetInitProperty_Validate(FBlock Block)
+//{
+//	return true;
+//}
 
 void ABlockBase::BeBreak()
 {
-		UWorld* World = GetWorld();
-		if (World)
-		{
-			FActorSpawnParameters SpawnParameter;
-			SpawnParameter.Owner = this;
-			SpawnParameter.Instigator = Instigator;
-			if (BlockProperty.breakParticle && BlockProperty.breakParticle->IsTemplate())
-				UGameplayStatics::SpawnEmitterAtLocation(World, BlockProperty.breakParticle, GetActorTransform(), true);
-			ACBGBlock* tempCBGBlock = World->SpawnActor<ACBGBlock>(GetActorLocation(), GetActorRotation(), SpawnParameter);
-			tempCBGBlock->SetInitProperty(BlockProperty);
-			UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), BlockProperty.breakParticle, GetActorLocation(), GetActorRotation(), true);
-			this->Destroy(true);
-		}
+	//StaticMesh->SetWorldScale3D(FVector(0, 0, 0));
+	//GEngine->AddOnScreenDebugMessage(-1, 3, FColor::Red, TEXT("¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡"));
+	DestroySelf();
+	UWorld* World = GetWorld();
+	if (World)
+	{
+		FActorSpawnParameters SpawnParameter;
+		SpawnParameter.Owner = this;
+		SpawnParameter.Instigator = Instigator;
+		if (BlockProperty.breakParticle && BlockProperty.breakParticle->IsTemplate())
+			UGameplayStatics::SpawnEmitterAtLocation(World, BlockProperty.breakParticle, GetActorTransform(), true);
+		ACBGBlock* tempCBGBlock = World->SpawnActor<ACBGBlock>(GetActorLocation(), GetActorRotation(), SpawnParameter);
+		tempCBGBlock->SetInitProperty(BlockProperty);
+		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), BlockProperty.breakParticle, GetActorLocation(), GetActorRotation(), true);
+	}
 }
 
 void ABlockBase::ApplyPointDamage(AMyCharacter* Causer, int32 DamageValue)
@@ -111,6 +145,7 @@ void ABlockBase::ApplyPointDamage(AMyCharacter* Causer, int32 DamageValue)
 	BlockProperty.LifeValue -= DamageValue;
 	if (BlockProperty.LifeValue <= 0)
 	{
+		IsBreak = true;
 		BeBreak();
 		return;
 	}
@@ -134,4 +169,19 @@ void ABlockBase::BUFFTimeCounter(float DeltaTime)
 		return;
 	}
 }
-
+void ABlockBase::OnRep_Break()
+{
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("BreakRep!!!!!!!!!!!"));
+	UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), BlockProperty.breakParticle, GetActorLocation(), GetActorRotation(), true);
+}
+void ABlockBase::DestroySelf()
+{
+	IsDestroy = true;
+	StaticMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	StaticMesh->SetWorldScale3D(FVector(0, 0, 0));
+	
+}
+void ABlockBase::OnRep_Destroy()
+{
+	DestroySelf();
+}

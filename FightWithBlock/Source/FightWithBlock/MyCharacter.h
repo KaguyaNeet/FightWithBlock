@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "MyStructs.h"
-#include "FightWithBlockGameModeBase.h"
+#include "MyGameMode.h"
 #include "BoltBlock.h"
 #include "CBGBlock.h"
 #include "MyEnums.h"
@@ -32,12 +32,13 @@ public:
 	UPROPERTY(VisibleAnywhere)
 		class UArrowComponent* MineTraceStartArrow;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Camp")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Replicated,Category = "Camp")
 		ECamp MyCamp = ECamp::EDefault;
 
 		FHero HeroInitProperty;
 
-		FItem Bag[BAGSPACE];
+		UPROPERTY(Replicated)
+			FItem Bag[BAGSPACE];
 
 
 protected:
@@ -57,13 +58,18 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps)const override;
+
 	bool AddItem(FBlock Item);
 
 	void chooseItem_1();
 	void chooseItem_2();
 	void chooseItem_3();
 
+	void Fire_();
 	void Fire();
+	UFUNCTION(reliable, server, WithValidation)
+		void ServerFire();
 
 	FItem* handBlock;
 
@@ -78,14 +84,27 @@ public:
 	UFUNCTION()
 	void EndOverlap(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, int32 OtherBodyIndex);
 
+	void Pressed_R_();
 	void Pressed_R();
+	UFUNCTION(reliable, server, WithValidation)
+		void ServerPressed_R();
+
+
+
 	void Released_R();
 	void PrintItem(FBlock BlockProperty);
 
+	void MineBlock_();
 	void MineBlock();
-	void MineLineTraceResult(const FHitResult& Hit);
+	UFUNCTION(reliable, server, WithValidation)
+		void ServerMineBlock();
 
+	void MineLineTraceResult(const FHitResult& Hit);
+	
+	void ApplyPointDamage_(AMyCharacter* Causer, int32 DamageValue);
 	void ApplyPointDamage(AMyCharacter* Causer, int32 DamageValue);
+	UFUNCTION(reliable, server, WithValidation)
+		void ServerApplyPointDamage(AMyCharacter* Causer, int32 DamageValue);
 
 
 	void Death(AMyCharacter* Causer);
@@ -99,8 +118,10 @@ private:
 	FVector GetFireLocation();
 	FRotator GetFireRotation();
 
-	TArray<FBUFF> myBUFF;
-	FHero HeroProperty;
+	UPROPERTY(Replicated)
+		TArray<FBUFF> myBUFF;
+	UPROPERTY(Replicated)
+		FHero HeroProperty;
 
 	bool Keyboard_F_Pressed = false;
 

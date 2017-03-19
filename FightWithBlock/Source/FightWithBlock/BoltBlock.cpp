@@ -4,14 +4,15 @@
 #include "BoltBlock.h"
 #include "MyCharacter.h"
 #include "BlockBase.h"
-
+#include "NET/UnrealNetwork.h"
 
 // Sets default values
 ABoltBlock::ABoltBlock()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-
+	bReplicates = true;
+	bReplicateMovement = true;
 	CollisionComponent = CreateDefaultSubobject<UBoxComponent>(TEXT("CollisionComponent"));
 	SetRootComponent(CollisionComponent);
 	RootComponent->SetMobility(EComponentMobility::Movable);
@@ -49,6 +50,26 @@ ABoltBlock::ABoltBlock()
 
 }
 
+void ABoltBlock::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+	DOREPLIFETIME(ABoltBlock, BlockProperty);
+	DOREPLIFETIME(ABoltBlock, IsInit);
+	DOREPLIFETIME(ABoltBlock, IsExplosion);
+}
+
+void ABoltBlock::OnRep_Init()
+{
+	GEngine->AddOnScreenDebugMessage(-1, 10, FColor::Green, TEXT("RepInit"));
+	//CollisionComponent->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
+	UGameplayStatics::SpawnEmitterAttached(BlockProperty.traceParticle, StaticMesh);
+	//ProjectileMovement->InitialSpeed = BlockProperty.InitialSpeed;
+	//ProjectileMovement->MaxSpeed = BlockProperty.InitialSpeed;
+	StaticMesh->SetStaticMesh(BlockProperty.StaticMesh);
+	StaticMesh->SetMaterial(0, BlockProperty.Material);
+	StaticMesh->SetWorldScale3D(StaticMesh->GetComponentScale() * BlockProperty.Size);
+}
+
 // Called when the game starts or when spawned
 void ABoltBlock::BeginPlay()
 {
@@ -66,12 +87,14 @@ void ABoltBlock::Tick(float DeltaTime)
 
 void ABoltBlock::SetInitProperty(FBlock Block, AMyCharacter* Owner_)
 {
+	//GEngine->AddOnScreenDebugMessage(-1, 10, FColor::Cyan, TEXT("Init"));
+	IsInit = true;
 	BlockProperty = Block;
 	Owner = Owner_;
 	CollisionComponent->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
 	UGameplayStatics::SpawnEmitterAttached(BlockProperty.traceParticle, StaticMesh);
-	ProjectileMovement->InitialSpeed = BlockProperty.InitialSpeed;
-	ProjectileMovement->MaxSpeed = BlockProperty.InitialSpeed;
+	//ProjectileMovement->InitialSpeed = BlockProperty.InitialSpeed;
+	//ProjectileMovement->MaxSpeed = BlockProperty.InitialSpeed;
 	StaticMesh->SetStaticMesh(BlockProperty.StaticMesh);
 	StaticMesh->SetMaterial(0, BlockProperty.Material);
 	StaticMesh->SetWorldScale3D(StaticMesh->GetComponentScale() * BlockProperty.Size);
@@ -103,7 +126,8 @@ void ABoltBlock::BeginOverlap(UPrimitiveComponent* HitComponent, AActor* OtherAc
 	AMyCharacter* HitEnemy = Cast<AMyCharacter>(OtherActor);
 	if (HitEnemy && HitEnemy->MyCamp != Owner->MyCamp)
 	{
-		HitEnemy->ApplyPointDamage(Owner, BlockProperty.ExplosionDamageValue);
+		HitEnemy->ApplyPointDamage(Owner, BlockProperty.DamageValue);
+		HitEnemy->GetCapsuleComponent()->AddTorque(GetVelocity() * 100);
 		Explosion();
 		if (BlockProperty.ToEnemyBUFF.NotEmpty)
 		{
@@ -124,6 +148,13 @@ void ABoltBlock::BeginOverlap(UPrimitiveComponent* HitComponent, AActor* OtherAc
 void ABoltBlock::BeBreak()
 {
 	UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), BlockProperty.explosionParticle, FTransform(FRotator(0.f, 0.f, 0.f), GetActorLocation(), FVector(1, 1, 1)));
-	this->Destroy(true);
+	StaticMesh->SetWorldScale3D(FVector(0, 0, 0));
+	CollisionComponent->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	IsExplosion = true;
+	//this->Destroy(true);
+}
+void ABoltBlock::OnRep_Explosion()
+{
+	BeBreak();
 }
 

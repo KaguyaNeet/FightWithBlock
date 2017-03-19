@@ -141,7 +141,7 @@ struct FBlock : public FTableRowBase
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Block")
 		float Size;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Block")
-		int32 LifeValue;
+		int32 LifeValue = 3;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Block")
 		int32 DamageValue;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Block")

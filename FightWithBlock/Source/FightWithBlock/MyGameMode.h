@@ -2,18 +2,19 @@
 
 #pragma once
 
-#include "Engine/LevelScriptActor.h"
-#include "TestLevelScriptActor.generated.h"
+#include "GameFramework/GameMode.h"
+#include "MyGameMode.generated.h"
 
+
+const int32 BAGSPACE = 3;
+const int32 WarningSize = 100;
 /**
  * 
  */
 UCLASS()
-class FIGHTWITHBLOCK_API ATestLevelScriptActor : public ALevelScriptActor
+class FIGHTWITHBLOCK_API AMyGameMode : public AGameMode
 {
 	GENERATED_BODY()
-
-		ATestLevelScriptActor();
 	
 public:
 	//bian chang wei duo shao ge block
@@ -29,20 +30,22 @@ public:
 
 public:
 
+	AMyGameMode();
 
-	//void PrintKillMessage(class AMyCharacter* Killer, class AMyCharacter* beKiller);
+	void PrintKillMessage(class AMyCharacter* Killer, class AMyCharacter* beKiller);
 
+	void GenerateGround_();
 	void GenerateGround();
-
+	UFUNCTION(reliable, NetMulticast, WithValidation)
+		void MulticastGenerateGround();
 
 	class ABlockBase* SpawnBlock(const struct FBlock* Block, float Size);
 protected:
 
-
 	virtual void BeginPlay() override;
 
 private:
-	int32 WarningSize = 100;
+
 	TArray<class ABlockBase*> AllBlockInfo;
 
 	TArray<FName> GroundRowNames;
@@ -50,5 +53,6 @@ private:
 
 	UDataTable* GroundDataTable;
 	UDataTable* SurfaceDataTable;
-
+	
+	
 };
