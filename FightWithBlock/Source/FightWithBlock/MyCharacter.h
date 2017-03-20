@@ -20,7 +20,7 @@ public:
 	// Sets default values for this character's properties
 	AMyCharacter();
 
-	UPROPERTY(VisibleAnywhere)
+	UPROPERTY(VisibleAnywhere, Replicated)
 		class UCameraComponent* Camera;
 
 	UPROPERTY(VisibleAnywhere)
@@ -70,6 +70,11 @@ public:
 	void Fire();
 	UFUNCTION(reliable, server, WithValidation)
 		void ServerFire();
+
+	void SetCameraRotation(FRotator Rotation);
+	void SetCamera();
+	UFUNCTION(reliable, server, WithValidation)
+		void ServerSetCamera(FRotator Rotation);
 
 	FItem* handBlock;
 

@@ -128,6 +128,7 @@ void AMyCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLife
 	DOREPLIFETIME(AMyCharacter, HeroProperty);
 	DOREPLIFETIME(AMyCharacter, MyCamp);
 	DOREPLIFETIME(AMyCharacter, Bag);
+	DOREPLIFETIME(AMyCharacter, Camera);
 }
 
 void AMyCharacter::MoveForward(float val)
@@ -209,8 +210,8 @@ void AMyCharacter::Fire_()
 		UWorld* World = GetWorld();
 		if (World)
 		{
-			UE_LOG(LogTemp, Warning, TEXT("%s"), *(MineTraceStartArrow->GetComponentLocation()).ToString());
-			ABoltBlock* tempBlock = World->SpawnActor<ABoltBlock>(MineTraceStartArrow->GetComponentLocation(), MineTraceStartArrow->GetComponentRotation());
+			//UE_LOG(LogTemp, Warning, TEXT("%s"), *(MineTraceStartArrow->GetComponentLocation()).ToString());
+			ABoltBlock* tempBlock = World->SpawnActor<ABoltBlock>(Camera->GetComponentLocation(), Camera->GetComponentRotation());
 			tempBlock->SetInitProperty(handBlock->Block, this);
 			tempBlock->SetFireDirection(MineTraceStartArrow->GetForwardVector(), 1000);
 			handBlock->Empty = true;
@@ -221,6 +222,7 @@ void AMyCharacter::Fire()
 {
 	if (Role < ROLE_Authority)
 	{
+		SetCamera();
 		ServerFire();
 	}
 	else
@@ -477,4 +479,24 @@ void AMyCharacter::Death(AMyCharacter* Causer)
 	GetMesh()->SetCollisionEnabled(ECollisionEnabled::PhysicsOnly);
 	GetMesh()->SetSimulatePhysics(true);
 	return;
+}
+
+void AMyCharacter::ServerSetCamera_Implementation(FRotator Rotation)
+{
+	SetCameraRotation(Rotation);
+}
+bool AMyCharacter::ServerSetCamera_Validate(FRotator Rotation)
+{
+	return true;
+}
+void AMyCharacter::SetCamera()
+{
+	if (Role < ROLE_Authority)
+	{
+		ServerSetCamera(Camera->GetComponentRotation());
+	}
+}
+void AMyCharacter::SetCameraRotation(FRotator Rotation)
+{
+	Camera->SetWorldRotation(Rotation);
 }
