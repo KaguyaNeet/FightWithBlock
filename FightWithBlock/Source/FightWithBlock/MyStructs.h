@@ -139,11 +139,11 @@ struct FBlock : public FTableRowBase
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Block")
 		FPosition Position;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Block")
-		float Size;
+		float Size = 1;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Block")
 		int32 LifeValue = 3;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Block")
-		int32 DamageValue;
+		int32 DamageValue = 1;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Block")
 		int32 ExplosionDamageValue;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Block")

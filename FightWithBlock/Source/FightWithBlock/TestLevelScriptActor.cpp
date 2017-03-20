@@ -40,8 +40,8 @@ void ATestLevelScriptActor::GenerateGround()
 		int32 x = 1, y = 1, z = 1;
 		while (z <= MaxZ)
 		{
-			GroundRowNames[(float)FMath::FRandRange(0.f, (float)(GroundRowNames.Num() - 1))];
-			GroundRow = GroundDataTable->FindRow<FBlock>(GroundRowNames[(float)FMath::FRandRange(0.f, (float)(GroundRowNames.Num() - 1))], TEXT(""));
+			//GroundRowNames[(int)FMath::FRandRange(0.f, (float)(GroundRowNames.Num() - 1))];
+			GroundRow = GroundDataTable->FindRow<FBlock>(GroundRowNames[(int)FMath::FRandRange(0.f, (float)(GroundRowNames.Num() - 1))], TEXT(""));
 			GroundRow->Position.X = x; GroundRow->Position.Y = y; GroundRow->Position.Z = z;
 			AllBlockInfo.Add(SpawnBlock(GroundRow, BlockSize));
 			x += 1;
@@ -63,7 +63,7 @@ void ATestLevelScriptActor::GenerateGround()
 
 ABlockBase* ATestLevelScriptActor::SpawnBlock(const FBlock* Block, float Size)
 {
-	//GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("Spawn!!!!!!!!!!"));
+	GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("Spawn!!!!!!!!!!"));
 	FVector location = FVector(Block->Position.X * Size, Block->Position.Y * Size, Block->Position.Z * Size);
 	UWorld* World = GetWorld();
 	ABlockBase* tempBlock = NULL;
