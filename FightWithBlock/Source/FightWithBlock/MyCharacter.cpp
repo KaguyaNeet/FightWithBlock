@@ -415,6 +415,7 @@ void AMyCharacter::MineBlock()
 {
 	if (Role < ROLE_Authority)
 	{
+		SetCamera();
 		ServerMineBlock();
 	}
 	else

@@ -7,6 +7,7 @@
 
 ATestLevelScriptActor::ATestLevelScriptActor()
 {
+	bReplicates = true;
 	static ConstructorHelpers::FObjectFinder<UDataTable> GroundTable(TEXT("DataTable'/Game/myBlueprint/DataTables/D_Ground.D_Ground'"));
 	static ConstructorHelpers::FObjectFinder<UDataTable> SurfaceTable(TEXT("DataTable'/Game/myBlueprint/DataTables/D_Surface.D_Surface'"));
 	if (GroundTable.Succeeded() && SurfaceTable.Succeeded())
@@ -43,7 +44,7 @@ void ATestLevelScriptActor::GenerateGround()
 			//GroundRowNames[(int)FMath::FRandRange(0.f, (float)(GroundRowNames.Num() - 1))];
 			GroundRow = GroundDataTable->FindRow<FBlock>(GroundRowNames[(int)FMath::FRandRange(0.f, (float)(GroundRowNames.Num() - 1))], TEXT(""));
 			GroundRow->Position.X = x; GroundRow->Position.Y = y; GroundRow->Position.Z = z;
-			AllBlockInfo.Add(SpawnBlock(GroundRow, BlockSize));
+			AllBlockInfo.Add(SpawnBlock(GroundRow, BlockSize * DSize));
 			x += 1;
 			if (x > MapSize)
 			{
@@ -63,7 +64,7 @@ void ATestLevelScriptActor::GenerateGround()
 
 ABlockBase* ATestLevelScriptActor::SpawnBlock(const FBlock* Block, float Size)
 {
-	GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("Spawn!!!!!!!!!!"));
+	//GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("Spawn!!!!!!!!!!"));
 	FVector location = FVector(Block->Position.X * Size, Block->Position.Y * Size, Block->Position.Z * Size);
 	UWorld* World = GetWorld();
 	ABlockBase* tempBlock = NULL;

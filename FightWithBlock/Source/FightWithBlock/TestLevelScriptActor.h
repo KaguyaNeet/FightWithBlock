@@ -8,6 +8,8 @@
 /**
  * 
  */
+
+const float DSize = 0.4;
 UCLASS()
 class FIGHTWITHBLOCK_API ATestLevelScriptActor : public ALevelScriptActor
 {
@@ -18,7 +20,7 @@ class FIGHTWITHBLOCK_API ATestLevelScriptActor : public ALevelScriptActor
 public:
 	//bian chang wei duo shao ge block
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MapProperty")
-		int32 MapSize = 2;
+		int32 MapSize = 20;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MapProperty")
 		int32 BlockSize = 260;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MapProperty")

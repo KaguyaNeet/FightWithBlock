@@ -4,7 +4,10 @@
 #include "BlockBase.h"
 #include "MyCharacter.h"
 #include "Net/UnrealNetwork.h"
+#include "TestLevelScriptActor.h"
 // Sets default values
+
+
 ABlockBase::ABlockBase()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
@@ -86,7 +89,7 @@ void ABlockBase::SetInitProperty(FBlock Block)
 	StaticMesh->SetStaticMesh(BlockProperty.StaticMesh);
 	StaticMesh->SetMaterial(0, BlockProperty.Material);
 	UGameplayStatics::SpawnEmitterAttached(BlockProperty.selfParticle, StaticMesh);
-	StaticMesh->SetWorldScale3D(StaticMesh->GetComponentScale() * BlockProperty.Size);
+	StaticMesh->SetWorldScale3D(StaticMesh->GetComponentScale() * BlockProperty.Size * DSize);
 	Init = true;
 }
 void ABlockBase::OnRep_ReplicateInit()
@@ -97,6 +100,7 @@ void ABlockBase::OnRep_ReplicateInit()
 		//if(BlockProperty.ID == 0)
 		//	GEngine->AddOnScreenDebugMessage(-1, 20, FColor::Blue, TEXT("noooooooooooooooo!!!!!!"));
 		SetInitProperty(BlockProperty);
+		StaticMesh->SetWorldScale3D(StaticMesh->GetComponentScale() * BlockProperty.Size / DSize);
 	}
 }
 //bool ABlockBase::SetInitProperty_Validate(FBlock Block)
