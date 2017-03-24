@@ -1,0 +1,35 @@
+First you need to understand that a texture is normally, a sum of multiple images called MipMaps. MipMaps are down-scaled versions of your images, always in steps of power of 2, so the original image, is, say, 512x512 - this would be the MipMap "0", then the engine generates the MipMap "1" which is 256x256 and then MipMap "2" which is 128x128, this continues on down to 16x16 I think. The farther away the texture is rendered, the smaller version of the image is used. This means that you need to access the mipmap 0 of your texture.
+
+First we need to access the mipmap 0 of the texture, it is important to only access the data we need through refrences or, like I did here, pointers, either will do. We do this to directly access the original data in the memory instead of copying that data into a local variable. This saves memory and speed:
+
+ FTexture2DMipMap* MyMipMap = &MyTexture2D->PlatformData->Mips[0];
+ 
+With this, we can access the BulkData which contains the raw image data:
+
+ FByteBulkData* RawImageData = &MyMipMap->BulkData;
+ 
+Considering this texture data is used in the rendering thread, we need to lock it to make sure nothing else can access it while we are using it, if we didn't, we could cause memory corruptions or crashes. So now we lock the image data which will also return a pointer to it - which we can then go ahead and cast the unformated data into an array of FColor's:
+
+ FColor* FormatedImageData = static_cast<FColor*>( RawImageData->Lock( LOCK_READ_ONLY ) );
+ 
+The FColor array is ofc 1 dimensional. So to access certain parts of the image, we need to use the width and height of the texture to calculate the position of the pixel we are wanting to lookup. Here's a small statement that does just that:
+
+ uint8 PixelX = 5, PixelY = 10;
+ uint32 TextureWidth = MyMipMap->SizeX, TextureHeight = MyMipMap->SizeY;
+ FColor PixelColor;
+ 
+ if( PixelX >= 0 && PixelX < TextureWidth && PixelY >= 0 && PixelY < TextureHeight )
+ {
+     PixelColor = FormatedImageData[ PixelY * TextureWidth + PixelX ];
+ }
+ 
+Now, for demonstration purposes, I broke down each step. We could easily access and cast this in one line:
+
+ FColor* FormatedImageData = static_cast<FColor*>( MyTexture2D->PlatformData->Mips[0].BulkData.Lock( LOCK_READ_ONLY ) );
+ 
+And now that we are done with everything, we need to unlock the memory again:
+
+ RawImageData->Unlock();
+or
+
+ MyTexture2D->PlatformData->Mips[0].BulkData.Unlock();

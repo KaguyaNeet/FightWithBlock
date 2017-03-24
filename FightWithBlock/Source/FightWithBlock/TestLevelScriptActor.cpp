@@ -4,18 +4,28 @@
 #include "TestLevelScriptActor.h"
 #include "BlockBase.h"
 #include "MyStructs.h"
+//#include "Runtime/UMG/Public/UMG.h"
+//#include "Runtime/UMG/Public/UMGStyle.h"
+//#include "Runtime/UMG/Public/Slate/SObjectWidget.h"
+//#include "Runtime/UMG/Public/IUMGModule.h"
 
 ATestLevelScriptActor::ATestLevelScriptActor()
 {
 	bReplicates = true;
+	ConstructorHelpers::FObjectFinder<UTexture2D> HeightTexture(TEXT("Texture2D'/Game/WorldMachineOutput/test1.test1'"));
 	static ConstructorHelpers::FObjectFinder<UDataTable> GroundTable(TEXT("DataTable'/Game/myBlueprint/DataTables/D_Ground.D_Ground'"));
 	static ConstructorHelpers::FObjectFinder<UDataTable> SurfaceTable(TEXT("DataTable'/Game/myBlueprint/DataTables/D_Surface.D_Surface'"));
+	//ConstructorHelpers::FObjectFinder<UUserWidget> SessionRoom(TEXT("WidgetBlueprint'/Game/UMG/SessionRoom.SessionRoom'"));
 	if (GroundTable.Succeeded() && SurfaceTable.Succeeded())
 	{
 		GroundDataTable = GroundTable.Object;
 		SurfaceDataTable = SurfaceTable.Object;
 		GroundRowNames = GroundTable.Object->GetRowNames();
 		SurfaceRowNames = SurfaceTable.Object->GetRowNames();
+	}
+	if (HeightTexture.Succeeded())
+	{
+		Map = HeightTexture.Object;
 	}
 }
 

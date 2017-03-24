@@ -1,7 +1,5 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
-
 #include "Engine/LevelScriptActor.h"
 #include "TestLevelScriptActor.generated.h"
 
@@ -26,6 +24,8 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MapProperty")
 		int32 MaxZ = 1;
 
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	//	class UUserWidget* SessionRoom;
 
 
 
@@ -52,5 +52,7 @@ private:
 
 	UDataTable* GroundDataTable;
 	UDataTable* SurfaceDataTable;
+
+	UTexture2D* Map;
 
 };
