@@ -30,6 +30,7 @@ public:
 
 
 public:
+	void TestPrintHeight(int32 x, int32 y);
 
 
 	//void PrintKillMessage(class AMyCharacter* Killer, class AMyCharacter* beKiller);
@@ -52,5 +53,7 @@ private:
 
 	UDataTable* GroundDataTable;
 	UDataTable* SurfaceDataTable;
+
+	UTexture2D* HeightFile;
 
 };

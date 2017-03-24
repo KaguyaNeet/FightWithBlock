@@ -10,6 +10,12 @@ ATestLevelScriptActor::ATestLevelScriptActor()
 	bReplicates = true;
 	static ConstructorHelpers::FObjectFinder<UDataTable> GroundTable(TEXT("DataTable'/Game/myBlueprint/DataTables/D_Ground.D_Ground'"));
 	static ConstructorHelpers::FObjectFinder<UDataTable> SurfaceTable(TEXT("DataTable'/Game/myBlueprint/DataTables/D_Surface.D_Surface'"));
+	//ConstructorHelpers::FObjectFinder<UTexture2D> HeightMap(TEXT("Texture2D'/Game/WorldMachineOutput/output4.output4'"));
+	//if (HeightMap.Succeeded())
+	//{
+	//	HeightFile = HeightMap.Object;
+	//	GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("!!!!!!!!!!!!"));
+	//}
 	if (GroundTable.Succeeded() && SurfaceTable.Succeeded())
 	{
 		GroundDataTable = GroundTable.Object;
@@ -19,11 +25,39 @@ ATestLevelScriptActor::ATestLevelScriptActor()
 	}
 }
 
+void ATestLevelScriptActor::TestPrintHeight(int32 x, int32 y)
+{
+
+	if (HeightFile)
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("!!!!!!!!!!!!"));
+		HeightFile->MipGenSettings.operator=(TMGS_NoMipmaps);
+		HeightFile->SRGB = false;
+		HeightFile->CompressionSettings.operator=(TC_VectorDisplacementmap);
+		FTexture2DMipMap* MyMips = &HeightFile->PlatformData->Mips[0];
+		FByteBulkData* RawImageData = &MyMips->BulkData;
+		auto FormatedImageData =  static_cast<FColor*>(RawImageData->Lock(LOCK_READ_ONLY));
+		FColor PixelColor;
+		int32 Width = MyMips->SizeX;
+		int32 Height = MyMips->SizeY;
+
+		if (x >= 0 && x < Width && y >= 0 && y < Height)
+		{
+			//PixelColor = FormatedImageData[y * Width + x];
+		}
+		UE_LOG(LogTemp, Warning, TEXT("Red:%d;Green:%d;Blue:%d"), PixelColor.R, PixelColor.G, PixelColor.B);
+	}
+}
+
 void ATestLevelScriptActor::BeginPlay()
 {
 	if (Role == ROLE_Authority)
 	{
 		GenerateGround();
+	}
+	for (int i = 1; i < 10; i++)
+	{
+		TestPrintHeight(i, i);
 	}
 }
 

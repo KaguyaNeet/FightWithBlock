@@ -76,7 +76,7 @@ void AMyCharacter::BeginPlay()
 	Super::BeginPlay();
 	if (GEngine)
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, TEXT("this is MyCharacter!"));	
+		//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, TEXT("this is MyCharacter!"));	
 	}
 	handBlock = &Bag[0];
 	//if (Role == ROLE_Authority)
