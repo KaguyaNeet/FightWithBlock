@@ -28,5 +28,10 @@ public:
 	void Find();
 
 	bool test = true;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+		UTexture2D* HeightFile;
+
+	void printHeight(int32 x, int32 y);
 	
 };

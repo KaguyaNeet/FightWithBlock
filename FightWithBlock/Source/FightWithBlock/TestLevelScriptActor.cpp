@@ -10,7 +10,7 @@ ATestLevelScriptActor::ATestLevelScriptActor()
 	bReplicates = true;
 	static ConstructorHelpers::FObjectFinder<UDataTable> GroundTable(TEXT("DataTable'/Game/myBlueprint/DataTables/D_Ground.D_Ground'"));
 	static ConstructorHelpers::FObjectFinder<UDataTable> SurfaceTable(TEXT("DataTable'/Game/myBlueprint/DataTables/D_Surface.D_Surface'"));
-	//ConstructorHelpers::FObjectFinder<UTexture2D> HeightMap(TEXT("Texture2D'/Game/WorldMachineOutput/output4.output4'"));
+	//ConstructorHelpers::FObjectFinder<UTexture2D> HeightMap(TEXT("Texture2D'/Game/WorldMachineOutput/output5.output5'"));
 	//if (HeightMap.Succeeded())
 	//{
 	//	HeightFile = HeightMap.Object;
@@ -35,8 +35,11 @@ void ATestLevelScriptActor::TestPrintHeight(int32 x, int32 y)
 		HeightFile->SRGB = false;
 		HeightFile->CompressionSettings.operator=(TC_VectorDisplacementmap);
 		FTexture2DMipMap* MyMips = &HeightFile->PlatformData->Mips[0];
-		FByteBulkData* RawImageData = &MyMips->BulkData;
-		auto FormatedImageData =  static_cast<FColor*>(RawImageData->Lock(LOCK_READ_ONLY));
+		//const FByteBulkData* RawImageData = &MyMips->BulkData;
+		//auto FormatedImageData =  static_cast<FColor*>(RawImageData->Lock(LOCK_READ_ONLY));
+		//MyMips->BulkData.Lock(LOCK_READ_ONLY);
+		FColor* Color = static_cast<FColor*>(MyMips->BulkData.Lock(LOCK_READ_ONLY));
+		//RawImageData->Lock(LOCK_READ_ONLY);
 		FColor PixelColor;
 		int32 Width = MyMips->SizeX;
 		int32 Height = MyMips->SizeY;
@@ -45,7 +48,7 @@ void ATestLevelScriptActor::TestPrintHeight(int32 x, int32 y)
 		{
 			//PixelColor = FormatedImageData[y * Width + x];
 		}
-		UE_LOG(LogTemp, Warning, TEXT("Red:%d;Green:%d;Blue:%d"), PixelColor.R, PixelColor.G, PixelColor.B);
+		//UE_LOG(LogTemp, Warning, TEXT("Red:%d;Green:%d;Blue:%d"), PixelColor.R, PixelColor.G, PixelColor.B);
 	}
 }
 

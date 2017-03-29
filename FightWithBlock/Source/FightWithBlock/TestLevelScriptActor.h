@@ -28,7 +28,6 @@ public:
 
 
 
-
 public:
 	void TestPrintHeight(int32 x, int32 y);
 
