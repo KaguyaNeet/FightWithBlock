@@ -147,11 +147,15 @@ void ABoltBlock::BeginOverlap(UPrimitiveComponent* HitComponent, AActor* OtherAc
 
 void ABoltBlock::BeBreak()
 {
-	UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), BlockProperty.explosionParticle, FTransform(FRotator(0.f, 0.f, 0.f), GetActorLocation(), FVector(1, 1, 1)));
-	StaticMesh->SetWorldScale3D(FVector(0, 0, 0));
-	CollisionComponent->SetCollisionEnabled(ECollisionEnabled::NoCollision);
-	IsExplosion = true;
-	//this->Destroy(true);
+	if (!bBreak)
+	{
+		bBreak = true;
+		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), BlockProperty.explosionParticle, FTransform(FRotator(0.f, 0.f, 0.f), GetActorLocation(), FVector(1, 1, 1)));
+		StaticMesh->SetWorldScale3D(FVector(0, 0, 0));
+		CollisionComponent->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+		IsExplosion = true;
+		//this->Destroy(true);
+	}
 }
 void ABoltBlock::OnRep_Explosion()
 {

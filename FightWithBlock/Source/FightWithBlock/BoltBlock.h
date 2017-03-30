@@ -60,6 +60,7 @@ private:
 	UPROPERTY(ReplicatedUsing = OnRep_Explosion)
 		bool IsExplosion = false;
 	bool bExplosion = false;
+	bool bBreak = false;
 	class AMyCharacter* Owner;
 
 };
