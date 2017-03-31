@@ -40,7 +40,16 @@ public:
 		UPROPERTY(Replicated)
 			FItem Bag[BAGSPACE];
 
-
+		UFUNCTION(BlueprintImplementableEvent)
+			void ChooseHUDLifeValue(float percent);
+		UFUNCTION(BlueprintImplementableEvent)
+			void CreateUI();
+		UFUNCTION(BlueprintImplementableEvent)
+			void CreateLifeBar();
+		UFUNCTION(BlueprintImplementableEvent)
+			void ChooseUILife(float percent);
+		UFUNCTION(BlueprintImplementableEvent)
+			void ChooseLifeBar(float percent);
 protected:
 	// Called when the game starts or when spawned
 

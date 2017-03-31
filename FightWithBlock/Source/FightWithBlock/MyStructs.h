@@ -102,6 +102,8 @@ struct FHero : public FTableRowBase
 	//sheng ming zhi
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Hero")
 		int32 LifeValue;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Hero")
+		int32 MaxLifeValue = 10;
 	//li liang zhi
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Hero")
 		int32 Power;

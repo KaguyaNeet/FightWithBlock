@@ -55,7 +55,7 @@ AMyCharacter::AMyCharacter()
 	//AutoPossessPlayer = EAutoReceiveInput::Player0;
 	//测试用要删的！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
 	//多打几行引起注意！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
-	HeroProperty.LifeValue = 1;
+	HeroInitProperty.LifeValue = HeroInitProperty.MaxLifeValue;
 	HeroProperty.BlockDamage = 1;
 	HeroProperty.MineRate = 0.2;
 	HeroProperty.MineDistance = 200;
@@ -74,6 +74,7 @@ AMyCharacter::AMyCharacter()
 void AMyCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+	ChooseHUDLifeValue(HeroInitProperty.LifeValue / HeroInitProperty.MaxLifeValue);
 	if (GEngine)
 	{
 		//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, TEXT("this is MyCharacter!"));	
@@ -445,6 +446,7 @@ void AMyCharacter::MineLineTraceResult(const FHitResult& Hit)
 void AMyCharacter::ApplyPointDamage_(AMyCharacter* Causer, int32 DamageValue)
 {
 	HeroProperty.LifeValue -= DamageValue;
+	ChooseHUDLifeValue(HeroInitProperty.LifeValue / HeroInitProperty.MaxLifeValue);
 	UE_LOG(LogTemp, Warning, TEXT("Life:%f, Damage:%f"), HeroProperty.LifeValue, DamageValue);
 	if (HeroProperty.LifeValue <= 0)
 	{
