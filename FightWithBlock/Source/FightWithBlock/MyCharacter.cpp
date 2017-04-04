@@ -55,7 +55,7 @@ AMyCharacter::AMyCharacter()
 	//AutoPossessPlayer = EAutoReceiveInput::Player0;
 	//测试用要删的！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
 	//多打几行引起注意！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
-	HeroInitProperty.LifeValue = HeroInitProperty.MaxLifeValue;
+	//HeroInitProperty.LifeValue = HeroInitProperty.MaxLifeValue;
 	HeroProperty.BlockDamage = 1;
 	HeroProperty.MineRate = 0.2;
 	HeroProperty.MineDistance = 200;
@@ -522,5 +522,9 @@ void AMyCharacter::AddUI()
 	else
 	{
 		CreateUI();
+	}
+	if (Role == ROLE_Authority)
+	{
+		CreateLifeBar();
 	}
 }

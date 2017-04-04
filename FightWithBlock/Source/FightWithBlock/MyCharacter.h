@@ -40,6 +40,9 @@ public:
 		UPROPERTY(Replicated)
 			FItem Bag[BAGSPACE];
 
+		UFUNCTION(BlueprintImplementableEvent)
+			void RefreshBagUI(int ChooseNum, FItem ChangeBlcok);
+
 		void AddUI();
 
 		UFUNCTION(BlueprintImplementableEvent)
@@ -52,6 +55,8 @@ public:
 			void ChooseUILife(float percent);
 		UFUNCTION(BlueprintImplementableEvent)
 			void ChooseLifeBar(float percent);
+		UFUNCTION(BlueprintImplementableEvent)
+			void PrintRole();
 protected:
 	// Called when the game starts or when spawned
 
@@ -128,6 +133,9 @@ public:
 	void AddBlockToPre(ACBGBlock* Block);
 	void RemoveBlockFromPre(ACBGBlock* Block);
 
+	UPROPERTY(Replicated, EditAnywhere, BlueprintReadWrite)
+		FHero HeroProperty;
+
 
 private:
 
@@ -136,8 +144,7 @@ private:
 
 	UPROPERTY(Replicated)
 		TArray<FBUFF> myBUFF;
-	UPROPERTY(Replicated)
-		FHero HeroProperty;
+
 
 	bool Keyboard_F_Pressed = false;
 
