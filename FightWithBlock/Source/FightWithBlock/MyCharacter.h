@@ -40,6 +40,8 @@ public:
 		UPROPERTY(Replicated)
 			FItem Bag[BAGSPACE];
 
+		void AddUI();
+
 		UFUNCTION(BlueprintImplementableEvent)
 			void ChooseHUDLifeValue(float percent);
 		UFUNCTION(BlueprintImplementableEvent)

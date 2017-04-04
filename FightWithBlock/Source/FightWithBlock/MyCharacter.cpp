@@ -74,7 +74,8 @@ AMyCharacter::AMyCharacter()
 void AMyCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-	ChooseHUDLifeValue(HeroInitProperty.LifeValue / HeroInitProperty.MaxLifeValue);
+	AddUI();
+	//ChooseHUDLifeValue(HeroInitProperty.LifeValue / HeroInitProperty.MaxLifeValue);
 	if (GEngine)
 	{
 		//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, TEXT("this is MyCharacter!"));	
@@ -446,7 +447,15 @@ void AMyCharacter::MineLineTraceResult(const FHitResult& Hit)
 void AMyCharacter::ApplyPointDamage_(AMyCharacter* Causer, int32 DamageValue)
 {
 	HeroProperty.LifeValue -= DamageValue;
-	ChooseHUDLifeValue(HeroInitProperty.LifeValue / HeroInitProperty.MaxLifeValue);
+	//ChooseHUDLifeValue(HeroInitProperty.LifeValue / HeroInitProperty.MaxLifeValue);
+	if (Role < ROLE_AutonomousProxy)
+	{
+		ChooseLifeBar(HeroInitProperty.LifeValue / HeroInitProperty.MaxLifeValue);
+	}
+	else
+	{
+		ChooseUILife(HeroInitProperty.LifeValue / HeroInitProperty.MaxLifeValue);
+	}
 	UE_LOG(LogTemp, Warning, TEXT("Life:%f, Damage:%f"), HeroProperty.LifeValue, DamageValue);
 	if (HeroProperty.LifeValue <= 0)
 	{
@@ -502,4 +511,16 @@ void AMyCharacter::SetCamera()
 void AMyCharacter::SetCameraRotation(FRotator Rotation)
 {
 	Camera->SetWorldRotation(Rotation);
+}
+
+void AMyCharacter::AddUI()
+{
+	if (Role < ROLE_AutonomousProxy)
+	{
+		CreateLifeBar();
+	}
+	else
+	{
+		CreateUI();
+	}
 }
