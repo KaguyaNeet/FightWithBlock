@@ -30,7 +30,7 @@ void ATestLevelScriptActor::TestPrintHeight(int32 x, int32 y)
 
 	if (HeightFile)
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("!!!!!!!!!!!!"));
+		//GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("!!!!!!!!!!!!"));
 		HeightFile->MipGenSettings.operator=(TMGS_NoMipmaps);
 		HeightFile->SRGB = false;
 		HeightFile->CompressionSettings.operator=(TC_VectorDisplacementmap);
@@ -66,10 +66,10 @@ void ATestLevelScriptActor::BeginPlay()
 
 void ATestLevelScriptActor::GenerateGround()
 {
-	GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Black, TEXT("GenerateGround_()!!!!!!!!!!"));
+	//GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Black, TEXT("GenerateGround_()!!!!!!!!!!"));
 	if (MapSize > WarningSize)
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("MapSize is too Big!!!!!!!!!!"));
+		//GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("MapSize is too Big!!!!!!!!!!"));
 		return;
 	}
 	else
@@ -79,7 +79,7 @@ void ATestLevelScriptActor::GenerateGround()
 		while (z <= MaxZ)
 		{
 			//GroundRowNames[(int)FMath::FRandRange(0.f, (float)(GroundRowNames.Num() - 1))];
-			GroundRow = GroundDataTable->FindRow<FBlock>(GroundRowNames[(int)FMath::FRandRange(0.f, (float)(GroundRowNames.Num() - 1))], TEXT(""));
+			GroundRow = GroundDataTable->FindRow<FBlock>(GroundRowNames[(int)FMath::FRandRange(0.f, (float)(GroundRowNames.Num()))], TEXT(""));
 			GroundRow->Position.X = x; GroundRow->Position.Y = y; GroundRow->Position.Z = z;
 			AllBlockInfo.Add(SpawnBlock(GroundRow, BlockSize * DSize));
 			x += 1;

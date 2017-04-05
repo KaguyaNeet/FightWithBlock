@@ -40,8 +40,18 @@ public:
 		UPROPERTY(Replicated)
 			FItem Bag[BAGSPACE];
 
+		UFUNCTION(reliable, client, WithValidation)
+			void ClientAddBlockUI(int Choose, FBlock Item);
+		UFUNCTION(reliable, client, WithValidation)
+			void ClientRemoveBlockUI(int Choose);
+
+
 		UFUNCTION(BlueprintImplementableEvent)
-			void RefreshBagUI(int ChooseNum, FItem ChangeBlcok);
+			void AddBlockUI(int ChooseNum, FBlock ChangeBlcok);
+		UFUNCTION(BlueprintImplementableEvent)
+			void RemoveBlockUI(int ChooseNum);
+		UFUNCTION(BlueprintImplementableEvent)
+			void NowChooseUI(int NowChoose);
 
 		void AddUI();
 
@@ -81,6 +91,13 @@ public:
 	void chooseItem_1();
 	void chooseItem_2();
 	void chooseItem_3();
+
+	UFUNCTION(reliable, server, WithValidation)
+		void  ServerChooseItem_1();
+	UFUNCTION(reliable, server, WithValidation)
+		void  ServerChooseItem_2();
+	UFUNCTION(reliable, server, WithValidation)
+		void  ServerChooseItem_3();
 
 	void Fire_();
 	void Fire();
@@ -137,10 +154,15 @@ public:
 		FHero HeroProperty;
 
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		int NowChoose = 1;
+
 private:
 
 	FVector GetFireLocation();
 	FRotator GetFireRotation();
+	
+	void SetNowChoose(int Choose);
 
 	UPROPERTY(Replicated)
 		TArray<FBUFF> myBUFF;

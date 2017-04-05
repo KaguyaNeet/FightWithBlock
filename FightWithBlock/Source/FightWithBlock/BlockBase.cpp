@@ -137,7 +137,7 @@ void ABlockBase::BeBreak()
 
 void ABlockBase::ApplyPointDamage(AMyCharacter* Causer, int32 DamageValue)
 {
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("ApplyDamage"));
+	//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("ApplyDamage"));
 	if (BlockProperty.ToMinerBUFF.NotEmpty)
 	{
 		if (AddBUFF)
@@ -175,7 +175,7 @@ void ABlockBase::BUFFTimeCounter(float DeltaTime)
 }
 void ABlockBase::OnRep_Break()
 {
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("BreakRep!!!!!!!!!!!"));
+	//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("BreakRep!!!!!!!!!!!"));
 	UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), BlockProperty.breakParticle, GetActorLocation(), GetActorRotation(), true);
 }
 void ABlockBase::DestroySelf()

@@ -60,7 +60,7 @@ void ABoltBlock::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifeti
 
 void ABoltBlock::OnRep_Init()
 {
-	GEngine->AddOnScreenDebugMessage(-1, 10, FColor::Green, TEXT("RepInit"));
+	//GEngine->AddOnScreenDebugMessage(-1, 10, FColor::Green, TEXT("RepInit"));
 	//CollisionComponent->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
 	UGameplayStatics::SpawnEmitterAttached(BlockProperty.traceParticle, StaticMesh);
 	//ProjectileMovement->InitialSpeed = BlockProperty.InitialSpeed;
@@ -132,12 +132,12 @@ void ABoltBlock::BeginOverlap(UPrimitiveComponent* HitComponent, AActor* OtherAc
 		if (BlockProperty.ToEnemyBUFF.NotEmpty)
 		{
 			HitEnemy->AddBUFF(BlockProperty.ToEnemyBUFF);
-			GEngine->AddOnScreenDebugMessage(-1, 4, FColor::Green, TEXT("addBUFF"));
+			//GEngine->AddOnScreenDebugMessage(-1, 4, FColor::Green, TEXT("addBUFF"));
 		}
 	}
 	else
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 4, FColor::Red, TEXT("OtherOverlap"));
+		//GEngine->AddOnScreenDebugMessage(-1, 4, FColor::Red, TEXT("OtherOverlap"));
 		if (OtherComponent->GetCollisionObjectType() == ECollisionChannel::ECC_WorldStatic)
 		{
 			Explosion();

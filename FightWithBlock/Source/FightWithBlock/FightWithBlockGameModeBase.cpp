@@ -22,7 +22,7 @@ AFightWithBlockGameModeBase::AFightWithBlockGameModeBase()
 
 void AFightWithBlockGameModeBase::BeginPlay()
 {
-	GEngine->AddOnScreenDebugMessage(-1, 4, FColor::Red, TEXT("GameModeCPP"));
+	//GEngine->AddOnScreenDebugMessage(-1, 4, FColor::Red, TEXT("GameModeCPP"));
 	//FActorSpawnParameters SpawnParams;
 	//SpawnParams.Owner = this;
 	//SpawnParams.Instigator = Instigator;
@@ -49,7 +49,7 @@ void AFightWithBlockGameModeBase::GenerateGround()
 {
 	if (MapSize > 100)
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("MapSize is too Big!!!!!!!!!!"));
+		//GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("MapSize is too Big!!!!!!!!!!"));
 		return;
 	}
 	else

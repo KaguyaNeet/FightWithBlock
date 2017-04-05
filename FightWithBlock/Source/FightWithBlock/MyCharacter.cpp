@@ -80,6 +80,7 @@ void AMyCharacter::BeginPlay()
 	{
 		//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, TEXT("this is MyCharacter!"));	
 	}
+	SetNowChoose(1);
 	handBlock = &Bag[0];
 	//if (Role == ROLE_Authority)
 	//	GEngine->AddOnScreenDebugMessage(-1, 50, FColor::Black, TEXT("ROLE_Authority!!!!!!!!!!"));
@@ -143,12 +144,31 @@ void AMyCharacter::MoveRight(float val)
 	AddMovementInput(GetActorRightVector(), val * 10);
 }
 
+void AMyCharacter::ClientAddBlockUI_Implementation(int Choose, FBlock Item)
+{
+	AddBlockUI(Choose, Item);
+}
+bool AMyCharacter::ClientAddBlockUI_Validate(int Choose, FBlock Item)
+{
+	return true;
+}
+
+void AMyCharacter::ClientRemoveBlockUI_Implementation(int Choose)
+{
+	RemoveBlockUI(Choose);
+}
+bool AMyCharacter::ClientRemoveBlockUI_Validate(int Choose)
+{
+	return true;
+}
+
 bool AMyCharacter::AddItem(FBlock Item)
 {
 	for (int i = 0; i < BAGSPACE; i++)
 	{
 		if (Bag[i].Empty)
 		{
+			ClientAddBlockUI(i + 1, Item);
 			Bag[i].Block = Item;
 			Bag[i].Empty = false;
 			AddBUFF(Item.ToOwnerBUFF);
@@ -160,36 +180,71 @@ bool AMyCharacter::AddItem(FBlock Item)
 		UWorld* World = GetWorld();
 		if (World)
 		{
-			GEngine->AddOnScreenDebugMessage(-1, 4, FColor::Red, TEXT("FULL!!!"));
+			//GEngine->AddOnScreenDebugMessage(-1, 4, FColor::Red, TEXT("FULL!!!"));
 			FActorSpawnParameters SpawnParams;
 			SpawnParams.Owner = this;
 			SpawnParams.Instigator = Instigator;
 			ACBGBlock* tempBlock = World->SpawnActor<ACBGBlock>(Camera->GetComponentLocation(), GetActorRotation(), SpawnParams);
 			tempBlock->SetInitProperty(handBlock->Block);
+			ClientRemoveBlockUI(NowChoose);
+			ClientAddBlockUI(NowChoose, Item);
 			handBlock->Block = Item;
 			handBlock->Empty = false;
 			AddBUFF(Item.ToOwnerBUFF);
 			return true;
 		}
 	}
-	GEngine->AddOnScreenDebugMessage(-1, 4, FColor::Red, TEXT("Warning!!!"));
+	//GEngine->AddOnScreenDebugMessage(-1, 4, FColor::Red, TEXT("Warning!!!"));
 	return false;
 }
 
 
 void AMyCharacter::chooseItem_1()
 {
+	SetNowChoose(1);
 	handBlock = &Bag[0];
+	NowChooseUI(NowChoose);
+	ServerChooseItem_1();
+}
+void AMyCharacter::ServerChooseItem_1_Implementation()
+{
+	handBlock = &Bag[0];
+}
+bool AMyCharacter::ServerChooseItem_1_Validate()
+{
+	return true;
 }
 
 void AMyCharacter::chooseItem_2()
 {
+	SetNowChoose(2);
 	handBlock = &Bag[1];
+	NowChooseUI(NowChoose);
+	ServerChooseItem_2();
+}
+void AMyCharacter::ServerChooseItem_2_Implementation()
+{
+	handBlock = &Bag[1];
+}
+bool AMyCharacter::ServerChooseItem_2_Validate()
+{
+	return true;
 }
 
 void AMyCharacter::chooseItem_3()
 {
+	SetNowChoose(3);
 	handBlock = &Bag[2];
+	NowChooseUI(NowChoose);
+	ServerChooseItem_3();
+}
+void AMyCharacter::ServerChooseItem_3_Implementation()
+{
+	handBlock = &Bag[2];
+}
+bool AMyCharacter::ServerChooseItem_3_Validate()
+{
+	return true;
 }
 
 
@@ -212,6 +267,7 @@ void AMyCharacter::Fire_()
 		UWorld* World = GetWorld();
 		if (World)
 		{
+			//GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("FIRE!!!!!!!!!!"));
 			//UE_LOG(LogTemp, Warning, TEXT("%s"), *(MineTraceStartArrow->GetComponentLocation()).ToString());
 			ABoltBlock* tempBlock = World->SpawnActor<ABoltBlock>(Camera->GetComponentLocation(), Camera->GetComponentRotation());
 			tempBlock->SetInitProperty(handBlock->Block, this);
@@ -231,6 +287,7 @@ void AMyCharacter::Fire()
 	{
 		ServerFire_Implementation();
 	}
+	ClientRemoveBlockUI(NowChoose);
 }
 void AMyCharacter::ServerFire_Implementation()
 {
@@ -287,7 +344,7 @@ void AMyCharacter::EndBUFF(int i)
 	
 	if (myBUFF[i].TempParticle)
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 4, FColor::Green, TEXT("rEMOVE"));
+		//GEngine->AddOnScreenDebugMessage(-1, 4, FColor::Green, TEXT("rEMOVE"));
 		myBUFF[i].TempParticle->DestroyComponent();
 	}
 	myBUFF.RemoveAt(i);
@@ -296,18 +353,18 @@ void AMyCharacter::EndBUFF(int i)
 
 void AMyCharacter::BeginOverlap(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherCompnent, int32 OtherBodyIndex, bool FromSweep, const FHitResult& Hit)
 {
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("Overlap!"));
+	//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("Overlap!"));
 	ACBGBlock* CBGBlock = Cast<ACBGBlock>(OtherActor);
 	if (CBGBlock)
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("Find!"));
+		//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("Find!"));
 		AddBlockToPre(CBGBlock);
 	}
 }
 
 void AMyCharacter::EndOverlap(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherCompnent, int32 OtherBodyIndex)
 {
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("EndOverlap!"));
+	//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("EndOverlap!"));
 	ACBGBlock* CBGBlock = Cast<ACBGBlock>(OtherActor);
 	if (CBGBlock)
 	{
@@ -345,17 +402,17 @@ void AMyCharacter::Pressed_R_()
 	{
 		if (printBlock[i] != NULL)
 		{
-			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("PreGET!"));
+			//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("PreGET!"));
 			if (AddItem(printBlock[i]->BlockProperty))
 			{
-				GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("GET!"));
+				//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("GET!"));
 				printBlock[i]->DestroySelf();
 				printBlock[i] = NULL;
 				break;
 			}
 			else
 			{
-				GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("GETFalse!"));
+				//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("GETFalse!"));
 				printBlock[i] = NULL;
 			}
 		}
@@ -395,7 +452,7 @@ void AMyCharacter::MineBlock_()
 {
 	if (MineTimeCounter >= HeroProperty.MineRate)
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Mine"));
+		//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Mine"));
 		MineTimeCounter = 0;
 		UWorld* World = GetWorld();
 		if (World)
@@ -439,7 +496,7 @@ void AMyCharacter::MineLineTraceResult(const FHitResult& Hit)
 	ABlockBase* HitBlock = Cast<ABlockBase>(Hit.GetActor());
 	if (HitBlock)
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("MineHit"));
+		//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("MineHit"));
 		HitBlock->ApplyPointDamage(this, HeroProperty.BlockDamage);
 	}
 }
@@ -459,7 +516,7 @@ void AMyCharacter::ApplyPointDamage_(AMyCharacter* Causer, int32 DamageValue)
 	UE_LOG(LogTemp, Warning, TEXT("Life:%f, Damage:%f"), HeroProperty.LifeValue, DamageValue);
 	if (HeroProperty.LifeValue <= 0)
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Death"));
+		//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Death"));
 		Death(Causer);
 	}
 }
@@ -527,4 +584,14 @@ void AMyCharacter::AddUI()
 	{
 		CreateLifeBar();
 	}
+}
+
+void AMyCharacter::SetNowChoose(int Choose)
+{
+	if (Choose > 0 && Choose < 4)
+	{
+		NowChoose = Choose;
+		return;
+	}
+	return;
 }
