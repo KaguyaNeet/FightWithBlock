@@ -128,7 +128,6 @@ public:
 		void ServerPressed_R();
 
 
-
 	void Released_R();
 	void PrintItem(FBlock BlockProperty);
 
@@ -156,6 +155,8 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		int NowChoose = 1;
+
+	bool IsChooseCamp = false;
 
 private:
 
