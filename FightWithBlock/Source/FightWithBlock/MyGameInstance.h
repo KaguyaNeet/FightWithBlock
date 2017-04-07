@@ -18,6 +18,7 @@ class FIGHTWITHBLOCK_API UMyGameInstance : public UGameInstance
 public:
 
 	int GetGamePlayerNum();
+	int GetReadyPlayerNum();
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		bool IsGameStart = false;
@@ -27,4 +28,11 @@ public:
 
 	bool IsRedCampFull();
 	bool IsBlueCampFull();
+
+	bool RedCampAdd(class AMyCharacter* Character);
+	bool BlueCampAdd(class AMyCharacter* Character);
+private:
+	int ReadyPlayerNum = 0;
+	void AddReadyPlayer();
+	void GameStart();
 };

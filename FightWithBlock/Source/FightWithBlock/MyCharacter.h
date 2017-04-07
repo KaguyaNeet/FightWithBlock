@@ -35,6 +35,19 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Replicated,Category = "Camp")
 		ECamp MyCamp = ECamp::EDefault;
 
+	bool IsChooseCamp = false;
+
+	UFUNCTION(reliable, server, WithValidation)
+		void ServerChooseCamp(ECamp MyChoose);  
+	UFUNCTION(BlueprintCallable)
+		bool ChooseCamp(ECamp MyChoose);
+
+
+
+
+
+
+
 		FHero HeroInitProperty;
 
 		UPROPERTY(Replicated)
@@ -155,8 +168,6 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		int NowChoose = 1;
-
-	bool IsChooseCamp = false;
 
 private:
 

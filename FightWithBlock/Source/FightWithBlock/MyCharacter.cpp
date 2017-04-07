@@ -4,6 +4,7 @@
 #include "MyCharacter.h"
 #include "BlockBase.h"
 #include "NET/UnrealNetwork.h"
+#include "MyGameInstance.h"
 
 // Sets default values
 AMyCharacter::AMyCharacter()
@@ -594,4 +595,86 @@ void AMyCharacter::SetNowChoose(int Choose)
 		return;
 	}
 	return;
+}
+
+void AMyCharacter::ServerChooseCamp_Implementation(ECamp MyChoose)
+{
+	if (UGameInstance* GameInstance = GetGameInstance())
+	{
+		UMyGameInstance* MyGameInstance = Cast<UMyGameInstance>(GameInstance);
+		IsChooseCamp = true;
+		MyCamp = MyChoose;
+		switch (MyChoose)
+		{
+		case ECamp::ERed: {
+			if (MyGameInstance->IsRedCampFull())
+			{
+				GEngine->AddOnScreenDebugMessage(-1, 20, FColor::Black, TEXT("FULL!!!!!!!!!!!!!"));
+			}
+			MyGameInstance->RedCampAdd(this);
+			break;
+		}
+		case ECamp::EBlue: {
+			MyGameInstance->BlueCampAdd(this);
+			break;
+		}
+		}
+	}
+}
+bool AMyCharacter::ServerChooseCamp_Validate(ECamp MyChoose)
+{
+	return true;
+}
+bool AMyCharacter::ChooseCamp(ECamp MyChoose)
+{
+	if (UGameInstance* GameInstance = GetGameInstance())
+	{
+		UMyGameInstance* MyGameInstance = Cast<UMyGameInstance>(GameInstance);
+		switch (MyChoose)
+		{
+		case ECamp::ERed: {
+			if (MyGameInstance->IsRedCampFull())
+			{
+				GEngine->AddOnScreenDebugMessage(-1, 20, FColor::Black, TEXT("FULL!!!!!!!!!!!!!"));
+				return false;
+			}
+			else
+			{
+				GEngine->AddOnScreenDebugMessage(-1, 20, FColor::Black, TEXT("NotFull"));
+				if (Role < ROLE_Authority)
+				{
+					ServerChooseCamp(ECamp::ERed);
+				}
+				else
+				{
+					ServerChooseCamp_Implementation(ECamp::ERed);
+				}
+				return true;
+			}
+		}
+		case ECamp::EBlue: {
+			if (MyGameInstance->IsBlueCampFull())
+			{
+				return false;
+			}
+			else
+			{
+				if (Role < ROLE_Authority)
+				{
+					ServerChooseCamp(ECamp::EBlue);
+				}
+				else
+				{
+					ServerChooseCamp_Implementation(ECamp::EBlue);
+				}
+				return true;
+			}
+		}
+		}
+	}
+	else
+	{
+		return false;
+	}
+	return false;
 }
