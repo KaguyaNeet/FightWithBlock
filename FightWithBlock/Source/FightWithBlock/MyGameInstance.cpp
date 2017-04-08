@@ -21,6 +21,7 @@ int UMyGameInstance::GetGamePlayerNum()
 	return MaxPlayerNum;
 }
 
+
 bool UMyGameInstance::IsRedCampFull()
 {
 	for (int i = 0; i < MaxPlayerNum / 2; i++)

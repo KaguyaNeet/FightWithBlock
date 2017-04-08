@@ -19,7 +19,8 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 		int GetGamePlayerNum();
-	int GetReadyPlayerNum();
+	UFUNCTION(BlueprintCallable)
+		int GetReadyPlayerNum();
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		bool IsGameStart = false;
@@ -32,8 +33,11 @@ public:
 
 	bool RedCampAdd(class AMyCharacter* Character);
 	bool BlueCampAdd(class AMyCharacter* Character);
+
+	//UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Replicated)
+		int ReadyPlayerNum = 0;
 private:
-	int ReadyPlayerNum = 0;
+	
 	void AddReadyPlayer();
 	void GameStart();
 };

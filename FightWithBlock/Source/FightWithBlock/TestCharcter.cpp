@@ -30,7 +30,7 @@ void ATestCharcter::printHeight(int32 x, int32 y)
 {
 	if (HeightFile)
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("!!!!!!!!!!!!"));
+		/*GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("!!!!!!!!!!!!"));
 		HeightFile->MipGenSettings.operator=(TMGS_NoMipmaps);
 		HeightFile->SRGB = false;
 		HeightFile->CompressionSettings.operator=(TC_VectorDisplacementmap);
@@ -45,7 +45,7 @@ void ATestCharcter::printHeight(int32 x, int32 y)
 		{
 			PixelColor = FormatedImageData[y * Width + x];
 		}
-		UE_LOG(LogTemp, Warning, TEXT("Red:%d;Green:%d;Blue:%d"), PixelColor.R, PixelColor.G, PixelColor.B);
+		UE_LOG(LogTemp, Warning, TEXT("Red:%d;Green:%d;Blue:%d"), PixelColor.R, PixelColor.G, PixelColor.B);*/
 	}
 }
 
