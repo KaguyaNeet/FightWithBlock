@@ -75,6 +75,8 @@ AMyCharacter::AMyCharacter()
 void AMyCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+	IsCampFull = true;
+	MyCamp = ECamp::EDefault;
 	AddUI();
 	//ChooseHUDLifeValue(HeroInitProperty.LifeValue / HeroInitProperty.MaxLifeValue);
 	if (GEngine)
@@ -133,6 +135,7 @@ void AMyCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLife
 	DOREPLIFETIME(AMyCharacter, MyCamp);
 	DOREPLIFETIME(AMyCharacter, Bag);
 	DOREPLIFETIME(AMyCharacter, Camera);
+	DOREPLIFETIME(AMyCharacter, IsCampFull);
 }
 
 void AMyCharacter::MoveForward(float val)
@@ -541,14 +544,26 @@ bool AMyCharacter::ServerApplyPointDamage_Validate(AMyCharacter* Causer, int32 D
 	return true;
 }
 
-void AMyCharacter::Death(AMyCharacter* Causer)
+void AMyCharacter::ClientDeath_Implementation()
 {
-	if (GetWorld())
-		GetWorld()->GetAuthGameMode<AMyGameMode>()->PrintKillMessage(Causer, this);
+	//if (GetWorld())
+	//	GetWorld()->GetAuthGameMode<AMyGameMode>()->PrintKillMessage(Causer, this);
 	GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	GetMesh()->SetCollisionEnabled(ECollisionEnabled::PhysicsOnly);
 	GetMesh()->SetSimulatePhysics(true);
 	return;
+}
+bool AMyCharacter::ClientDeath_Validate()
+{
+	return true;
+}
+
+void AMyCharacter::Death(AMyCharacter* Causer)
+{
+	if (Role == ROLE_Authority)
+	{
+		ClientDeath();
+	}
 }
 
 void AMyCharacter::ServerSetCamera_Implementation(FRotator Rotation)
@@ -602,20 +617,35 @@ void AMyCharacter::ServerChooseCamp_Implementation(ECamp MyChoose)
 	if (UGameInstance* GameInstance = GetGameInstance())
 	{
 		UMyGameInstance* MyGameInstance = Cast<UMyGameInstance>(GameInstance);
-		IsChooseCamp = true;
-		MyCamp = MyChoose;
 		switch (MyChoose)
 		{
 		case ECamp::ERed: {
 			if (MyGameInstance->IsRedCampFull())
 			{
-				GEngine->AddOnScreenDebugMessage(-1, 20, FColor::Black, TEXT("FULL!!!!!!!!!!!!!"));
+				//GEngine->AddOnScreenDebugMessage(-1, 20, FColor::Black, TEXT("FULL!!!!!!!!!!!!!"));
 			}
-			MyGameInstance->RedCampAdd(this);
+			else
+			{
+				//GEngine->AddOnScreenDebugMessage(-1, 20, FColor::Black, TEXT("NOTFULL!!!!!!!!!!!!!"));
+				MyGameInstance->RedCampAdd(this);
+				IsCampFull = false;
+				IsChooseCamp = true;
+				MyCamp = MyChoose;
+			}
 			break;
 		}
 		case ECamp::EBlue: {
-			MyGameInstance->BlueCampAdd(this);
+			//GEngine->AddOnScreenDebugMessage(-1, 20, FColor::Black, TEXT("NOTBreak!!!!!!!!!!!!!"));
+			if (MyGameInstance->IsBlueCampFull())
+			{
+			}
+			else
+			{
+				MyGameInstance->BlueCampAdd(this);
+				IsCampFull = false;
+				IsChooseCamp = true;
+				MyCamp = MyChoose;
+			}
 			break;
 		}
 		}
@@ -625,7 +655,7 @@ bool AMyCharacter::ServerChooseCamp_Validate(ECamp MyChoose)
 {
 	return true;
 }
-bool AMyCharacter::ChooseCamp(ECamp MyChoose)
+void AMyCharacter::ChooseCamp(ECamp MyChoose)
 {
 	if (UGameInstance* GameInstance = GetGameInstance())
 	{
@@ -633,48 +663,44 @@ bool AMyCharacter::ChooseCamp(ECamp MyChoose)
 		switch (MyChoose)
 		{
 		case ECamp::ERed: {
-			if (MyGameInstance->IsRedCampFull())
+			if (Role < ROLE_Authority)
 			{
-				GEngine->AddOnScreenDebugMessage(-1, 20, FColor::Black, TEXT("FULL!!!!!!!!!!!!!"));
-				return false;
+				ServerChooseCamp(ECamp::ERed);
 			}
 			else
 			{
-				GEngine->AddOnScreenDebugMessage(-1, 20, FColor::Black, TEXT("NotFull"));
-				if (Role < ROLE_Authority)
-				{
-					ServerChooseCamp(ECamp::ERed);
-				}
-				else
-				{
-					ServerChooseCamp_Implementation(ECamp::ERed);
-				}
-				return true;
+				ServerChooseCamp_Implementation(ECamp::ERed);
 			}
+			break;
 		}
 		case ECamp::EBlue: {
-			if (MyGameInstance->IsBlueCampFull())
+			if (Role < ROLE_Authority)
 			{
-				return false;
+				ServerChooseCamp(ECamp::EBlue);
 			}
 			else
 			{
-				if (Role < ROLE_Authority)
-				{
-					ServerChooseCamp(ECamp::EBlue);
-				}
-				else
-				{
-					ServerChooseCamp_Implementation(ECamp::EBlue);
-				}
-				return true;
+				ServerChooseCamp_Implementation(ECamp::EBlue);
 			}
+			break;
 		}
 		}
 	}
-	else
+}
+
+void AMyCharacter::MulticastRefreshLifeBar_Implementation()
+{
+	RefreshLifeBar_();
+}
+bool AMyCharacter::MulticastRefreshLifeBar_Validate()
+{
+	return true;
+}
+
+void AMyCharacter::RefreshLifeBar()
+{
+	if (Role == ROLE_Authority)
 	{
-		return false;
+		MulticastRefreshLifeBar();
 	}
-	return false;
 }

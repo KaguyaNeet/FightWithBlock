@@ -49,7 +49,7 @@ bool UMyGameInstance::RedCampAdd(AMyCharacter* Character)
 {
 	if (IsRedCampFull())
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 20, FColor::Black, TEXT("ย๚มห"));
+		//GEngine->AddOnScreenDebugMessage(-1, 20, FColor::Black, TEXT("ย๚มห"));
 		return false;
 	}
 	else
@@ -60,7 +60,7 @@ bool UMyGameInstance::RedCampAdd(AMyCharacter* Character)
 			{
 				RedCampCharacters[i] = Character;
 				AddReadyPlayer();
-				GEngine->AddOnScreenDebugMessage(-1, 20, FColor::Black, TEXT("Add"));
+				//GEngine->AddOnScreenDebugMessage(-1, 20, FColor::Black, TEXT("Add"));
 				return true;
 			}
 		}
@@ -109,4 +109,9 @@ void UMyGameInstance::AddReadyPlayer()
 void UMyGameInstance::GameStart()
 {
 	GEngine->AddOnScreenDebugMessage(-1, 20, FColor::Black, TEXT("GameStart!!!!!!!!!!!!!"));
+	for (int i = 0; i < MaxPlayerNum / 2; i++)
+	{
+		RedCampCharacters[i]->RefreshLifeBar();
+		BlueCampCharacters[i]->RefreshLifeBar();
+	}
 }

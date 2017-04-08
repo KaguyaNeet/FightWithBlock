@@ -17,12 +17,13 @@ class FIGHTWITHBLOCK_API UMyGameInstance : public UGameInstance
 	
 public:
 
-	int GetGamePlayerNum();
+	UFUNCTION(BlueprintCallable)
+		int GetGamePlayerNum();
 	int GetReadyPlayerNum();
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		bool IsGameStart = false;
-
+	
 	class AMyCharacter* RedCampCharacters[MaxPlayerNum / 2];
 	class AMyCharacter* BlueCampCharacters[MaxPlayerNum / 2];
 

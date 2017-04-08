@@ -101,9 +101,9 @@ struct FHero : public FTableRowBase
 		UTexture2D* tubiao;
 	//sheng ming zhi
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Hero")
-		int32 LifeValue = 1;
+		int32 LifeValue = 100;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Hero")
-		int32 MaxLifeValue = 10;
+		int32 MaxLifeValue = 100;
 	//li liang zhi
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Hero")
 		int32 Power;

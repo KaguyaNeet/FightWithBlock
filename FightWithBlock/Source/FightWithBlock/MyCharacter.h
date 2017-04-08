@@ -20,6 +20,14 @@ public:
 	// Sets default values for this character's properties
 	AMyCharacter();
 
+	UFUNCTION(BlueprintImplementableEvent)
+		void RefreshLifeBar_();
+
+	UFUNCTION(reliable, NetMulticast, WithValidation)
+		void MulticastRefreshLifeBar();
+
+	void RefreshLifeBar();
+
 	UPROPERTY(VisibleAnywhere, Replicated)
 		class UCameraComponent* Camera;
 
@@ -39,8 +47,9 @@ public:
 
 	UFUNCTION(reliable, server, WithValidation)
 		void ServerChooseCamp(ECamp MyChoose);  
+
 	UFUNCTION(BlueprintCallable)
-		bool ChooseCamp(ECamp MyChoose);
+		void ChooseCamp(ECamp MyChoose);
 
 
 
@@ -156,7 +165,8 @@ public:
 	UFUNCTION(reliable, server, WithValidation)
 		void ServerApplyPointDamage(AMyCharacter* Causer, int32 DamageValue);
 
-
+	UFUNCTION(reliable, NetMulticast, WithValidation)
+		void ClientDeath();
 	void Death(AMyCharacter* Causer);
 
 	void AddBlockToPre(ACBGBlock* Block);
@@ -169,6 +179,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		int NowChoose = 1;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Replicated)
+		bool IsCampFull = true;
+
 private:
 
 	FVector GetFireLocation();
@@ -178,7 +191,6 @@ private:
 
 	UPROPERTY(Replicated)
 		TArray<FBUFF> myBUFF;
-
 
 	bool Keyboard_F_Pressed = false;
 
