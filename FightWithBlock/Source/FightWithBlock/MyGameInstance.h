@@ -28,15 +28,14 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		bool IsGameStart = false;
 	
-	class AMyCharacter* RedCampCharacters[MaxPlayerNum / 2];
-	class AMyCharacter* BlueCampCharacters[MaxPlayerNum / 2];
+	class AMyPlayerController* RedCampControllers[MaxPlayerNum / 2];
+	class AMyPlayerController* BlueCampControllers[MaxPlayerNum / 2];
 
 	bool IsRedCampFull();
 	bool IsBlueCampFull();
 
-	bool RedCampAdd(class AMyCharacter* Character);
-	bool BlueCampAdd(class AMyCharacter* Character);
-
+	bool RedCampAddController(class AMyPlayerController* Controller);
+	bool BlueCampAddController(class AMyPlayerController* Controller);
 	//UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Replicated)
 		int ReadyPlayerNum = 0;
 private:

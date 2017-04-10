@@ -18,7 +18,11 @@ public:
 
 	AMyPlayerController();
 
-	UFUNCTION(reliable, server, WithValidation)
+	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps)const override;
+
+	UFUNCTION(reliable, NetMulticast, WithValidation)
+		void ServerSpawnCharacter();
+	UFUNCTION(BlueprintImplementableEvent)
 		void SpawnCharacter();
 
 	virtual void BeginPlay() override;
@@ -29,10 +33,27 @@ public:
 		FVector BlueLocation;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "DefalutValue")
 		ECamp MyCamp = ECamp::EDefault;
-
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Replicated)
+		bool IsCampFull = true;
+	bool IsChooseCamp = false;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MyPawn")
-		class AMyCharacter* ControllerPawn;
+		class APawn* ControllerPawn;
+
+
 
 	void SetCamp(ECamp Camp);
+
+	void InitCharacter();
+
+	UFUNCTION(BlueprintCallable)
+		void ChooseCamp(ECamp MyChoose);
+
+	UFUNCTION(reliable, server, WithValidation)
+		void ServerChooseCamp(ECamp MyChoose);
+	
+
+private:
+
+
 };

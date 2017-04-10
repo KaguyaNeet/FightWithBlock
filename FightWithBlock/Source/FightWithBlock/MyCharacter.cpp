@@ -136,6 +136,7 @@ void AMyCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLife
 	DOREPLIFETIME(AMyCharacter, Bag);
 	DOREPLIFETIME(AMyCharacter, Camera);
 	DOREPLIFETIME(AMyCharacter, IsCampFull);
+	DOREPLIFETIME(AMyCharacter, HeroName);
 }
 
 void AMyCharacter::MoveForward(float val)
@@ -612,81 +613,6 @@ void AMyCharacter::SetNowChoose(int Choose)
 	return;
 }
 
-void AMyCharacter::ServerChooseCamp_Implementation(ECamp MyChoose)
-{
-	if (UGameInstance* GameInstance = GetGameInstance())
-	{
-		UMyGameInstance* MyGameInstance = Cast<UMyGameInstance>(GameInstance);
-		switch (MyChoose)
-		{
-		case ECamp::ERed: {
-			if (MyGameInstance->IsRedCampFull())
-			{
-				//GEngine->AddOnScreenDebugMessage(-1, 20, FColor::Black, TEXT("FULL!!!!!!!!!!!!!"));
-			}
-			else
-			{
-				//GEngine->AddOnScreenDebugMessage(-1, 20, FColor::Black, TEXT("NOTFULL!!!!!!!!!!!!!"));
-				MyGameInstance->RedCampAdd(this);
-				IsCampFull = false;
-				IsChooseCamp = true;
-				MyCamp = MyChoose;
-			}
-			break;
-		}
-		case ECamp::EBlue: {
-			//GEngine->AddOnScreenDebugMessage(-1, 20, FColor::Black, TEXT("NOTBreak!!!!!!!!!!!!!"));
-			if (MyGameInstance->IsBlueCampFull())
-			{
-			}
-			else
-			{
-				MyGameInstance->BlueCampAdd(this);
-				IsCampFull = false;
-				IsChooseCamp = true;
-				MyCamp = MyChoose;
-			}
-			break;
-		}
-		}
-	}
-}
-bool AMyCharacter::ServerChooseCamp_Validate(ECamp MyChoose)
-{
-	return true;
-}
-void AMyCharacter::ChooseCamp(ECamp MyChoose)
-{
-	if (UGameInstance* GameInstance = GetGameInstance())
-	{
-		UMyGameInstance* MyGameInstance = Cast<UMyGameInstance>(GameInstance);
-		switch (MyChoose)
-		{
-		case ECamp::ERed: {
-			if (Role < ROLE_Authority)
-			{
-				ServerChooseCamp(ECamp::ERed);
-			}
-			else
-			{
-				ServerChooseCamp_Implementation(ECamp::ERed);
-			}
-			break;
-		}
-		case ECamp::EBlue: {
-			if (Role < ROLE_Authority)
-			{
-				ServerChooseCamp(ECamp::EBlue);
-			}
-			else
-			{
-				ServerChooseCamp_Implementation(ECamp::EBlue);
-			}
-			break;
-		}
-		}
-	}
-}
 
 void AMyCharacter::MulticastRefreshLifeBar_Implementation()
 {
@@ -708,4 +634,17 @@ void AMyCharacter::RefreshLifeBar()
 void AMyCharacter::ControllerInit(ECamp Camp, FString Name)
 {
 
+}
+
+void AMyCharacter::SetName(FName Name_)
+{
+	ServerSetName(Name_);
+}
+void AMyCharacter::ServerSetName_Implementation(FName Name_)
+{
+		HeroName = Name_;
+}
+bool AMyCharacter::ServerSetName_Validate(FName Name_)
+{
+	return true;
 }

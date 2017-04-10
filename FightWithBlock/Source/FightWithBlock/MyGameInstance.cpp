@@ -3,6 +3,7 @@
 #include "FightWithBlock.h"
 #include "MyGameInstance.h"
 #include "MyCharacter.h"
+#include "MyPlayerController.h"
 
 
 UMyGameInstance::UMyGameInstance()
@@ -11,8 +12,8 @@ UMyGameInstance::UMyGameInstance()
 	//AGameModeBase* MyGameMode = UGameplayStatics::GetGameMode(World);
 	for (int i = 0; i < MaxPlayerNum / 2; i++)
 	{
-		RedCampCharacters[i] = NULL;
-		BlueCampCharacters[i] = NULL;
+		RedCampControllers[i] = NULL;
+		BlueCampControllers[i] = NULL;
 	}
 }
 
@@ -26,7 +27,7 @@ bool UMyGameInstance::IsRedCampFull()
 {
 	for (int i = 0; i < MaxPlayerNum / 2; i++)
 	{
-		if (RedCampCharacters[i] == NULL)
+		if (RedCampControllers[i] == NULL)
 		{
 			return false;
 		}
@@ -38,7 +39,7 @@ bool UMyGameInstance::IsBlueCampFull()
 {
 	for (int i = 0; i < MaxPlayerNum / 2; i++)
 	{
-		if (BlueCampCharacters[i] == NULL)
+		if (BlueCampControllers[i] == NULL)
 		{
 			return false;
 		}
@@ -46,22 +47,20 @@ bool UMyGameInstance::IsBlueCampFull()
 	return true;
 }
 
-bool UMyGameInstance::RedCampAdd(AMyCharacter* Character)
+bool UMyGameInstance::RedCampAddController(AMyPlayerController* Controller)
 {
 	if (IsRedCampFull())
 	{
-		//GEngine->AddOnScreenDebugMessage(-1, 20, FColor::Black, TEXT("ย๚มห"));
 		return false;
 	}
 	else
 	{
 		for (int i = 0; i < MaxPlayerNum / 2; i++)
 		{
-			if (RedCampCharacters[i] == NULL)
+			if (RedCampControllers[i] == NULL)
 			{
-				RedCampCharacters[i] = Character;
+				RedCampControllers[i] = Controller;
 				AddReadyPlayer();
-				//GEngine->AddOnScreenDebugMessage(-1, 20, FColor::Black, TEXT("Add"));
 				return true;
 			}
 		}
@@ -69,7 +68,7 @@ bool UMyGameInstance::RedCampAdd(AMyCharacter* Character)
 	}
 }
 
-bool UMyGameInstance::BlueCampAdd(AMyCharacter* Character)
+bool UMyGameInstance::BlueCampAddController(AMyPlayerController* Controller)
 {
 	if (IsBlueCampFull())
 	{
@@ -79,9 +78,9 @@ bool UMyGameInstance::BlueCampAdd(AMyCharacter* Character)
 	{
 		for (int i = 0; i < MaxPlayerNum / 2; i++)
 		{
-			if (BlueCampCharacters[i] == NULL)
+			if (BlueCampControllers[i] == NULL)
 			{
-				BlueCampCharacters[i] = Character;
+				BlueCampControllers[i] = Controller;
 				AddReadyPlayer();
 				return true;
 			}
@@ -89,6 +88,7 @@ bool UMyGameInstance::BlueCampAdd(AMyCharacter* Character)
 		return false;
 	}
 }
+
 
 int UMyGameInstance::GetReadyPlayerNum()
 {
@@ -112,7 +112,7 @@ void UMyGameInstance::GameStart()
 	GEngine->AddOnScreenDebugMessage(-1, 20, FColor::Black, TEXT("GameStart!!!!!!!!!!!!!"));
 	for (int i = 0; i < MaxPlayerNum / 2; i++)
 	{
-		RedCampCharacters[i]->RefreshLifeBar();
-		BlueCampCharacters[i]->RefreshLifeBar();
+		RedCampControllers[i]->InitCharacter();
+		BlueCampControllers[i]->InitCharacter();
 	}
 }

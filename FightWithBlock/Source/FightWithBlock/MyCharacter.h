@@ -28,6 +28,13 @@ public:
 
 	void RefreshLifeBar();
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Replicated)
+		FName HeroName;
+	UFUNCTION(reliable, server, WithValidation)
+		void ServerSetName(FName Name_);
+	UFUNCTION(BlueprintCallable)
+		void SetName(FName Name_);
+
 	UPROPERTY(VisibleAnywhere, Replicated)
 		class UCameraComponent* Camera;
 
@@ -44,15 +51,6 @@ public:
 		ECamp MyCamp = ECamp::EDefault;
 
 	bool IsChooseCamp = false;
-
-	UFUNCTION(reliable, server, WithValidation)
-		void ServerChooseCamp(ECamp MyChoose);  
-
-	UFUNCTION(BlueprintCallable)
-		void ChooseCamp(ECamp MyChoose);
-
-
-
 
 
 
