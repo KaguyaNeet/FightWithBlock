@@ -23,6 +23,9 @@ public:
 		int GetReadyPlayerNum();
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		class APlayerController* Controller = NULL;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		bool IsGameStart = false;
 	
 	class AMyCharacter* RedCampCharacters[MaxPlayerNum / 2];

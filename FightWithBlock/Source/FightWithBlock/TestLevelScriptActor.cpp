@@ -31,23 +31,23 @@ void ATestLevelScriptActor::TestPrintHeight(int32 x, int32 y)
 	if (HeightFile)
 	{
 		//GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("!!!!!!!!!!!!"));
-		HeightFile->MipGenSettings.operator=(TMGS_NoMipmaps);
-		HeightFile->SRGB = false;
-		HeightFile->CompressionSettings.operator=(TC_VectorDisplacementmap);
-		FTexture2DMipMap* MyMips = &HeightFile->PlatformData->Mips[0];
+		//HeightFile->MipGenSettings.operator=(TMGS_NoMipmaps);
+		//HeightFile->SRGB = false;
+		//HeightFile->CompressionSettings.operator=(TC_VectorDisplacementmap);
+		//FTexture2DMipMap* MyMips = &HeightFile->PlatformData->Mips[0];
 		//const FByteBulkData* RawImageData = &MyMips->BulkData;
 		//auto FormatedImageData =  static_cast<FColor*>(RawImageData->Lock(LOCK_READ_ONLY));
 		//MyMips->BulkData.Lock(LOCK_READ_ONLY);
-		FColor* Color = static_cast<FColor*>(MyMips->BulkData.Lock(LOCK_READ_ONLY));
+		//FColor* Color = static_cast<FColor*>(MyMips->BulkData.Lock(LOCK_READ_ONLY));
 		//RawImageData->Lock(LOCK_READ_ONLY);
-		FColor PixelColor;
-		int32 Width = MyMips->SizeX;
-		int32 Height = MyMips->SizeY;
+		//FColor PixelColor;
+		//int32 Width = MyMips->SizeX;
+		//int32 Height = MyMips->SizeY;
 
-		if (x >= 0 && x < Width && y >= 0 && y < Height)
-		{
-			//PixelColor = FormatedImageData[y * Width + x];
-		}
+		//if (x >= 0 && x < Width && y >= 0 && y < Height)
+		//{
+		//	PixelColor = FormatedImageData[y * Width + x];
+		//}
 		//UE_LOG(LogTemp, Warning, TEXT("Red:%d;Green:%d;Blue:%d"), PixelColor.R, PixelColor.G, PixelColor.B);
 	}
 }

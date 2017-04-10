@@ -704,3 +704,8 @@ void AMyCharacter::RefreshLifeBar()
 		MulticastRefreshLifeBar();
 	}
 }
+
+void AMyCharacter::ControllerInit(ECamp Camp, FString Name)
+{
+
+}

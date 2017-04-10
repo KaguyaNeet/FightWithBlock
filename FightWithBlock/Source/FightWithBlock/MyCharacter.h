@@ -182,6 +182,8 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Replicated)
 		bool IsCampFull = true;
 
+	void ControllerInit(ECamp Camp, FString Name);
+
 private:
 
 	FVector GetFireLocation();

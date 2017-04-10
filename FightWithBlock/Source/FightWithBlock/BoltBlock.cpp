@@ -17,7 +17,7 @@ ABoltBlock::ABoltBlock()
 	SetRootComponent(CollisionComponent);
 	RootComponent->SetMobility(EComponentMobility::Movable);
 	CollisionComponent->SetWorldScale3D(FVector(1, 1, 1));
-	CollisionComponent->SetBoxExtent(FVector(50, 50, 50));
+	CollisionComponent->SetBoxExtent(FVector(20, 20, 20));
 	//CollisionComponent->SetSimulatePhysics(true);
 	CollisionComponent->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	CollisionComponent->SetCollisionObjectType(ECollisionChannel::ECC_GameTraceChannel2);
@@ -124,7 +124,7 @@ void ABoltBlock::Explosion()
 void ABoltBlock::BeginOverlap(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, int32 OtherBodyIndex, bool FromSweep, const FHitResult& Hit)
 {
 	AMyCharacter* HitEnemy = Cast<AMyCharacter>(OtherActor);
-	if ((HitEnemy && HitEnemy->MyCamp != Owner->MyCamp) || (HitEnemy && HitEnemy->MyCamp == ECamp::EDefault))
+	if ((HitEnemy && HitEnemy->MyCamp != Owner->MyCamp && HitEnemy != Owner) || (HitEnemy && HitEnemy->MyCamp == ECamp::EDefault && HitEnemy != Owner))
 	{
 		HitEnemy->ApplyPointDamage(Owner, BlockProperty.DamageValue);
 		HitEnemy->GetCapsuleComponent()->AddTorque(GetVelocity() * 100);

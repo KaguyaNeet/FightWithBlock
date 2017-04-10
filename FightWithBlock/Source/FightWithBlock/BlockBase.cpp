@@ -138,22 +138,25 @@ void ABlockBase::BeBreak()
 void ABlockBase::ApplyPointDamage(AMyCharacter* Causer, int32 DamageValue)
 {
 	//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("ApplyDamage"));
-	if (BlockProperty.ToMinerBUFF.NotEmpty)
+	if (!BlockProperty.CanNotDestroy)
 	{
-		if (AddBUFF)
+		if (BlockProperty.ToMinerBUFF.NotEmpty)
 		{
-			Causer->AddBUFF(BlockProperty.ToMinerBUFF);
-			AddBUFF = false;
+			if (AddBUFF)
+			{
+				Causer->AddBUFF(BlockProperty.ToMinerBUFF);
+				AddBUFF = false;
+			}
 		}
-	}
-	BlockProperty.LifeValue -= DamageValue;
-	if (BlockProperty.LifeValue <= 0)
-	{
-		IsBreak = true;
-		BeBreak();
+		BlockProperty.LifeValue -= DamageValue;
+		if (BlockProperty.LifeValue <= 0)
+		{
+			IsBreak = true;
+			BeBreak();
+			return;
+		}
 		return;
 	}
-	return;
 }
 
 void ABlockBase::BUFFTimeCounter(float DeltaTime)

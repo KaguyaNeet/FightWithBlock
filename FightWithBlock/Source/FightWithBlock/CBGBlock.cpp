@@ -19,7 +19,7 @@ ACBGBlock::ACBGBlock()
 	CollisionComponent->SetCollisionObjectType(ECollisionChannel::ECC_GameTraceChannel1);
 	CollisionComponent->SetCollisionResponseToChannel(ECollisionChannel::ECC_Pawn, ECollisionResponse::ECR_Overlap);
 	CollisionComponent->SetCollisionResponseToChannel(ECollisionChannel::ECC_WorldStatic, ECollisionResponse::ECR_Block);
-	CollisionComponent->SetCollisionResponseToChannel(ECollisionChannel::ECC_GameTraceChannel1, ECollisionResponse::ECR_Block);
+	CollisionComponent->SetCollisionResponseToChannel(ECollisionChannel::ECC_GameTraceChannel1, ECollisionResponse::ECR_Overlap);
 	CollisionComponent->SetSimulatePhysics(true);
 	CollisionComponent->SetEnableGravity(true);
 
@@ -35,12 +35,12 @@ ACBGBlock::ACBGBlock()
 
 	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-	if (StaticMesh->GetBodyInstance())
+	if (CollisionComponent->GetBodyInstance())
 	{
-		StaticMesh->GetBodyInstance()->bLockXRotation = true;
-		StaticMesh->GetBodyInstance()->bLockXRotation = true;
-		StaticMesh->GetBodyInstance()->bLockXTranslation = true;
-		StaticMesh->GetBodyInstance()->bLockYTranslation = true;
+		CollisionComponent->GetBodyInstance()->bLockXRotation = true;
+		CollisionComponent->GetBodyInstance()->bLockXRotation = true;
+		CollisionComponent->GetBodyInstance()->bLockXTranslation = true;
+		CollisionComponent->GetBodyInstance()->bLockYTranslation = true;
 	}
 
 	
