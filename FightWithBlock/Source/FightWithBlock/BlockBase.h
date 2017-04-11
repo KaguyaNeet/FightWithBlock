@@ -18,7 +18,7 @@ public:
 	// Sets default values for this actor's properties
 	ABlockBase();
 
-	UPROPERTY(VisibleAnywhere)
+	UPROPERTY(VisibleAnywhere, Replicated)
 		class UStaticMeshComponent* StaticMesh;	
 
 

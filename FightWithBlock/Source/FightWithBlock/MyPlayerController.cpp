@@ -46,6 +46,15 @@ void AMyPlayerController::InitCharacter()
 {
 	AMyCharacter* MyCharacter = Cast<AMyCharacter>(ControllerPawn);
 	MyCharacter->RefreshLifeBar();
+	MyCharacter->HeroProperty.LifeValue = MyCharacter->HeroProperty.MaxLifeValue;
+	if (MyCharacter->MyCamp == ECamp::ERed)
+	{
+		MyCharacter->SetActorLocation(RedLocation);
+	}
+	else if (MyCharacter->MyCamp == ECamp::EBlue)
+	{
+		MyCharacter->SetActorLocation(BlueLocation);
+	}
 }
 
 void AMyPlayerController::ChooseCamp(ECamp MyChoose)

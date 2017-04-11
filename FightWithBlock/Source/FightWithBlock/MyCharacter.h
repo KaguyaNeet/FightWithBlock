@@ -129,6 +129,11 @@ public:
 	UFUNCTION(reliable, server, WithValidation)
 		void ServerSetCamera(FRotator Rotation);
 
+	UFUNCTION(reliable, NetMulticast, WithValidation)
+		void MulticastShakeCamera();
+	UFUNCTION(BlueprintImplementableEvent)
+		void ShakeCamera();
+
 	FItem* handBlock;
 
 	void AddBUFF(FBUFF BUFF);

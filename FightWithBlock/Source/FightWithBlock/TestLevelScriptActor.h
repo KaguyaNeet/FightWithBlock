@@ -9,7 +9,7 @@
  * 
  */
 
-const float DSize = 0.4;
+const float DSize = 0.61;
 UCLASS()
 class FIGHTWITHBLOCK_API ATestLevelScriptActor : public ALevelScriptActor
 {
@@ -20,11 +20,16 @@ class FIGHTWITHBLOCK_API ATestLevelScriptActor : public ALevelScriptActor
 public:
 	//bian chang wei duo shao ge block
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MapProperty")
-		int32 MapSize = 20;
+		int32 MapSize = 30;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MapProperty")
-		int32 BlockSize = 260;
+		int32 BlockSize = 95;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MapProperty")
-		int32 MaxZ = 1;
+		int32 MaxZ = 3;
+
+	//UFUNCTION(BlueprintImplementableEvent)
+	//	void AddLoadingUI();
+	//UFUNCTION(reliable, NetMulticast, WithValidation)
+	//	void MulticastAddLoadingUI();
 
 
 
@@ -36,8 +41,12 @@ public:
 
 	void GenerateGround();
 
+	void GenerateGroundWall();
 
-	class ABlockBase* SpawnBlock(const struct FBlock* Block, float Size);
+	void GenerateWall();
+
+
+	class ABlockBase* SpawnBlock(const struct FBlock Block, float Size);
 protected:
 
 
@@ -53,6 +62,13 @@ private:
 	UDataTable* GroundDataTable;
 	UDataTable* SurfaceDataTable;
 
-	UTexture2D* HeightFile;
+	UDataTable* WallDataTable;
+	TArray<FName> WallRowNames;
+
+	UTexture2D* HeightFile = NULL;
+
+	void GenerateWall_x(int z, FBlock Block);
+	void GenerateWall_y(int z, FBlock Block);
+	void GenerateWall_Corner(int z, FBlock Block);
 
 };

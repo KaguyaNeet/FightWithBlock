@@ -22,6 +22,7 @@ ABlockBase::ABlockBase()
 	StaticMesh->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 	StaticMesh->SetCollisionResponseToChannel(ECollisionChannel::ECC_GameTraceChannel2, ECollisionResponse::ECR_Overlap);
 	StaticMesh->SetCollisionResponseToChannel(ECollisionChannel::ECC_Pawn, ECollisionResponse::ECR_Block);
+	StaticMesh->SetCollisionResponseToChannel(ECollisionChannel::ECC_GameTraceChannel1, ECollisionResponse::ECR_Block);
 
 	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	ConstructorHelpers::FObjectFinder<UStaticMesh> tempCube(TEXT("StaticMesh'/Engine/EngineMeshes/Cube.Cube'"));
@@ -60,6 +61,7 @@ void ABlockBase::GetLifetimeReplicatedProps(TArray< FLifetimeProperty > & OutLif
 	DOREPLIFETIME(ABlockBase, Init);
 	DOREPLIFETIME(ABlockBase, IsBreak);
 	DOREPLIFETIME(ABlockBase, IsDestroy);
+	DOREPLIFETIME(ABlockBase, StaticMesh);
 }
 // Called when the game starts or when spawned
 void ABlockBase::BeginPlay()
@@ -89,7 +91,7 @@ void ABlockBase::SetInitProperty(FBlock Block)
 	StaticMesh->SetStaticMesh(BlockProperty.StaticMesh);
 	StaticMesh->SetMaterial(0, BlockProperty.Material);
 	UGameplayStatics::SpawnEmitterAttached(BlockProperty.selfParticle, StaticMesh);
-	StaticMesh->SetWorldScale3D(StaticMesh->GetComponentScale() * BlockProperty.Size * DSize);
+	StaticMesh->SetWorldScale3D(FVector(1,1,1) * BlockProperty.Size * DSize);
 	Init = true;
 }
 void ABlockBase::OnRep_ReplicateInit()
@@ -100,7 +102,7 @@ void ABlockBase::OnRep_ReplicateInit()
 		//if(BlockProperty.ID == 0)
 		//	GEngine->AddOnScreenDebugMessage(-1, 20, FColor::Blue, TEXT("noooooooooooooooo!!!!!!"));
 		SetInitProperty(BlockProperty);
-		StaticMesh->SetWorldScale3D(StaticMesh->GetComponentScale() * BlockProperty.Size / DSize);
+		StaticMesh->SetWorldScale3D(FVector(1, 1, 1) * BlockProperty.Size * DSize);
 	}
 }
 //bool ABlockBase::SetInitProperty_Validate(FBlock Block)

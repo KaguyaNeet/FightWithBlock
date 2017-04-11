@@ -508,6 +508,7 @@ void AMyCharacter::MineLineTraceResult(const FHitResult& Hit)
 
 void AMyCharacter::ApplyPointDamage_(AMyCharacter* Causer, int32 DamageValue)
 {
+	MulticastShakeCamera();
 	HeroProperty.LifeValue -= DamageValue;
 	//ChooseHUDLifeValue(HeroInitProperty.LifeValue / HeroInitProperty.MaxLifeValue);
 	if (Role < ROLE_AutonomousProxy)
@@ -645,6 +646,15 @@ void AMyCharacter::ServerSetName_Implementation(FName Name_)
 		HeroName = Name_;
 }
 bool AMyCharacter::ServerSetName_Validate(FName Name_)
+{
+	return true;
+}
+
+void AMyCharacter::MulticastShakeCamera_Implementation()
+{
+	ShakeCamera();
+}
+bool AMyCharacter::MulticastShakeCamera_Validate()
 {
 	return true;
 }

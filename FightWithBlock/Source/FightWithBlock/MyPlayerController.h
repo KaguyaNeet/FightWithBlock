@@ -30,7 +30,8 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "DefaultValue")
 		FVector RedLocation = FVector(0,0,0);
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "DefalutValue")
-		FVector BlueLocation;
+		FVector BlueLocation = FVector(0,0,0);
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "DefalutValue")
 		ECamp MyCamp = ECamp::EDefault;
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Replicated)
