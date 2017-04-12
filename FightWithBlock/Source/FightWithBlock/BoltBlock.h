@@ -33,22 +33,34 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+
 	void SetInitProperty(FBlock Block,class AMyCharacter* Owner_);
+
+	UFUNCTION()
+		void OnRep_Init();
+	UFUNCTION()
+		void OnRep_Explosion();
 
 	void SetFireDirection(const FVector& Direction, float DropForce);
 
 	UFUNCTION()
 	void BeginOverlap(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, int32 OtherBodyIndex, bool FromSweep, const FHitResult& Hit);
 	
-
-	FBlock BlockProperty;
+	UPROPERTY(Replicated)
+		FBlock BlockProperty;
 
 	void Explosion();
 	void BeBreak();
 
 private:
 
+	UPROPERTY(ReplicatedUsing = OnRep_Init)
+		bool IsInit = false;
+	UPROPERTY(ReplicatedUsing = OnRep_Explosion)
+		bool IsExplosion = false;
 	bool bExplosion = false;
+	bool bBreak = false;
 	class AMyCharacter* Owner;
 
 };

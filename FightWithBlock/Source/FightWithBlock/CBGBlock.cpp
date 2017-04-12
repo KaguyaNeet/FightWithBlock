@@ -2,23 +2,24 @@
 
 #include "FightWithBlock.h"
 #include "CBGBlock.h"
-
+#include "NET/UnrealNetwork.h"
 
 // Sets default values
 ACBGBlock::ACBGBlock()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+	bReplicates = true;
 
 	CollisionComponent = CreateDefaultSubobject<USphereComponent>(TEXT("CollisionComponent"));
 	RootComponent = CollisionComponent;
 	CollisionComponent->SetMobility(EComponentMobility::Movable);
-	CollisionComponent->SetSphereRadius(80.f);
+	CollisionComponent->SetSphereRadius(50.f);
 	CollisionComponent->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 	CollisionComponent->SetCollisionObjectType(ECollisionChannel::ECC_GameTraceChannel1);
 	CollisionComponent->SetCollisionResponseToChannel(ECollisionChannel::ECC_Pawn, ECollisionResponse::ECR_Overlap);
 	CollisionComponent->SetCollisionResponseToChannel(ECollisionChannel::ECC_WorldStatic, ECollisionResponse::ECR_Block);
-	CollisionComponent->SetCollisionResponseToChannel(ECollisionChannel::ECC_GameTraceChannel1, ECollisionResponse::ECR_Block);
+	CollisionComponent->SetCollisionResponseToChannel(ECollisionChannel::ECC_GameTraceChannel1, ECollisionResponse::ECR_Overlap);
 	CollisionComponent->SetSimulatePhysics(true);
 	CollisionComponent->SetEnableGravity(true);
 
@@ -26,19 +27,20 @@ ACBGBlock::ACBGBlock()
 	StaticMesh->SetMobility(EComponentMobility::Movable);
 	StaticMesh->AttachTo(RootComponent);
 	StaticMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
-	//测试用的添加了StaticMesh！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
-	ConstructorHelpers::FObjectFinder<UStaticMesh> CubeMesh(TEXT("StaticMesh'/Engine/EngineMeshes/Cube.Cube'"));
-	if (CubeMesh.Succeeded())
-		StaticMesh->SetStaticMesh(CubeMesh.Object);
 	StaticMesh->SetWorldScale3D(FVector(0.1f, 0.1f, 0.1f));
+	//测试用的添加了StaticMesh！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+	//ConstructorHelpers::FObjectFinder<UStaticMesh> CubeMesh(TEXT("StaticMesh'/Engine/EngineMeshes/Cube.Cube'"));
+	//if (CubeMesh.Succeeded())
+	//	StaticMesh->SetStaticMesh(CubeMesh.Object);
+
 	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-	if (StaticMesh->GetBodyInstance())
+	if (CollisionComponent->GetBodyInstance())
 	{
-		StaticMesh->GetBodyInstance()->bLockXRotation = true;
-		StaticMesh->GetBodyInstance()->bLockXRotation = true;
-		StaticMesh->GetBodyInstance()->bLockXTranslation = true;
-		StaticMesh->GetBodyInstance()->bLockYTranslation = true;
+		CollisionComponent->GetBodyInstance()->bLockXRotation = true;
+		CollisionComponent->GetBodyInstance()->bLockXRotation = true;
+		CollisionComponent->GetBodyInstance()->bLockXTranslation = true;
+		CollisionComponent->GetBodyInstance()->bLockYTranslation = true;
 	}
 
 	
@@ -62,6 +64,15 @@ void ACBGBlock::Tick(float DeltaTime)
 
 }
 
+void ACBGBlock::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps)const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+	DOREPLIFETIME(ACBGBlock, BlockProperty);
+	DOREPLIFETIME(ACBGBlock, IsInit);
+	
+}
+
 void ACBGBlock::floatUpDown()
 {
 
@@ -69,7 +80,16 @@ void ACBGBlock::floatUpDown()
 
 void ACBGBlock::SetInitProperty(FBlock Block)
 {
+	IsInit = true;
 	BlockProperty = Block;
+	StaticMesh->SetStaticMesh(BlockProperty.StaticMesh);
+	StaticMesh->SetMaterial(0, BlockProperty.Material);
+	UGameplayStatics::SpawnEmitterAttached(BlockProperty.selfParticle, StaticMesh);
+	StaticMesh->SetWorldScale3D(StaticMesh->GetComponentScale() * BlockProperty.Size);
+}
+void ACBGBlock::OnRep_Init()
+{
+	SetInitProperty(BlockProperty);
 }
 
 void ACBGBlock::DestroySelf()

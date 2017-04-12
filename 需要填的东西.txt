@@ -1,0 +1,70 @@
+方块的结构
+
+//方块的ID编号，不用管
+		int32 ID;
+//方块的名字：开发者看的，不用管
+		FName dName;
+//方块的名字：玩家看的，比如说土块啊啥的。。
+		FName pName;
+//方块的描述，什么属性啊，伤害啥的。。再加点胡扯的，就是玩家鼠标指上去会出的介绍
+		FString miaoshu;
+//方块的图标
+		UTexture2D* tubiao;
+//不用管
+		UStaticMesh* StaticMesh;
+//暂时不用管
+		UMaterial* Material;
+//不用管
+		FPosition Position;
+//不用管
+		float Size = 1;
+//方块的血量，玩家需要敲多少下
+		int32 LifeValue = 3;
+//方块直接砸中人的伤害
+		int32 DamageValue = 1;
+//方块爆炸后的范围伤害
+		int32 ExplosionDamageValue;
+//方块的初始速度
+		float InitialSpeed = 1000.f;
+//方块放在地图上时身上的特效，如果有的话就描述一下
+		UParticleSystem* selfParticle;
+//方块拿在手上时的特效，如果有的话就描述一下描述一下
+		UParticleSystem* handParticle;
+//方块被挖碎时的特效，如果有的话就描述一下
+		UParticleSystem* breakParticle;
+//方块的轨迹特效，如果有的话就描述一下
+		UParticleSystem* traceParticle;
+//方块的爆炸特效，描述一下
+		UParticleSystem* explosionParticle;
+//方块对挖掘者施加的BUFF，如果有的话就转到BUFF的结构说明
+		FBUFF ToMinerBUFF;
+//方块对持有者的BUFF，如果有的话就转到BUFF的结构说明
+		FBUFF ToOwnerBUFF;
+//方块对击中的敌人加的BUFF，如果有的话就转到BUFF的结构说明
+		FBUFF ToEnemyBUFF;
+
+
+BUFF的结构
+
+//BUFF编号，不用管
+		int32 ID = 1;
+	//开发者用的名字，不用管
+		FName dName;
+	//玩家用的名字
+		FName pName;
+	//玩家看的描述
+		FString miaoshu;
+	//玩家看的图标
+		UTexture2D* tubiao;
+	//BUFF持续时间
+		float LifeTime = 0;
+	//BUFF是否晕眩，true为晕眩
+		bool xuanyun;
+	//BUFF是否禁锢，true为禁锢
+		bool jingu;
+	//BUFF对速度的改变，原速度为1，即乘的倍数
+		float changeSpeed;
+	//每秒对生命值的影响
+		int32 changeHP;
+	//增加/减少力量（攻击力）
+		int32 changePower;

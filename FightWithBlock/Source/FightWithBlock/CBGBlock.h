@@ -29,6 +29,8 @@ public:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -39,9 +41,15 @@ public:
 
 	void DestroySelf();
 
-	FBlock BlockProperty;
+	UPROPERTY(Replicated)
+		FBlock BlockProperty;
 
+	UFUNCTION()
+		void OnRep_Init();
 
 private:
 	void Spin(float DeltaTime);
+
+	UPROPERTY(ReplicatedUsing = OnRep_Init)
+		bool IsInit = false;
 };

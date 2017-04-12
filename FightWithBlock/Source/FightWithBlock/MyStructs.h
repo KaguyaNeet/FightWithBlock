@@ -36,6 +36,8 @@ struct FBUFF : public FTableRowBase
 	GENERATED_USTRUCT_BODY()
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Block")
 		bool NotEmpty = false;
+
+	bool IsRun = false;
 	//BUFF±àºÅ
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "BUFF")
 		int32 ID = 1;
@@ -73,6 +75,7 @@ struct FBUFF : public FTableRowBase
 		int32 changePower;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "BUFF")
 		UParticleSystem* Particle;
+	UParticleSystemComponent* TempParticle = NULL;
 };
 
 USTRUCT()
@@ -98,7 +101,9 @@ struct FHero : public FTableRowBase
 		UTexture2D* tubiao;
 	//sheng ming zhi
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Hero")
-		int32 LifeValue;
+		int32 LifeValue = 100;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Hero")
+		int32 MaxLifeValue = 100;
 	//li liang zhi
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Hero")
 		int32 Power;
@@ -136,11 +141,13 @@ struct FBlock : public FTableRowBase
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Block")
 		FPosition Position;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Block")
-		float Size;
+		float Size = 0.1;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Block")
-		int32 LifeValue;
+		bool CanNotDestroy = false;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Block")
-		int32 DamageValue;
+		int32 LifeValue = 3;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Block")
+		int32 DamageValue = 1;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Block")
 		int32 ExplosionDamageValue;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Block")
@@ -161,7 +168,6 @@ struct FBlock : public FTableRowBase
 		FBUFF ToOwnerBUFF;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Block")
 		FBUFF ToEnemyBUFF;
-
 };
 
 USTRUCT()
