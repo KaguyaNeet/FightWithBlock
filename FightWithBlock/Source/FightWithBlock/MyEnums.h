@@ -25,3 +25,10 @@ enum class ECamp: uint8
 	ERed UMETA(DisplayName = "Red"),
 	EDefault UMETA(DisplayName = "neutral")
 };
+
+UENUM(BlueprintType)
+enum class EGameState: uint8
+{
+	EReady UMETA(DisplayName = "Ready"),
+	ERunning UMETA(DisplayName = "Running")
+};

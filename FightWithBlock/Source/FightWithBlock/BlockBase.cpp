@@ -16,6 +16,7 @@ ABlockBase::ABlockBase()
 	bReplicates = true;
 	StaticMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StaticMesh"));
 	StaticMesh->AttachTo(RootComponent);
+	StaticMesh->bCastDynamicShadow = true;
 	StaticMesh->SetLockedAxis(EDOFMode::Default);
 	StaticMesh->SetConstraintMode(EDOFMode::Default);
 	StaticMesh->SetCollisionObjectType(ECollisionChannel::ECC_WorldStatic);
@@ -57,11 +58,17 @@ ABlockBase::ABlockBase()
 void ABlockBase::GetLifetimeReplicatedProps(TArray< FLifetimeProperty > & OutLifetimeProps) const
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
-	DOREPLIFETIME(ABlockBase, BlockProperty);
+	//DOREPLIFETIME(ABlockBase, BlockProperty);
+	//DOREPLIFETIME(ABlockBase, Size);
+	DOREPLIFETIME(ABlockBase, selfParticle);
+	DOREPLIFETIME(ABlockBase, Material);
+	DOREPLIFETIME(ABlockBase, Mesh);
 	DOREPLIFETIME(ABlockBase, Init);
 	DOREPLIFETIME(ABlockBase, IsBreak);
 	DOREPLIFETIME(ABlockBase, IsDestroy);
-	DOREPLIFETIME(ABlockBase, StaticMesh);
+	
+	//DOREPLIFETIME(ABlockBase, StaticMesh);
+	//DOREPLIFETIME(ABlockBase, )
 }
 // Called when the game starts or when spawned
 void ABlockBase::BeginPlay()
@@ -87,11 +94,14 @@ void ABlockBase::Tick(float DeltaTime)
 void ABlockBase::SetInitProperty(FBlock Block)
 {
 	//GEngine->AddOnScreenDebugMessage(-1, 50, FColor::Blue, TEXT("Init!!!!!!~~~~~~~~~~~~"));
+	Material = Block.Material;
+	Mesh = Block.StaticMesh;
 	BlockProperty = Block;
+	selfParticle = Block.breakParticle;
 	StaticMesh->SetStaticMesh(BlockProperty.StaticMesh);
 	StaticMesh->SetMaterial(0, BlockProperty.Material);
 	UGameplayStatics::SpawnEmitterAttached(BlockProperty.selfParticle, StaticMesh);
-	StaticMesh->SetWorldScale3D(FVector(1,1,1) * BlockProperty.Size * DSize);
+	StaticMesh->SetWorldScale3D(FVector(1,1,1) * 0.61f * DSize);
 	Init = true;
 }
 void ABlockBase::OnRep_ReplicateInit()
@@ -101,8 +111,12 @@ void ABlockBase::OnRep_ReplicateInit()
 	{
 		//if(BlockProperty.ID == 0)
 		//	GEngine->AddOnScreenDebugMessage(-1, 20, FColor::Blue, TEXT("noooooooooooooooo!!!!!!"));
-		SetInitProperty(BlockProperty);
-		StaticMesh->SetWorldScale3D(FVector(1, 1, 1) * BlockProperty.Size * DSize);
+		StaticMesh->SetStaticMesh(Mesh);
+		StaticMesh->SetMaterial(0, Material);
+		BlockProperty.breakParticle = selfParticle;
+		//UGameplayStatics::SpawnEmitterAttached(selfParticle, StaticMesh);
+		StaticMesh->SetWorldScale3D(FVector(1, 1, 1) * 0.61f * DSize);
+		Init = true;
 	}
 }
 //bool ABlockBase::SetInitProperty_Validate(FBlock Block)

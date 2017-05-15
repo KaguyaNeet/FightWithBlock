@@ -29,15 +29,15 @@ AHerosBase::AHerosBase()
 	FPSMesh->SetOnlyOwnerSee(true);
 
 	ConstructorHelpers::FObjectFinder<USkeletalMesh> TPSSkeletalMesh(TEXT("SkeletalMesh'/Game/Mannequin/Character/Mesh/SK_Mannequin.SK_Mannequin'"));
-	ConstructorHelpers::FObjectFinder<UAnimBlueprint> AnimBlueprint(TEXT("AnimBlueprint'/Game/myBlueprint/PlayerAnimBP.PlayerAnimBP'"));
+	//ConstructorHelpers::FObjectFinder<UAnimBlueprint> AnimBlueprint(TEXT("AnimBlueprint'/Game/myBlueprint/PlayerAnimBP.PlayerAnimBP'"));
 	GetMesh()->SetSkeletalMesh(TPSSkeletalMesh.Object);
 	GetMesh()->SetRelativeLocation(FVector(0, 0, -90));
 	GetMesh()->SetOwnerNoSee(true);
 	GetMesh()->SetRelativeRotation(FRotator(0, -90, 0));
-	if (AnimBlueprint.Succeeded())
+	/*if (AnimBlueprint.Succeeded())
 	{
 		GetMesh()->SetAnimInstanceClass(AnimBlueprint.Object->GeneratedClass);
-	}
+	}*/
 
 	GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 	GetCapsuleComponent()->SetCollisionObjectType(ECollisionChannel::ECC_Pawn);

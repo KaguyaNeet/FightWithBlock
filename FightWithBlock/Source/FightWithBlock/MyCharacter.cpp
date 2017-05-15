@@ -31,15 +31,15 @@ AMyCharacter::AMyCharacter()
 	FPSMesh->SetOnlyOwnerSee(true);
 
 	ConstructorHelpers::FObjectFinder<USkeletalMesh> TPSSkeletalMesh(TEXT("SkeletalMesh'/Game/Mannequin/Character/Mesh/SK_Mannequin.SK_Mannequin'"));
-	ConstructorHelpers::FObjectFinder<UAnimBlueprint> AnimBlueprint(TEXT("AnimBlueprint'/Game/myBlueprint/PlayerAnimBP.PlayerAnimBP'"));
+	//ConstructorHelpers::FObjectFinder<UAnimBlueprint> AnimBlueprint(TEXT("AnimBlueprint'/Game/myBlueprint/CharacterBP.CharacterBP'"));
 	GetMesh()->SetSkeletalMesh(TPSSkeletalMesh.Object);
 	GetMesh()->SetRelativeLocation(FVector(0, 0, -90));
 	GetMesh()->SetOwnerNoSee(true);
 	GetMesh()->SetRelativeRotation(FRotator(0, -90, 0));
-	if (AnimBlueprint.Succeeded())
-	{
-		GetMesh()->SetAnimInstanceClass(AnimBlueprint.Object->GeneratedClass);
-	}
+	//if (AnimBlueprint.Succeeded())
+	//{
+	//	GetMesh()->SetAnimInstanceClass(AnimBlueprint.Object->GeneratedClass);
+	//}
 
 	GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 	GetCapsuleComponent()->SetCollisionObjectType(ECollisionChannel::ECC_Pawn);
@@ -129,10 +129,11 @@ void AMyCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLife
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
+	DOREPLIFETIME(AMyCharacter, MyCamp);
 	//DOREPLIFETIME(AMyCharacter, handBlock);
 	DOREPLIFETIME(AMyCharacter, myBUFF);
 	DOREPLIFETIME(AMyCharacter, HeroProperty);
-	DOREPLIFETIME(AMyCharacter, MyCamp);
+	
 	DOREPLIFETIME(AMyCharacter, Bag);
 	DOREPLIFETIME(AMyCharacter, Camera);
 	DOREPLIFETIME(AMyCharacter, IsCampFull);
@@ -546,6 +547,24 @@ bool AMyCharacter::ServerApplyPointDamage_Validate(AMyCharacter* Causer, int32 D
 	return true;
 }
 
+void AMyCharacter::MulticastReBorn_Implementation()
+{
+	GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+	GetMesh()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	GetMesh()->SetSimulatePhysics(false);
+}
+bool AMyCharacter::MulticastReBorn_Validate()
+{
+	return true;
+}
+void AMyCharacter::ReBorn()
+{
+	if (Role == ROLE_Authority)
+	{
+		MulticastReBorn();
+	}
+}
+
 void AMyCharacter::ClientDeath_Implementation()
 {
 	//if (GetWorld())
@@ -565,6 +584,13 @@ void AMyCharacter::Death(AMyCharacter* Causer)
 	if (Role == ROLE_Authority)
 	{
 		ClientDeath();
+		
+		UGameInstance* GameInstance = GetGameInstance();
+		if (GameInstance)
+		{
+			UMyGameInstance* MyGameInstance = Cast<UMyGameInstance>(GameInstance);
+			MyGameInstance->ApplyKill(MyCamp);
+		}
 	}
 }
 
@@ -657,4 +683,18 @@ void AMyCharacter::MulticastShakeCamera_Implementation()
 bool AMyCharacter::MulticastShakeCamera_Validate()
 {
 	return true;
+}
+
+void AMyCharacter::ServerSetCamp_Implementation(ECamp Camp)
+{
+	MyCamp = Camp;
+}
+bool AMyCharacter::ServerSetCamp_Validate(ECamp Camp)
+{
+	return true;
+}
+
+void AMyCharacter::SetCamp(ECamp Camp)
+{
+	ServerSetCamp(Camp);
 }

@@ -4,7 +4,6 @@
 #include "TestLevelScriptActor.h"
 #include "BlockBase.h"
 #include "MyStructs.h"
-#include "MyGameInstance.h"
 
 ATestLevelScriptActor::ATestLevelScriptActor()
 {
@@ -32,12 +31,56 @@ ATestLevelScriptActor::ATestLevelScriptActor()
 	}
 }
 
-void ATestLevelScriptActor::BeginPlay()
+void ATestLevelScriptActor::TestPrintHeight(int32 x, int32 y)
 {
-	print();
-	Loading();
+
+	if (HeightFile)
+	{
+		//GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("!!!!!!!!!!!!"));
+		//HeightFile->MipGenSettings.operator=(TMGS_NoMipmaps);
+		//HeightFile->SRGB = false;
+		//HeightFile->CompressionSettings.operator=(TC_VectorDisplacementmap);
+		//FTexture2DMipMap* MyMips = &HeightFile->PlatformData->Mips[0];
+		//const FByteBulkData* RawImageData = &MyMips->BulkData;
+		//auto FormatedImageData =  static_cast<FColor*>(RawImageData->Lock(LOCK_READ_ONLY));
+		//MyMips->BulkData.Lock(LOCK_READ_ONLY);
+		//FColor* Color = static_cast<FColor*>(MyMips->BulkData.Lock(LOCK_READ_ONLY));
+		//RawImageData->Lock(LOCK_READ_ONLY);
+		//FColor PixelColor;
+		//int32 Width = MyMips->SizeX;
+		//int32 Height = MyMips->SizeY;
+
+		//if (x >= 0 && x < Width && y >= 0 && y < Height)
+		//{
+		//	PixelColor = FormatedImageData[y * Width + x];
+		//}
+		//UE_LOG(LogTemp, Warning, TEXT("Red:%d;Green:%d;Blue:%d"), PixelColor.R, PixelColor.G, PixelColor.B);
+	}
 }
 
+void ATestLevelScriptActor::BeginPlay()
+{
+	if (Role == ROLE_Authority)
+	{
+		//MulticastAddLoadingUI();
+		GenerateGround();
+		GenerateGroundWall();
+		GenerateWall();
+	}
+	for (int i = 1; i < 10; i++)
+	{
+		TestPrintHeight(i, i);
+	}
+}
+
+//void ATestLevelScriptActor::MulticastAddLoadingUI_Implementation()
+//{
+//	AddLoadingUI();
+//}
+//bool ATestLevelScriptActor::MulticastAddLoadingUI_Validate()
+//{
+//	return true;
+//}
 
 void ATestLevelScriptActor::GenerateGround()
 {
@@ -227,97 +270,5 @@ void ATestLevelScriptActor::GenerateWall_Corner(int z, FBlock Block)
 			Wall->SetInitProperty(Block);
 			Wall = World->SpawnActor<ABlockBase>(Location4, FRotator(0, 0, 0));
 			Wall->SetInitProperty(Block);
-	}
-}
-
-void ATestLevelScriptActor::ReadHeightMap()
-{
-	//GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("!!!!!!!!!"));
-
-	FILE *fp;
-
-	unsigned short bfType = 0; //the type of file, must be BM
-	int64 bfOffBits = 0;       //the position of data
-	int64 BmpWidth = 0;          // width of bmp
-	int64 BmpHeight = 0;         //height of bmp
-	fopen_s(&fp, "outputx.bmp", "r+");
-	if (fp == NULL)
-	{
-		GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("Cannot open HightMap.bmp...pyx.txt"));
-		return;
-	}
-	//set read point to file begin Texture2D'/Game/StarterContent/Textures/T_Burst_M.T_Burst_M'
-	fseek(fp, 0L, SEEK_SET);
-	fread(&bfType, sizeof(char), 2, fp); //read type. 19778 is bmp
-	if (bfType != 19778)
-	{
-		GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("Not bmp"));
-		fclose(fp);
-		return;
-	}
-
-	//find out date position
-	fseek(fp, 10L, SEEK_SET);
-	fread(&bfOffBits, sizeof(char), 4, fp);
-
-	//get width and height of bmp
-	fseek(fp, 18L, SEEK_SET);
-	fread(&BmpWidth, sizeof(char), 4, fp);
-	fread(&BmpHeight, sizeof(char), 4, fp);
-
-	//get data
-	fseek(fp, bfOffBits, SEEK_SET);
-	BYTE *pBuf = new BYTE[BmpWidth*BmpHeight];
-	fread(pBuf, sizeof(char), BmpWidth*BmpHeight, fp);
-	fclose(fp);
-
-	UWorld* World = GetWorld();
-	ABlockBase* temp =NULL;
-	//sapwn Block
-	FBlock tmpBlock;
-	int i = FMath::RandRange(0, (int)(BmpWidth - MapSize - 1));
-	int j = FMath::RandRange(0, (int)(BmpWidth - MapSize - 1));
-	int x, y, z;
-	for (x = 1; x <= MapSize; x++, i++)
-		for (y = 1; y <= MapSize; y++, j++)
-		{
-			for (z = 1; z <= pBuf[(i*BmpHeight + j)]; z++)
-			{
-				tmpBlock = *GroundDataTable->FindRow<FBlock>(GroundRowNames[(float)FMath::FRandRange(0.f, (float)(GroundRowNames.Num()))], TEXT(""));
-				tmpBlock.Size *= DSize;
-				FVector Location = FVector(x * BlockSize, y * BlockSize, z * BlockSize);
-				temp = World->SpawnActor<ABlockBase>(Location, FRotator(0, 0, 0));
-				//if (temp)
-				//{
-				//	GEngine->AddOnScreenDebugMessage(-1, 50, FColor::Black, TEXT("HAHAHAHA"));
-				//}
-				temp->SetInitProperty(tmpBlock);
-			}
-		}
-
-	//AllBlockInfo.Add(SpawnBlock(tmpBlock, BlockSize));
-}
-
-void ATestLevelScriptActor::CreateMap()
-{
-	if (Role == ROLE_Authority)
-	{
-		ReadHeightMap();
-		//MulticastAddLoadingUI();
-		//GenerateGround();
-		GenerateGroundWall();
-		GenerateWall();
-	}
-}
-
-void ATestLevelScriptActor::GameStart()
-{
-	if (Role == ROLE_Authority)
-	{
-		
-		if (UMyGameInstance* MyGameInstance = Cast<UMyGameInstance>(GetGameInstance()))
-		{
-			MyGameInstance->GameStart();
-		}
 	}
 }

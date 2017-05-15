@@ -6,6 +6,7 @@
 #include "MyPlayerController.h"
 
 
+
 UMyGameInstance::UMyGameInstance()
 {
 	//UWorld* World = GetWorld();
@@ -100,19 +101,76 @@ void UMyGameInstance::AddReadyPlayer()
 	if (ReadyPlayerNum < GetGamePlayerNum())
 	{
 		ReadyPlayerNum++;
+		for (int i = 0; i < MaxPlayerNum / 2; i++)
+		{
+			if (RedCampControllers[i] != NULL)
+			{
+				RedCampControllers[i]->PlayerNum = ReadyPlayerNum;
+			}
+			if (BlueCampControllers[i] != NULL)
+			{
+				BlueCampControllers[i]->PlayerNum = ReadyPlayerNum;
+			}
+		}
 	}
 	if (ReadyPlayerNum == GetGamePlayerNum())
 	{
-		GameStart();
+		GameReady();
 	}
 }
 
 void UMyGameInstance::GameStart()
 {
 	GEngine->AddOnScreenDebugMessage(-1, 20, FColor::Black, TEXT("GameStart!!!!!!!!!!!!!"));
+	InitCampInfo();
 	for (int i = 0; i < MaxPlayerNum / 2; i++)
 	{
 		RedCampControllers[i]->InitCharacter();
+		//RedCampControllers[i]->MyGameState = EGameState::ERunning;
 		BlueCampControllers[i]->InitCharacter();
+		//BlueCampControllers[i]->MyGameState = EGameState::ERunning;
+	}
+}
+
+void UMyGameInstance::InitCampInfo()
+{
+	RedCampNum = MaxPlayerNum / 2;
+	BlueCampNum = MaxPlayerNum / 2;
+}
+
+void UMyGameInstance::ApplyKill(ECamp Camp)
+{
+	switch (Camp)
+	{
+	case ECamp::ERed: {
+		RedCampNum--;
+		break;
+	}
+	case ECamp::EBlue: {
+		BlueCampNum--;
+		break;
+	}
+	default:break;
+	}
+	if (RedCampNum == 0)
+	{
+		//GameStart();
+	}
+	if (BlueCampNum == 0)
+	{
+		//GameStart();
+	}
+}
+
+void UMyGameInstance::GameReady()
+{
+	GEngine->AddOnScreenDebugMessage(-1, 20, FColor::Black, TEXT("GameReady!!!!!!!!!!!!!"));
+	InitCampInfo();
+	for (int i = 0; i < MaxPlayerNum / 2; i++)
+	{
+		//RedCampControllers[i]->InitCharacter();
+		RedCampControllers[i]->MyGameState = EGameState::ERunning;
+		//BlueCampControllers[i]->InitCharacter();
+		BlueCampControllers[i]->MyGameState = EGameState::ERunning;
 	}
 }

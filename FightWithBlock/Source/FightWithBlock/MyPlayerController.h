@@ -19,11 +19,28 @@ public:
 	AMyPlayerController();
 
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps)const override;
-
-	UFUNCTION(reliable, NetMulticast, WithValidation)
+	UFUNCTION(BlueprintCallable)
 		void ServerSpawnCharacter();
 	UFUNCTION(BlueprintImplementableEvent)
 		void SpawnCharacter();
+
+	UFUNCTION(reliable, NetMulticast, WithValidation)
+		void PrintCamp();
+
+	UFUNCTION(BlueprintImplementableEvent)
+		void Test();
+
+	UFUNCTION(BlueprintImplementableEvent)
+		void PrintRole(ENetRole nowRole, int count);
+
+	UFUNCTION(BlueprintCallable)
+		void BlueprintSpawnCharacter();
+
+	UFUNCTION(reliable, client, WithValidation, BlueprintCallable)
+		void SetPosses();
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PlayerNum", Replicated)
+		int32 PlayerNum = 0;
 
 	virtual void BeginPlay() override;
 	
@@ -32,18 +49,18 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "DefalutValue")
 		FVector BlueLocation = FVector(0,0,0);
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "DefalutValue")
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "DefalutValue", Replicated)
 		ECamp MyCamp = ECamp::EDefault;
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Replicated)
 		bool IsCampFull = true;
 	bool IsChooseCamp = false;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MyPawn")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MyPawn", Replicated)
 		class APawn* ControllerPawn;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "GameState", Replicated)
+		EGameState MyGameState = EGameState::EReady;
 
-
-
-	void SetCamp(ECamp Camp);
 
 	void InitCharacter();
 

@@ -47,7 +47,7 @@ public:
 	UPROPERTY(VisibleAnywhere)
 		class UArrowComponent* MineTraceStartArrow;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Replicated,Category = "Camp")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Camp", Replicated)
 		ECamp MyCamp = ECamp::EDefault;
 
 	bool IsChooseCamp = false;
@@ -111,6 +111,13 @@ public:
 	void chooseItem_1();
 	void chooseItem_2();
 	void chooseItem_3();
+
+	UFUNCTION(reliable, NetMulticast, WithValidation)
+		void MulticastReBorn();
+	void ReBorn();
+	UFUNCTION(reliable, server, WithValidation)
+		void ServerSetCamp(ECamp Camp);
+	void SetCamp(ECamp Camp);
 
 	UFUNCTION(reliable, server, WithValidation)
 		void  ServerChooseItem_1();

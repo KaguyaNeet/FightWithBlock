@@ -52,6 +52,12 @@ public:
 private:
 	UPROPERTY(Replicated)
 		FBlock BlockProperty;
+	UPROPERTY(Replicated)
+		UStaticMesh* Mesh;
+	UPROPERTY(Replicated)
+		UMaterial* Material;
+	UPROPERTY(Replicated)
+		UParticleSystem* selfParticle;
 	UPROPERTY(ReplicatedUsing = OnRep_ReplicateInit)
 		bool Init = false;
 	UPROPERTY(ReplicatedUsing = OnRep_Break)

@@ -6,6 +6,8 @@
 #include "MyGameInstance.h"
 #include "NET/UnrealNetwork.h"
 
+static int counter = 0;
+
 AMyPlayerController::AMyPlayerController()
 {
 	bReplicates = true;
@@ -13,8 +15,9 @@ AMyPlayerController::AMyPlayerController()
 
 void AMyPlayerController::BeginPlay()
 {
-	ServerSpawnCharacter();
-	ControllerPawn = GetControlledPawn();
+	//PrintRole(Role);
+	//ServerSpawnCharacter();
+	//Test();
 }
 
 void AMyPlayerController::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps)const
@@ -22,39 +25,38 @@ void AMyPlayerController::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& 
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
 	DOREPLIFETIME(AMyPlayerController, IsCampFull);
+	DOREPLIFETIME(AMyPlayerController, PlayerNum);
+	DOREPLIFETIME(AMyPlayerController, MyGameState);
+	DOREPLIFETIME(AMyPlayerController, ControllerPawn);
+	DOREPLIFETIME(AMyPlayerController, MyCamp);
 }
 
-void AMyPlayerController::ServerSpawnCharacter_Implementation()
+void AMyPlayerController::ServerSpawnCharacter()
 {
 	if (Role > ROLE_AutonomousProxy)
 	{
 		SpawnCharacter();
 		}
 }
-bool AMyPlayerController::ServerSpawnCharacter_Validate()
-{
-	return true;
-}
-
-void AMyPlayerController::SetCamp(ECamp Camp)
-{
-	AMyCharacter* MyCharacter = Cast<AMyCharacter>(ControllerPawn);
-	MyCharacter->MyCamp = Camp;
-}
 
 void AMyPlayerController::InitCharacter()
 {
-	AMyCharacter* MyCharacter = Cast<AMyCharacter>(ControllerPawn);
+	ServerSpawnCharacter();
+	ControllerPawn = GetControlledPawn();
+	AMyCharacter* MyCharacter = Cast<AMyCharacter>(GetControlledPawn());
+	//PrintCamp();
+	MyCharacter->MyCamp = MyCamp;
 	MyCharacter->RefreshLifeBar();
 	MyCharacter->HeroProperty.LifeValue = MyCharacter->HeroProperty.MaxLifeValue;
-	if (MyCharacter->MyCamp == ECamp::ERed)
-	{
-		MyCharacter->SetActorLocation(RedLocation);
-	}
-	else if (MyCharacter->MyCamp == ECamp::EBlue)
-	{
-		MyCharacter->SetActorLocation(BlueLocation);
-	}
+	MyCharacter->ReBorn();
+	//if (MyCharacter->MyCamp == ECamp::ERed)
+	//{
+	//	MyCharacter->SetActorLocation(RedLocation);
+	//}
+	//else if (MyCharacter->MyCamp == ECamp::EBlue)
+	//{
+	//	MyCharacter->SetActorLocation(BlueLocation);
+	//}
 }
 
 void AMyPlayerController::ChooseCamp(ECamp MyChoose)
@@ -65,9 +67,11 @@ void AMyPlayerController::ChooseCamp(ECamp MyChoose)
 		switch (MyChoose)
 		{
 		case ECamp::ERed: {
+			//GEngine->AddOnScreenDebugMessage(-1, 20, FColor::Black, TEXT("Red!!!!!!!!!!!!!"));
 			if (Role < ROLE_Authority)
 			{
 				ServerChooseCamp(ECamp::ERed);
+				MyCamp = ECamp::ERed;
 			}
 			else
 			{
@@ -76,9 +80,11 @@ void AMyPlayerController::ChooseCamp(ECamp MyChoose)
 			break;
 		}
 		case ECamp::EBlue: {
+			//GEngine->AddOnScreenDebugMessage(-1, 20, FColor::Black, TEXT("Blue!!!!!!!!!!!!!"));
 			if (Role < ROLE_Authority)
 			{
 				ServerChooseCamp(ECamp::EBlue);
+				MyCamp = ECamp::EBlue;
 			}
 			else
 			{
@@ -109,7 +115,7 @@ void AMyPlayerController::ServerChooseCamp_Implementation(ECamp MyChoose)
 				IsCampFull = false;
 				IsChooseCamp = true;
 				MyCamp = MyChoose;
-				SetCamp(MyChoose);
+				//SetCamp(MyChoose);
 			}
 			break;
 		}
@@ -124,7 +130,7 @@ void AMyPlayerController::ServerChooseCamp_Implementation(ECamp MyChoose)
 				IsCampFull = false;
 				IsChooseCamp = true;
 				MyCamp = MyChoose;
-				SetCamp(MyChoose);
+				//SetCamp(MyChoose);
 			}
 			break;
 		}
@@ -132,6 +138,36 @@ void AMyPlayerController::ServerChooseCamp_Implementation(ECamp MyChoose)
 	}
 }
 bool AMyPlayerController::ServerChooseCamp_Validate(ECamp MyChoose)
+{
+	return true;
+}
+
+void AMyPlayerController::BlueprintSpawnCharacter()
+{
+	ServerSpawnCharacter();
+}
+
+void AMyPlayerController::SetPosses_Implementation()
+{
+	if (Role == ROLE_AutonomousProxy)
+	{
+		counter++;
+		PrintRole(Role, counter);
+		//Possess(ControllerPawn);
+		//SetViewTarget(GetControlledPawn());
+	}
+}
+
+bool AMyPlayerController::SetPosses_Validate()
+{
+	return true;
+}
+
+void AMyPlayerController::PrintCamp_Implementation()
+{
+
+}
+bool AMyPlayerController::PrintCamp_Validate()
 {
 	return true;
 }

@@ -1,5 +1,6 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 #include "MyGameMode.h"
+#include "MyEnums.h"
 #pragma once
 
 #include "Engine/GameInstance.h"
@@ -27,7 +28,15 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		bool IsGameStart = false;
+
+	void GameStart();
 	
+	void InitCampInfo();
+	void ApplyKill(ECamp Camp);
+
+	int32 RedCampNum = MaxPlayerNum / 2;
+	int32 BlueCampNum = MaxPlayerNum / 2;
+
 	class AMyPlayerController* RedCampControllers[MaxPlayerNum / 2];
 	class AMyPlayerController* BlueCampControllers[MaxPlayerNum / 2];
 
@@ -41,5 +50,6 @@ public:
 private:
 	
 	void AddReadyPlayer();
-	void GameStart();
+	
+	void GameReady();
 };

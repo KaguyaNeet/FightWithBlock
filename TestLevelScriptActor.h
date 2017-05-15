@@ -20,28 +20,22 @@ class FIGHTWITHBLOCK_API ATestLevelScriptActor : public ALevelScriptActor
 public:
 	//bian chang wei duo shao ge block
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MapProperty")
-		int32 MapSize = 10;
+		int32 MapSize = 30;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MapProperty")
 		int32 BlockSize = 95;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MapProperty")
-		int32 MaxZ = 1;
+		int32 MaxZ = 3;
 
-	UFUNCTION(BlueprintImplementableEvent)
-		void Loading();
-
-	UFUNCTION(BlueprintImplementableEvent)
-		void print();
-	UFUNCTION(BlueprintCallable)
-		void CreateMap();
-
-	UFUNCTION(BlueprintCallable)
-		void GameStart();
+	//UFUNCTION(BlueprintImplementableEvent)
+	//	void AddLoadingUI();
 	//UFUNCTION(reliable, NetMulticast, WithValidation)
 	//	void MulticastAddLoadingUI();
 
 
 
 public:
+	void TestPrintHeight(int32 x, int32 y);
+
 
 	//void PrintKillMessage(class AMyCharacter* Killer, class AMyCharacter* beKiller);
 
@@ -51,16 +45,12 @@ public:
 
 	void GenerateWall();
 
-	void ReadHeightMap();
-
 
 	class ABlockBase* SpawnBlock(const struct FBlock Block, float Size);
 protected:
 
 
 	virtual void BeginPlay() override;
-
-	
 
 private:
 	int32 WarningSize = 100;
