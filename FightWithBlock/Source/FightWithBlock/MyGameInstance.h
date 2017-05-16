@@ -39,12 +39,14 @@ public:
 
 	class AMyPlayerController* RedCampControllers[MaxPlayerNum / 2];
 	class AMyPlayerController* BlueCampControllers[MaxPlayerNum / 2];
+	class AMyPlayerController* Controllers[MaxPlayerNum];
 
 	bool IsRedCampFull();
 	bool IsBlueCampFull();
 
 	bool RedCampAddController(class AMyPlayerController* Controller);
 	bool BlueCampAddController(class AMyPlayerController* Controller);
+	bool AddController(class AMyPlayerController* Controller);
 	//UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Replicated)
 		int ReadyPlayerNum = 0;
 private:
