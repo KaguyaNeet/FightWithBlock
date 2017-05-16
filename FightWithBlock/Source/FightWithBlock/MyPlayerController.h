@@ -83,6 +83,11 @@ public:
 
 	UFUNCTION(BlueprintCallable, reliable, Server, WithValidation)
 		void ServerSetName(FName Name_);
+
+	UFUNCTION(BlueprintCallable, reliable, Server, WithValidation)
+		void ServerSetzhanlan();
+	UFUNCTION(BlueprintImplementableEvent)
+		void Setzhanlan();
 	
 
 private:

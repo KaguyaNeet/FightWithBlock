@@ -36,6 +36,11 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 		void GameStart();
+
+	UFUNCTION(BlueprintImplementableEvent)
+		void StartInit();
+	UFUNCTION(BlueprintImplementableEvent)
+		void CheckReady();
 	//UFUNCTION(reliable, NetMulticast, WithValidation)
 	//	void MulticastAddLoadingUI();
 

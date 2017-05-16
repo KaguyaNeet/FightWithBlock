@@ -21,7 +21,9 @@ public:
 	class AMyPlayerController* PlayerControllers[MaxPlayerNum];
 	int NowPlayerNum = 0;
 	int ReadyPlayerNum = 0;
-	EGameState GameState = EGameState::ENormal;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		EGameState GameState = EGameState::ENormal;
 
 	bool AddController(class AMyPlayerController* Controller);
 	void AddNowPlayerNum();

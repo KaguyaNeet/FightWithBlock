@@ -126,3 +126,12 @@ bool AMyPlayerController::ServerSetName_Validate(FName Name_)
 {
 	return true;
 }
+
+void AMyPlayerController::ServerSetzhanlan_Implementation()
+{
+	Setzhanlan();
+}
+bool AMyPlayerController::ServerSetzhanlan_Validate()
+{
+	return true;
+}

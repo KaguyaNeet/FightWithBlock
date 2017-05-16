@@ -34,8 +34,8 @@ ATestLevelScriptActor::ATestLevelScriptActor()
 
 void ATestLevelScriptActor::BeginPlay()
 {
-	print();
-	Loading();
+	StartInit();
+	CheckReady();
 }
 
 
