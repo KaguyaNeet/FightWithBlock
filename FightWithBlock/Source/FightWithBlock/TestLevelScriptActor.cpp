@@ -317,7 +317,7 @@ void ATestLevelScriptActor::GameStart()
 		
 		if (UMyGameInstance* MyGameInstance = Cast<UMyGameInstance>(GetGameInstance()))
 		{
-			MyGameInstance->GameStart();
+			//MyGameInstance->GameStart();
 		}
 	}
 }

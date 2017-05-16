@@ -29,6 +29,7 @@ enum class ECamp: uint8
 UENUM(BlueprintType)
 enum class EGameState: uint8
 {
+	ENormal UMETA(DisplayName = "Normal"),
 	EReady UMETA(DisplayName = "Ready"),
 	ERunning UMETA(DisplayName = "Running")
 };

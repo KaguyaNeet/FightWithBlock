@@ -11,166 +11,70 @@ UMyGameInstance::UMyGameInstance()
 {
 	//UWorld* World = GetWorld();
 	//AGameModeBase* MyGameMode = UGameplayStatics::GetGameMode(World);
-	for (int i = 0; i < MaxPlayerNum / 2; i++)
+	for (int i = 0; i < MaxPlayerNum; i++)
 	{
-		RedCampControllers[i] = NULL;
-		BlueCampControllers[i] = NULL;
+		PlayerControllers[i] = NULL;
 	}
 }
 
-int UMyGameInstance::GetGamePlayerNum()
+bool UMyGameInstance::AddController(AMyPlayerController* Controller)
 {
-	return MaxPlayerNum;
-}
-
-
-bool UMyGameInstance::IsRedCampFull()
-{
-	for (int i = 0; i < MaxPlayerNum / 2; i++)
+	for (int i = 0; i < MaxPlayerNum; i++)
 	{
-		if (RedCampControllers[i] == NULL)
+		if (PlayerControllers[i] == NULL)
 		{
-			return false;
+			GEngine->AddOnScreenDebugMessage(-1, 100, FColor::Red, TEXT("Add++++++++++++"));
+			PlayerControllers[i] = Controller;
+			PlayerControllers[i]->SpawnMoxing(); 
+			AddNowPlayerNum();
+			PlayerControllerAddNum();
+			return true;
 		}
 	}
-	return true;
+	return false;
 }
 
-bool UMyGameInstance::IsBlueCampFull()
+void UMyGameInstance::AddNowPlayerNum()
 {
-	for (int i = 0; i < MaxPlayerNum / 2; i++)
-	{
-		if (BlueCampControllers[i] == NULL)
-		{
-			return false;
-		}
-	}
-	return true;
+	NowPlayerNum++;
+	AddReadyPlayerNum();
 }
 
-bool UMyGameInstance::RedCampAddController(AMyPlayerController* Controller)
+void UMyGameInstance::AddReadyPlayerNum()
 {
-	if (IsRedCampFull())
-	{
-		return false;
-	}
-	else
-	{
-		for (int i = 0; i < MaxPlayerNum / 2; i++)
-		{
-			if (RedCampControllers[i] == NULL)
-			{
-				RedCampControllers[i] = Controller;
-				AddReadyPlayer();
-				return true;
-			}
-		}
-		return false;
-	}
+	ReadyPlayerNum++;
+	CheckGameStart();
 }
 
-bool UMyGameInstance::BlueCampAddController(AMyPlayerController* Controller)
+void UMyGameInstance::CheckGameStart()
 {
-	if (IsBlueCampFull())
+	if (ReadyPlayerNum == NowPlayerNum)
 	{
-		return false;
-	}
-	else
-	{
-		for (int i = 0; i < MaxPlayerNum / 2; i++)
-		{
-			if (BlueCampControllers[i] == NULL)
-			{
-				BlueCampControllers[i] = Controller;
-				AddReadyPlayer();
-				return true;
-			}
-		}
-		return false;
-	}
-}
 
-
-int UMyGameInstance::GetReadyPlayerNum()
-{
-	return ReadyPlayerNum;
-}
-
-void UMyGameInstance::AddReadyPlayer()
-{
-	if (ReadyPlayerNum < GetGamePlayerNum())
-	{
-		ReadyPlayerNum++;
-		for (int i = 0; i < MaxPlayerNum / 2; i++)
-		{
-			if (RedCampControllers[i] != NULL)
-			{
-				RedCampControllers[i]->PlayerNum = ReadyPlayerNum;
-			}
-			if (BlueCampControllers[i] != NULL)
-			{
-				BlueCampControllers[i]->PlayerNum = ReadyPlayerNum;
-			}
-		}
-	}
-	if (ReadyPlayerNum == GetGamePlayerNum())
-	{
-		GameReady();
-	}
-}
-
-void UMyGameInstance::GameStart()
-{
-	GEngine->AddOnScreenDebugMessage(-1, 20, FColor::Black, TEXT("GameStart!!!!!!!!!!!!!"));
-	InitCampInfo();
-	for (int i = 0; i < MaxPlayerNum / 2; i++)
-	{
-		RedCampControllers[i]->InitCharacter();
-		//RedCampControllers[i]->MyGameState = EGameState::ERunning;
-		BlueCampControllers[i]->InitCharacter();
-		//BlueCampControllers[i]->MyGameState = EGameState::ERunning;
-	}
-}
-
-void UMyGameInstance::InitCampInfo()
-{
-	RedCampNum = MaxPlayerNum / 2;
-	BlueCampNum = MaxPlayerNum / 2;
-}
-
-void UMyGameInstance::ApplyKill(ECamp Camp)
-{
-	switch (Camp)
-	{
-	case ECamp::ERed: {
-		RedCampNum--;
-		break;
-	}
-	case ECamp::EBlue: {
-		BlueCampNum--;
-		break;
-	}
-	default:break;
-	}
-	if (RedCampNum == 0)
-	{
-		//GameStart();
-	}
-	if (BlueCampNum == 0)
-	{
-		//GameStart();
 	}
 }
 
 void UMyGameInstance::GameReady()
 {
-	GEngine->AddOnScreenDebugMessage(-1, 20, FColor::Black, TEXT("GameReady!!!!!!!!!!!!!"));
-	InitCampInfo();
-	for (int i = 0; i < MaxPlayerNum / 2; i++)
+	GameState = EGameState::EReady;
+}
+
+void UMyGameInstance::ApplyKill()
+{
+
+}
+
+void UMyGameInstance::PlayerControllerAddNum()
+{
+	for (int i = 0; i < MaxPlayerNum; i++)
 	{
-		//RedCampControllers[i]->InitCharacter();
-		RedCampControllers[i]->MyGameState = EGameState::ERunning;
-		//BlueCampControllers[i]->InitCharacter();
-		BlueCampControllers[i]->MyGameState = EGameState::ERunning;
+		if (PlayerControllers[i] != NULL)
+		{
+			PlayerControllers[i]->PlayerNum = NowPlayerNum;
+		}
+		else
+		{
+			return;
+		}
 	}
 }

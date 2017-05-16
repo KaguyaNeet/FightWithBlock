@@ -27,6 +27,8 @@ public:
 	UFUNCTION(reliable, NetMulticast, WithValidation)
 		void PrintCamp();
 
+	void AddController();
+
 	UFUNCTION(BlueprintImplementableEvent)
 		void Test();
 
@@ -56,19 +58,31 @@ public:
 		bool IsCampFull = true;
 	bool IsChooseCamp = false;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "DefalutValue", Replicated)
+		FName MyName;
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MyPawn", Replicated)
 		class APawn* ControllerPawn;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "GameState", Replicated)
-		EGameState MyGameState = EGameState::EReady;
+		EGameState MyGameState = EGameState::ENormal;
 
 
 	void InitCharacter();
 
-	UFUNCTION(BlueprintCallable)
-		void ChooseCamp(ECamp MyChoose);
+	UFUNCTION(BlueprintImplementableEvent)
+		void CheckMap(ENetRole thisRole);
 
-	UFUNCTION(reliable, server, WithValidation)
-		void ServerChooseCamp(ECamp MyChoose);
+	UFUNCTION(reliable, Client, WithValidation)
+		void ClientCheckMap(ENetRole thisRole);
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Role")
+		bool isServer = false;
+
+	UFUNCTION(BlueprintImplementableEvent)
+		void SpawnMoxing();
+
+	UFUNCTION(BlueprintCallable, reliable, Server, WithValidation)
+		void ServerSetName(FName Name_);
 	
 
 private:

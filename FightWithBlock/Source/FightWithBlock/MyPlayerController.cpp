@@ -11,6 +11,7 @@ static int counter = 0;
 AMyPlayerController::AMyPlayerController()
 {
 	bReplicates = true;
+	
 }
 
 void AMyPlayerController::BeginPlay()
@@ -18,17 +19,27 @@ void AMyPlayerController::BeginPlay()
 	//PrintRole(Role);
 	//ServerSpawnCharacter();
 	//Test();
+	if (Role == ROLE_Authority)
+	{
+		isServer = true;
+	}
+	else
+	{
+		isServer = false;
+	}
+	if (Role == ROLE_Authority)
+		AddController();
+	//ClientCheckMap(Role);
 }
 
 void AMyPlayerController::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps)const
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
-	DOREPLIFETIME(AMyPlayerController, IsCampFull);
 	DOREPLIFETIME(AMyPlayerController, PlayerNum);
 	DOREPLIFETIME(AMyPlayerController, MyGameState);
 	DOREPLIFETIME(AMyPlayerController, ControllerPawn);
-	DOREPLIFETIME(AMyPlayerController, MyCamp);
+	DOREPLIFETIME(AMyPlayerController, MyName);
 }
 
 void AMyPlayerController::ServerSpawnCharacter()
@@ -59,88 +70,6 @@ void AMyPlayerController::InitCharacter()
 	//}
 }
 
-void AMyPlayerController::ChooseCamp(ECamp MyChoose)
-{
-	if (UGameInstance* GameInstance = GetGameInstance())
-	{
-		UMyGameInstance* MyGameInstance = Cast<UMyGameInstance>(GameInstance);
-		switch (MyChoose)
-		{
-		case ECamp::ERed: {
-			//GEngine->AddOnScreenDebugMessage(-1, 20, FColor::Black, TEXT("Red!!!!!!!!!!!!!"));
-			if (Role < ROLE_Authority)
-			{
-				ServerChooseCamp(ECamp::ERed);
-				MyCamp = ECamp::ERed;
-			}
-			else
-			{
-				ServerChooseCamp_Implementation(ECamp::ERed);
-			}
-			break;
-		}
-		case ECamp::EBlue: {
-			//GEngine->AddOnScreenDebugMessage(-1, 20, FColor::Black, TEXT("Blue!!!!!!!!!!!!!"));
-			if (Role < ROLE_Authority)
-			{
-				ServerChooseCamp(ECamp::EBlue);
-				MyCamp = ECamp::EBlue;
-			}
-			else
-			{
-				ServerChooseCamp_Implementation(ECamp::EBlue);
-			}
-			break;
-		}
-		}
-	}
-}
-
-void AMyPlayerController::ServerChooseCamp_Implementation(ECamp MyChoose)
-{
-	if (UGameInstance* GameInstance = GetGameInstance())
-	{
-		UMyGameInstance* MyGameInstance = Cast<UMyGameInstance>(GameInstance);
-		switch (MyChoose)
-		{
-		case ECamp::ERed: {
-			if (MyGameInstance->IsRedCampFull())
-			{
-				GEngine->AddOnScreenDebugMessage(-1, 20, FColor::Black, TEXT("FULL!!!!!!!!!!!!!"));
-			}
-			else
-			{
-				//GEngine->AddOnScreenDebugMessage(-1, 20, FColor::Black, TEXT("NOTFULL!!!!!!!!!!!!!"));
-				MyGameInstance->RedCampAddController(this);
-				IsCampFull = false;
-				IsChooseCamp = true;
-				MyCamp = MyChoose;
-				//SetCamp(MyChoose);
-			}
-			break;
-		}
-		case ECamp::EBlue: {
-			//GEngine->AddOnScreenDebugMessage(-1, 20, FColor::Black, TEXT("NOTBreak!!!!!!!!!!!!!"));
-			if (MyGameInstance->IsBlueCampFull())
-			{
-			}
-			else
-			{
-				MyGameInstance->BlueCampAddController(this);
-				IsCampFull = false;
-				IsChooseCamp = true;
-				MyCamp = MyChoose;
-				//SetCamp(MyChoose);
-			}
-			break;
-		}
-		}
-	}
-}
-bool AMyPlayerController::ServerChooseCamp_Validate(ECamp MyChoose)
-{
-	return true;
-}
 
 void AMyPlayerController::BlueprintSpawnCharacter()
 {
@@ -168,6 +97,32 @@ void AMyPlayerController::PrintCamp_Implementation()
 
 }
 bool AMyPlayerController::PrintCamp_Validate()
+{
+	return true;
+}
+
+void AMyPlayerController::AddController()
+{
+	if (UMyGameInstance* MyGameInstance = Cast<UMyGameInstance>(GetGameInstance()))
+	{
+		MyGameInstance->AddController(this);
+	}
+}
+
+void AMyPlayerController::ClientCheckMap_Implementation(ENetRole thisRole)
+{
+	CheckMap(thisRole);
+}
+bool AMyPlayerController::ClientCheckMap_Validate(ENetRole thisRole)
+{
+	return true;
+}
+
+void AMyPlayerController::ServerSetName_Implementation(FName Name_)
+{
+	MyName = Name_;
+}
+bool AMyPlayerController::ServerSetName_Validate(FName Name_)
 {
 	return true;
 }

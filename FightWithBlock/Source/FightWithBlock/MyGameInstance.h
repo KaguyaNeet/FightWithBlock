@@ -18,40 +18,22 @@ class FIGHTWITHBLOCK_API UMyGameInstance : public UGameInstance
 	
 public:
 
-	UFUNCTION(BlueprintCallable)
-		int GetGamePlayerNum();
-	UFUNCTION(BlueprintCallable)
-		int GetReadyPlayerNum();
+	class AMyPlayerController* PlayerControllers[MaxPlayerNum];
+	int NowPlayerNum = 0;
+	int ReadyPlayerNum = 0;
+	EGameState GameState = EGameState::ENormal;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		class APlayerController* Controller = NULL;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		bool IsGameStart = false;
-
-	void GameStart();
-	
-	void InitCampInfo();
-	void ApplyKill(ECamp Camp);
-
-	int32 RedCampNum = MaxPlayerNum / 2;
-	int32 BlueCampNum = MaxPlayerNum / 2;
-
-	class AMyPlayerController* RedCampControllers[MaxPlayerNum / 2];
-	class AMyPlayerController* BlueCampControllers[MaxPlayerNum / 2];
-	class AMyPlayerController* Controllers[MaxPlayerNum];
-
-	bool IsRedCampFull();
-	bool IsBlueCampFull();
-
-	bool RedCampAddController(class AMyPlayerController* Controller);
-	bool BlueCampAddController(class AMyPlayerController* Controller);
 	bool AddController(class AMyPlayerController* Controller);
-	//UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Replicated)
-		int ReadyPlayerNum = 0;
+	void AddNowPlayerNum();
+	void AddReadyPlayerNum();
+	void CheckGameStart();
+	void ApplyKill();
+	void PlayerControllerAddNum();
+
+	UFUNCTION(BlueprintImplementableEvent)
+		void ReadyGameStart();
+	UFUNCTION(BlueprintCallable)
+		void GameReady();
 private:
-	
-	void AddReadyPlayer();
-	
-	void GameReady();
+
 };

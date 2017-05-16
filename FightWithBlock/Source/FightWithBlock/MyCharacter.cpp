@@ -589,7 +589,7 @@ void AMyCharacter::Death(AMyCharacter* Causer)
 		if (GameInstance)
 		{
 			UMyGameInstance* MyGameInstance = Cast<UMyGameInstance>(GameInstance);
-			MyGameInstance->ApplyKill(MyCamp);
+			//MyGameInstance->ApplyKill(MyCamp);
 		}
 	}
 }
