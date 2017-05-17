@@ -124,7 +124,7 @@ void ABoltBlock::Explosion()
 void ABoltBlock::BeginOverlap(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, int32 OtherBodyIndex, bool FromSweep, const FHitResult& Hit)
 {
 	AMyCharacter* HitEnemy = Cast<AMyCharacter>(OtherActor);
-	if (HitEnemy != Owner)
+	if (HitEnemy && HitEnemy != Owner)
 	{
 		HitEnemy->ApplyPointDamage(Owner, BlockProperty.DamageValue);
 		HitEnemy->GetCapsuleComponent()->AddTorque(GetVelocity() * 100);

@@ -145,3 +145,65 @@ bool AMyPlayerController::ServerControllerReady_Validate()
 {
 	return true;
 }
+
+void AMyPlayerController::PlayerStart()
+{
+	isDeath = false;
+	ServerSpawnCharacter();
+	ClientEndText();
+}
+
+void AMyPlayerController::ClientEndText_Implementation()
+{
+	if (Role >= ROLE_AutonomousProxy)
+		EndText();
+}
+bool AMyPlayerController::ClientEndText_Validate()
+{
+	return true;
+}
+
+void AMyPlayerController::ServerCharacterDeath_Implementation()
+{
+	if (Role == ROLE_Authority)
+	{
+		CharacterDeath();
+	}
+}
+bool AMyPlayerController::ServerCharacterDeath_Validate()
+{
+	return true;
+}
+
+void AMyPlayerController::CharacterDeath()
+{
+	if (UMyGameInstance* MyGameInstance = Cast<UMyGameInstance>(GetGameInstance()))
+	{
+		MyGameInstance->ApplyKill(MyName, this);
+		isDeath = true;
+	}
+}
+
+void AMyPlayerController::ClientPrintKillMessage_Implementation(FName Name)
+{
+	if (Role >= ROLE_AutonomousProxy)
+	{
+		PrintKillMessage(Name);
+	}
+}
+bool AMyPlayerController::ClientPrintKillMessage_Validate(FName Name)
+{
+	return true;
+}
+
+void AMyPlayerController::ClientTargetMoveToWinner_Implementation(AMyPlayerController* Controller)
+{
+	if (Role >= ROLE_AutonomousProxy)
+	{
+		TargetMoveToWinner(Controller);
+	}
+}
+bool AMyPlayerController::ClientTargetMoveToWinner_Validate(AMyPlayerController* Controller)
+{
+	return true;
+}

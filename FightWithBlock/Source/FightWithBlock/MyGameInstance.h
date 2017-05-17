@@ -21,6 +21,7 @@ public:
 	class AMyPlayerController* PlayerControllers[MaxPlayerNum];
 	int NowPlayerNum = 0;
 	int ReadyPlayerNum = 0;
+	int AlivePlayerNum = 0;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		EGameState GameState = EGameState::ENormal;
@@ -29,8 +30,9 @@ public:
 	void AddNowPlayerNum();
 	void AddReadyPlayerNum();
 	void CheckGameStart();
-	void ApplyKill();
+	void ApplyKill(FName Name_, class AMyPlayerController* Controller);
 	void PlayerControllerAddNum();
+	void Winner(class AMyPlayerController* Controller);
 
 	UFUNCTION(BlueprintCallable)
 		void GameStart();

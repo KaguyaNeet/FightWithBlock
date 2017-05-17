@@ -71,9 +71,31 @@ void UMyGameInstance::GameReady()
 	}
 }
 
-void UMyGameInstance::ApplyKill()
+void UMyGameInstance::ApplyKill(FName Name, AMyPlayerController* Controller)
 {
-
+	AlivePlayerNum--;
+	for (int i = 0; i < MaxPlayerNum; i++)
+	{
+		if (PlayerControllers[i] != NULL)
+		{
+			PlayerControllers[i]->ClientPrintKillMessage(Name);
+		}
+		else
+		{
+			break;
+		}
+	}
+	if (AlivePlayerNum == 1)
+	{
+		for (int i = 0; i < MaxPlayerNum; i++)
+		{
+			if (PlayerControllers[i] != NULL && PlayerControllers[i]->isDeath == false)
+			{
+				Winner(PlayerControllers[i]);
+				return;
+			}
+		}
+	}
 }
 
 void UMyGameInstance::PlayerControllerAddNum()
@@ -93,5 +115,28 @@ void UMyGameInstance::PlayerControllerAddNum()
 
 void UMyGameInstance::GameStart()
 {
+	AlivePlayerNum = NowPlayerNum;
 	GEngine->AddOnScreenDebugMessage(-1, 10, FColor::Red, TEXT("GameStart"));
+	for (int i = 0; i < MaxPlayerNum; i++)
+	{
+		if (PlayerControllers[i] != NULL)
+		{
+			PlayerControllers[i]->PlayerStart();
+		}
+		else
+		{
+			return;
+		}
+	}
+}
+
+void UMyGameInstance::Winner(AMyPlayerController* Controller)
+{
+	for (int i = 0; i < MaxPlayerNum; i++)
+	{
+		if (PlayerControllers[i] != NULL)
+		{
+			PlayerControllers[i]->TargetMoveToWinner(Controller);
+		}
+	}
 }

@@ -94,6 +94,29 @@ public:
 
 	UFUNCTION(reliable, Client, WithValidation)
 		void ServerControllerReady();
+
+	void PlayerStart();
+
+	UFUNCTION(reliable, Client, WithValidation)
+		void ClientEndText();
+	UFUNCTION(BlueprintImplementableEvent)
+		void EndText();
+
+	UFUNCTION(reliable, Server, WithValidation)
+		void ServerCharacterDeath();
+	void CharacterDeath();
+
+	UFUNCTION(reliable, Client, WithValidation)
+		void ClientPrintKillMessage(FName Name);
+	UFUNCTION(BlueprintImplementableEvent)
+		void PrintKillMessage(FName Name);
+
+	bool isDeath = false;
+
+	UFUNCTION(reliable, NetMulticast, WithValidation)
+		void ClientTargetMoveToWinner(AMyPlayerController* Controller);
+	UFUNCTION(BlueprintImplementableEvent)
+		void TargetMoveToWinner(AMyPlayerController* Controller);
 	
 
 private:
