@@ -146,11 +146,17 @@ bool AMyPlayerController::ServerControllerReady_Validate()
 	return true;
 }
 
-void AMyPlayerController::PlayerStart()
+void AMyPlayerController::PlayerReady()
 {
 	isDeath = false;
 	ServerSpawnCharacter();
 	ClientEndText();
+	ClientAddStartMessage();
+	ServerSetAllowInput(false);
+}
+void AMyPlayerController::PlayerStart()
+{
+	ServerSetAllowInput(true);
 }
 
 void AMyPlayerController::ClientEndText_Implementation()
@@ -204,6 +210,28 @@ void AMyPlayerController::ClientTargetMoveToWinner_Implementation(AMyPlayerContr
 	}
 }
 bool AMyPlayerController::ClientTargetMoveToWinner_Validate(AMyPlayerController* Controller)
+{
+	return true;
+}
+
+void AMyPlayerController::ServerSetAllowInput_Implementation(bool Choose)
+{
+	if (Role >= ROLE_AutonomousProxy)
+		SetAllowInput(Choose);
+}
+bool AMyPlayerController::ServerSetAllowInput_Validate(bool Choose)
+{
+	return true;
+}
+
+void AMyPlayerController::ClientAddStartMessage_Implementation()
+{
+	if (Role >= ROLE_AutonomousProxy)
+	{
+		AddStartMessage();
+	}
+}
+bool AMyPlayerController::ClientAddStartMessage_Validate()
 {
 	return true;
 }

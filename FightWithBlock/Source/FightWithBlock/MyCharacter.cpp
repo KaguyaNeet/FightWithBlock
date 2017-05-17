@@ -698,3 +698,15 @@ void AMyCharacter::SetCamp(ECamp Camp)
 {
 	ServerSetCamp(Camp);
 }
+
+void AMyCharacter::ClientSetAllowInput_Implementation(bool Choose)
+{
+	if (Role >= ROLE_AutonomousProxy)
+	{
+		SetAllowInput(Choose);
+	}
+}
+bool AMyCharacter::ClientSetAllowInput_Validate(bool Choose)
+{
+	return true;
+}

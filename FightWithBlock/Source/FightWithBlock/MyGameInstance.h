@@ -37,6 +37,10 @@ public:
 	UFUNCTION(BlueprintCallable)
 		void GameStart();
 	UFUNCTION(BlueprintImplementableEvent)
+		void Second_3_Delay();
+	UFUNCTION(BlueprintCallable)
+		void CharacterMove();
+	UFUNCTION(BlueprintImplementableEvent)
 		void ReadyGameStart();
 	UFUNCTION(BlueprintCallable)
 		void GameReady();

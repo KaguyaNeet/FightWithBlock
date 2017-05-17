@@ -95,6 +95,7 @@ public:
 	UFUNCTION(reliable, Client, WithValidation)
 		void ServerControllerReady();
 
+	void PlayerReady();
 	void PlayerStart();
 
 	UFUNCTION(reliable, Client, WithValidation)
@@ -113,11 +114,18 @@ public:
 
 	bool isDeath = false;
 
-	UFUNCTION(reliable, NetMulticast, WithValidation)
+	UFUNCTION(reliable, Client, WithValidation)
 		void ClientTargetMoveToWinner(AMyPlayerController* Controller);
 	UFUNCTION(BlueprintImplementableEvent)
 		void TargetMoveToWinner(AMyPlayerController* Controller);
-	
+	UFUNCTION(reliable, Server, WithValidation)
+		void ServerSetAllowInput(bool Choose);
+	UFUNCTION(BlueprintImplementableEvent)
+		void SetAllowInput(bool Choose);
+	UFUNCTION(reliable, Client, WithValidation)
+		void ClientAddStartMessage();
+	UFUNCTION(BlueprintImplementableEvent)
+		void AddStartMessage();
 
 private:
 

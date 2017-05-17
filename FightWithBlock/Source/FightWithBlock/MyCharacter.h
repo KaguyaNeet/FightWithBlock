@@ -20,6 +20,11 @@ public:
 	// Sets default values for this character's properties
 	AMyCharacter();
 
+	UFUNCTION(reliable, Client, WithValidation, BlueprintCallable)
+		void ClientSetAllowInput(bool Choose);
+	UFUNCTION(BlueprintImplementableEvent)
+		void SetAllowInput(bool Choose);
+
 	UFUNCTION(BlueprintImplementableEvent)
 		void RefreshLifeBar_();
 

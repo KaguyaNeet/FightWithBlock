@@ -117,15 +117,27 @@ void UMyGameInstance::GameStart()
 {
 	AlivePlayerNum = NowPlayerNum;
 	GEngine->AddOnScreenDebugMessage(-1, 10, FColor::Red, TEXT("GameStart"));
+	Second_3_Delay();
+	for (int i = 0; i < MaxPlayerNum; i++)
+	{
+		if (PlayerControllers[i] != NULL)
+		{
+			PlayerControllers[i]->PlayerReady();
+		}
+		else
+		{
+			return;
+		}
+	}
+}
+
+void UMyGameInstance::CharacterMove()
+{
 	for (int i = 0; i < MaxPlayerNum; i++)
 	{
 		if (PlayerControllers[i] != NULL)
 		{
 			PlayerControllers[i]->PlayerStart();
-		}
-		else
-		{
-			return;
 		}
 	}
 }
