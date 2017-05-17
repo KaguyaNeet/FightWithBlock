@@ -135,3 +135,13 @@ bool AMyPlayerController::ServerSetzhanlan_Validate()
 {
 	return true;
 }
+
+void AMyPlayerController::ServerControllerReady_Implementation()
+{
+	if (Role >= ROLE_AutonomousProxy)
+		ControllerReady();
+}
+bool AMyPlayerController::ServerControllerReady_Validate()
+{
+	return true;
+}

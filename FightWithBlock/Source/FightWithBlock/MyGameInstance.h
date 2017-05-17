@@ -32,10 +32,14 @@ public:
 	void ApplyKill();
 	void PlayerControllerAddNum();
 
+	UFUNCTION(BlueprintCallable)
+		void GameStart();
 	UFUNCTION(BlueprintImplementableEvent)
 		void ReadyGameStart();
 	UFUNCTION(BlueprintCallable)
 		void GameReady();
+	UFUNCTION(BlueprintImplementableEvent)
+		void WaitTimeGameStart();
 private:
 
 };

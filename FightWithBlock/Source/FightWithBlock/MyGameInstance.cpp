@@ -23,7 +23,7 @@ bool UMyGameInstance::AddController(AMyPlayerController* Controller)
 	{
 		if (PlayerControllers[i] == NULL)
 		{
-			GEngine->AddOnScreenDebugMessage(-1, 100, FColor::Red, TEXT("Add++++++++++++"));
+			//GEngine->AddOnScreenDebugMessage(-1, 100, FColor::Red, TEXT("Add++++++++++++"));
 			PlayerControllers[i] = Controller;
 			PlayerControllers[i]->SpawnMoxing(); 
 			AddNowPlayerNum();
@@ -56,7 +56,19 @@ void UMyGameInstance::CheckGameStart()
 
 void UMyGameInstance::GameReady()
 {
+	WaitTimeGameStart();
 	GameState = EGameState::EReady;
+	for (int i = 0; i < MaxPlayerNum; i++)
+	{
+		if (PlayerControllers[i] != NULL)
+		{
+			PlayerControllers[i]->ServerControllerReady();
+		}
+		else
+		{
+			return;
+		}
+	}
 }
 
 void UMyGameInstance::ApplyKill()
@@ -77,4 +89,9 @@ void UMyGameInstance::PlayerControllerAddNum()
 			return;
 		}
 	}
+}
+
+void UMyGameInstance::GameStart()
+{
+	GEngine->AddOnScreenDebugMessage(-1, 10, FColor::Red, TEXT("GameStart"));
 }

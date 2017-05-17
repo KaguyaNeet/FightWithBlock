@@ -88,6 +88,12 @@ public:
 		void ServerSetzhanlan();
 	UFUNCTION(BlueprintImplementableEvent)
 		void Setzhanlan();
+
+	UFUNCTION(BlueprintImplementableEvent)
+		void ControllerReady();
+
+	UFUNCTION(reliable, Client, WithValidation)
+		void ServerControllerReady();
 	
 
 private:
