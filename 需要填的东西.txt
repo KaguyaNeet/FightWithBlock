@@ -68,3 +68,4 @@ BUFF的结构
 		int32 changeHP;
 	//增加/减少力量（攻击力）
 		int32 changePower;
+Test
