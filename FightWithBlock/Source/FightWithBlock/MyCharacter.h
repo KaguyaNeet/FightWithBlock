@@ -20,6 +20,10 @@ public:
 	// Sets default values for this character's properties
 	AMyCharacter();
 
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		bool AllowMove = true;
+
 	UFUNCTION(reliable, Client, WithValidation, BlueprintCallable)
 		void ClientSetAllowInput(bool Choose);
 	UFUNCTION(BlueprintImplementableEvent)
@@ -34,11 +38,11 @@ public:
 	void RefreshLifeBar();
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Replicated)
-		FName HeroName;
-	UFUNCTION(reliable, server, WithValidation)
-		void ServerSetName(FName Name_);
-	UFUNCTION(BlueprintCallable)
-		void SetName(FName Name_);
+		FName CharacterName;
+	//UFUNCTION(reliable, server, WithValidation)
+	//	void ServerSetName(FName Name_);
+	//UFUNCTION(BlueprintCallable)
+	//	void SetName(FName Name_);
 
 	UPROPERTY(VisibleAnywhere, Replicated)
 		class UCameraComponent* Camera;
@@ -92,6 +96,10 @@ public:
 			void ChooseLifeBar(float percent);
 		UFUNCTION(BlueprintImplementableEvent)
 			void PrintRole();
+
+		UFUNCTION(BlueprintImplementableEvent)
+			void BlueprintMineBlock();
+
 protected:
 	// Called when the game starts or when spawned
 
@@ -164,6 +172,9 @@ public:
 	UFUNCTION(reliable, server, WithValidation)
 		void ServerPressed_R();
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		bool isAuth = false;
+
 
 	void Released_R();
 	void PrintItem(FBlock BlockProperty);
@@ -172,8 +183,11 @@ public:
 	void MineBlock();
 	UFUNCTION(reliable, server, WithValidation)
 		void ServerMineBlock();
+	UFUNCTION(reliable, NetMulticast, WithValidation)
+		void MulticastMineBlock();
 
-	void MineLineTraceResult(const FHitResult& Hit);
+	UFUNCTION(BlueprintCallable)
+		void MineLineTraceResult(const FHitResult& Hit);
 	
 	void ApplyPointDamage_(AMyCharacter* Causer, int32 DamageValue);
 	void ApplyPointDamage(AMyCharacter* Causer, int32 DamageValue);
@@ -198,6 +212,7 @@ public:
 		bool IsCampFull = true;
 
 	void ControllerInit(ECamp Camp, FString Name);
+
 
 private:
 

@@ -36,6 +36,14 @@ AMyCharacter::AMyCharacter()
 	GetMesh()->SetRelativeLocation(FVector(0, 0, -90));
 	GetMesh()->SetOwnerNoSee(true);
 	GetMesh()->SetRelativeRotation(FRotator(0, -90, 0));
+	if (Role == ROLE_Authority)
+	{
+		GetMesh()->bIsAutonomousTickPose = false;
+	}
+	else
+	{
+		GetMesh()->bIsAutonomousTickPose = true;
+	}
 	//if (AnimBlueprint.Succeeded())
 	//{
 	//	GetMesh()->SetAnimInstanceClass(AnimBlueprint.Object->GeneratedClass);
@@ -75,6 +83,10 @@ AMyCharacter::AMyCharacter()
 void AMyCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+	if (Role == ROLE_Authority)
+	{
+		isAuth = true;
+	}
 	IsCampFull = true;
 	MyCamp = ECamp::EDefault;
 	AddUI();
@@ -129,7 +141,7 @@ void AMyCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLife
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
-	DOREPLIFETIME(AMyCharacter, MyCamp);
+	//DOREPLIFETIME(AMyCharacter, MyCamp);
 	//DOREPLIFETIME(AMyCharacter, handBlock);
 	DOREPLIFETIME(AMyCharacter, myBUFF);
 	DOREPLIFETIME(AMyCharacter, HeroProperty);
@@ -137,17 +149,23 @@ void AMyCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLife
 	DOREPLIFETIME(AMyCharacter, Bag);
 	DOREPLIFETIME(AMyCharacter, Camera);
 	DOREPLIFETIME(AMyCharacter, IsCampFull);
-	DOREPLIFETIME(AMyCharacter, HeroName);
+	DOREPLIFETIME(AMyCharacter, CharacterName);
 }
 
 void AMyCharacter::MoveForward(float val)
 {
-	AddMovementInput(GetActorForwardVector(), val * 10);
+	if (AllowMove)
+	{
+		AddMovementInput(GetActorForwardVector(), val * 10);
+	}
 }
 
 void AMyCharacter::MoveRight(float val)
 {
-	AddMovementInput(GetActorRightVector(), val * 10);
+	if (AllowMove)
+	{
+		AddMovementInput(GetActorRightVector(), val * 10);
+	}
 }
 
 void AMyCharacter::ClientAddBlockUI_Implementation(int Choose, FBlock Item)
@@ -456,43 +474,25 @@ void AMyCharacter::PrintItem(FBlock BlockProperty)
 
 void AMyCharacter::MineBlock_()
 {
-	if (MineTimeCounter >= HeroProperty.MineRate)
-	{
-		//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Mine"));
-		MineTimeCounter = 0;
-		UWorld* World = GetWorld();
-		if (World)
-		{
-			FHitResult TraceHit;
-			//UE_LOG(LogTemp, Warning, TEXT("起始点：%s"), *(MineTraceStartArrow->GetComponentLocation()).ToString());
-			//UE_LOG(LogTemp, Warning, TEXT("末尾点：%s"), *(MineTraceStartArrow->GetComponentLocation() + MineTraceStartArrow->GetForwardVector() * HeroProperty.MineDistance).ToString());
-			//UE_LOG(LogTemp, Warning, TEXT("距离：%f"), ((MineTraceStartArrow->GetForwardVector() * HeroProperty.MineDistance) - (MineTraceStartArrow->GetComponentLocation())).Size());
-			if (World->LineTraceSingleByChannel(TraceHit, MineTraceStartArrow->GetComponentLocation(), MineTraceStartArrow->GetComponentLocation() + MineTraceStartArrow->GetForwardVector() * HeroProperty.MineDistance, ECollisionChannel::ECC_Visibility))
-			{
-				MineLineTraceResult(TraceHit);
-			}
-		}
-	}
-	else
-		return;
+	BlueprintMineBlock();
 }
 void AMyCharacter::MineBlock()
 {
-	if (Role < ROLE_Authority)
-	{
-		SetCamera();
-		ServerMineBlock();
-	}
-	else
-	{
-		ServerMineBlock_Implementation();
-	}
+	ServerMineBlock();
 }
 void AMyCharacter::ServerMineBlock_Implementation()
 {
-	MineBlock_();
+	MulticastMineBlock();
 }
 bool AMyCharacter::ServerMineBlock_Validate()
+{
+	return true;
+}
+void AMyCharacter::MulticastMineBlock_Implementation()
+{
+	MineBlock_();
+}
+bool AMyCharacter::MulticastMineBlock_Validate()
 {
 	return true;
 }
@@ -502,7 +502,7 @@ void AMyCharacter::MineLineTraceResult(const FHitResult& Hit)
 	ABlockBase* HitBlock = Cast<ABlockBase>(Hit.GetActor());
 	if (HitBlock)
 	{
-		//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("MineHit"));
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("MineHit"));
 		HitBlock->ApplyPointDamage(this, HeroProperty.BlockDamage);
 	}
 }
@@ -663,18 +663,18 @@ void AMyCharacter::ControllerInit(ECamp Camp, FString Name)
 
 }
 
-void AMyCharacter::SetName(FName Name_)
-{
-	ServerSetName(Name_);
-}
-void AMyCharacter::ServerSetName_Implementation(FName Name_)
-{
-		HeroName = Name_;
-}
-bool AMyCharacter::ServerSetName_Validate(FName Name_)
-{
-	return true;
-}
+//void AMyCharacter::SetName(FName Name_)
+//{
+//	ServerSetName(Name_);
+//}
+//void AMyCharacter::ServerSetName_Implementation(FName Name_)
+//{
+//		HeroName = Name_;
+//}
+//bool AMyCharacter::ServerSetName_Validate(FName Name_)
+//{
+//	return true;
+//}
 
 void AMyCharacter::MulticastShakeCamera_Implementation()
 {

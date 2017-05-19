@@ -126,6 +126,8 @@ public:
 		void ClientAddStartMessage();
 	UFUNCTION(BlueprintImplementableEvent)
 		void AddStartMessage();
+	//UFUNCTION(reliable, Client, WithValidation)
+	//	void ClientSetName();
 
 private:
 

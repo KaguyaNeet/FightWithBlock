@@ -150,6 +150,7 @@ void AMyPlayerController::PlayerReady()
 {
 	isDeath = false;
 	ServerSpawnCharacter();
+	//ClientSetName();
 	ClientEndText();
 	ClientAddStartMessage();
 	ServerSetAllowInput(false);
@@ -235,3 +236,18 @@ bool AMyPlayerController::ClientAddStartMessage_Validate()
 {
 	return true;
 }
+
+//void AMyPlayerController::ClientSetName_Implementation()
+//{
+//	if (Role >= ROLE_AutonomousProxy)
+//	{
+//		if (AMyCharacter* MyCharacter = Cast<AMyCharacter>(GetControlledPawn()))
+//		{
+//			MyCharacter->HeroName = MyName;
+//		}
+//	}
+//}
+//bool AMyPlayerController::ClientSetName_Validate()
+//{
+//	return true;
+//}
