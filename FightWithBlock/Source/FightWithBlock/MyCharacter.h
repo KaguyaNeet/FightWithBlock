@@ -44,11 +44,14 @@ public:
 	//UFUNCTION(BlueprintCallable)
 	//	void SetName(FName Name_);
 
-	UPROPERTY(VisibleAnywhere, Replicated)
-		class UCameraComponent* Camera;
+	UPROPERTY(VisibleAnywhere)
+		class UArrowComponent* MyCamera;
 
 	UPROPERTY(VisibleAnywhere)
-		class USkeletalMeshComponent* FPSMesh;
+		class USpringArmComponent* CameraBoom;
+
+	//UPROPERTY(VisibleAnywhere)
+	//	class USkeletalMeshComponent* FPSMesh;
 
 	UPROPERTY(VisibleAnywhere)
 		class UCharacterMovementComponent* MovementComponent;
