@@ -44,8 +44,11 @@ public:
 	//UFUNCTION(BlueprintCallable)
 	//	void SetName(FName Name_);
 
-	UPROPERTY(VisibleAnywhere, Replicated)
-		class UCameraComponent* Camera;
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+		class USpringArmComponent* CameraBoom;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Replicated)
+		class UCameraComponent* MyCamera;
 
 	UPROPERTY(VisibleAnywhere)
 		class USkeletalMeshComponent* FPSMesh;
@@ -106,9 +109,6 @@ protected:
 
 	virtual void BeginPlay() override;
 
-	void MoveForward(float val);
-
-	void MoveRight(float val);
 
 public:	
 	// Called every frame
@@ -118,6 +118,11 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps)const override;
+
+	UFUNCTION(reliable, Server, WithValidation, BlueprintCallable)
+		void ServerSetSpeed(float Speed);
+	UFUNCTION(reliable, NetMulticast, WithValidation)
+		void MulticastSetSpeed(float Speed);
 
 	bool AddItem(FBlock Item);
 
@@ -139,10 +144,15 @@ public:
 	UFUNCTION(reliable, server, WithValidation)
 		void  ServerChooseItem_3();
 
-	void Fire_();
+	UFUNCTION(BlueprintImplementableEvent)
+		void BlueprintFire();
+	UFUNCTION(BlueprintCallable)
+		void Fire_();
 	void Fire();
 	UFUNCTION(reliable, server, WithValidation)
 		void ServerFire();
+	UFUNCTION(reliable, NetMulticast, WithValidation)
+		void MulticastFire();
 
 	void SetCameraRotation(FRotator Rotation);
 	void SetCamera();
