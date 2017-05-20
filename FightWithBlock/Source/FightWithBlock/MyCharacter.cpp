@@ -15,25 +15,20 @@ AMyCharacter::AMyCharacter()
 	bReplicates = true;
 	bReplicateMovement = true;
 
-	CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
-	CameraBoom->AttachTo(RootComponent);
+	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
+	Camera->SetRelativeLocation(FVector(0.f, 0.f, 80.f));
+	Camera->AttachTo(RootComponent);
+	Camera->bUsePawnControlRotation = true;
 
-	MyCamera = CreateDefaultSubobject<UArrowComponent>(TEXT("Camera"));
-	MyCamera->SetRelativeLocation(FVector(0.f, 0.f, 80.f));
-	//MyCamera->AttachTo(CameraBoom);
-	//MyCamera->bUsePawnControlRotation = false;
-
-	
-
-	//ConstructorHelpers::FObjectFinder<USkeletalMesh> FPSSkeletalMesh(TEXT("SkeletalMesh'/Game/FirstPerson/Character/Mesh/SK_Mannequin_Arms.SK_Mannequin_Arms'"));
-	//FPSMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("myFPSMesh"));
-	//FPSMesh->SetSkeletalMesh(FPSSkeletalMesh.Object);
-	//FPSMesh->SetRelativeLocation(FVector(0, 0, -170));
-	//FPSMesh->SetRelativeRotation(FRotator(0, -90, 0));
-	//FPSMesh->AttachTo(Camera);
-	//FPSMesh->bCastDynamicShadow = false;
-	//FPSMesh->CastShadow = false;
-	//FPSMesh->SetOnlyOwnerSee(true);
+	ConstructorHelpers::FObjectFinder<USkeletalMesh> FPSSkeletalMesh(TEXT("SkeletalMesh'/Game/FirstPerson/Character/Mesh/SK_Mannequin_Arms.SK_Mannequin_Arms'"));
+	FPSMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("myFPSMesh"));
+	FPSMesh->SetSkeletalMesh(FPSSkeletalMesh.Object);
+	FPSMesh->SetRelativeLocation(FVector(0, 0, -170));
+	FPSMesh->SetRelativeRotation(FRotator(0, -90, 0));
+	FPSMesh->AttachTo(Camera);
+	FPSMesh->bCastDynamicShadow = false;
+	FPSMesh->CastShadow = false;
+	FPSMesh->SetOnlyOwnerSee(true);
 
 	ConstructorHelpers::FObjectFinder<USkeletalMesh> TPSSkeletalMesh(TEXT("SkeletalMesh'/Game/Mannequin/Character/Mesh/SK_Mannequin.SK_Mannequin'"));
 	//ConstructorHelpers::FObjectFinder<UAnimBlueprint> AnimBlueprint(TEXT("AnimBlueprint'/Game/myBlueprint/CharacterBP.CharacterBP'"));
@@ -62,7 +57,7 @@ AMyCharacter::AMyCharacter()
 
 
 	MineTraceStartArrow = CreateDefaultSubobject<UArrowComponent>(TEXT("MineTraceStartArrow"));
-	MineTraceStartArrow->AttachTo(MyCamera);
+	MineTraceStartArrow->AttachTo(Camera);
 	MineTraceStartArrow->SetRelativeLocation(FVector(0, 0, 0));
 	MineTraceStartArrow->SetHiddenInGame(true);
 
@@ -126,8 +121,8 @@ void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
-	//PlayerInputComponent->BindAxis("MoveForward", this, &AMyCharacter::MoveForward);
-	//PlayerInputComponent->BindAxis("MoveRight", this, &AMyCharacter::MoveRight);
+	PlayerInputComponent->BindAxis("MoveForward", this, &AMyCharacter::MoveForward);
+	PlayerInputComponent->BindAxis("MoveRight", this, &AMyCharacter::MoveRight);
 	PlayerInputComponent->BindAxis("TurnX", this, &APawn::AddControllerYawInput);
 	PlayerInputComponent->BindAxis("TurnY", this, &APawn::AddControllerPitchInput);
 
@@ -152,7 +147,7 @@ void AMyCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLife
 	DOREPLIFETIME(AMyCharacter, HeroProperty);
 	
 	DOREPLIFETIME(AMyCharacter, Bag);
-	DOREPLIFETIME(AMyCharacter, MyCamera);
+	DOREPLIFETIME(AMyCharacter, Camera);
 	DOREPLIFETIME(AMyCharacter, IsCampFull);
 	DOREPLIFETIME(AMyCharacter, CharacterName);
 }
@@ -161,18 +156,7 @@ void AMyCharacter::MoveForward(float val)
 {
 	if (AllowMove)
 	{
-		if (UCharacterMovementComponent* MovementComponent = Cast<UCharacterMovementComponent>(GetMovementComponent()))
-		{
-			if (val > 0)
-			{
-				MovementComponent->MaxWalkSpeed = 375;
-			}
-			if (val < 0)
-			{
-				MovementComponent->MaxWalkSpeed = 100;
-			}
-		}
-		AddMovementInput(FRotator(0,0,GetControlRotation().Yaw).Vector().ForwardVector, val * 10);
+		AddMovementInput(GetActorForwardVector(), val * 10);
 	}
 }
 
@@ -180,14 +164,7 @@ void AMyCharacter::MoveRight(float val)
 {
 	if (AllowMove)
 	{
-		if (UCharacterMovementComponent* MovementComponent = Cast<UCharacterMovementComponent>(GetMovementComponent()))
-		{
-			if (val != 0)
-			{
-				MovementComponent->MaxWalkSpeed = 100;
-			}
-		}
-		AddMovementInput(FRotator(0,0,GetControlRotation().Yaw).Vector().RightVector, val * 10);
+		AddMovementInput(GetActorRightVector(), val * 10);
 	}
 }
 
@@ -231,7 +208,7 @@ bool AMyCharacter::AddItem(FBlock Item)
 			FActorSpawnParameters SpawnParams;
 			SpawnParams.Owner = this;
 			SpawnParams.Instigator = Instigator;
-			ACBGBlock* tempBlock = World->SpawnActor<ACBGBlock>(MyCamera->GetComponentLocation(), GetActorRotation(), SpawnParams);
+			ACBGBlock* tempBlock = World->SpawnActor<ACBGBlock>(Camera->GetComponentLocation(), GetActorRotation(), SpawnParams);
 			tempBlock->SetInitProperty(handBlock->Block);
 			ClientRemoveBlockUI(NowChoose);
 			ClientAddBlockUI(NowChoose, Item);
@@ -316,7 +293,7 @@ void AMyCharacter::Fire_()
 		{
 			//GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("FIRE!!!!!!!!!!"));
 			//UE_LOG(LogTemp, Warning, TEXT("%s"), *(MineTraceStartArrow->GetComponentLocation()).ToString());
-			ABoltBlock* tempBlock = World->SpawnActor<ABoltBlock>(MyCamera->GetComponentLocation(), MyCamera->GetComponentRotation());
+			ABoltBlock* tempBlock = World->SpawnActor<ABoltBlock>(Camera->GetComponentLocation(), Camera->GetComponentRotation());
 			tempBlock->SetInitProperty(handBlock->Block, this);
 			tempBlock->SetFireDirection(MineTraceStartArrow->GetForwardVector(), 1000);
 			handBlock->Empty = true;
@@ -629,12 +606,12 @@ void AMyCharacter::SetCamera()
 {
 	if (Role < ROLE_Authority)
 	{
-		ServerSetCamera(MyCamera->GetComponentRotation());
+		ServerSetCamera(Camera->GetComponentRotation());
 	}
 }
 void AMyCharacter::SetCameraRotation(FRotator Rotation)
 {
-	MyCamera->SetWorldRotation(Rotation);
+	Camera->SetWorldRotation(Rotation);
 }
 
 void AMyCharacter::AddUI()
