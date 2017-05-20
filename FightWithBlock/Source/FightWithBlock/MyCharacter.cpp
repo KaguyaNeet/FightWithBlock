@@ -499,9 +499,28 @@ void AMyCharacter::MineLineTraceResult(const FHitResult& Hit)
 	ABlockBase* HitBlock = Cast<ABlockBase>(Hit.GetActor());
 	if (HitBlock)
 	{
+		BlueprintSpawmEmitter();
 		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("MineHit"));
 		HitBlock->ApplyPointDamage(this, HeroProperty.BlockDamage);
+		
 	}
+}
+void AMyCharacter::MulticastSpawnEmitter_Implementation(UParticleSystem* Particle, FVector Location)
+{
+	UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), Particle, FTransform(Location));
+}
+bool AMyCharacter::MulticastSpawnEmitter_Validate(UParticleSystem* Particle, FVector Location)
+{
+	return true;
+}
+
+void AMyCharacter::MulticastPlayAudio_Implementation(USoundBase* Sound, FVector Location)
+{
+	UGameplayStatics::PlaySoundAtLocation(GetWorld(), Sound, Location);
+}
+bool AMyCharacter::MulticastPlayAudio_Validate(USoundBase* Sound, FVector Location)
+{
+	return true;
 }
 
 void AMyCharacter::ApplyPointDamage_(AMyCharacter* Causer, int32 DamageValue)

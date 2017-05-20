@@ -154,6 +154,11 @@ public:
 	UFUNCTION(reliable, NetMulticast, WithValidation)
 		void MulticastFire();
 
+	UFUNCTION(reliable, NetMulticast, WithValidation, BlueprintCallable)
+		void MulticastSpawnEmitter(UParticleSystem* Particle, FVector Location);
+	UFUNCTION(reliable, NetMulticast, WithValidation, BlueprintCallable)
+		void MulticastPlayAudio(USoundBase* Sound, FVector Location);
+
 	void SetCameraRotation(FRotator Rotation);
 	void SetCamera();
 	UFUNCTION(reliable, server, WithValidation)
@@ -165,6 +170,13 @@ public:
 		void ShakeCamera();
 
 	FItem* handBlock;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Particle")
+		UParticleSystem* Hit1;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Particle")
+		UParticleSystem* Hit2;
+	UFUNCTION(BlueprintImplementableEvent)
+		void BlueprintSpawmEmitter();
 
 	void AddBUFF(FBUFF BUFF);
 	void RunBUFF(float DeltaTime);

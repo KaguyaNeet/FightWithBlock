@@ -29,6 +29,10 @@ ABlockBase::ABlockBase()
 	ConstructorHelpers::FObjectFinder<UStaticMesh> tempCube(TEXT("StaticMesh'/Engine/EngineMeshes/Cube.Cube'"));
 	StaticMesh->SetStaticMesh(tempCube.Object);
 
+	ConstructorHelpers::FObjectFinder<USoundBase> tempSound(TEXT("SoundWave'/Game/Audio/BreakSound01.BreakSound01'"));
+	if (tempSound.Succeeded())
+		BreakSound = tempSound.Object;
+
 
 
 	if (StaticMesh->GetBodyInstance())
@@ -140,6 +144,7 @@ void ABlockBase::BeBreak()
 	UWorld* World = GetWorld();
 	if (World)
 	{
+		MulticastPlayAudio(BreakSound, GetActorLocation());
 		FActorSpawnParameters SpawnParameter;
 		SpawnParameter.Owner = this;
 		SpawnParameter.Instigator = Instigator;
@@ -207,4 +212,13 @@ void ABlockBase::DestroySelf()
 void ABlockBase::OnRep_Destroy()
 {
 	DestroySelf();
+}
+
+void ABlockBase::MulticastPlayAudio_Implementation(USoundBase* Sound, FVector Location)
+{
+	UGameplayStatics::PlaySoundAtLocation(GetWorld(), Sound, Location);
+}
+bool ABlockBase::MulticastPlayAudio_Validate(USoundBase* Sound, FVector Location)
+{
+	return true;
 }

@@ -21,6 +21,11 @@ public:
 	UPROPERTY(VisibleAnywhere, Replicated)
 		class UStaticMeshComponent* StaticMesh;	
 
+	UFUNCTION(reliable, NetMulticast, WithValidation, BlueprintCallable)
+		void MulticastPlayAudio(USoundBase* Sound, FVector Location);
+
+	USoundBase* BreakSound;
+
 
 protected:
 	// Called when the game starts or when spawned

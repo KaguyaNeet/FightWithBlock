@@ -14,7 +14,7 @@ ACBGBlock::ACBGBlock()
 	CollisionComponent = CreateDefaultSubobject<USphereComponent>(TEXT("CollisionComponent"));
 	RootComponent = CollisionComponent;
 	CollisionComponent->SetMobility(EComponentMobility::Movable);
-	CollisionComponent->SetSphereRadius(50.f);
+	CollisionComponent->SetSphereRadius(30.f);
 	CollisionComponent->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 	CollisionComponent->SetCollisionObjectType(ECollisionChannel::ECC_GameTraceChannel1);
 	CollisionComponent->SetCollisionResponseToChannel(ECollisionChannel::ECC_Pawn, ECollisionResponse::ECR_Overlap);
