@@ -453,8 +453,17 @@ void AMyCharacter::Pressed_R()
 void AMyCharacter::ServerPressed_R_Implementation()
 {
 	Pressed_R_();
+	MulticastPlayPickUp();
 }
 bool AMyCharacter::ServerPressed_R_Validate()
+{
+	return true;
+}
+void AMyCharacter::MulticastPlayPickUp_Implementation()
+{
+	BlueprintPlayPickUp();
+}
+bool AMyCharacter::MulticastPlayPickUp_Validate()
 {
 	return true;
 }
@@ -500,7 +509,7 @@ void AMyCharacter::MineLineTraceResult(const FHitResult& Hit)
 	if (HitBlock)
 	{
 		BlueprintSpawmEmitter();
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("MineHit"));
+		//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("MineHit"));
 		HitBlock->ApplyPointDamage(this, HeroProperty.BlockDamage);
 		
 	}

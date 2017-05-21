@@ -159,6 +159,11 @@ public:
 	UFUNCTION(reliable, NetMulticast, WithValidation, BlueprintCallable)
 		void MulticastPlayAudio(USoundBase* Sound, FVector Location);
 
+	UFUNCTION(reliable, NetMulticast, WithValidation)
+		void MulticastPlayPickUp();
+	UFUNCTION(BlueprintImplementableEvent)
+		void BlueprintPlayPickUp();
+
 	void SetCameraRotation(FRotator Rotation);
 	void SetCamera();
 	UFUNCTION(reliable, server, WithValidation)

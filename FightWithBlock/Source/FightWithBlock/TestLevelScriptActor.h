@@ -20,7 +20,7 @@ class FIGHTWITHBLOCK_API ATestLevelScriptActor : public ALevelScriptActor
 public:
 	//bian chang wei duo shao ge block
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MapProperty")
-		int32 MapSize = 10;
+		int32 MapSize = 30;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MapProperty")
 		int32 BlockSize = 95;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MapProperty")
