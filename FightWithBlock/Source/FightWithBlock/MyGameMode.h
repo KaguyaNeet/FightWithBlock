@@ -8,7 +8,7 @@
 
 const int32 BAGSPACE = 3;
 const int32 WarningSize = 100;
-const int32 MaxPlayerNum = 4;
+const int32 MaxPlayerNum = 5;
 /**
  * 
  */

@@ -27,6 +27,7 @@ bool UMyGameInstance::AddController(AMyPlayerController* Controller)
 			PlayerControllers[i] = Controller;
 			PlayerControllers[i]->SpawnMoxing(); 
 			AddNowPlayerNum();
+			PlayerControllers[i]->Controller_ID = NowPlayerNum;
 			PlayerControllerAddNum();
 			return true;
 		}
@@ -58,6 +59,7 @@ void UMyGameInstance::GameReady()
 {
 	WaitTimeGameStart();
 	GameState = EGameState::EReady;
+	AlivePlayerNum = NowPlayerNum;
 	for (int i = 0; i < MaxPlayerNum; i++)
 	{
 		if (PlayerControllers[i] != NULL)
@@ -74,6 +76,7 @@ void UMyGameInstance::GameReady()
 void UMyGameInstance::ApplyKill(FName Name, AMyPlayerController* Controller)
 {
 	AlivePlayerNum--;
+	Controller->isDeath = true;
 	for (int i = 0; i < MaxPlayerNum; i++)
 	{
 		if (PlayerControllers[i] != NULL)
@@ -148,7 +151,24 @@ void UMyGameInstance::Winner(AMyPlayerController* Controller)
 	{
 		if (PlayerControllers[i] != NULL)
 		{
+			if (AMyCharacter* MyCharacter = Cast<AMyCharacter>(PlayerControllers[i]->GetControlledPawn()))
+			{
+				MyCharacter->ClientSetAllowInput(false);
+			}
 			PlayerControllers[i]->TargetMoveToWinner(Controller);
+			GEngine->AddOnScreenDebugMessage(-1, 10, FColor::Red, TEXT("Winner!!!!!!!!!!!!!!!"));
 		}
 	}
+}
+
+void UMyGameInstance::InitControllers()
+{
+	for (int i = 0; i < MaxPlayerNum; i++)
+	{
+		PlayerControllers[i] = NULL;
+	}
+	NowPlayerNum = 0;
+	ReadyPlayerNum = 0;
+	AlivePlayerNum = 0;
+	GameState = EGameState::ENormal;
 }

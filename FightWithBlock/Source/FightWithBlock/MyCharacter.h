@@ -81,9 +81,17 @@ public:
 		UFUNCTION(BlueprintImplementableEvent)
 			void AddBlockUI(int ChooseNum, FBlock ChangeBlcok);
 		UFUNCTION(BlueprintImplementableEvent)
+			void BlueprintAddBlock(int ChooseNum, FBlock ChangeBlcok);
+		UFUNCTION(BlueprintImplementableEvent)
 			void RemoveBlockUI(int ChooseNum);
+		UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+			void BlueprintRemoveBlock(int ChooseNum);
 		UFUNCTION(BlueprintImplementableEvent)
 			void NowChooseUI(int NowChoose);
+		UFUNCTION(BlueprintImplementableEvent)
+			void BlueprintChooseBlock(int NowChoose);
+		UFUNCTION(BlueprintImplementableEvent)
+			void BlueprintPlayDeath();
 
 		void AddUI();
 
@@ -138,11 +146,11 @@ public:
 	void SetCamp(ECamp Camp);
 
 	UFUNCTION(reliable, server, WithValidation)
-		void  ServerChooseItem_1();
+		void  ServerChooseItem_1(int Choose);
 	UFUNCTION(reliable, server, WithValidation)
-		void  ServerChooseItem_2();
+		void  ServerChooseItem_2(int Choose);
 	UFUNCTION(reliable, server, WithValidation)
-		void  ServerChooseItem_3();
+		void  ServerChooseItem_3(int Choose);
 
 	UFUNCTION(BlueprintImplementableEvent)
 		void BlueprintFire();

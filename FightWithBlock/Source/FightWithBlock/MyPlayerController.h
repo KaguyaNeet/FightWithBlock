@@ -18,6 +18,9 @@ public:
 
 	AMyPlayerController();
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		int Controller_ID;
+
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps)const override;
 	UFUNCTION(BlueprintCallable)
 		void ServerSpawnCharacter();

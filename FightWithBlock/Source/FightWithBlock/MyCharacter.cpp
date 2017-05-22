@@ -5,6 +5,7 @@
 #include "BlockBase.h"
 #include "NET/UnrealNetwork.h"
 #include "MyGameInstance.h"
+#include "MyPlayerController.h"
 
 // Sets default values
 AMyCharacter::AMyCharacter()
@@ -179,6 +180,7 @@ bool AMyCharacter::AddItem(FBlock Item)
 		if (Bag[i].Empty)
 		{
 			ClientAddBlockUI(i + 1, Item);
+			BlueprintAddBlock(i + 1, Item);
 			Bag[i].Block = Item;
 			Bag[i].Empty = false;
 			AddBUFF(Item.ToOwnerBUFF);
@@ -198,6 +200,8 @@ bool AMyCharacter::AddItem(FBlock Item)
 			tempBlock->SetInitProperty(handBlock->Block);
 			ClientRemoveBlockUI(NowChoose);
 			ClientAddBlockUI(NowChoose, Item);
+			BlueprintRemoveBlock(NowChoose);
+			BlueprintAddBlock(NowChoose, Item);
 			handBlock->Block = Item;
 			handBlock->Empty = false;
 			AddBUFF(Item.ToOwnerBUFF);
@@ -214,13 +218,14 @@ void AMyCharacter::chooseItem_1()
 	SetNowChoose(1);
 	handBlock = &Bag[0];
 	NowChooseUI(NowChoose);
-	ServerChooseItem_1();
+	ServerChooseItem_1(NowChoose);
 }
-void AMyCharacter::ServerChooseItem_1_Implementation()
+void AMyCharacter::ServerChooseItem_1_Implementation(int Choose)
 {
 	handBlock = &Bag[0];
+	BlueprintChooseBlock(Choose);
 }
-bool AMyCharacter::ServerChooseItem_1_Validate()
+bool AMyCharacter::ServerChooseItem_1_Validate(int Choose)
 {
 	return true;
 }
@@ -230,13 +235,14 @@ void AMyCharacter::chooseItem_2()
 	SetNowChoose(2);
 	handBlock = &Bag[1];
 	NowChooseUI(NowChoose);
-	ServerChooseItem_2();
+	ServerChooseItem_2(NowChoose);
 }
-void AMyCharacter::ServerChooseItem_2_Implementation()
+void AMyCharacter::ServerChooseItem_2_Implementation(int Choose)
 {
 	handBlock = &Bag[1];
+	BlueprintChooseBlock(Choose);
 }
-bool AMyCharacter::ServerChooseItem_2_Validate()
+bool AMyCharacter::ServerChooseItem_2_Validate(int Choose)
 {
 	return true;
 }
@@ -246,13 +252,14 @@ void AMyCharacter::chooseItem_3()
 	SetNowChoose(3);
 	handBlock = &Bag[2];
 	NowChooseUI(NowChoose);
-	ServerChooseItem_3();
+	ServerChooseItem_3(NowChoose);
 }
-void AMyCharacter::ServerChooseItem_3_Implementation()
+void AMyCharacter::ServerChooseItem_3_Implementation(int Choose)
 {
 	handBlock = &Bag[2];
+	BlueprintChooseBlock(Choose);
 }
-bool AMyCharacter::ServerChooseItem_3_Validate()
+bool AMyCharacter::ServerChooseItem_3_Validate(int Choose)
 {
 	return true;
 }
@@ -276,6 +283,7 @@ void AMyCharacter::Fire_()
 	{
 		if (!handBlock->Empty)
 		{
+			BlueprintRemoveBlock(NowChoose);
 			UWorld* World = GetWorld();
 			if (World)
 			{
@@ -305,6 +313,7 @@ void AMyCharacter::Fire()
 void AMyCharacter::ServerFire_Implementation()
 {
 	MulticastFire();
+	//
 }
 bool AMyCharacter::ServerFire_Validate()
 {
@@ -426,6 +435,7 @@ void AMyCharacter::Pressed_R_()
 			//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("PreGET!"));
 			if (AddItem(printBlock[i]->BlockProperty))
 			{
+				MulticastPlayPickUp();
 				//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("GET!"));
 				printBlock[i]->DestroySelf();
 				printBlock[i] = NULL;
@@ -453,7 +463,7 @@ void AMyCharacter::Pressed_R()
 void AMyCharacter::ServerPressed_R_Implementation()
 {
 	Pressed_R_();
-	MulticastPlayPickUp();
+	
 }
 bool AMyCharacter::ServerPressed_R_Validate()
 {
@@ -537,15 +547,15 @@ void AMyCharacter::ApplyPointDamage_(AMyCharacter* Causer, int32 DamageValue)
 	MulticastShakeCamera();
 	HeroProperty.LifeValue -= DamageValue;
 	//ChooseHUDLifeValue(HeroInitProperty.LifeValue / HeroInitProperty.MaxLifeValue);
-	if (Role < ROLE_AutonomousProxy)
-	{
-		ChooseLifeBar(HeroInitProperty.LifeValue / HeroInitProperty.MaxLifeValue);
-	}
-	else
-	{
-		ChooseUILife(HeroInitProperty.LifeValue / HeroInitProperty.MaxLifeValue);
-	}
-	UE_LOG(LogTemp, Warning, TEXT("Life:%f, Damage:%f"), HeroProperty.LifeValue, DamageValue);
+	//if (Role < ROLE_AutonomousProxy)
+	//{
+	//	ChooseLifeBar(HeroInitProperty.LifeValue / HeroInitProperty.MaxLifeValue);
+	//}
+	//else
+	//{
+	//	ChooseUILife(HeroInitProperty.LifeValue / HeroInitProperty.MaxLifeValue);
+	//}
+	//UE_LOG(LogTemp, Warning, TEXT("Life:%f, Damage:%f"), HeroProperty.LifeValue, DamageValue);
 	if (HeroProperty.LifeValue <= 0)
 	{
 		//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Death"));
@@ -594,9 +604,8 @@ void AMyCharacter::ClientDeath_Implementation()
 {
 	//if (GetWorld())
 	//	GetWorld()->GetAuthGameMode<AMyGameMode>()->PrintKillMessage(Causer, this);
-	GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
-	GetMesh()->SetCollisionEnabled(ECollisionEnabled::PhysicsOnly);
-	GetMesh()->SetSimulatePhysics(true);
+	BlueprintPlayDeath();
+	SetAllowInput(false);
 	return;
 }
 bool AMyCharacter::ClientDeath_Validate()
@@ -609,13 +618,8 @@ void AMyCharacter::Death(AMyCharacter* Causer)
 	if (Role == ROLE_Authority)
 	{
 		ClientDeath();
-		
-		UGameInstance* GameInstance = GetGameInstance();
-		if (GameInstance)
-		{
-			UMyGameInstance* MyGameInstance = Cast<UMyGameInstance>(GameInstance);
-			//MyGameInstance->ApplyKill(MyCamp);
-		}
+		AMyPlayerController* MyPlayerController = Cast<AMyPlayerController>(GetController());
+		MyPlayerController->CharacterDeath();
 	}
 }
 

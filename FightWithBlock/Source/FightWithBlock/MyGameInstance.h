@@ -46,6 +46,8 @@ public:
 		void GameReady();
 	UFUNCTION(BlueprintImplementableEvent)
 		void WaitTimeGameStart();
+	UFUNCTION(BlueprintCallable)
+		void InitControllers();
 private:
 
 };
