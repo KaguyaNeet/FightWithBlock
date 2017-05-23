@@ -53,6 +53,9 @@ struct FBUFF : public FTableRowBase
 	//玩家看的图标
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "BUFF")
 		UTexture2D* tubiao;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Block")
+		int32 BUFF_Type = 0;
 	//BUFF持续时间
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "BUFF")
 		float LifeTime = 0;
@@ -73,6 +76,8 @@ struct FBUFF : public FTableRowBase
 	//增加/减少力量（攻击力）
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "BUFF")
 		int32 changePower;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "BUFF")
+		bool isChangeSpace = false;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "BUFF")
 		UParticleSystem* Particle;
 	UParticleSystemComponent* TempParticle = NULL;
@@ -101,9 +106,9 @@ struct FHero : public FTableRowBase
 		UTexture2D* tubiao;
 	//sheng ming zhi
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Hero")
-		int32 LifeValue = 100;
+		float LifeValue = 100;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Hero")
-		int32 MaxLifeValue = 100;
+		float MaxLifeValue = 100;
 	//li liang zhi
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Hero")
 		int32 Power;
@@ -125,13 +130,7 @@ struct FBlock : public FTableRowBase
 	GENERATED_USTRUCT_BODY()
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Block")
-		int32 ID;
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Block")
 		FName dName;
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Block")
-		FName pName;
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Block")
-		FString miaoshu;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Block")
 		UTexture2D* tubiao;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Block")

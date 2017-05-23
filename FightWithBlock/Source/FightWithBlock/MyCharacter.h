@@ -233,9 +233,6 @@ public:
 		void ClientDeath();
 	void Death(AMyCharacter* Causer);
 
-	void AddBlockToPre(ACBGBlock* Block);
-	void RemoveBlockFromPre(ACBGBlock* Block);
-
 	UPROPERTY(Replicated, EditAnywhere, BlueprintReadWrite)
 		FHero HeroProperty;
 
@@ -247,6 +244,29 @@ public:
 		bool IsCampFull = true;
 
 	void ControllerInit(ECamp Camp, FString Name);
+
+	UFUNCTION(BlueprintImplementableEvent)
+		void BlueprintRunBUFF(int BUFF_Type);
+	UFUNCTION(BlueprintImplementableEvent)
+		void BlueprintEndBUFF(int BUFF_Type);
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		bool isInvincible = false;
+
+	UFUNCTION(BlueprintCallable)
+		void ChangeLife(float DamageValue);
+
+	UFUNCTION(BlueprintImplementableEvent)
+		void BlueprintPlaySound(int Choose, FVector Location);
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		class ACBGBlock* TempBlock;
+	class ACBGBlock* TempBlock2;
+
+	UFUNCTION(BlueprintImplementableEvent)
+		void BlueprintPlayPickUpSound();
+
+
 
 
 private:
@@ -262,7 +282,5 @@ private:
 	bool Keyboard_F_Pressed = false;
 
 	float MineTimeCounter = 0;
-
-	ACBGBlock* printBlock[3] = {NULL};
 
 };

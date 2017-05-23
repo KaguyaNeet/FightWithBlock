@@ -339,6 +339,7 @@ void AMyCharacter::AddBUFF(FBUFF BUFF)
 {
 	//GEngine->AddOnScreenDebugMessage(-1, 4, FColor::Green, TEXT("addBUFF"));
 		myBUFF.Add(BUFF);
+		BlueprintRunBUFF(BUFF.BUFF_Type);
 }
 
 void AMyCharacter::RunBUFF(float DeltaTime)
@@ -377,6 +378,7 @@ void AMyCharacter::EndBUFF(int i)
 		//GEngine->AddOnScreenDebugMessage(-1, 4, FColor::Green, TEXT("rEMOVE"));
 		myBUFF[i].TempParticle->DestroyComponent();
 	}
+	BlueprintEndBUFF(myBUFF[i].BUFF_Type);
 	myBUFF.RemoveAt(i);
 	ReloadProperty();
 }
@@ -388,7 +390,14 @@ void AMyCharacter::BeginOverlap(UPrimitiveComponent* HitComponent, AActor* Other
 	if (CBGBlock)
 	{
 		//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("Find!"));
-		AddBlockToPre(CBGBlock);
+		if (TempBlock == NULL)
+		{
+			TempBlock = CBGBlock;
+		}
+		else if(TempBlock2 == NULL)
+		{
+			TempBlock2 = CBGBlock;
+		}
 	}
 }
 
@@ -398,55 +407,37 @@ void AMyCharacter::EndOverlap(UPrimitiveComponent* HitComponent, AActor* OtherAc
 	ACBGBlock* CBGBlock = Cast<ACBGBlock>(OtherActor);
 	if (CBGBlock)
 	{
-		RemoveBlockFromPre(CBGBlock);
-	}
-}
-
-void AMyCharacter::AddBlockToPre(ACBGBlock* Block)
-{
-	for (int i = 0; i < 3; i++)
-	{
-		if (printBlock[i] == NULL)
+		if (CBGBlock == TempBlock)
 		{
-			printBlock[i] = Block;
-			break;
+			TempBlock = NULL;
 		}
-	}
-}
-
-void AMyCharacter::RemoveBlockFromPre(ACBGBlock* Block)
-{
-	for (int i = 0; i < 3; i++)
-	{
-		if (printBlock[i] == Block)
+		if (CBGBlock == TempBlock2)
 		{
-			printBlock[i] = NULL;
-			break;
+			TempBlock2 = NULL;
 		}
 	}
 }
 
 void AMyCharacter::Pressed_R_()
 {
-	for (int i = 0; i < 3; i++)
+	FBlock TempBlockProperty;
+	if (TempBlock != NULL)
 	{
-		if (printBlock[i] != NULL)
-		{
-			//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("PreGET!"));
-			if (AddItem(printBlock[i]->BlockProperty))
-			{
-				MulticastPlayPickUp();
-				//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("GET!"));
-				printBlock[i]->DestroySelf();
-				printBlock[i] = NULL;
-				break;
-			}
-			else
-			{
-				//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("GETFalse!"));
-				printBlock[i] = NULL;
-			}
-		}
+		TempBlockProperty = TempBlock->BlockProperty;
+		TempBlock->DestroySelf();
+		TempBlock = NULL;
+		MulticastPlayPickUp();
+		BlueprintPlayPickUpSound();
+		AddItem(TempBlockProperty);
+	}
+	else if (TempBlock2 != NULL)
+	{
+		TempBlockProperty = TempBlock2->BlockProperty;
+		TempBlock2->DestroySelf();
+		TempBlock2 = NULL;
+		MulticastPlayPickUp();
+		BlueprintPlayPickUpSound();
+		AddItem(TempBlockProperty);
 	}
 }
 void AMyCharacter::Pressed_R()
@@ -545,21 +536,25 @@ bool AMyCharacter::MulticastPlayAudio_Validate(USoundBase* Sound, FVector Locati
 void AMyCharacter::ApplyPointDamage_(AMyCharacter* Causer, int32 DamageValue)
 {
 	MulticastShakeCamera();
-	HeroProperty.LifeValue -= DamageValue;
-	//ChooseHUDLifeValue(HeroInitProperty.LifeValue / HeroInitProperty.MaxLifeValue);
-	//if (Role < ROLE_AutonomousProxy)
-	//{
-	//	ChooseLifeBar(HeroInitProperty.LifeValue / HeroInitProperty.MaxLifeValue);
-	//}
-	//else
-	//{
-	//	ChooseUILife(HeroInitProperty.LifeValue / HeroInitProperty.MaxLifeValue);
-	//}
-	//UE_LOG(LogTemp, Warning, TEXT("Life:%f, Damage:%f"), HeroProperty.LifeValue, DamageValue);
-	if (HeroProperty.LifeValue <= 0)
+	if (HeroProperty.LifeValue >= 0)
 	{
-		//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Death"));
-		Death(Causer);
+		if (!isInvincible)
+			HeroProperty.LifeValue -= DamageValue;
+		//ChooseHUDLifeValue(HeroInitProperty.LifeValue / HeroInitProperty.MaxLifeValue);
+		//if (Role < ROLE_AutonomousProxy)
+		//{
+		//	ChooseLifeBar(HeroInitProperty.LifeValue / HeroInitProperty.MaxLifeValue);
+		//}
+		//else
+		//{
+		//	ChooseUILife(HeroInitProperty.LifeValue / HeroInitProperty.MaxLifeValue);
+		//}
+		//UE_LOG(LogTemp, Warning, TEXT("Life:%f, Damage:%f"), HeroProperty.LifeValue, DamageValue);
+		if (HeroProperty.LifeValue <= 0)
+		{
+			//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Death"));
+			Death(Causer);
+		}
 	}
 }
 void AMyCharacter::ApplyPointDamage(AMyCharacter* Causer, int32 DamageValue)
@@ -580,6 +575,11 @@ void AMyCharacter::ServerApplyPointDamage_Implementation(AMyCharacter* Causer, i
 bool AMyCharacter::ServerApplyPointDamage_Validate(AMyCharacter* Causer, int32 DamageValue)
 {
 	return true;
+}
+
+void AMyCharacter::ChangeLife(float DamageValue)
+{
+	HeroProperty.LifeValue -= DamageValue;
 }
 
 void AMyCharacter::MulticastReBorn_Implementation()

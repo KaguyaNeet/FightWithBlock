@@ -43,8 +43,8 @@ ABoltBlock::ABoltBlock()
 
 	ProjectileMovement = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("ProjectileMovement"));
 	ProjectileMovement->SetUpdatedComponent(CollisionComponent);
-	ProjectileMovement->InitialSpeed = 3000;
-	ProjectileMovement->MaxSpeed = 3000;
+	ProjectileMovement->InitialSpeed = 4000;
+	ProjectileMovement->MaxSpeed = 4000;
 	ProjectileMovement->bRotationFollowsVelocity = true;
 
 
@@ -91,6 +91,7 @@ void ABoltBlock::SetInitProperty(FBlock Block, AMyCharacter* Owner_)
 	IsInit = true;
 	BlockProperty = Block;
 	Owner = Owner_;
+	ProjectileMovement->MaxSpeed = Block.InitialSpeed;
 	CollisionComponent->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
 	UGameplayStatics::SpawnEmitterAttached(BlockProperty.traceParticle, StaticMesh);
 	//ProjectileMovement->InitialSpeed = BlockProperty.InitialSpeed;
@@ -129,6 +130,14 @@ void ABoltBlock::BeginOverlap(UPrimitiveComponent* HitComponent, AActor* OtherAc
 		HitEnemy->ApplyPointDamage(Owner, BlockProperty.DamageValue);
 		HitEnemy->GetCapsuleComponent()->AddTorque(GetVelocity() * 100);
 		Explosion();
+		if (BlockProperty.ToEnemyBUFF.isChangeSpace)
+		{
+			FVector tempVector = Owner->GetActorLocation();
+			Owner->SetActorLocation(HitEnemy->GetActorLocation());
+			HitEnemy->SetActorLocation(tempVector);
+			Owner->BlueprintPlaySound(1, Owner->GetActorLocation());
+			HitEnemy->BlueprintPlaySound(1, HitEnemy->GetActorLocation());
+		}
 		if (BlockProperty.ToEnemyBUFF.NotEmpty)
 		{
 			HitEnemy->AddBUFF(BlockProperty.ToEnemyBUFF);
