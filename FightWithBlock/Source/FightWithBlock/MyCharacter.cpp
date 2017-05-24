@@ -291,7 +291,7 @@ void AMyCharacter::Fire_()
 				//UE_LOG(LogTemp, Warning, TEXT("%s"), *(MineTraceStartArrow->GetComponentLocation()).ToString());
 				ABoltBlock* tempBlock = World->SpawnActor<ABoltBlock>(MineTraceStartArrow->GetComponentLocation(), MyCamera->GetComponentRotation());
 				tempBlock->SetInitProperty(handBlock->Block, this);
-				tempBlock->SetFireDirection(MineTraceStartArrow->GetForwardVector(), 1000);
+				//tempBlock->SetFireDirection(MineTraceStartArrow->GetForwardVector(), 1000);
 				handBlock->Empty = true;
 			}
 		}
@@ -356,16 +356,11 @@ void AMyCharacter::RunBUFF(float DeltaTime)
 		else if(!myBUFF[i].IsRun)
 		{
 			myBUFF[i].IsRun = true;
-			if (myBUFF[i].xuanyun)
-			{
-				MovementComponent->MaxWalkSpeed = 0;
-			}
-			if (!myBUFF[i].alreadyChangeSpeed)
-				MovementComponent->MaxWalkSpeed *= myBUFF[i].changeSpeed;
-			HeroProperty.LifeValue += myBUFF[i].changeHP * DeltaTime;
-			HeroProperty.Power += myBUFF[i].changePower * DeltaTime;
-			
 			myBUFF[i].TempParticle = UGameplayStatics::SpawnEmitterAttached(myBUFF[i].Particle, GetCapsuleComponent());
+		}
+		else
+		{
+			HeroProperty.LifeValue += myBUFF[i].changeHP * DeltaTime;
 		}
 	}
 }

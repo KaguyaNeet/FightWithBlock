@@ -43,8 +43,8 @@ ABoltBlock::ABoltBlock()
 
 	ProjectileMovement = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("ProjectileMovement"));
 	ProjectileMovement->SetUpdatedComponent(CollisionComponent);
-	ProjectileMovement->InitialSpeed = 4000;
-	ProjectileMovement->MaxSpeed = 4000;
+	ProjectileMovement->InitialSpeed = 3000;
+	ProjectileMovement->MaxSpeed = 3000;
 	ProjectileMovement->bRotationFollowsVelocity = true;
 
 
@@ -101,10 +101,10 @@ void ABoltBlock::SetInitProperty(FBlock Block, AMyCharacter* Owner_)
 	StaticMesh->SetWorldScale3D(StaticMesh->GetComponentScale() * BlockProperty.Size);
 }
 
-void ABoltBlock::SetFireDirection(const FVector& Direction, float DropForce)
-{
-	//ProjectileMovement->Velocity = Direction * ProjectileMovement->InitialSpeed;
-}
+//void ABoltBlock::SetFireDirection(const FVector& Direction, float DropForce)
+//{
+//	//ProjectileMovement->Velocity = Direction * ProjectileMovement->InitialSpeed;
+//}
 
 
 void ABoltBlock::Explosion()

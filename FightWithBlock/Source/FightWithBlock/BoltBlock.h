@@ -42,7 +42,7 @@ public:
 	UFUNCTION()
 		void OnRep_Explosion();
 
-	void SetFireDirection(const FVector& Direction, float DropForce);
+	//void SetFireDirection(const FVector& Direction, float DropForce);
 
 	UFUNCTION()
 	void BeginOverlap(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, int32 OtherBodyIndex, bool FromSweep, const FHitResult& Hit);
