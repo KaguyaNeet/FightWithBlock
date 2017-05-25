@@ -148,6 +148,8 @@ struct FBlock : public FTableRowBase
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Block")
 		int32 DamageValue = 1;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Block")
+		bool isSpawnPoison = false;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Block")
 		int32 ExplosionDamageValue;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Block")
 		float InitialSpeed = 1000.f;

@@ -53,6 +53,8 @@ public:
 	void Explosion();
 	void BeBreak();
 
+	TSubclassOf<class APoisonCPP> PoisonClass;
+
 private:
 
 	UPROPERTY(ReplicatedUsing = OnRep_Init)

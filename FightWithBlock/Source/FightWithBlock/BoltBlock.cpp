@@ -4,6 +4,7 @@
 #include "BoltBlock.h"
 #include "MyCharacter.h"
 #include "BlockBase.h"
+#include "PoisonCPP.h"
 #include "NET/UnrealNetwork.h"
 
 // Sets default values
@@ -34,6 +35,16 @@ ABoltBlock::ABoltBlock()
 	//ConstructorHelpers::FObjectFinder<UStaticMesh> CubeMesh(TEXT("StaticMesh'/Engine/BasicShapes/Cube.Cube'"));
 	//StaticMesh->SetStaticMesh(CubeMesh.Object);
 	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	//ConstructorHelpers::FObjectFinder<AActor> tempPoison(TEXT("Actor'/Game/myBlueprint/PoisonCloud.PoisonCloud'"));
+	//if (tempPoison.Succeeded())
+	//{
+	//	Poison = tempPoison.Object;
+
+	ConstructorHelpers::FObjectFinder<UBlueprint> tempPoison(TEXT("Blueprint'/Game/myBlueprint/MyPoisonCPP.MyPoisonCPP'"));
+	if (tempPoison.Succeeded())
+	{
+		PoisonClass = (UClass*)tempPoison.Object->GeneratedClass;
+	}
 
 
 
@@ -159,6 +170,14 @@ void ABoltBlock::BeBreak()
 	if (!bBreak)
 	{
 		bBreak = true;
+		if (BlockProperty.isSpawnPoison && Role == ROLE_Authority)
+		{
+			UWorld* MyWorld = GetWorld();
+			if (MyWorld)
+			{
+				MyWorld->SpawnActor<APoisonCPP>(PoisonClass, GetActorLocation(), FRotator(0, 0, 0));
+			}
+		}
 		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), BlockProperty.explosionParticle, FTransform(FRotator(0.f, 0.f, 0.f), GetActorLocation(), FVector(1, 1, 1)));
 		StaticMesh->SetWorldScale3D(FVector(0, 0, 0));
 		CollisionComponent->SetCollisionEnabled(ECollisionEnabled::NoCollision);
